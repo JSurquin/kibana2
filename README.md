@@ -1,47 +1,88 @@
-# Formation Angular 18/19 avec Slidev
+# Formation Unix
 
-![Angular Logo](https://angular.io/assets/images/logos/angular/angular.svg)
+![Unix Logo](https://venam.net/blog/assets/tux.png)
 
 ## À propos de cette formation
 
-Cette formation complète sur Angular 18/19 utilise [Slidev](https://github.com/slidevjs/slidev) pour offrir une expérience d'apprentissage interactive et moderne.
+Cette formation complète sur Unix utilise [Slidev](https://github.com/slidevjs/slidev) pour offrir une expérience d'apprentissage interactive et moderne.
 
-## Contenu de la formation 📚
+Formation UNIX/Linux - Initiation 2025 🐧
 
-### Modules principaux
+Une formation pratique, complète et progressive pour découvrir et maîtriser les bases d’Unix/Linux.
 
-- 🚀 Introduction à Angular
-- 💡 TypeScript Essentiels
-- 💻 Configuration de l'environnement
-- 🎯 Les Bases d'Angular
-- 🔧 Composants Angular
-- 📝 Syntaxe des templates
-- 🔄 Cycle de vie des composants
-- 📊 Services et Injection de dépendances
+📚 Table des matières
+	1.	🧱 Introduction et rappels Unix/Linux￼
+	2.	⚙️ Gestion du système et des utilisateurs￼
+	3.	💾 Gestion des processus et des services￼
+	4.	🧮 Gestion du stockage et du système de fichiers￼
+	5.	📡 Réseau￼
+	6.	🧰 Gestion des paquets et maintenance￼
+	7.	📅 Automatisation, scripts et tâches planifiées￼
+	8.	🔐 Sécurité système￼
+	9.	☁️ Services serveurs￼
+	10.	✅ QCM de validation finale￼
+	11.	🎯 Exercices pratiques￼
 
-### Sujets avancés
+Module 1 - Introduction et rappels
+	•	Historique Unix, GNU/Linux, distributions
+	•	Philosophie Unix (“tout est fichier”, etc.)
+	•	Architecture d’un système Linux
+	•	Noyau, shell, système de fichiers
+	•	Commandes essentielles de base
 
-- 🗺️ Routing et Navigation
-- 📝 Formulaires et Validation
-- 🔄 RxJS et Observables
-- 🌐 HTTP Client et API REST
-- ⚡ Signals (Nouveauté Angular 18)
-- 📱 Directives et Pipes
-- 🚀 Performance et Optimisation
-- 🧪 Tests unitaires et E2E
-- 📦 Déploiement
-- 🔍 Bonnes pratiques
+Module 2 - Gestion système et utilisateurs
+	•	Comptes utilisateurs et groupes
+	•	Permissions, droits, umask, sudoers
+	•	Gestion des quotas
+	•	Structure du système de fichiers
+
+Module 3 - Processus et services
+	•	PID, états des processus
+	•	Démarrage et arrêt du système
+	•	systemd et gestion des services
+
+Module 4 - Stockage et système de fichiers
+	•	Disques, partitions, montage
+	•	Systèmes de fichiers (ext4, xfs, NFS)
+	•	Permissions étendues (ACL)
+	•	Gestion de l’espace disque
+
+Module 5 - Réseau
+	•	Configuration réseau
+	•	Diagnostic réseau
+	•	Gestion du pare-feu
+	•	SSH et transfert de fichiers
+
+Module 6 - Paquets et maintenance
+	•	Systèmes de paquets (apt, dnf)
+	•	Installation, mise à jour
+	•	Gestion des dépendances
+
+Module 7 - Automatisation et scripts
+	•	Scripts Bash de base
+	•	Tâches planifiées (cron, at)
+	•	Supervision et logs
+
+Module 8 - Sécurité système
+	•	Sécurité des comptes
+	•	SELinux/AppArmor
+	•	Durcissement système
+	•	Audit et logs de sécurité
+
+Module 9 - Services serveurs
+	•	Services de base (Nginx, Apache)
+	•	Configuration réseau avancée
+	•	Monitoring basique
 
 ## Projet pratique 💻
 
-Un mini-blog sera développé étape par étape tout au long de la formation, permettant de mettre en pratique chaque concept appris.
+Un mini-projet sera développé étape par étape tout au long de la formation, permettant de mettre en pratique chaque concept appris.
 
 ## Prérequis techniques
 
-- Node.js v20.11.1 ou supérieur (LTS recommandée)
-- npm v10.2.4 ou supérieur
+- Unix ou Linux
 - Un éditeur de code (VS Code recommandé)
-- Connaissances de base en HTML, CSS et JavaScript
+- Connaissances de base en terminal
 
 ## Installation
 
@@ -70,6 +111,17 @@ pnpm install --frozen-lockfile
 npm run dev
 ```
 
+ou pnpm :
+
+```bash
+pnpm run dev
+```
+
+ou yarn :
+
+```bash
+yarn run dev
+```
 ## Caractéristiques des slides
 
 - 🎨 Design moderne et responsive
@@ -82,7 +134,7 @@ npm run dev
 
 ## Ressources supplémentaires
 
-- [Documentation officielle d'Angular](https://angular.io/)
+- [Documentation officielle de Unix](https://www.gnu.org/software/libc/manual/)
 - [Documentation Slidev](https://sli.dev/)
 - [Guide TypeScript](https://www.typescriptlang.org/docs/)
 
