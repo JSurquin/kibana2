@@ -10,110 +10,72 @@ Formation UNIX/Linux - Initiation 2025 🐧
 
 Une formation pratique, complète et progressive pour découvrir et maîtriser les bases d’Unix/Linux.
 
-📚 Table des matières
-	1.	🧱 Introduction et rappels Unix/Linux￼
-	
-    2.	⚙️ Gestion du système et des utilisateurs￼
-	
-    3.	💾 Gestion des processus et des services￼
-	
-    4.	🧮 Gestion du stockage et du système de fichiers￼
-	
-    5.	📡 Réseau￼
-	
-    6.	🧰 Gestion des paquets et maintenance￼
-	
-    7.	📅 Automatisation, scripts et tâches planifiées￼
-	
-    8.	🔐 Sécurité système￼
-	
-    9.	☁️ Services serveurs￼
-	
-    10.	✅ QCM de validation finale￼
-	
-    11.	🎯 Exercices pratiques￼
+## 📚 Table des matières
 
-Module 1 - Introduction et rappels
-	-	Historique Unix, GNU/Linux, distributions
-	
-    -	Philosophie Unix (“tout est fichier”, etc.)
-	
-    -	Architecture d’un système Linux
-	
-    -	Noyau, shell, système de fichiers
-	
-    -	Commandes essentielles de base
+1.  🧱 Introduction et rappels Unix/Linux
+2.  ⚙️ Gestion du système et des utilisateurs
+3.  💾 Gestion des processus et des services
+4.  🧮 Gestion du stockage et du système de fichiers
+5.  📡 Réseau
+6.  🧰 Gestion des paquets et maintenance
+7.  📅 Automatisation, scripts et tâches planifiées
+8.  🔐 Sécurité système
+9.  ☁️ Services serveurs
+10. ✅ QCM de validation finale
+11. 🎯 Exercices pratiques
 
-Module 2 - Gestion système et utilisateurs
-	-	Comptes utilisateurs et groupes
-	
-    -	Permissions, droits, umask, sudoers
-	
-    -	Gestion des quotas
-	
-    -	Structure du système de fichiers
+---
 
-Module 3 - Processus et services
-	
-    -	PID, états des processus
-	
-    -	Démarrage et arrêt du système
-	
-    -	systemd et gestion des services
+### Module 1 - Introduction et rappels
+-   Historique Unix, GNU/Linux, distributions
+-   Philosophie Unix (“tout est fichier”, etc.)
+-   Architecture d’un système Linux
+-   Noyau, shell, système de fichiers
+-   Commandes essentielles de base
 
-Module 4 - Stockage et système de fichiers
-	
-    -	Disques, partitions, montage
-	
-    -	Systèmes de fichiers (ext4, xfs, NFS)
-	
-    -	Permissions étendues (ACL)
-	
-    -	Gestion de l’espace disque
+### Module 2 - Gestion système et utilisateurs
+-   Comptes utilisateurs et groupes
+-   Permissions, droits, umask, sudoers
+-   Gestion des quotas
+-   Structure du système de fichiers
 
-Module 5 - Réseau
-	
-    -	Configuration réseau
-	
-    -	Diagnostic réseau
-	
-    -	Gestion du pare-feu
-	
-    -	SSH et transfert de fichiers
+### Module 3 - Processus et services
+-   PID, états des processus
+-   Démarrage et arrêt du système
+-   systemd et gestion des services
 
-Module 6 - Paquets et maintenance
-	
-    -	Systèmes de paquets (apt, dnf)
-	
-    -	Installation, mise à jour
-	
-    -	Gestion des dépendances
+### Module 4 - Stockage et système de fichiers
+-   Disques, partitions, montage
+-   Systèmes de fichiers (ext4, xfs, NFS)
+-   Permissions étendues (ACL)
+-   Gestion de l’espace disque
 
-Module 7 - Automatisation et scripts
-	
-    -	Scripts Bash de base
-	
-    -	Tâches planifiées (cron, at)
-	
-    -	Supervision et logs
+### Module 5 - Réseau
+-   Configuration réseau
+-   Diagnostic réseau
+-   Gestion du pare-feu
+-   SSH et transfert de fichiers
 
-Module 8 - Sécurité système
-	
-    -	Sécurité des comptes
-	
-    -	SELinux/AppArmor
-	
-    -	Durcissement système
-	
-    -	Audit et logs de sécurité
+### Module 6 - Paquets et maintenance
+-   Systèmes de paquets (apt, dnf)
+-   Installation, mise à jour
+-   Gestion des dépendances
 
-Module 9 - Services serveurs
-	
-    -	Services de base (Nginx, Apache)
-	
-    -	Configuration réseau avancée
-	
-    -	Monitoring basique
+### Module 7 - Automatisation et scripts
+-   Scripts Bash de base
+-   Tâches planifiées (cron, at)
+-   Supervision et logs
+
+### Module 8 - Sécurité système
+-   Sécurité des comptes
+-   SELinux/AppArmor
+-   Durcissement système
+-   Audit et logs de sécurité
+
+### Module 9 - Services serveurs
+-   Services de base (Nginx, Apache)
+-   Configuration réseau avancée
+-   Monitoring basique
 
 ## Projet pratique 💻
 
