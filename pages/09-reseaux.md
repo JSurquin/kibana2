@@ -1,615 +1,622 @@
 ---
-layout: new-section
-routeAlias: 'reseaux-volumes-docker'
+layout: intro
+routeAlias: 'reseaux'
 ---
 
-<a name="reseaux-volumes-docker" id="reseaux-volumes-docker"></a>
+# Réseaux et Connectivité 🌐
 
-# Réseaux & Volumes Docker 🌐💾
+### Configuration et gestion des réseaux Linux
 
----
-
-## Pourquoi a-t-on besoin de réseaux et volumes ? 🤔
-
-### Les problèmes à résoudre
-
-**Sans réseaux Docker** :
-- Vos containers ne peuvent pas se parler facilement
-- Difficile de faire communiquer une app web avec sa base de données
-
-**Sans volumes Docker** :
-- 💀 **Vos données disparaissent** quand vous supprimez un container
-- Impossible de partager des fichiers entre containers
-- Pas de persistance pour vos bases de données
-
-### Ce que Docker résout
-
-✅ **Réseaux** : Communication simple entre containers  
-✅ **Volumes** : Vos données survivent aux containers  
+<div class="pt-12">
+  <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
+    Configurons les réseaux ensemble <carbon:arrow-right class="inline"/>
+  </span>
+</div>
 
 ---
+layout: default
+---
 
-## 💾 Volumes - Le problème de base
+# Concepts de base 🌍
 
-### Que se passe-t-il SANS volumes ?
+### Architecture réseau Linux
 
+**Interfaces réseau :**
+- **eth0, enp0s3** : Interface Ethernet
+- **wlan0, wlp2s0** : Interface WiFi
+- **lo** : Interface loopback (127.0.0.1)
+- **docker0, veth*** : Interfaces virtuelles Docker
+
+**Adressage IP :**
+- **IPv4** : 192.168.1.100/24
+- **IPv6** : 2001:db8::1/64
+- **Masque de sous-réseau** : 255.255.255.0
+- **Passerelle** : 192.168.1.1
+
+**Configuration réseau :**
+- **DHCP** : Attribution automatique
+- **Statique** : Configuration manuelle
+- **Bonding** : Agrégation d'interfaces
+- **Bridging** : Pont réseau
+
+---
+layout: default
+---
+
+# Commandes de base réseau 🔧
+
+### Outils de diagnostic réseau
+
+**ip (remplace ifconfig)**
 ```bash
-# Créer un container avec des données
-docker run -it --name test-data ubuntu:20.04 bash
-
-# Dans le container, créer un fichier important
-echo "Mes données importantes" > /app/data.txt
-exit
-
-# PROBLÈME : Supprimer le container = PERTE DES DONNÉES
-docker rm test-data
-
-# 💀 Le fichier data.txt a DISPARU pour toujours !
+ip addr show                   # Afficher les adresses IP
+ip link show                   # Afficher les interfaces
+ip route show                  # Afficher la table de routage
+ip addr add 192.168.1.100/24 dev eth0  # Ajouter une IP
+ip link set eth0 up            # Activer une interface
+ip link set eth0 down          # Désactiver une interface
 ```
 
-**😱 Résultat** : Toutes vos données sont **perdues** !
-
----
-
-## 🔧 Solution : Les Volumes Docker
-
-### Qu'est-ce qu'un volume exactement ?
-
-Un **volume** est un **dossier spécial** que Docker gère pour vous :
-
-- 📁 **Stocké sur votre disque dur** (pas dans le container)
-- 🔄 **Partageable** entre plusieurs containers
-- 💾 **Persistent** : survit à la suppression du container
-- 🛡️ **Géré par Docker** : sauvegarde, permissions automatiques
-
-**Analogie** : C'est comme un **disque dur externe** que vous branchez sur différents ordinateurs !
-
-> Vous pouvez aussi le voir comme un disque dur virtuel qui est géré par Docker.
-
----
-
-## 📊 Types de volumes - Comprendre les différences
-
-### 3 façons de gérer vos données
-
-| Type | Quand l'utiliser | Où sont les données |
-|------|------------------|-------------------|
-| **🤖 Volume anonyme** | Par accident/débutant | Docker le gère |
-| **📛 Volume nommé** | **Production** | Docker le gère |
-| **📁 Bind mount** | **Développement** | Sur votre PC |
-
----
-
-⚙️ Analogie simple : Volumes = Clés USB
-
-| Type | Quand l'utiliser | Où sont les données | Analogie 🧠 |
-|------|------------------|-------------------|-------------|
-| **🤖 Volume anonyme** | Débutant / oubli | Docker (nom auto) | 🕳️ Clé USB sans étiquette jetée dans un tiroir — tu la retrouves jamais |
-| **📛 Volume nommé** | Production | Docker (nom choisi) | 🏷️ Clé USB avec ton nom, rangée dans une boîte — facile à retrouver, réutiliser |
-| **📁 Bind mount** | Développement | Sur votre PC | 💻 Tu bosses directement sur un dossier de ton PC, comme si ton app était "en live" |
-
----
-
-## 🤖 Volumes Anonymes - Ce qui arrive aux débutants
-
-### Quand Docker crée des volumes automatiquement
-
+**ifconfig (obsolète mais encore utilisé)**
 ```bash
-# ❌ Commande de débutant (SANS -v)
-docker run -d --name mysql-test mysql:8.0
-
-# 🤖 Docker crée automatiquement un volume ANONYME
-docker volume ls
-# DRIVER    VOLUME NAME
-# local     a1b2c3d4e5f6...  ← Volume avec nom aléatoire !
+ifconfig                       # Afficher toutes les interfaces
+ifconfig eth0                  # Interface spécifique
+ifconfig eth0 192.168.1.100 netmask 255.255.255.0  # Configurer
+ifconfig eth0 up               # Activer
+ifconfig eth0 down             # Désactiver
 ```
 
-**⚠️ Problème** : Volume avec nom bizarre, difficile à retrouver !
-
----
-
-### Pourquoi Docker fait ça automatiquement ?
-
+**nmcli (NetworkManager CLI)**
 ```bash
-# Voir les détails du container MySQL
-docker inspect mysql-test
-
-# Dans les détails, vous verrez :
-# "Mounts": [
-#   {
-#     "Type": "volume",
-#     "Name": "a1b2c3d4e5f6...",
-#     "Source": "/var/lib/docker/volumes/a1b2c3d4e5f6.../",
-#     "Destination": "/var/lib/mysql"
-#   }
-# ]
-```
-
-**💡 Pourquoi ?** MySQL **a besoin** de persister ses données, Docker crée donc automatiquement un volume pour `/var/lib/mysql` !
-
----
-
-## 📛 Volumes Nommés - La bonne pratique
-
-### Créer et utiliser un volume avec un nom explicite
-
-```bash
-# ✅ Créer un volume avec un nom clair
-docker volume create mysql-data
-
-# ✅ Utiliser ce volume avec votre container
-docker run -d \
-  --name mysql-prod \
-  -v mysql-data:/var/lib/mysql \
-  -e MYSQL_ROOT_PASSWORD=password123 \
-  mysql:8.0
-
-# ✅ Vérifier que vos données sont là
-docker volume ls
-# DRIVER    VOLUME NAME
-# local     mysql-data    ← Nom clair et lisible !
+nmcli device status            # Statut des interfaces
+nmcli connection show          # Connexions configurées
+nmcli device wifi list         # Réseaux WiFi disponibles
 ```
 
 ---
-
-### Test de persistance des données
-
-```bash
-# 1. Créer une base de données
-docker exec -it mysql-prod mysql -p
-# permet de faire deux commande en meme temps, se connecter au container et executer une commande
-# CREATE DATABASE test_app;
-# exit
-
-# 2. SUPPRIMER le container (simulation crash)
-docker stop mysql-prod
-docker rm mysql-prod
-
-# 3. Recréer un nouveau container avec le MÊME volume
-docker run -d \
-  --name mysql-nouveau \
-  -v mysql-data:/var/lib/mysql \
-  -e MYSQL_ROOT_PASSWORD=password123 \
-  mysql:8.0
-
-# 4. Vérifier que les données sont TOUJOURS LÀ !
-docker exec -it mysql-nouveau mysql -p
-# SHOW DATABASES;  ← test_app est toujours là ! ✅
-```
-
-**🎉 Résultat** : Vos données ont **survécu** à la destruction du container !
-
+layout: default
 ---
 
-## 📁 Bind Mounts - Pour le développement
+# Configuration réseau statique ⚙️
 
-### Lier un dossier de votre PC au container
+### Configuration manuelle des interfaces
 
+**Configuration avec ip :**
 ```bash
-# Créer un dossier sur votre PC
-mkdir ~/mon-projet
-echo "console.log('Hello Docker!');" > ~/mon-projet/app.js
+# Configurer une interface
+ip addr add 192.168.1.100/24 dev eth0
+ip route add default via 192.168.1.1 dev eth0
 
-# Lier ce dossier au container
-docker run -it \
-  --name dev-container \
-  -v ~/mon-projet:/app \
-  node:18-alpine \
-  sh
+# Configurer DNS
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+```
 
-# Dans le container :
-# cd /app
-# ls -la        ← Vous voyez app.js !
-# node app.js   ← "Hello Docker!"
+**Configuration avec netplan (Ubuntu) :**
+```yaml
+# /etc/netplan/01-netcfg.yaml
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses:
+        - 192.168.1.100/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+```
+
+**Application de la configuration :**
+```bash
+sudo netplan apply             # Appliquer la configuration
+sudo netplan try               # Tester la configuration
 ```
 
 ---
+layout: default
+---
 
-### Magie du bind mount - Modification en temps réel
+# Configuration DHCP 🌐
 
+### Attribution automatique d'adresses
+
+**Configuration DHCP client :**
 ```bash
-# Sur votre PC, modifier le fichier
-echo "console.log('Modifié depuis mon PC!');" > ~/mon-projet/app.js
+# Demander une adresse DHCP
+dhclient eth0                  # Client DHCP classique
+dhcpcd eth0                    # Client DHCP alternatif
 
-# Dans le container, relancer
-# node app.js   ← "Modifié depuis mon PC!"
+# Configuration automatique
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
 ```
 
-**🪄 Magie** : Les modifications sur votre PC apparaissent **instantanément** dans le container !
-
----
-
-### Ce qu'il se passe VRAIMENT avec un bind mount :
-
-- Le dossier de votre PC est **monté directement** dans le container
-- Il n'y a **aucune copie** de fichier : c'est le même fichier vu des deux côtés
-- Le container lit/écrit directement dans le dossier du host
-- Toute modification faite sur le PC est **instantanément visible** dans le container
-- Et inversement, ce que fait le container modifie le fichier sur le host
-- Vous pouvez vérifier ça avec `cat /app/app.js` ou `cat ~/mon-projet/app.js` → même contenu
-
-🧠 Attention : Si un dossier existe déjà dans le container (ex: /app), le bind mount va **masquer** son contenu. Le dossier de votre PC **remplace entièrement** celui du container. Le contenu initial du container à cet endroit est **invisible**, mais **pas supprimé**
-
-Si vous annulez le bind mount, le dossier du container reprend son contenu initial.
-
----
-
-## 🌐 Réseaux Docker - Le problème de communication
-
-### Pourquoi les containers ne se parlent pas par défaut ?
-
+**Configuration avec NetworkManager :**
 ```bash
-# Lancer 2 containers séparés
-docker run -d --name app1 nginx:alpine
-docker run -d --name app2 nginx:alpine
+# Activer DHCP sur une interface
+nmcli connection modify "Wired connection 1" ipv4.method auto
 
-# Essayer de faire communiquer app1 avec app2
-docker exec app1 ping app2
-# ping: bad address 'app2'  ← ÉCHEC !
+# Voir la configuration DHCP
+nmcli connection show "Wired connection 1"
 ```
 
-**😕 Problème** : Les containers sont **isolés** par défaut !
-
----
-
-## 🔗 Solution : Créer un réseau personnalisé
-
-### Les containers peuvent se parler par leur nom
-
+**Serveur DHCP (dnsmasq) :**
 ```bash
-# 1. Créer un réseau personnalisé
-docker network create mon-reseau
+# Installation
+sudo apt install dnsmasq
 
-# 2. Lancer les containers dans ce réseau
-docker run -d --name app1 --network mon-reseau nginx:alpine
-docker run -d --name app2 --network mon-reseau nginx:alpine
-
-# 3. Maintenant ils peuvent se parler !
-docker exec app1 ping app2
-# PING app2 (172.20.0.3): 56 data bytes  ← ✅ ÇA MARCHE !
-
-# Ils sont tout les deux sur le même réseau "mon-reseau" et peuvent se parler.
-```
-
-**🎯 Résultat** : Communication par **nom de container** !
-
----
-
-## 🏗️ Exemple concret : Site web + Base de données
-
-### Stack complète qui fonctionne ensemble
-
-```bash
-# 1. Créer l'infrastructure
-docker network create webapp-network
-docker volume create database-data
-
-# 2. Lancer la base de données
-docker run -d \
-  --name database \
-  --network webapp-network \
-  -v database-data:/var/lib/mysql \
-  -e MYSQL_ROOT_PASSWORD=secret \
-  -e MYSQL_DATABASE=myapp \
-  mysql:8.0
+# Configuration /etc/dnsmasq.conf
+interface=eth0
+dhcp-range=192.168.1.50,192.168.1.150,12h
+dhcp-option=3,192.168.1.1
+dhcp-option=6,8.8.8.8,8.8.4.4
 ```
 
 ---
+layout: default
+---
 
-### Suite : Application web
+# Diagnostic réseau 🔍
 
+### Outils de test et diagnostic
+
+**ping (test de connectivité)**
 ```bash
-# 3. Lancer l'application web
-docker run -d \
-  --name webapp \
-  --network webapp-network \
-  -p 3000:3000 \
-  -e DATABASE_HOST=database \
-  -e DATABASE_USER=root \
-  -e DATABASE_PASSWORD=secret \
-  -e DATABASE_NAME=myapp \
-  node:18-alpine \
-  sh -c "
-    npm init -y &&
-    npm install express mysql2 &&
-    echo 'const express = require(\"express\");
-    const app = express();
-    app.get(\"/\", (req, res) => res.send(\"App connectée à MySQL!\"));
-    app.listen(3000);' > app.js &&
-    node app.js
-  "
+ping google.com                # Test de connectivité
+ping -c 4 google.com          # 4 pings seulement
+ping -i 2 google.com          # Intervalle de 2 secondes
+ping -s 1000 google.com       # Taille de paquet 1000 bytes
+ping -t 64 google.com         # TTL de 64
+```
+
+**traceroute (tracer le chemin)**
+```bash
+traceroute google.com          # Tracer le chemin
+traceroute -n google.com       # Sans résolution DNS
+traceroute -I google.com       # Utiliser ICMP
+mtr google.com                 # Traceroute en temps réel
+```
+
+**nslookup et dig (DNS)**
+```bash
+nslookup google.com            # Résolution DNS
+nslookup 8.8.8.8              # Résolution inverse
+dig google.com                 # Requête DNS détaillée
+dig +short google.com          # Réponse courte
 ```
 
 ---
+layout: default
+---
 
-### Test de la stack complète
+# Monitoring réseau 📊
 
+### Surveillance du trafic réseau
+
+**netstat (statistiques réseau)**
 ```bash
-# 4. Tester que tout fonctionne
-curl http://localhost:3000
-# "App connectée à MySQL!"  ← ✅ ÇA MARCHE !
+netstat -tuln                  # Ports en écoute
+netstat -i                     # Interfaces réseau
+netstat -r                     # Table de routage
+netstat -s                     # Statistiques
+netstat -an | grep ESTABLISHED # Connexions établies
+```
 
-# 5. Voir les containers qui communiquent
-docker exec webapp ping database
-# PING database (172.21.0.2)  ← Communication réseau ✅
+**ss (Socket Statistics)**
+```bash
+ss -tuln                       # Ports en écoute (moderne)
+ss -i                          # Informations détaillées
+ss -s                          # Statistiques
+ss -t state established        # Connexions établies
+```
 
-# 6. Vérifier la persistance
-docker volume inspect database-data
-# Les données MySQL sont sauvegardées ✅
+**iftop (monitoring en temps réel)**
+```bash
+iftop                          # Trafic réseau en temps réel
+iftop -i eth0                  # Interface spécifique
+iftop -P                       # Afficher les ports
 ```
 
 ---
-
-## 🔍 Types de réseaux Docker - Les vraies différences
-
-### 🤔 Pourquoi bridge et host semblent similaires ?
-
-À première vue, **bridge** et **host** ont l'air pareils :
-- ✅ Les containers peuvent accéder à Internet
-- ✅ Tu peux exposer des ports
-- ✅ Ça marche pour tes apps
-
-**MAIS** la différence est dans **l'isolation réseau** et **comment ça fonctionne sous le capot** !
-
+layout: default
 ---
 
-### 🧱 Réseau Bridge (défaut) - Isolation sécurisée
+# Pare-feu et sécurité réseau 🛡️
 
+### Configuration des pare-feu
+
+**ufw (Uncomplicated Firewall)**
 ```bash
-# Le container a son propre réseau virtuel
-docker run -d -p 8080:80 --name web nginx
-
-# ✅ Ce qui se passe :
-# - Container a une IP interne (ex: 172.17.0.2)
-# - Tu DOIS utiliser -p pour exposer les ports
-# - Accessible via localhost:8080 sur ton PC
-# - Container isolé du réseau de ton PC
+sudo ufw enable                # Activer le pare-feu
+sudo ufw status                # Statut du pare-feu
+sudo ufw allow ssh             # Autoriser SSH
+sudo ufw allow 80/tcp          # Autoriser HTTP
+sudo ufw deny 22               # Refuser SSH
+sudo ufw allow from 192.168.1.0/24  # Autoriser un réseau
 ```
 
-**🔒 Isolation** : Container dans sa bulle réseau, plus sécurisé
-
----
-
-### 🏠 Réseau Host - Performance maximale
-
+**iptables (pare-feu avancé)**
 ```bash
-# Le container utilise directement le réseau de ta machine
-docker run -d --network host --name web nginx
+# Lister les règles
+sudo iptables -L
+sudo iptables -L -n -v
 
-# ⚡ Ce qui se passe :
-# - Container utilise l'IP de ton PC
-# - PAS besoin de -p → nginx accessible direct sur port 80
-# - Plus rapide car pas de couche réseau virtuelle
-# - ⚠️ Marche QUE sur Linux natif (pas Docker Desktop Mac/Windows)
+# Ajouter des règles
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 22 -j DROP
+sudo iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
+
+# Sauvegarder les règles
+sudo iptables-save > /etc/iptables/rules.v4
 ```
 
-**🚀 Performance** : Container "fusionné" avec ton PC, plus rapide
-
----
-
-### 🚫 Réseau None - Isolation totale
-
+**nftables (nouveau pare-feu)**
 ```bash
-# Aucun réseau du tout
-docker run -d --network none --name isolated alpine
+# Créer une table
+sudo nft add table inet filter
 
-# 🔒 Ce qui se passe :
-# - Pas d'accès Internet
-# - Pas de communication avec d'autres containers
-# - Parfait pour traitement de données sensibles
-```
+# Créer une chaîne
+sudo nft add chain inet filter input { type filter hook input priority 0 \; }
 
-**🔐 Sécurité** : Container complètement coupé du monde
-
----
-
-### 📊 Tableau comparatif - Bridge vs Host vs None
-
-| Mode | IP container ? | Isolation ? | Accès aux ports | Performance | Usage typique |
-|------|---------------|-------------|-----------------|-------------|---------------|
-| **🧱 bridge** | ✅ Oui (virtuel) | ✅ Sécurisé | via `-p` | Standard | Apps normales, production |
-| **🏠 host** | ❌ Non (host IP) | ❌ Aucune | direct | Maximum | Apps haute perf, debug |
-| **🚫 none** | ❌ Aucune | ✅ Totale | aucun | N/A | Traitement isolé |
-| **🔗 bridge custom** | ✅ Oui | ✅ Sécurisé | via `-p` + DNS | Standard | Multi-containers |
-
----
-
-### 🎯 Exemples concrets des différences
-
-```bash
-# === BRIDGE (défaut) ===
-docker run -d -p 8080:80 --name web-bridge nginx
-# → Accessible sur http://localhost:8080
-# → Container IP: 172.17.0.2 (réseau virtuel)
-
-# === HOST ===
-docker run -d --network host --name web-host nginx
-# → Accessible sur http://localhost:80 (direct)
-# → Container IP: même que ton PC
-
-# === Comparaison ===
-docker exec web-bridge ip addr    # IP virtuelle Docker
-docker exec web-host ip addr      # IP de ton PC
+# Ajouter une règle
+sudo nft add rule inet filter input tcp dport 80 accept
 ```
 
 ---
-
-### ⚠️ Limitations importantes
-
-**Réseau Host** :
-- ❌ **Ne fonctionne QUE sur Linux natif**
-- ❌ Docker Desktop (Mac/Windows) → host = bridge automatiquement
-- ❌ Moins sécurisé (pas d'isolation)
-- ❌ Conflicts de ports possible avec le host
-
-**Réseau Bridge** :
-- ⚠️ Containers sur bridge par défaut ne se voient pas par nom
-- ✅ Solution : créer un bridge personnalisé
-
+layout: default
 ---
 
-### 💡 Analogies pour retenir
+# VPN et tunnels 🔐
 
-**🧱 Bridge** :
-- **Analogie** : Tu es dans une colocation avec d'autres colocataires (containers) : vous pouvez parler entre vous (même réseau), et vous avez tous accès à Internet.
+### Configuration de tunnels sécurisés
 
-**🏠 Host** :
-- **Analogie** : Tu bosses **seul** sur ton propre PC connecté directement à Internet - aucune cloison, tu fais tout toi-même, vite, mais moins sécurisé.
-
-**🚫 None** :
-- **Analogie** : Tu bosses dans une **salle sans Wi-Fi, sans câble, sans rien** : impossible de communiquer, même avec tes voisins.
-
----
-
-## 📋 Commandes essentielles - Diagnostic et debug
-
-### Réseaux - Voir ce qui se passe
-
+**OpenVPN**
 ```bash
-# Lister tous les réseaux
-docker network ls
+# Installation
+sudo apt install openvpn
 
-# Voir les détails d'un réseau (quels containers sont dessus)
-docker network inspect mon-reseau
+# Configuration client
+sudo openvpn --config client.ovpn
 
-# Connecter un container existant à un réseau
-docker network connect mon-reseau mon-container
+# Configuration serveur
+sudo openvpn --config server.conf
+```
 
-# Tester la connectivité entre containers
-docker exec container1 ping container2
-docker exec container1 nslookup container2
+**WireGuard (VPN moderne)**
+```bash
+# Installation
+sudo apt install wireguard
+
+# Générer les clés
+wg genkey | tee privatekey | wg pubkey > publickey
+
+# Configuration interface
+sudo ip link add wg0 type wireguard
+sudo ip addr add 10.0.0.1/24 dev wg0
+sudo wg set wg0 private-key < privatekey
+sudo ip link set wg0 up
+```
+
+**SSH Tunnel**
+```bash
+# Tunnel local
+ssh -L 8080:localhost:80 user@remote
+
+# Tunnel distant
+ssh -R 8080:localhost:80 user@remote
+
+# Tunnel SOCKS
+ssh -D 1080 user@remote
 ```
 
 ---
+layout: default
+---
 
-### Volumes - Gérer vos données
+# Services réseau 🌐
 
+### Configuration des services réseau
+
+**SSH (Secure Shell)**
 ```bash
-# Lister tous les volumes
-docker volume ls
+# Installation
+sudo apt install openssh-server
 
-# Voir où Docker stocke un volume sur votre disque
-docker volume inspect mon-volume
+# Configuration /etc/ssh/sshd_config
+Port 2222                      # Changer le port
+PermitRootLogin no             # Interdire root
+PasswordAuthentication no       # Désactiver les mots de passe
+PubkeyAuthentication yes       # Activer les clés
+AllowUsers user1 user2         # Utilisateurs autorisés
 
-# Nettoyer les volumes non utilisés
-docker volume prune
+# Redémarrer SSH
+sudo systemctl restart ssh
+```
 
-# Voir l'espace utilisé par Docker
-docker system df
+**Nginx (serveur web)**
+```bash
+# Installation
+sudo apt install nginx
 
-# Backup d'un volume
-docker run --rm -v mon-volume:/data -v $(pwd):/backup alpine \
-  tar czf /backup/backup.tar.gz -C /data .
+# Configuration /etc/nginx/sites-available/default
+server {
+    listen 80;
+    server_name example.com;
+    root /var/www/html;
+    index index.html;
+}
+
+# Activer le site
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo nginx -t                  # Tester la configuration
+sudo systemctl restart nginx
 ```
 
 ---
+layout: default
+---
 
-## 🚨 Erreurs courantes et solutions
+# DNS et résolution de noms 📝
 
-### "Container can't connect to database"
+### Configuration DNS
 
+**Configuration DNS client :**
 ```bash
-# ❌ Erreur : containers pas sur le même réseau
-docker run -d --name db mysql:8.0
-docker run -d --name app mon-app  # Différents réseaux !
+# Fichier /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+search example.com
 
-# ✅ Solution : même réseau
-docker network create app-net
-docker run -d --name db --network app-net mysql:8.0
-docker run -d --name app --network app-net mon-app
+# Configuration systemd-resolved
+sudo systemctl enable systemd-resolved
+sudo systemctl start systemd-resolved
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+```
+
+**Serveur DNS local (dnsmasq) :**
+```bash
+# Configuration /etc/dnsmasq.conf
+interface=eth0
+bind-interfaces
+domain=example.com
+dhcp-range=192.168.1.50,192.168.1.150,12h
+server=8.8.8.8
+server=8.8.4.4
+```
+
+**Test de résolution DNS :**
+```bash
+# Test avec dig
+dig @8.8.8.8 google.com
+dig +short google.com
+dig MX google.com
+
+# Test avec nslookup
+nslookup google.com 8.8.8.8
 ```
 
 ---
+layout: default
+---
 
-### "Data lost after container restart"
+# Agrégation et bonding 🔗
 
+### Agrégation d'interfaces réseau
+
+**Bonding (agrégation d'interfaces)**
 ```bash
-# ❌ Erreur : pas de volume
-docker run -d --name db mysql:8.0  # Données perdues !
+# Configuration /etc/modules-load.d/bonding.conf
+bonding
 
-# ✅ Solution : volume nommé
-docker volume create db-data
-docker run -d --name db -v db-data:/var/lib/mysql mysql:8.0
+# Configuration /etc/sysconfig/network-scripts/ifcfg-bond0
+DEVICE=bond0
+TYPE=Bond
+NAME=bond0
+BONDING_OPTS="mode=1 miimon=100"
+BOOTPROTO=none
+ONBOOT=yes
+IPADDR=192.168.1.100
+NETMASK=255.255.255.0
+```
+
+**Configuration des interfaces esclaves :**
+```bash
+# /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+TYPE=Ethernet
+BOOTPROTO=none
+ONBOOT=yes
+MASTER=bond0
+SLAVE=yes
+USERCTL=no
+
+# /etc/sysconfig/network-scripts/ifcfg-eth1
+DEVICE=eth1
+TYPE=Ethernet
+BOOTPROTO=none
+ONBOOT=yes
+MASTER=bond0
+SLAVE=yes
+USERCTL=no
 ```
 
 ---
+layout: default
+---
 
-### "Permission denied in bind mount"
+# Monitoring avancé 📈
 
+### Outils de surveillance réseau
+
+**tcpdump (capture de paquets)**
 ```bash
-# ❌ Erreur : problème de permissions
-docker run -v /host/folder:/container/folder image
+# Capturer le trafic
+sudo tcpdump -i eth0
+sudo tcpdump -i eth0 port 80
+sudo tcpdump -i eth0 host 192.168.1.100
+sudo tcpdump -i eth0 -w capture.pcap
 
-# ✅ Solution : utiliser l'option :Z pour SELinux
-docker run -v /host/folder:/container/folder:Z image
+# Filtres avancés
+sudo tcpdump -i eth0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+```
 
-# ✅ Alternative : changer les permissions
-chmod 755 /host/folder
+**Wireshark (analyseur de paquets)**
+```bash
+# Installation
+sudo apt install wireshark
+
+# Capture en ligne de commande
+sudo tshark -i eth0 -w capture.pcap
+sudo tshark -i eth0 -f "port 80" -w http.pcap
+```
+
+**nethogs (utilisation par processus)**
+```bash
+# Installation
+sudo apt install nethogs
+
+# Utilisation
+sudo nethogs eth0
+sudo nethogs -t eth0
 ```
 
 ---
-
-## 🛡️ Bonnes pratiques 2025
-
-### Réseaux sécurisés
-
-✅ **DO** - Créez des réseaux séparés par fonction :
-```bash
-docker network create frontend-net
-docker network create backend-net
-# Web servers sur frontend-net
-# Databases sur backend-net
-```
-
-❌ **DON'T** - Utilisez le réseau bridge par défaut en production
-
+layout: default
 ---
 
-### Volumes optimisés
+# Configuration IPv6 🌐
 
-✅ **DO** - Volumes nommés en production :
+### Support IPv6
+
+**Configuration IPv6 automatique :**
 ```bash
-docker volume create app-data
-docker run -v app-data:/data mon-app
+# Activer IPv6
+echo 'net.ipv6.conf.all.disable_ipv6 = 0' >> /etc/sysctl.conf
+sysctl -p
+
+# Configuration avec netplan
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp6: true
+      addresses:
+        - 2001:db8::1/64
 ```
 
-✅ **DO** - Bind mounts en développement :
+**Test IPv6 :**
 ```bash
-docker run -v $(pwd)/src:/app/src mon-app
+# Test de connectivité IPv6
+ping6 google.com
+ping6 -c 4 google.com
+
+# Résolution DNS IPv6
+dig AAAA google.com
+nslookup -type=AAAA google.com
 ```
 
-❌ **DON'T** - Volumes anonymes (sauf cas spéciaux)
+**Désactiver IPv6 (si nécessaire) :**
+```bash
+# Désactiver IPv6
+echo 'net.ipv6.conf.all.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.default.disable_ipv6 = 1' >> /etc/sysctl.conf
+echo 'net.ipv6.conf.lo.disable_ipv6 = 1' >> /etc/sysctl.conf
+sysctl -p
+```
 
 ---
-
-### Sécurité
-
-✅ **DO** - Lecture seule quand possible :
-```bash
-docker run -v /host/config:/app/config:ro mon-app
-```
-
-✅ **DO** - Réseaux internes pour les bases de données :
-```bash
-docker network create --internal db-network
-```
-
-❌ **DON'T** - Exposez les ports de database directement
-
+layout: default
 ---
 
-## 🎯 Récapitulatif - Ce que vous avez appris
+# Exercices pratiques 🎯
 
-### Volumes 💾
-- **Problème** : Les données disparaissent avec les containers
-- **Solution** : Volumes pour la persistance
-- **Types** : Anonymes (éviter), nommés (production), bind mounts (dev)
+### Mise en pratique
 
-### Réseaux 🌐
-- **Problème** : Containers isolés par défaut
-- **Solution** : Réseaux personnalisés pour la communication
-- **Magie** : Communication par nom de container
-- **Types** : Bridge (sécurisé), Host (performance), None (isolé)
+**Exercice 1 : Configuration réseau basique**
+```bash
+# Configurer une interface en statique
+sudo ip addr add 192.168.1.100/24 dev eth0
+sudo ip link set eth0 up
+sudo ip route add default via 192.168.1.1 dev eth0
 
-### Next step 🚀
-Prêt pour **Docker Compose** qui simplifie tout ça !
+# Tester la connectivité
+ping -c 4 192.168.1.1
+ping -c 4 google.com
+```
+
+**Exercice 2 : Diagnostic réseau**
+```bash
+# Analyser la configuration réseau
+ip addr show
+ip route show
+cat /etc/resolv.conf
+
+# Tester la connectivité
+traceroute google.com
+nslookup google.com
+```
+
+**Exercice 3 : Configuration ufw**
+```bash
+# Configurer un pare-feu basique
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw allow 80/tcp
+sudo ufw enable
+sudo ufw status
+```
+
+---
+layout: default
+---
+
+# Bonnes pratiques 💡
+
+### Conseils pour la gestion réseau
+
+**Sécurité**
+- Utiliser des pare-feu appropriés
+- Désactiver les services inutiles
+- Surveiller le trafic réseau
+- Utiliser des VPN pour les connexions distantes
+- Maintenir les systèmes à jour
+
+**Performance**
+- Optimiser les interfaces réseau
+- Utiliser l'agrégation d'interfaces
+- Surveiller la bande passante
+- Configurer des DNS rapides
+- Utiliser des caches DNS locaux
+
+**Maintenance**
+- Documenter les configurations
+- Faire des sauvegardes des configurations
+- Surveiller les logs réseau
+- Tester régulièrement la connectivité
+- Maintenir une documentation réseau
+
+---
+layout: default
+---
+
+# Prochaines étapes 🎯
+
+### Ce qui nous attend
+
+1. **Paquets logiciels** et gestion
+2. **Shell scripting** de base
+3. **Virtualisation** et conteneurs
+4. **Docker** introduction
+5. **Ansible** introduction
+
+**Préparation :**
+- Testez les commandes réseau de base
+- Configurez un pare-feu simple
+- Familiarisez-vous avec les outils de diagnostic
+- Pratiquez la configuration d'interfaces
+
+---
+src: './pages/10-paquets-logiciels.md'
+---

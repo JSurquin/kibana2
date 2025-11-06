@@ -4,7 +4,7 @@ colorSchema: "auto"
 layout: intro
 highlighter: shiki
 # https://sli.dev/custom/highlighters.html
-title: Formation Python 2025
+title: Formation Unix/Linux - Initiation 2025
 # download: true
 #transition: slide-left
 # remoteAssets: false
@@ -14,7 +14,7 @@ title: Formation Python 2025
 #   timeout: 300000000
 #   pdfOptions:
 #     format: A4
-download: "https://python.andromed.fr/slides.pdf"
+download: "https://unix-linux.andromed.fr/slides.pdf"
 themeConfig:
   logoHeader: "/avatar.png"
   eventLogo: "https://img2.storyblok.com/352x414/f/84560/2388x414/23d8eb4b8d/vue-amsterdam-with-name.png"
@@ -23,9 +23,9 @@ themeConfig:
   #- "@slidev/addon-sharp-long-code"
 ---
 
-# Python 2025
+# Unix/Linux - Initiation 2025
 
-🐍 Une formation présentée par Ascent et Andromed.
+🐧 Une formation présentée par Ascent et Andromed.
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
@@ -54,74 +54,43 @@ Fondateur <a  href="https://www.andromed.fr/"><logos-storyblok-icon  mr-1/>Andro
 ---
 layout: text-image
 media: 'https://i.pinimg.com/originals/f5/5e/80/f55e8059ea945abfd6804b887dd4a0af.gif'
-caption: 'PYTHON 2025'
+caption: 'UNIX/LINUX 2025'
 ---
 
-# DISCLAIMER 🐍
+# DISCLAIMER 🐧
 
-### Dans cette formation nous allons voir les concepts fondamentaux et avancés de Python en 2025.
+### Dans cette formation nous allons voir les concepts fondamentaux d'Unix/Linux en 2025.
 
 ---
 layout: two-cols
-routeAlias: 'sommaire-initiation'
+routeAlias: 'sommaire-unix-linux'
 ---
 
-<a name="SOMMAIRE-INITIATION" id="sommaire-initiation"></a>
+<a name="SOMMAIRE-UNIX-LINUX" id="sommaire-unix-linux"></a>
 
-# SOMMAIRE PYTHON - INITIATION 📜
+# SOMMAIRE UNIX/LINUX - INITIATION 📜
 
-### Formation pratique en 5 jours
+### Formation pratique complète et progressive
 
 <br>
 
 <div class="flex flex-col gap-2">
-<Link to="introduction-python">🐍 Introduction à Python</Link>
-<Link to="installation-environnement">⚙️ Installation et environnement</Link>
-<Link to="premiers-pas">🚀 Premiers pas avec Python</Link>
-<Link to="variables-types">📊 Variables et types de données</Link>
-<Link to="structures-controle">🔄 Structures de contrôle</Link>
-<Link to="fonctions">🔧 Fonctions et modules</Link>
-<Link to="collections">📦 Collections (listes, tuples, dictionnaires)</Link>
-<Link to="gestion-erreurs">⚠️ Gestion des erreurs</Link>
+<Link to="introduction-unix-linux">🧱 1. Introduction et rappels Unix/Linux</Link>
+<Link to="gestion-systeme-utilisateurs">⚙️ 2. Gestion du système et des utilisateurs</Link>
+<Link to="processus-services">💾 3. Gestion des processus et des services</Link>
+<Link to="stockage-systeme-fichiers">🧮 4. Gestion du stockage et du système de fichiers</Link>
+<Link to="reseau">📡 5. Réseau</Link>
 </div>
+
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="fichiers-io">📁 Manipulation de fichiers</Link>
-<Link to="programmation-objet">🏗️ Programmation orientée objet</Link>
-<Link to="exercices-initiation">🎯 Exercices pratiques</Link>
-<Link to="projet-final-initiation">🎉 Projet final</Link>
-<Link to="qcm-initiation">✅ QCM de validation</Link>
-</div>
-
----
-layout: two-cols
-routeAlias: 'sommaire-perfectionnement'
----
-
-# SOMMAIRE PYTHON - PERFECTIONNEMENT 📜
-
-### Formation avancée en 4 jours
-
-<br>
-
-<div class="flex flex-col gap-2">
-<Link to="rappel-fondamentaux">🔄 Rappel des fondamentaux</Link>
-<Link to="decorateurs-generateurs">🎭 Décorateurs et générateurs</Link>
-<Link to="context-managers">🔧 Context managers</Link>
-<Link to="metaclasses">🏗️ Métaclasses et introspection</Link>
-<Link to="async-await">⚡ Programmation asynchrone</Link>
-<Link to="testing">🧪 Tests et TDD</Link>
-</div>
-::right::
-
-<div class="flex flex-col gap-2">
-<Link to="design-patterns">📐 Design patterns</Link>
-<Link to="optimisation-performance">🚀 Optimisation et performance</Link>
-<Link to="frameworks-web">🌐 Frameworks web (Flask/Django)</Link>
-<Link to="data-science">📊 Data Science avec Python</Link>
-<Link to="exercices-perfectionnement">🎯 Exercices avancés</Link>
-<Link to="qcm-perfectionnement">✅ QCM perfectionnement</Link>
+<Link to="paquets-maintenance">🧰 6. Gestion des paquets et maintenance</Link>
+<Link to="automatisation-scripts">📅 7. Automatisation, scripts et tâches planifiées</Link>
+<Link to="securite-systeme">🔐 8. Sécurité système</Link>
+<Link to="services-serveurs">☁️ 9. Services serveurs</Link>
+<Link to="qcm-final">✅ QCM de validation finale</Link>
+<Link to="exercices-pratiques">🎯 Exercices pratiques</Link>
 </div>
 
 ---
@@ -129,176 +98,112 @@ layout: two-cols
 routeAlias: 'programme-initiation'
 ---
 
-## PROGRAMME INITIATION - 5 JOURS 📅
+## PROGRAMME INITIATION UNIX/LINUX 📅
 
-### Structure pédagogique optimisée
+### Structure pédagogique progressive et complète
 
-**Jour 1 - Introduction et environnement**
+**Module 1 - Introduction et rappels**
 
-- Introduction à Python et son écosystème
-- Installation et configuration de l'environnement
-- Premier programme "Hello World"
-- Variables et types de données de base
-- Exercices pratiques d'introduction
+- Historique Unix, GNU/Linux, distributions
+- Philosophie Unix ("tout est fichier", etc.)
+- Architecture d'un système Linux
+- Noyau, shell, système de fichiers
+- Commandes essentielles de base
 
-::right::
+**Module 2 - Gestion système et utilisateurs**
 
-**Jour 2 - Structures de contrôle**
-
-- Conditions et opérateurs logiques
-- Boucles (for, while)
-- Structures de données simples
-- Exercices sur les structures de contrôle
-- Mini-projet : calculateur simple
-
-**Jour 3 - Fonctions et modules**
-
-- Définition et utilisation des fonctions
-- Paramètres et valeurs de retour
-- Modules et packages
-- Gestion des erreurs (try/except)
-- Exercices sur les fonctions
-
-**Jour 4 - Collections avancées**
-
-- Listes et leurs méthodes
-- Tuples et leurs spécificités
-- Dictionnaires et sets
-- Manipulation de fichiers
-- Exercices sur les collections
-
-**Jour 5 - POO et projet final**
-
-- Concepts de la programmation orientée objet
-- Classes, objets, héritage
-- Projet final intégrateur
-- QCM de validation
-- Débriefing et perspectives
-
----
-layout: two-cols
-routeAlias: 'programme-perfectionnement'
----
-
-## PROGRAMME PERFECTIONNEMENT - 4 JOURS 📅
-
-### Formation avancée pour développeurs expérimentés
-
-**Jour 1 - Fonctionnalités avancées**
-
-- Rappel des fondamentaux
-- Décorateurs et leurs applications
-- Générateurs et itérateurs
-- Context managers
-- Exercices sur les fonctionnalités avancées
+- Comptes utilisateurs et groupes
+- Permissions, droits, umask, sudoers
+- Gestion des quotas
+- Structure du système de fichiers
 
 ::right::
 
-**Jour 2 - Métaprogrammation et performance**
+**Module 3 - Processus et services**
 
-- Métaclasses et introspection
-- Programmation asynchrone (async/await)
-- Optimisation et profiling
-- Design patterns en Python
-- Exercices de métaprogrammation
+- PID, états des processus
+- Démarrage et arrêt du système
+- systemd et gestion des services
 
-**Jour 3 - Frameworks et écosystème**
+**Module 4 - Stockage et système de fichiers**
 
-- Frameworks web (Flask vs Django)
-- Tests unitaires et TDD
-- Intégration continue
-- Bonnes pratiques de développement
-- Exercices sur les frameworks
+- Disques, partitions, montage
+- Systèmes de fichiers (ext4, xfs, NFS)
+- Permissions étendues (ACL)
+- Gestion de l'espace disque
 
-**Jour 4 - Data Science et projet final**
+**Module 5 - Réseau**
 
-- Introduction à la data science
-- Pandas, NumPy, Matplotlib
-- Machine Learning avec scikit-learn
-- Projet final avancé
-- QCM et débriefing
+- Configuration réseau
+- Diagnostic réseau
+- Gestion du pare-feu
+- SSH et transfert de fichiers
 
----
-src: './pages/01-introduction-python.md'
----
+**Module 6 - Paquets et maintenance**
 
----
-src: './pages/02-installation-environnement.md'
----
+- Systèmes de paquets (apt, dnf)
+- Installation, mise à jour
+- Gestion des dépendances
 
----
-src: './pages/03-premiers-pas.md'
----
+**Module 7 - Automatisation et scripts**
 
----
-src: './pages/04-variables-types.md'
----
+- Scripts Bash de base
+- Tâches planifiées (cron, at)
+- Supervision et logs
 
----
-src: './pages/05-structures-controle.md'
----
+**Module 8 - Sécurité système**
 
----
-src: './pages/06-fonctions.md'
----
+- Sécurité des comptes
+- SELinux/AppArmor
+- Durcissement système
+- Audit et logs de sécurité
+
+**Module 9 - Services serveurs**
+
+- Services de base (Nginx, Apache)
+- Configuration réseau avancée
+- Monitoring basique
 
 ---
-src: './pages/07-collections.md'
+src: './pages/01-introduction-unix-linux.md'
 ---
 
 ---
-src: './pages/08-gestion-erreurs.md'
+src: './pages/02-gestion-systeme-utilisateurs.md'
 ---
 
 ---
-src: './pages/09-programmation-objet.md'
+src: './pages/03-processus-services.md'
 ---
 
 ---
-src: './pages/10-fichiers-io.md'
+src: './pages/04-stockage-systeme-fichiers.md'
 ---
 
 ---
-src: './pages/11-projet-final.md'
+src: './pages/05-reseau.md'
 ---
 
 ---
-src: './pages/12-qcm-initiation.md'
+src: './pages/06-paquets-maintenance.md'
 ---
 
 ---
-src: './pages/13-rappel-fondamentaux.md'
+src: './pages/07-automatisation-scripts.md'
 ---
 
 ---
-src: './pages/14-decorateurs-generateurs.md'
+src: './pages/08-securite-systeme.md'
 ---
 
 ---
-src: './pages/15-context-managers.md'
+src: './pages/09-services-serveurs.md'
 ---
 
 ---
-src: './pages/16-metaclasses.md'
+src: './pages/10-qcm-final.md'
 ---
 
 ---
-src: './pages/17-async-await.md'
+src: './pages/11-exercices-pratiques.md'
 ---
-
----
-src: './pages/18-testing.md'
----
-
----
-src: './pages/19-design-patterns.md'
----
-
----
-src: './pages/20-optimisation-performance.md'
----
-
----
-src: './pages/21-frameworks-web.md'
----
-

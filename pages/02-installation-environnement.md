@@ -5,7 +5,7 @@ routeAlias: 'installation-environnement'
 
 # Installation et Environnement ⚙️
 
-### Configuration de votre environnement Python
+### Configuration de votre environnement Unix/Linux
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
@@ -17,330 +17,478 @@ routeAlias: 'installation-environnement'
 layout: default
 ---
 
-# Installation de Python 🐍
+# Choix de la distribution 🐧
 
-### Méthodes d'installation selon votre OS
+### Quelle distribution choisir ?
 
-**Windows :**
-- Téléchargement depuis python.org
-- Installation avec l'option "Add to PATH"
-- Vérification : `python --version`
+**Ubuntu (Recommandée pour débutants)**
+- Facile d'installation
+- Large communauté
+- Documentation abondante
+- Support LTS (5 ans)
 
-**macOS :**
-- Homebrew : `brew install python`
-- Ou téléchargement depuis python.org
-- Vérification : `python3 --version`
+**CentOS/Rocky Linux**
+- Stabilité entreprise
+- Compatible Red Hat
+- Idéal pour serveurs
+- Support communautaire
 
-**Linux :**
-- Ubuntu/Debian : `sudo apt install python3`
-- CentOS/RHEL : `sudo yum install python3`
-- Vérification : `python3 --version`
+**Debian**
+- Très stable
+- Libre et open source
+- Base d'Ubuntu
+- Sécurité renforcée
 
 ---
 layout: default
 ---
 
-# Vérification de l'installation ✅
+# Méthodes d'installation 💻
 
-### Test de votre installation Python
+### Options disponibles
 
+**Machine virtuelle (Recommandée)**
+- VirtualBox (gratuit)
+- VMware Workstation
+- Hyper-V (Windows)
+- Sécurité et isolation
+
+**Dual boot**
+- Partage du disque dur
+- Choix au démarrage
+- Performance native
+- Risque de perte de données
+
+**WSL (Windows)**
+- Sous-système Linux
+- Intégration Windows
+- Performance limitée
+- Compatibilité partielle
+
+---
+layout: default
+---
+
+# Installation d'Ubuntu 🚀
+
+### Guide étape par étape
+
+**Étape 1 : Téléchargement**
 ```bash
-# Vérifier la version
-python --version
-# ou
-python3 --version
-
-# Vérifier l'emplacement
-which python
-# ou
-which python3
-
-# Tester l'interpréteur
-python
+# Télécharger Ubuntu Desktop
+wget https://releases.ubuntu.com/22.04/ubuntu-22.04.3-desktop-amd64.iso
 ```
 
-**Sortie attendue :**
-```
-Python 3.12.0 (main, Oct 15 2024, 10:00:00)
-[GCC 9.4.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
+**Étape 2 : Création de la VM**
+- Ouvrir VirtualBox
+- Nouvelle machine virtuelle
+- Allouer 4GB RAM minimum
+- Créer un disque virtuel de 20GB
+
+**Étape 3 : Installation**
+- Démarrer la VM
+- Suivre l'assistant d'installation
+- Choisir "Effacer le disque"
+- Créer un utilisateur
 
 ---
 layout: default
 ---
 
-# Environnements virtuels 🌍
+# Configuration post-installation ⚙️
 
-### Isolation des projets Python
+### Optimisation du système
 
-**Pourquoi utiliser des environnements virtuels ?**
-
-- **Isolation** : Éviter les conflits entre projets
-- **Reproductibilité** : Même environnement partout
-- **Gestion des dépendances** : Packages spécifiques par projet
-- **Sécurité** : Éviter les conflits de versions
-
-**Création d'un environnement virtuel :**
+**Mise à jour du système**
 ```bash
-# Créer un environnement
-python -m venv mon_projet
-
-# Activer l'environnement
-# Windows
-mon_projet\Scripts\activate
-
-# macOS/Linux
-source mon_projet/bin/activate
+sudo apt update
+sudo apt upgrade -y
 ```
 
----
-layout: default
----
-
-# Gestionnaire de packages pip 📦
-
-### Installation et gestion des packages
-
-**Vérification de pip :**
+**Installation des outils essentiels**
 ```bash
-pip --version
-# ou
-pip3 --version
+sudo apt install -y \
+  curl \
+  wget \
+  git \
+  vim \
+  htop \
+  tree \
+  build-essential
 ```
 
-**Commandes pip essentielles :**
+**Configuration du shell**
 ```bash
-# Installer un package
-pip install nom_du_package
+# Vérifier le shell par défaut
+echo $SHELL
 
-# Installer depuis un fichier requirements.txt
-pip install -r requirements.txt
-
-# Lister les packages installés
-pip list
-
-# Désinstaller un package
-pip uninstall nom_du_package
+# Installer zsh si nécessaire
+sudo apt install zsh
 ```
 
 ---
 layout: default
 ---
 
-# IDE et éditeurs de code 💻
+# Environnement de développement 🛠️
 
-### Environnements de développement recommandés
+### Outils recommandés
 
-**VS Code (Recommandé pour débutants)**
-- Gratuit et open source
-- Extensions Python excellentes
-- Intégration Git native
-- Débogueur intégré
-
-**PyCharm (JetBrains)**
-- IDE complet et professionnel
-- Version Community gratuite
-- Analyse de code avancée
-- Refactoring intelligent
-
-**Jupyter Notebooks**
-- Idéal pour data science
-- Code interactif
-- Documentation intégrée
-- Visualisations
-
----
-layout: default
----
-
-# Configuration VS Code 🎨
-
-### Extensions Python essentielles
-
-**Extensions recommandées :**
-- Python (Microsoft)
-- Pylance (Microsoft)
-- Python Indent
-- Python Docstring Generator
-- Python Test Explorer
-
-**Configuration settings.json :**
-```json
-{
-    "python.defaultInterpreterPath": "./venv/bin/python",
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.formatting.provider": "black"
-}
-```
-
----
-layout: default
----
-
-# Outils de développement 🛠️
-
-### Outils essentiels pour Python
-
-**Formateur de code :**
+**Éditeur de code**
 ```bash
-# Installation de black
-pip install black
-
-# Formater un fichier
-black mon_fichier.py
-
-# Formater tout un dossier
-black .
+# Installation de VS Code
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
+sudo apt update
+sudo apt install code
 ```
 
-**Linter (analyse statique) :**
+**Terminal amélioré**
 ```bash
-# Installation de flake8
-pip install flake8
-
-# Analyser un fichier
-flake8 mon_fichier.py
+# Installation de Oh My Zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 ---
 layout: default
 ---
 
-# Structure de projet 📁
+# Configuration du terminal 🖥️
 
-### Organisation recommandée
+### Personnalisation avancée
 
-```
-mon_projet/
-├── venv/                 # Environnement virtuel
-├── src/                  # Code source
-│   ├── __init__.py
-│   ├── main.py
-│   └── utils.py
-├── tests/                # Tests unitaires
-│   ├── __init__.py
-│   └── test_main.py
-├── docs/                 # Documentation
-├── requirements.txt       # Dépendances
-├── README.md            # Documentation
-└── .gitignore           # Fichiers à ignorer
-```
-
----
-layout: default
----
-
-# Premier projet Python 🚀
-
-### Création d'un projet complet
-
-**Étapes de création :**
+**Thème et plugins**
 ```bash
-# 1. Créer le dossier du projet
-mkdir mon_premier_projet
-cd mon_premier_projet
+# Éditer la configuration zsh
+nano ~/.zshrc
 
-# 2. Créer l'environnement virtuel
-python -m venv venv
+# Thème recommandé
+ZSH_THEME="agnoster"
 
-# 3. Activer l'environnement
-source venv/bin/activate  # Linux/macOS
-# ou
-venv\Scripts\activate     # Windows
-
-# 4. Créer la structure
-mkdir src tests docs
-touch src/__init__.py
-touch requirements.txt
-touch README.md
+# Plugins utiles
+plugins=(
+  git
+  docker
+  kubectl
+  ansible
+  history
+  zsh-autosuggestions
+)
 ```
 
----
-layout: default
----
-
-# Fichier requirements.txt 📋
-
-### Gestion des dépendances
-
-**Création du fichier :**
-```txt
-# requirements.txt
-requests==2.31.0
-pandas==2.1.0
-numpy==1.24.0
-pytest==7.4.0
-black==23.0.0
-flake8==6.0.0
-```
-
-**Installation des dépendances :**
+**Alias utiles**
 ```bash
-pip install -r requirements.txt
+# Ajouter dans ~/.zshrc
+alias ll='ls -la'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
 ```
 
-**Génération du fichier :**
+---
+layout: default
+---
+
+# Gestion des paquets 📦
+
+### Utilisation d'apt
+
+**Recherche de paquets**
 ```bash
-pip freeze > requirements.txt
+# Rechercher un paquet
+apt search nom_du_paquet
+
+# Informations sur un paquet
+apt show nom_du_paquet
+```
+
+**Installation et suppression**
+```bash
+# Installer un paquet
+sudo apt install nom_du_paquet
+
+# Supprimer un paquet
+sudo apt remove nom_du_paquet
+
+# Supprimer complètement
+sudo apt purge nom_du_paquet
+```
+
+**Mise à jour**
+```bash
+# Mettre à jour la liste
+sudo apt update
+
+# Mettre à jour les paquets
+sudo apt upgrade
 ```
 
 ---
 layout: default
 ---
 
-# Test de l'environnement ✅
+# Gestion des services 🔧
 
-### Vérification complète
+### systemctl et systemd
 
-**Script de test :**
-```python
-# test_environment.py
-import sys
-import platform
+**Commandes de base**
+```bash
+# Démarrer un service
+sudo systemctl start nom_service
 
-print(f"Python version: {sys.version}")
-print(f"Platform: {platform.system()} {platform.release()}")
-print(f"Python executable: {sys.executable}")
+# Arrêter un service
+sudo systemctl stop nom_service
 
-# Test des imports courants
-try:
-    import requests
-    print("✓ requests installé")
-except ImportError:
-    print("✗ requests non installé")
+# Redémarrer un service
+sudo systemctl restart nom_service
 
-try:
-    import pandas
-    print("✓ pandas installé")
-except ImportError:
-    print("✗ pandas non installé")
+# Statut d'un service
+sudo systemctl status nom_service
+```
+
+**Services au démarrage**
+```bash
+# Activer un service
+sudo systemctl enable nom_service
+
+# Désactiver un service
+sudo systemctl disable nom_service
+
+# Lister les services
+sudo systemctl list-units --type=service
 ```
 
 ---
 layout: default
 ---
 
-# Problèmes courants 🔧
+# Monitoring système 📊
 
-### Solutions aux erreurs fréquentes
+### Outils de surveillance
 
-**"python: command not found"**
-- Vérifier l'installation
-- Ajouter Python au PATH
-- Utiliser `python3` au lieu de `python`
+**htop (interactif)**
+```bash
+# Installation
+sudo apt install htop
 
-**"pip: command not found"**
-- Installer pip séparément
-- Utiliser `pip3` au lieu de `pip`
-- Vérifier l'installation de Python
+# Utilisation
+htop
+```
 
-**Erreurs de permissions**
-- Utiliser `sudo` sur Linux/macOS
-- Exécuter en tant qu'administrateur sur Windows
-- Utiliser des environnements virtuels
+**Commandes système**
+```bash
+# Utilisation CPU et mémoire
+top
+
+# Utilisation disque
+df -h
+
+# Utilisation mémoire
+free -h
+
+# Processus
+ps aux
+```
+
+**Monitoring réseau**
+```bash
+# Connexions réseau
+netstat -tuln
+
+# Interface réseau
+ip addr show
+
+# Test de connectivité
+ping google.com
+```
+
+---
+layout: default
+---
+
+# Sécurité de base 🔒
+
+### Configuration initiale
+
+**Pare-feu (ufw)**
+```bash
+# Installation
+sudo apt install ufw
+
+# Activer le pare-feu
+sudo ufw enable
+
+# Autoriser SSH
+sudo ufw allow ssh
+
+# Statut
+sudo ufw status
+```
+
+**Mise à jour automatique**
+```bash
+# Installation
+sudo apt install unattended-upgrades
+
+# Configuration
+sudo dpkg-reconfigure unattended-upgrades
+```
+
+**Utilisateur sudo**
+```bash
+# Ajouter un utilisateur au groupe sudo
+sudo usermod -aG sudo nom_utilisateur
+
+# Vérifier les groupes
+groups nom_utilisateur
+```
+
+---
+layout: default
+---
+
+# Sauvegarde et restauration 💾
+
+### Stratégies de sauvegarde
+
+**Sauvegarde des fichiers**
+```bash
+# Créer une archive
+tar -czf backup_$(date +%Y%m%d).tar.gz /chemin/a/sauvegarder
+
+# Restaurer
+tar -xzf backup_20250101.tar.gz -C /destination
+```
+
+**Sauvegarde système**
+```bash
+# Cloner le système
+sudo dd if=/dev/sda of=/dev/sdb bs=4M status=progress
+
+# Image système
+sudo dd if=/dev/sda | gzip > system_backup.img.gz
+```
+
+**Sauvegarde incrémentale**
+```bash
+# Utiliser rsync
+rsync -av --delete /source/ /destination/
+```
+
+---
+layout: default
+---
+
+# Virtualisation locale 🖥️
+
+### Outils de virtualisation
+
+**VirtualBox**
+```bash
+# Installation
+sudo apt install virtualbox
+
+# Extension pack
+sudo apt install virtualbox-ext-pack
+```
+
+**Docker**
+```bash
+# Installation
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# Ajouter l'utilisateur au groupe docker
+sudo usermod -aG docker $USER
+```
+
+**KVM/QEMU**
+```bash
+# Vérifier la virtualisation
+egrep -c '(vmx|svm)' /proc/cpuinfo
+
+# Installation
+sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+```
+
+---
+layout: default
+---
+
+# Configuration réseau 🌐
+
+### Réseau local et internet
+
+**Configuration IP statique**
+```bash
+# Éditer la configuration
+sudo nano /etc/netplan/01-netcfg.yaml
+
+# Exemple de configuration
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses:
+        - 192.168.1.100/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+```
+
+**Test de connectivité**
+```bash
+# Test ping
+ping -c 4 google.com
+
+# Test DNS
+nslookup google.com
+
+# Test de port
+telnet google.com 80
+```
+
+---
+layout: default
+---
+
+# Troubleshooting 🔧
+
+### Résolution de problèmes courants
+
+**Problème de démarrage**
+```bash
+# Mode recovery
+# Redémarrer et appuyer sur 'e' au démarrage
+# Ajouter 'single' à la ligne linux
+
+# Réparation du système de fichiers
+sudo fsck /dev/sda1
+```
+
+**Problème de réseau**
+```bash
+# Redémarrer le service réseau
+sudo systemctl restart NetworkManager
+
+# Vérifier les interfaces
+ip link show
+
+# Test de connectivité
+ping -c 4 8.8.8.8
+```
+
+**Problème de permissions**
+```bash
+# Corriger les permissions
+sudo chown -R user:group /chemin
+
+# Corriger les permissions de fichiers
+sudo chmod 644 /fichier
+```
 
 ---
 layout: default
@@ -350,20 +498,20 @@ layout: default
 
 ### Documentation et aide
 
-**Documentation officielle :**
-- docs.python.org
-- pypi.org (packages)
-- realpython.com (tutoriels)
+**Documentation officielle**
+- ubuntu.com/documentation
+- debian.org/doc
+- redhat.com/documentation
 
-**Communauté :**
-- Stack Overflow
-- Reddit r/Python
-- Discord Python
+**Communauté**
+- askubuntu.com
+- stackoverflow.com
+- reddit.com/r/linux
 
-**Outils en ligne :**
-- repl.it (exécution en ligne)
-- pythonanywhere.com (hébergement)
-- jupyter.org (notebooks)
+**Outils en ligne**
+- linuxjourney.com
+- linuxcommand.org
+- tldp.org
 
 ---
 layout: default
@@ -373,16 +521,16 @@ layout: default
 
 ### Ce qui nous attend
 
-1. **Premiers pas** avec Python
-2. **Variables et types** de données
-3. **Structures de contrôle**
-4. **Fonctions et modules**
-5. **Collections** avancées
+1. **Premiers pas** avec la ligne de commande
+2. **Système de fichiers** et navigation
+3. **Commandes de base** et manipulation
+4. **Gestion des utilisateurs** et permissions
+5. **Processus et services** système
 
 **Préparation :**
-- Assurez-vous que Python est installé
-- Configurez votre IDE
-- Créez votre premier environnement virtuel
+- Assurez-vous que votre système est à jour
+- Familiarisez-vous avec le terminal
+- Testez les commandes de base
 
 ---
 src: './pages/03-premiers-pas.md'
