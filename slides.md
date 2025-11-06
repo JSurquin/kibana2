@@ -63,7 +63,7 @@ caption: 'UNIX/LINUX 2025'
 
 ---
 layout: two-cols
-routeAlias: 'sommaire-unix-linux'
+routeAlias: 'sommaire'
 ---
 
 <a name="SOMMAIRE-UNIX-LINUX" id="sommaire-unix-linux"></a>
