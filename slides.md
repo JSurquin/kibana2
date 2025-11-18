@@ -169,7 +169,15 @@ src: './pages/01-introduction-unix-linux.md'
 ---
 
 ---
+src: './pages/01-qcm-introduction.md'
+---
+
+---
 src: './pages/02-gestion-systeme-utilisateurs.md'
+---
+
+---
+src: './pages/02-qcm-utilisateurs.md'
 ---
 
 ---
@@ -177,7 +185,15 @@ src: './pages/03-processus-services.md'
 ---
 
 ---
+src: './pages/03-qcm-processus.md'
+---
+
+---
 src: './pages/04-stockage-systeme-fichiers.md'
+---
+
+---
+src: './pages/04-qcm-stockage.md'
 ---
 
 ---
@@ -185,7 +201,15 @@ src: './pages/05-reseau.md'
 ---
 
 ---
+src: './pages/05-qcm-reseau.md'
+---
+
+---
 src: './pages/06-paquets-maintenance.md'
+---
+
+---
+src: './pages/06-qcm-paquets.md'
 ---
 
 ---
@@ -193,11 +217,23 @@ src: './pages/07-automatisation-scripts.md'
 ---
 
 ---
+src: './pages/07-qcm-automatisation.md'
+---
+
+---
 src: './pages/08-securite-systeme.md'
 ---
 
 ---
+src: './pages/08-qcm-securite.md'
+---
+
+---
 src: './pages/09-services-serveurs.md'
+---
+
+---
+src: './pages/09-qcm-serveurs.md'
 ---
 
 ---
