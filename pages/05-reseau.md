@@ -111,11 +111,20 @@ graph LR
 
 **Masque** : définit quelle partie est réseau vs hôte
 
-```
-IP:      192.168.1.100
-Masque:  255.255.255.0  (/24)
-         ─────────── ──
-         Réseau      Hôte
+```mermaid
+graph LR
+    A[IP: 192.168.1.100]
+    B[Masque: 255.255.255.0 /24]
+    C[Partie Reseau<br/>192.168.1]
+    D[Partie Hote<br/>100]
+    
+    A --> C
+    A --> D
+    B --> C
+    B --> D
+    
+    style C fill:#4ecdc4
+    style D fill:#ffe66d
 ```
 
 **Notation CIDR** : `/24` = 255.255.255.0
