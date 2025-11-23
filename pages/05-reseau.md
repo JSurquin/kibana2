@@ -28,16 +28,47 @@ routeAlias: 'reseau'
 
 # Modèle OSI vs TCP/IP 🏗️
 
-```
-OSI                    TCP/IP          Exemple
-────────────────────────────────────────────────
-7. Application    ┐
-6. Présentation   ├─→  Application    HTTP, SSH, FTP
-5. Session        ┘
-4. Transport      ──→  Transport      TCP, UDP
-3. Réseau         ──→  Internet       IP, ICMP
-2. Liaison        ┐
-1. Physique       └─→  Accès réseau   Ethernet, WiFi
+```mermaid
+graph LR
+    subgraph "Modele OSI"
+        O7[7. Application]
+        O6[6. Presentation]
+        O5[5. Session]
+        O4[4. Transport]
+        O3[3. Reseau]
+        O2[2. Liaison]
+        O1[1. Physique]
+        O7 --> O6 --> O5 --> O4 --> O3 --> O2 --> O1
+    end
+    
+    subgraph "Modele TCP/IP"
+        T4[Application]
+        T3[Transport]
+        T2[Internet]
+        T1[Acces reseau]
+        T4 --> T3 --> T2 --> T1
+    end
+    
+    subgraph "Exemples"
+        E4[HTTP, SSH, FTP]
+        E3[TCP, UDP]
+        E2[IP, ICMP]
+        E1[Ethernet, WiFi]
+        E4 --> E3 --> E2 --> E1
+    end
+    
+    O7 -.-> T4
+    O6 -.-> T4
+    O5 -.-> T4
+    O4 -.-> T3
+    O3 -.-> T2
+    O2 -.-> T1
+    O1 -.-> T1
+    
+    T4 -.-> E4
+    T3 -.-> E3
+    T2 -.-> E2
+    T1 -.-> E1
 ```
 
 **En pratique, on utilise le modèle TCP/IP**
@@ -100,14 +131,25 @@ Masque:  255.255.255.0  (/24)
 
 **Gateway** : le routeur qui permet de sortir du réseau local
 
-```
-Réseau local : 192.168.1.0/24
-    │
-    ├─ 192.168.1.1   ← Gateway (routeur)
-    ├─ 192.168.1.100 ← Votre machine
-    └─ 192.168.1.101 ← Autre machine
-
-Pour joindre Internet (8.8.8.8), passez par 192.168.1.1
+```mermaid
+graph LR
+    A[Reseau local<br/>192.168.1.0/24]
+    B[Gateway<br/>192.168.1.1<br/>Routeur]
+    C[Votre machine<br/>192.168.1.100]
+    D[Autre machine<br/>192.168.1.101]
+    E[Internet<br/>8.8.8.8]
+    
+    A --> B
+    A --> C
+    A --> D
+    B --> E
+    
+    C -.Pour joindre Internet.-> B
+    
+    style B fill:#ff6b6b
+    style C fill:#4ecdc4
+    style D fill:#95e1d3
+    style E fill:#ffe66d
 ```
 
 **Analogie :** la porte d'entrée de votre quartier

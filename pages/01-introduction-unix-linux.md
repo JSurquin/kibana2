@@ -71,20 +71,21 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 # GNU + Linux = GNU/Linux 🔗
 
-```
-┌─────────────────────────────────────┐
-│      Applications utilisateur        │
-│   (Firefox, LibreOffice, etc.)      │
-├─────────────────────────────────────┤
-│         Outils GNU                   │
-│  (bash, gcc, coreutils, etc.)       │
-├─────────────────────────────────────┤
-│        Noyau Linux                   │
-│  (gestion matériel, processus)      │
-├─────────────────────────────────────┤
-│         Matériel                     │
-│   (CPU, RAM, disques, réseau)       │
-└─────────────────────────────────────┘
+```mermaid
+graph TB
+    A[Applications utilisateur<br/>Firefox, LibreOffice, etc.]
+    B[Outils GNU<br/>bash, gcc, coreutils, etc.]
+    C[Noyau Linux<br/>gestion materiel, processus]
+    D[Materiel<br/>CPU, RAM, disques, reseau]
+    
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#e1f5ff
+    style B fill:#b3e5fc
+    style C fill:#81d4fa
+    style D fill:#4fc3f7
 ```
 
 ---
@@ -268,31 +269,35 @@ $ ls -la
 
 # Structure des répertoires principaux 🗂️
 
-```
-/                    # Racine du système
-├── bin             # Binaires essentiels (ls, cat, cp)
-├── boot            # Fichiers de démarrage (noyau)
-├── dev             # Périphériques (disques, USB, etc.)
-├── etc             # Configuration système
-├── home            # Répertoires des utilisateurs
-│   ├── alice
-│   └── bob
-├── lib             # Bibliothèques système
-├── media           # Points de montage amovibles
-├── mnt             # Points de montage temporaires
-├── opt             # Logiciels optionnels
-├── proc            # Informations processus (virtuel)
-├── root            # Répertoire de l'admin root
-├── run             # Données runtime
-├── sbin            # Binaires système (admin)
-├── srv             # Données des services
-├── sys             # Informations système (virtuel)
-├── tmp             # Fichiers temporaires
-├── usr             # Programmes utilisateur
-│   ├── bin
-│   ├── lib
-│   └── local
-└── var             # Données variables (logs, cache)
+```mermaid
+graph LR
+    A[/] --> B[bin<br/>Binaires essentiels]
+    A --> C[boot<br/>Fichiers demarrage]
+    A --> D[dev<br/>Peripheriques]
+    A --> E[etc<br/>Configuration systeme]
+    A --> F[home]
+    F --> F1[alice]
+    F --> F2[bob]
+    A --> G[lib<br/>Bibliotheques systeme]
+    A --> H[media<br/>Montage amovibles]
+    A --> I[mnt<br/>Montage temporaires]
+    A --> J[opt<br/>Logiciels optionnels]
+    A --> K[proc<br/>Infos processus virtuel]
+    A --> L[root<br/>Repertoire admin]
+    A --> M[run<br/>Donnees runtime]
+    A --> N[sbin<br/>Binaires systeme admin]
+    A --> O[srv<br/>Donnees services]
+    A --> P[sys<br/>Infos systeme virtuel]
+    A --> Q[tmp<br/>Fichiers temporaires]
+    A --> R[usr<br/>Programmes utilisateur]
+    R --> R1[bin]
+    R --> R2[lib]
+    R --> R3[local]
+    A --> S[var<br/>Donnees variables]
+    
+    style A fill:#ff6b6b
+    style F fill:#4ecdc4
+    style R fill:#95e1d3
 ```
 
 ---

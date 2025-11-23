@@ -89,28 +89,23 @@ ps -fp 1234
 
 # États d'un processus 🔄
 
-```
-┌─────────────┐
-│   CRÉÉ      │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────┐        ┌──────────────┐
-│   PRÊT      │◄──────►│  EN COURS    │
-│  (Ready)    │        │  (Running)   │
-└──────┬──────┘        └──────┬───────┘
-       │                      │
-       │                      ▼
-       │               ┌──────────────┐
-       │               │   BLOQUÉ     │
-       └──────────────►│  (Waiting)   │
-                       └──────┬───────┘
-                              │
-                              ▼
-                       ┌──────────────┐
-                       │   TERMINÉ    │
-                       │  (Zombie)    │
-                       └──────────────┘
+```mermaid
+stateDiagram-v2
+    [*] --> Cree
+    Cree --> Pret
+    Pret --> EnCours
+    EnCours --> Pret
+    EnCours --> Bloque
+    Bloque --> Pret
+    Bloque --> Termine
+    EnCours --> Termine
+    Termine --> [*]
+    
+    state "CREE" as Cree
+    state "PRET (Ready)" as Pret
+    state "EN COURS (Running)" as EnCours
+    state "BLOQUE (Waiting)" as Bloque
+    state "TERMINE (Zombie)" as Termine
 ```
 
 ---
@@ -786,8 +781,24 @@ sudo systemctl isolate graphical.target
 3. **Noyau Linux** : initialise les périphériques
 4. **systemd (PID 1)** : lance les services
 
-```
-BIOS/UEFI → GRUB → Kernel → systemd → Services
+```mermaid
+graph LR
+    A[BIOS/UEFI<br/>Initialise materiel]
+    B[GRUB<br/>Bootloader]
+    C[Kernel<br/>Noyau Linux]
+    D[systemd<br/>PID 1]
+    E[Services]
+    
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    
+    style A fill:#ff6b6b
+    style B fill:#4ecdc4
+    style C fill:#95e1d3
+    style D fill:#ffe66d
+    style E fill:#a8e6cf
 ```
 
 ---
