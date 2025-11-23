@@ -109,30 +109,30 @@ Pour bien comprendre schématiquement le fonctionnement d'ansible, voici un sch�
 
 ```mermaid
 flowchart TD
-    ah[ansible_host]
-    ah_ansible[ansible_installed]
-    ah_docker[community.docker_collection]
+    ah[\"ansible_host\"]
+    ah_ansible[\"ansible_installed\"]
+    ah_docker[\"community.docker_collection\"]
     ah --> ah_ansible --> ah_docker
 
-    ah -->|SSH + playbook| st1
-    ah -->|SSH + playbook| st2
-    ah -->|SSH + playbook| st3
+    ah -->|\"SSH + playbook\"| st1
+    ah -->|\"SSH + playbook\"| st2
+    ah -->|\"SSH + playbook\"| st3
 
-    subgraph Server_Target_1 [server_target_1]
-        st1_docker[docker_installed]
-        st1_containers[containers_managed]
+    subgraph Server_Target_1 [\"server_target_1\"]
+        st1_docker[\"docker_installed\"]
+        st1_containers[\"containers_managed\"]
         st1 --> st1_docker --> st1_containers
     end
 
-    subgraph Server_Target_2 [server_target_2]
-        st2_docker[docker_installed]
-        st2_containers[containers_managed]
+    subgraph Server_Target_2 [\"server_target_2\"]
+        st2_docker[\"docker_installed\"]
+        st2_containers[\"containers_managed\"]
         st2 --> st2_docker --> st2_containers
     end
 
-    subgraph Server_Target_3 [server_target_3]
-        st3_docker[docker_installed]
-        st3_containers[containers_managed]
+    subgraph Server_Target_3 [\"server_target_3\"]
+        st3_docker[\"docker_installed\"]
+        st3_containers[\"containers_managed\"]
         st3 --> st3_docker --> st3_containers
     end
 ```
@@ -166,7 +166,7 @@ Deux approches sont possibles :
 
 ```mermaid
 flowchart LR
-    dev["👨‍💻 Développeur<br/>git push code"]
+    dev["👨 Developpeur<br/>git push code"]
     ci["🔄 GitHub Actions<br/>CI Pipeline"]
     img["🐳 Docker Build<br/>docker build -t app:v1.0"]
     reg["📦 GHCR Registry<br/>docker push ghcr.io/user/app:v1.0"]
@@ -180,13 +180,13 @@ flowchart LR
     ssh --> ans
 
     subgraph "🖥️ Ansible Control Node"
-        ans --> playbook["📄 Playbook Tasks:<br/>• docker pull image<br/>• stop old container<br/>• start new container<br/>• health check"]
+        ans --> playbook["📄 Playbook Tasks<br/>docker pull image<br/>stop old container<br/>start new container<br/>health check"]
     end
 
     subgraph "🌐 Production Servers"
-        srv1["🖥️ Server 1<br/>docker pull & run"]
-        srv2["🖥️ Server 2<br/>docker pull & run"] 
-        srv3["🖥️ Server 3<br/>docker pull & run"]
+        srv1["🖥️ Server 1<br/>docker pull et run"]
+        srv2["🖥️ Server 2<br/>docker pull et run"] 
+        srv3["🖥️ Server 3<br/>docker pull et run"]
     end
 
     playbook --> srv1
@@ -212,7 +212,7 @@ GitLab permet un fonctionnement similaire :
 
 ```mermaid
 flowchart LR
-    dev["👨‍💻 Développeur<br/>git push code"]
+    dev["👨 Developpeur<br/>git push code"]
     ci["🦊 GitLab CI/CD<br/>Pipeline Runner"]
     img["🐳 Docker Build<br/>docker build -t app:latest"]
     reg["📦 GitLab Registry<br/>registry.gitlab.com/project/app"]
@@ -226,8 +226,8 @@ flowchart LR
     webhook --> ans
 
     subgraph "🖥️ Ansible Control Node"
-        ans --> inventory["📋 Inventory Check<br/>• production servers<br/>• staging servers"]
-        inventory --> tasks["📄 Deployment Tasks:<br/>• login to registry<br/>• pull new image<br/>• rolling update<br/>• rollback if failed"]
+        ans --> inventory["📋 Inventory Check<br/>production servers<br/>staging servers"]
+        inventory --> tasks["📄 Deployment Tasks<br/>login to registry<br/>pull new image<br/>rolling update<br/>rollback if failed"]
     end
 
     subgraph "🌐 Target Infrastructure"
@@ -241,7 +241,7 @@ flowchart LR
     stage1 --> prod2
     
     subgraph "📊 Monitoring"
-        health["❤️ Health Checks<br/>• container status<br/>• application metrics<br/>• logs monitoring"]
+        health["❤️ Health Checks<br/>container status<br/>application metrics<br/>logs monitoring"]
     end
     
     prod1 --> health

@@ -83,12 +83,12 @@ Il est possible de faire tourner Docker sur un serveur Linux sans Docker Desktop
 
 ```mermaid
 graph LR
-    CLI[Docker CLI<br/>Commandes utilisateur]
-    API[Docker API<br/>Interface REST]
-    DAEMON[Docker Daemon<br/>dockerd]
-    IMAGES[Images<br/>Templates]
-    CONTAINERS[Containers<br/>Instances en cours]
-    REGISTRY[Registry<br/>Docker Hub/Privé]
+    CLI[\"Docker CLI<br/>Commandes utilisateur\"]
+    API[\"Docker API<br/>Interface REST\"]
+    DAEMON[\"Docker Daemon<br/>dockerd\"]
+    IMAGES[\"Images<br/>Templates\"]
+    CONTAINERS[\"Containers<br/>Instances en cours\"]
+    REGISTRY[\"Registry<br/>Docker Hub/Prive\"]
     
     CLI --> API
     API --> DAEMON
@@ -127,12 +127,12 @@ graph LR
 
 ```mermaid
 graph LR
-    DEV[💻 Développement<br/>Mac/Windows/Linux] 
-    TEST[🧪 Tests<br/>CI/CD Pipeline]
-    PROD[🏭 Production<br/>Cloud/On-premise]
+    DEV[\"💻 Developpement<br/>Mac/Windows/Linux\"] 
+    TEST[\"🧪 Tests<br/>CI/CD Pipeline\"]
+    PROD[\"🏭 Production<br/>Cloud/On-premise\"]
     
-    DEV -->|même container| TEST
-    TEST -->|même container| PROD
+    DEV -->|\"meme container\"| TEST
+    TEST -->|\"meme container\"| PROD
 ```
 
 ---

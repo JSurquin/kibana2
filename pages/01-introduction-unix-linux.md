@@ -73,10 +73,10 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 ```mermaid
 graph TB
-    A[Applications utilisateur<br/>Firefox, LibreOffice, etc.]
-    B[Outils GNU<br/>bash, gcc, coreutils, etc.]
-    C[Noyau Linux<br/>gestion materiel, processus]
-    D[Materiel<br/>CPU, RAM, disques, reseau]
+    A[\"Applications utilisateur<br/>Firefox, LibreOffice, etc.\"]
+    B[\"Outils GNU<br/>bash, gcc, coreutils, etc.\"]
+    C[\"Noyau Linux<br/>gestion materiel, processus\"]
+    D[\"Materiel<br/>CPU, RAM, disques, reseau\"]
     
     A --> B
     B --> C
@@ -271,33 +271,34 @@ $ ls -la
 
 ```mermaid
 graph LR
-    A[/] --> B[bin<br/>Binaires essentiels]
-    A --> C[boot<br/>Fichiers demarrage]
-    A --> D[dev<br/>Peripheriques]
-    A --> E[etc<br/>Configuration systeme]
-    A --> F[home]
-    F --> F1[alice]
-    F --> F2[bob]
-    A --> G[lib<br/>Bibliotheques systeme]
-    A --> H[media<br/>Montage amovibles]
-    A --> I[mnt<br/>Montage temporaires]
-    A --> J[opt<br/>Logiciels optionnels]
-    A --> K[proc<br/>Infos processus virtuel]
-    A --> L[root<br/>Repertoire admin]
-    A --> M[run<br/>Donnees runtime]
-    A --> N[sbin<br/>Binaires systeme admin]
-    A --> O[srv<br/>Donnees services]
-    A --> P[sys<br/>Infos systeme virtuel]
-    A --> Q[tmp<br/>Fichiers temporaires]
-    A --> R[usr<br/>Programmes utilisateur]
-    R --> R1[bin]
-    R --> R2[lib]
-    R --> R3[local]
-    A --> S[var<br/>Donnees variables]
+    ROOT["Racine /"]
+    ROOT --> BIN["bin<br/>Binaires essentiels"]
+    ROOT --> BOOT["boot<br/>Fichiers demarrage"]
+    ROOT --> DEV["dev<br/>Peripheriques"]
+    ROOT --> ETC["etc<br/>Configuration systeme"]
+    ROOT --> HOME["home"]
+    HOME --> ALICE["alice"]
+    HOME --> BOB["bob"]
+    ROOT --> LIB["lib<br/>Bibliotheques systeme"]
+    ROOT --> MEDIA["media<br/>Montage amovibles"]
+    ROOT --> MNT["mnt<br/>Montage temporaires"]
+    ROOT --> OPT["opt<br/>Logiciels optionnels"]
+    ROOT --> PROC["proc<br/>Infos processus virtuel"]
+    ROOT --> ROOTDIR["root<br/>Repertoire admin"]
+    ROOT --> RUN["run<br/>Donnees runtime"]
+    ROOT --> SBIN["sbin<br/>Binaires systeme admin"]
+    ROOT --> SRV["srv<br/>Donnees services"]
+    ROOT --> SYS["sys<br/>Infos systeme virtuel"]
+    ROOT --> TMP["tmp<br/>Fichiers temporaires"]
+    ROOT --> USR["usr<br/>Programmes utilisateur"]
+    USR --> USRBIN["bin"]
+    USR --> USRLIB["lib"]
+    USR --> USRLOCAL["local"]
+    ROOT --> VAR["var<br/>Donnees variables"]
     
-    style A fill:#ff6b6b
-    style F fill:#4ecdc4
-    style R fill:#95e1d3
+    style ROOT fill:#ff6b6b
+    style HOME fill:#4ecdc4
+    style USR fill:#95e1d3
 ```
 
 ---

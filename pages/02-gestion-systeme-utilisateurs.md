@@ -84,13 +84,13 @@ Format : `username:x:UID:GID:comment:home:shell`
 
 ```mermaid
 graph LR
-    A[alice] --> A1[Nom utilisateur]
-    B[x] --> B1[Mot de passe dans /etc/shadow]
-    C[1001] --> C1[UID identifiant unique]
-    D[1001] --> D1[GID groupe principal]
-    E[Alice Martin] --> E1[Commentaire nom complet]
-    F[/home/alice] --> F1[Repertoire personnel]
-    G[/bin/bash] --> G1[Shell par defaut]
+    A["alice"] --> A1["Nom utilisateur"]
+    B["x"] --> B1["Mot de passe dans /etc/shadow"]
+    C["1001"] --> C1["UID identifiant unique"]
+    D["1001"] --> D1["GID groupe principal"]
+    E["Alice Martin"] --> E1["Commentaire nom complet"]
+    F["/home/alice"] --> F1["Repertoire personnel"]
+    G["/bin/bash"] --> G1["Shell par defaut"]
     
     style A fill:#ff6b6b
     style C fill:#4ecdc4
@@ -377,10 +377,10 @@ id alice
 
 ```mermaid
 graph LR
-    A[Type: - fichier]
-    B[User: rw- lecture ecriture]
-    C[Group: r-- lecture seule]
-    D[Others: r-- lecture seule]
+    A["Type: fichier"]
+    B["User: rw- lecture ecriture"]
+    C["Group: r-- lecture seule"]
+    D["Others: r-- lecture seule"]
     
     A --> B
     B --> C

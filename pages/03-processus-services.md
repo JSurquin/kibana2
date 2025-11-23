@@ -102,10 +102,10 @@ stateDiagram-v2
     Termine --> [*]
     
     state "CREE" as Cree
-    state "PRET (Ready)" as Pret
-    state "EN COURS (Running)" as EnCours
-    state "BLOQUE (Waiting)" as Bloque
-    state "TERMINE (Zombie)" as Termine
+    state "PRET Ready" as Pret
+    state "EN COURS Running" as EnCours
+    state "BLOQUE Waiting" as Bloque
+    state "TERMINE Zombie" as Termine
 ```
 
 ---
@@ -783,11 +783,11 @@ sudo systemctl isolate graphical.target
 
 ```mermaid
 graph LR
-    A[BIOS/UEFI<br/>Initialise materiel]
-    B[GRUB<br/>Bootloader]
-    C[Kernel<br/>Noyau Linux]
-    D[systemd<br/>PID 1]
-    E[Services]
+    A[\"BIOS/UEFI<br/>Initialise materiel\"]
+    B[\"GRUB<br/>Bootloader\"]
+    C[\"Kernel<br/>Noyau Linux\"]
+    D[\"systemd<br/>PID 1\"]
+    E[\"Services\"]
     
     A --> B
     B --> C

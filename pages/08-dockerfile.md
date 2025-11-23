@@ -55,12 +55,12 @@ Une **Image Docker** est un template immuable :
 
 ```mermaid
 graph TB
-    DF[📄 Dockerfile<br/>Instructions de build]
-    IMG[📦 Image Docker<br/>Template immuable]
-    CONT[🏃 Container<br/>Instance en cours]
+    DF[\"📄 Dockerfile<br/>Instructions de build\"]
+    IMG[\"📦 Image Docker<br/>Template immuable\"]
+    CONT[\"🏃 Container<br/>Instance en cours\"]
     
-    DF -->|docker build| IMG
-    IMG -->|docker run| CONT
+    DF -->|\"docker build\"| IMG
+    IMG -->|\"docker run\"| CONT
 ```
 
 ---

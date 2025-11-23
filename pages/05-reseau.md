@@ -113,10 +113,10 @@ graph LR
 
 ```mermaid
 graph LR
-    A[IP: 192.168.1.100]
-    B[Masque: 255.255.255.0 /24]
-    C[Partie Reseau<br/>192.168.1]
-    D[Partie Hote<br/>100]
+    A["IP: 192.168.1.100"]
+    B["Masque: 255.255.255.0 /24"]
+    C["Partie Reseau<br/>192.168.1"]
+    D["Partie Hote<br/>100"]
     
     A --> C
     A --> D
@@ -142,18 +142,18 @@ graph LR
 
 ```mermaid
 graph LR
-    A[Reseau local<br/>192.168.1.0/24]
-    B[Gateway<br/>192.168.1.1<br/>Routeur]
-    C[Votre machine<br/>192.168.1.100]
-    D[Autre machine<br/>192.168.1.101]
-    E[Internet<br/>8.8.8.8]
+    A["Reseau local<br/>192.168.1.0/24"]
+    B["Gateway<br/>192.168.1.1<br/>Routeur"]
+    C["Votre machine<br/>192.168.1.100"]
+    D["Autre machine<br/>192.168.1.101"]
+    E["Internet<br/>8.8.8.8"]
     
     A --> B
     A --> C
     A --> D
     B --> E
     
-    C -.Pour joindre Internet.-> B
+    C -."Pour joindre Internet".-> B
     
     style B fill:#ff6b6b
     style C fill:#4ecdc4

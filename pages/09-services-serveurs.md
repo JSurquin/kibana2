@@ -94,17 +94,17 @@ curl http://localhost
 
 ```mermaid
 graph LR
-    A[/etc/nginx/]
-    A --> B[nginx.conf<br/>Config principale]
-    A --> C[sites-available/<br/>Sites disponibles]
-    C --> C1[default]
-    A --> D[sites-enabled/<br/>Sites actifs]
-    D --> D1[default -> ../sites-available/default]
-    A --> E[conf.d/<br/>Configs RHEL/Fedora]
-    A --> F[snippets/<br/>Snippets reutilisables]
+    A[\"/etc/nginx/\"]
+    A --> B[\"nginx.conf<br/>Config principale\"]
+    A --> C[\"sites-available/<br/>Sites disponibles\"]
+    C --> C1[\"default\"]
+    A --> D[\"sites-enabled/<br/>Sites actifs\"]
+    D --> D1[\"default lien symbolique\"]
+    A --> E[\"conf.d/<br/>Configs RHEL/Fedora\"]
+    A --> F[\"snippets/<br/>Snippets reutilisables\"]
     
-    G[/var/www/html/<br/>Repertoire web]
-    H[/var/log/nginx/<br/>Logs]
+    G[\"/var/www/html/<br/>Repertoire web\"]
+    H[\"/var/log/nginx/<br/>Logs\"]
     
     style A fill:#4ecdc4
     style G fill:#95e1d3
@@ -328,18 +328,18 @@ sudo systemctl enable apache2
 
 ```mermaid
 graph LR
-    A[/etc/apache2/]
-    A --> B[apache2.conf<br/>Config principale]
-    A --> C[sites-available/<br/>Sites disponibles]
-    C --> C1[000-default.conf]
-    A --> D[sites-enabled/<br/>Sites actifs]
-    D --> D1[000-default.conf -> ../sites-available/]
-    A --> E[mods-available/<br/>Modules disponibles]
-    A --> F[mods-enabled/<br/>Modules actifs]
-    A --> G[conf-available/<br/>Configs disponibles]
+    A[\"/etc/apache2/\"]
+    A --> B[\"apache2.conf<br/>Config principale\"]
+    A --> C[\"sites-available/<br/>Sites disponibles\"]
+    C --> C1[\"000-default.conf\"]
+    A --> D[\"sites-enabled/<br/>Sites actifs\"]
+    D --> D1[\"000-default lien symbolique\"]
+    A --> E[\"mods-available/<br/>Modules disponibles\"]
+    A --> F[\"mods-enabled/<br/>Modules actifs\"]
+    A --> G[\"conf-available/<br/>Configs disponibles\"]
     
-    H[/var/www/html/<br/>Repertoire web]
-    I[/var/log/apache2/<br/>Logs]
+    H[\"/var/www/html/<br/>Repertoire web\"]
+    I[\"/var/log/apache2/<br/>Logs\"]
     
     style A fill:#ff6b6b
     style H fill:#95e1d3
