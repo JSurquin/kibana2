@@ -810,12 +810,12 @@ crontab -r
 
 ```mermaid
 graph LR
-    A[\"minute<br/>0-59\"]
-    B[\"heure<br/>0-23\"]
-    C[\"jour du mois<br/>1-31\"]
-    D[\"mois<br/>1-12\"]
-    E[\"jour semaine<br/>0-7 dim=0ou7\"]
-    F[\"commande\"]
+    A["minute<br/>0-59"]
+    B["heure<br/>0-23"]
+    C["jour du mois<br/>1-31"]
+    D["mois<br/>1-12"]
+    E["jour semaine<br/>0-7 dim=0ou7"]
+    F["commande"]
     
     A --> B --> C --> D --> E --> F
     

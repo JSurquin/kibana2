@@ -109,30 +109,30 @@ Pour bien comprendre schÃ©matiquement le fonctionnement d'ansible, voici un schÃ
 
 ```mermaid
 flowchart TD
-    ah[\"ansible_host\"]
-    ah_ansible[\"ansible_installed\"]
-    ah_docker[\"community.docker_collection\"]
+    ah["ansible_host"]
+    ah_ansible["ansible_installed"]
+    ah_docker["community.docker_collection"]
     ah --> ah_ansible --> ah_docker
 
-    ah -->|\"SSH + playbook\"| st1
-    ah -->|\"SSH + playbook\"| st2
-    ah -->|\"SSH + playbook\"| st3
+    ah -->|"SSH + playbook"| st1
+    ah -->|"SSH + playbook"| st2
+    ah -->|"SSH + playbook"| st3
 
-    subgraph Server_Target_1 [\"server_target_1\"]
-        st1_docker[\"docker_installed\"]
-        st1_containers[\"containers_managed\"]
+    subgraph Server_Target_1 ["server_target_1"]
+        st1_docker["docker_installed"]
+        st1_containers["containers_managed"]
         st1 --> st1_docker --> st1_containers
     end
 
-    subgraph Server_Target_2 [\"server_target_2\"]
-        st2_docker[\"docker_installed\"]
-        st2_containers[\"containers_managed\"]
+    subgraph Server_Target_2 ["server_target_2"]
+        st2_docker["docker_installed"]
+        st2_containers["containers_managed"]
         st2 --> st2_docker --> st2_containers
     end
 
-    subgraph Server_Target_3 [\"server_target_3\"]
-        st3_docker[\"docker_installed\"]
-        st3_containers[\"containers_managed\"]
+    subgraph Server_Target_3 ["server_target_3"]
+        st3_docker["docker_installed"]
+        st3_containers["containers_managed"]
         st3 --> st3_docker --> st3_containers
     end
 ```

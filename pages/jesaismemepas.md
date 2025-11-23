@@ -250,19 +250,19 @@ Voici un schéma qui illustre les différences entre la virtualisation et la con
 
 ```mermaid
 graph TD
-    A[\"Serveur Physique\"] -->|\"Hyperviseur\"| B[\"VM1: Windows\"]
-    A -->|\"Hyperviseur\"| C[\"VM2: Linux\"]
-    A -->|\"Hyperviseur\"| D[\"VM3: macOS\"]
-    B -->|\"OS Invite\"| E[\"Applications Windows\"]
-    C -->|\"OS Invite\"| F[\"Applications Linux\"]
-    D -->|\"OS Invite\"| G[\"Applications macOS\"]
+    A["Serveur Physique"] -->|"Hyperviseur"| B["VM1: Windows"]
+    A -->|"Hyperviseur"| C["VM2: Linux"]
+    A -->|"Hyperviseur"| D["VM3: macOS"]
+    B -->|"OS Invite"| E["Applications Windows"]
+    C -->|"OS Invite"| F["Applications Linux"]
+    D -->|"OS Invite"| G["Applications macOS"]
 
-    H[\"Serveur Physique\"] -->|\"Systeme exploitation hote\"| I[\"Conteneur 1: Nginx\"]
-    H -->|\"Systeme exploitation hote\"| J[\"Conteneur 2: PostgreSQL\"]
-    H -->|\"Systeme exploitation hote\"| K[\"Conteneur 3: Redis\"]
-    I -->|\"Bibliotheques et Dependances\"| L[\"Applications Nginx\"]
-    J -->|\"Bibliotheques et Dependances\"| M[\"Applications PostgreSQL\"]
-    K -->|\"Bibliotheques et Dependances\"| N[\"Applications Redis\"]
+    H["Serveur Physique"] -->|"Systeme exploitation hote"| I["Conteneur 1: Nginx"]
+    H -->|"Systeme exploitation hote"| J["Conteneur 2: PostgreSQL"]
+    H -->|"Systeme exploitation hote"| K["Conteneur 3: Redis"]
+    I -->|"Bibliotheques et Dependances"| L["Applications Nginx"]
+    J -->|"Bibliotheques et Dependances"| M["Applications PostgreSQL"]
+    K -->|"Bibliotheques et Dependances"| N["Applications Redis"]
 ```
 
 </div>
@@ -275,13 +275,13 @@ La virtualisation est un processus qui permet de créer une image d'un système 
 
 ```mermaid
 graph LR
-    A[\"Votre ordinateur\"] -->|\"Hyperviseur\"| B[\"Logiciel Hyperviseur\"]
-    B -->|\"VM1\"| C[\"Windows 10\"]
-    B -->|\"VM2\"| D[\"Ubuntu 20.04\"]
-    C -->|\"Bibliotheques\"| E[\"Bibliotheques Windows\"]
-    D -->|\"Bibliotheques\"| F[\"Bibliotheques Ubuntu\"]
-    E -->|\"Applications\"| G[\"Applications Windows\"]
-    F -->|\"Applications\"| H[\"Applications Ubuntu\"]
+    A["Votre ordinateur"] -->|"Hyperviseur"| B["Logiciel Hyperviseur"]
+    B -->|"VM1"| C["Windows 10"]
+    B -->|"VM2"| D["Ubuntu 20.04"]
+    C -->|"Bibliotheques"| E["Bibliotheques Windows"]
+    D -->|"Bibliotheques"| F["Bibliotheques Ubuntu"]
+    E -->|"Applications"| G["Applications Windows"]
+    F -->|"Applications"| H["Applications Ubuntu"]
 ```
 
 ---

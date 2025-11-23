@@ -31,18 +31,18 @@ routeAlias: 'stockage-systeme-fichiers'
 
 ```mermaid
 graph LR
-    A[\"Disque physique<br/>/dev/sda\"]
-    A --> B[\"Partition 1<br/>/dev/sda1\"]
-    A --> C[\"Partition 2<br/>/dev/sda2\"]
-    A --> D[\"Partition 3<br/>/dev/sda3\"]
+    A["Disque physique<br/>/dev/sda"]
+    A --> B["Partition 1<br/>/dev/sda1"]
+    A --> C["Partition 2<br/>/dev/sda2"]
+    A --> D["Partition 3<br/>/dev/sda3"]
     
-    B --> B1[\"Systeme de fichiers ext4\"]
-    B1 --> B2[\"Monte sur /\"]
+    B --> B1["Systeme de fichiers ext4"]
+    B1 --> B2["Monte sur /"]
     
-    C --> C1[\"Systeme de fichiers swap\"]
+    C --> C1["Systeme de fichiers swap"]
     
-    D --> D1[\"Systeme de fichiers ext4\"]
-    D1 --> D2[\"Monte sur /home\"]
+    D --> D1["Systeme de fichiers ext4"]
+    D1 --> D2["Monte sur /home"]
     
     style A fill:#ff6b6b
     style B fill:#4ecdc4

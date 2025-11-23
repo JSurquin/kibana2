@@ -73,10 +73,10 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 ```mermaid
 graph TB
-    A[\"Applications utilisateur<br/>Firefox, LibreOffice, etc.\"]
-    B[\"Outils GNU<br/>bash, gcc, coreutils, etc.\"]
-    C[\"Noyau Linux<br/>gestion materiel, processus\"]
-    D[\"Materiel<br/>CPU, RAM, disques, reseau\"]
+    A["Applications utilisateur<br/>Firefox, LibreOffice, etc."]
+    B["Outils GNU<br/>bash, gcc, coreutils, etc."]
+    C["Noyau Linux<br/>gestion materiel, processus"]
+    D["Materiel<br/>CPU, RAM, disques, reseau"]
     
     A --> B
     B --> C
