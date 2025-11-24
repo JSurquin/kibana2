@@ -808,16 +808,26 @@ crontab -r
 
 # Format du crontab 📋
 
+```mermaid
+graph LR
+    A["minute<br/>0-59"]
+    B["heure<br/>0-23"]
+    C["jour du mois<br/>1-31"]
+    D["mois<br/>1-12"]
+    E["jour semaine<br/>0-7 dim=0ou7"]
+    F["commande"]
+    
+    A --> B --> C --> D --> E --> F
+    
+    style A fill:#ff6b6b
+    style B fill:#4ecdc4
+    style C fill:#95e1d3
+    style D fill:#ffe66d
+    style E fill:#a8e6cf
+    style F fill:#ffd3b6
 ```
-┌───────── minute (0-59)
-│ ┌─────── heure (0-23)
-│ │ ┌───── jour du mois (1-31)
-│ │ │ ┌─── mois (1-12)
-│ │ │ │ ┌─ jour de la semaine (0-7, 0 et 7 = dimanche)
-│ │ │ │ │
-│ │ │ │ │
-* * * * * commande
-```
+
+**Format :** `* * * * * commande`
 
 **Exemples :**
 

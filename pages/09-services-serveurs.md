@@ -32,13 +32,14 @@ routeAlias: 'services-serveurs'
 
 # Architecture client-serveur 🔄
 
-```
-Client                     Serveur
-  │                          │
-  │─── Requête HTTP ───────→ │
-  │                          │ (Traitement)
-  │ ←─── Réponse HTML ──────│
-  │                          │
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Serveur
+    
+    C->>S: Requete HTTP
+    Note over S: Traitement
+    S->>C: Reponse HTML
 ```
 
 **Exemples :**
@@ -91,18 +92,23 @@ curl http://localhost
 
 # Structure de Nginx 📁
 
-```
-/etc/nginx/
-├── nginx.conf              # Configuration principale
-├── sites-available/        # Sites disponibles (Debian/Ubuntu)
-│   └── default
-├── sites-enabled/          # Sites actifs (liens symboliques)
-│   └── default -> ../sites-available/default
-├── conf.d/                 # Configurations additionnelles (RHEL/Fedora)
-└── snippets/               # Snippets réutilisables
-
-/var/www/html/              # Répertoire web par défaut
-/var/log/nginx/             # Logs
+```mermaid
+graph LR
+    A["/etc/nginx/"]
+    A --> B["nginx.conf<br/>Config principale"]
+    A --> C["sites-available/<br/>Sites disponibles"]
+    C --> C1["default"]
+    A --> D["sites-enabled/<br/>Sites actifs"]
+    D --> D1["default lien symbolique"]
+    A --> E["conf.d/<br/>Configs RHEL/Fedora"]
+    A --> F["snippets/<br/>Snippets reutilisables"]
+    
+    G["/var/www/html/<br/>Repertoire web"]
+    H["/var/log/nginx/<br/>Logs"]
+    
+    style A fill:#4ecdc4
+    style G fill:#95e1d3
+    style H fill:#ffe66d
 ```
 
 ---
@@ -320,19 +326,24 @@ sudo systemctl enable apache2
 
 # Structure Apache 📁
 
-```
-/etc/apache2/
-├── apache2.conf            # Configuration principale
-├── sites-available/        # Sites disponibles
-│   └── 000-default.conf
-├── sites-enabled/          # Sites actifs
-│   └── 000-default.conf -> ../sites-available/000-default.conf
-├── mods-available/         # Modules disponibles
-├── mods-enabled/           # Modules actifs
-└── conf-available/         # Configs disponibles
-
-/var/www/html/              # Répertoire web
-/var/log/apache2/           # Logs
+```mermaid
+graph LR
+    A["/etc/apache2/"]
+    A --> B["apache2.conf<br/>Config principale"]
+    A --> C["sites-available/<br/>Sites disponibles"]
+    C --> C1["000-default.conf"]
+    A --> D["sites-enabled/<br/>Sites actifs"]
+    D --> D1["000-default lien symbolique"]
+    A --> E["mods-available/<br/>Modules disponibles"]
+    A --> F["mods-enabled/<br/>Modules actifs"]
+    A --> G["conf-available/<br/>Configs disponibles"]
+    
+    H["/var/www/html/<br/>Repertoire web"]
+    I["/var/log/apache2/<br/>Logs"]
+    
+    style A fill:#ff6b6b
+    style H fill:#95e1d3
+    style I fill:#ffe66d
 ```
 
 ---

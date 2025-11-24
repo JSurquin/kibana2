@@ -80,16 +80,23 @@ Format : `username:x:UID:GID:comment:home:shell`
 
 # Décryptage de /etc/passwd 🔍
 
-```
-alice:x:1001:1001:Alice Martin:/home/alice:/bin/bash
-  │   │  │    │        │          │           │
-  │   │  │    │        │          │           └─ Shell par défaut
-  │   │  │    │        │          └─ Répertoire personnel
-  │   │  │    │        └─ Commentaire/nom complet
-  │   │  │    └─ GID (groupe principal)
-  │   │  └─ UID (identifiant unique)
-  │   └─ 'x' = mot de passe dans /etc/shadow
-  └─ Nom d'utilisateur
+**Format :** `alice:x:1001:1001:Alice Martin:/home/alice:/bin/bash`
+
+```mermaid
+graph LR
+    A["alice"] --> A1["Nom utilisateur"]
+    B["x"] --> B1["Mot de passe dans /etc/shadow"]
+    C["1001"] --> C1["UID identifiant unique"]
+    D["1001"] --> D1["GID groupe principal"]
+    E["Alice Martin"] --> E1["Commentaire nom complet"]
+    F["/home/alice"] --> F1["Repertoire personnel"]
+    G["/bin/bash"] --> G1["Shell par defaut"]
+    
+    style A fill:#ff6b6b
+    style C fill:#4ecdc4
+    style D fill:#95e1d3
+    style F fill:#ffe66d
+    style G fill:#a8e6cf
 ```
 
 **UID remarquables :**
@@ -366,14 +373,23 @@ id alice
 - **g** (group) : groupe
 - **o** (others) : autres
 
-```bash
--rw-r--r--  1 alice  developers  1024 Jan 10 10:30 fichier.txt
-│││││││││
-│││││││││
-│││└┬┘└┬┘└─ others : r--
-││└─┬──────  group  : r--
-│└──────────  user   : rw-
-└─────────── type (-=fichier, d=répertoire)
+**Exemple :** `-rw-r--r--  1 alice  developers  1024 Jan 10 10:30 fichier.txt`
+
+```mermaid
+graph LR
+    A["Type: fichier"]
+    B["User: rw- lecture ecriture"]
+    C["Group: r-- lecture seule"]
+    D["Others: r-- lecture seule"]
+    
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#ff6b6b
+    style B fill:#4ecdc4
+    style C fill:#95e1d3
+    style D fill:#ffe66d
 ```
 
 ---

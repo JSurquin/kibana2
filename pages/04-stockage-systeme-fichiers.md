@@ -29,14 +29,25 @@ routeAlias: 'stockage-systeme-fichiers'
 
 # Hiérarchie du stockage 🏗️
 
-```
-Disque physique (/dev/sda)
-    │
-    ├─ Partition 1 (/dev/sda1) → Système de fichiers ext4 → Monté sur /
-    │
-    ├─ Partition 2 (/dev/sda2) → Système de fichiers swap
-    │
-    └─ Partition 3 (/dev/sda3) → Système de fichiers ext4 → Monté sur /home
+```mermaid
+graph LR
+    A["Disque physique<br/>/dev/sda"]
+    A --> B["Partition 1<br/>/dev/sda1"]
+    A --> C["Partition 2<br/>/dev/sda2"]
+    A --> D["Partition 3<br/>/dev/sda3"]
+    
+    B --> B1["Systeme de fichiers ext4"]
+    B1 --> B2["Monte sur /"]
+    
+    C --> C1["Systeme de fichiers swap"]
+    
+    D --> D1["Systeme de fichiers ext4"]
+    D1 --> D2["Monte sur /home"]
+    
+    style A fill:#ff6b6b
+    style B fill:#4ecdc4
+    style C fill:#ffe66d
+    style D fill:#a8e6cf
 ```
 
 **Processus :**

@@ -506,12 +506,12 @@ EXPOSE 80
 
 ```mermaid
 flowchart LR
-    A[Template index.html.j2] --> B[Ansible génère index.html avec variables]
-    B --> C[Copie dans /tmp/webapp-container/]
-    D[Dockerfile copié] --> C
-    C --> E[docker build utilise index.html généré]
-    E --> F[Image Docker avec contenu dynamique]
-    F --> G[Container nginx sert le HTML personnalisé]
+    A["Template index.html.j2"] --> B["Ansible genere index.html avec variables"]
+    B --> C["Copie dans /tmp/webapp-container/"]
+    D["Dockerfile copie"] --> C
+    C --> E["docker build utilise index.html genere"]
+    E --> F["Image Docker avec contenu dynamique"]
+    F --> G["Container nginx sert le HTML personnalise"]
 ```
 
 <br/>
@@ -761,15 +761,15 @@ chmod +x deploy.sh
 
 ```mermaid
 flowchart LR
-    U[👤 Utilisateur] --> N[🔄 Nginx Proxy]
-    N --> A1[🐳 WebApp 1]
-    N --> A2[🐳 WebApp 2]
-    A1 --> D[🗄️ MySQL Database]
+    U["👤 Utilisateur"] --> N["🔄 Nginx Proxy"]
+    N --> A1["🐳 WebApp 1"]
+    N --> A2["🐳 WebApp 2"]
+    A1 --> D["🗄️ MySQL Database"]
     A2 --> D
     
     subgraph "📊 Monitoring"
-        M[📈 Health Checks]
-        B[💾 Backups auto]
+        M["📈 Health Checks"]
+        B["💾 Backups auto"]
     end
     
     D --> M

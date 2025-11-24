@@ -71,20 +71,21 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 # GNU + Linux = GNU/Linux 🔗
 
-```
-┌─────────────────────────────────────┐
-│      Applications utilisateur        │
-│   (Firefox, LibreOffice, etc.)      │
-├─────────────────────────────────────┤
-│         Outils GNU                   │
-│  (bash, gcc, coreutils, etc.)       │
-├─────────────────────────────────────┤
-│        Noyau Linux                   │
-│  (gestion matériel, processus)      │
-├─────────────────────────────────────┤
-│         Matériel                     │
-│   (CPU, RAM, disques, réseau)       │
-└─────────────────────────────────────┘
+```mermaid
+graph TB
+    A["Applications utilisateur<br/>Firefox, LibreOffice, etc."]
+    B["Outils GNU<br/>bash, gcc, coreutils, etc."]
+    C["Noyau Linux<br/>gestion materiel, processus"]
+    D["Materiel<br/>CPU, RAM, disques, reseau"]
+    
+    A --> B
+    B --> C
+    C --> D
+    
+    style A fill:#e1f5ff
+    style B fill:#b3e5fc
+    style C fill:#81d4fa
+    style D fill:#4fc3f7
 ```
 
 ---
@@ -268,31 +269,36 @@ $ ls -la
 
 # Structure des répertoires principaux 🗂️
 
-```
-/                    # Racine du système
-├── bin             # Binaires essentiels (ls, cat, cp)
-├── boot            # Fichiers de démarrage (noyau)
-├── dev             # Périphériques (disques, USB, etc.)
-├── etc             # Configuration système
-├── home            # Répertoires des utilisateurs
-│   ├── alice
-│   └── bob
-├── lib             # Bibliothèques système
-├── media           # Points de montage amovibles
-├── mnt             # Points de montage temporaires
-├── opt             # Logiciels optionnels
-├── proc            # Informations processus (virtuel)
-├── root            # Répertoire de l'admin root
-├── run             # Données runtime
-├── sbin            # Binaires système (admin)
-├── srv             # Données des services
-├── sys             # Informations système (virtuel)
-├── tmp             # Fichiers temporaires
-├── usr             # Programmes utilisateur
-│   ├── bin
-│   ├── lib
-│   └── local
-└── var             # Données variables (logs, cache)
+```mermaid
+graph LR
+    ROOT["Racine /"]
+    ROOT --> BIN["bin<br/>Binaires essentiels"]
+    ROOT --> BOOT["boot<br/>Fichiers demarrage"]
+    ROOT --> DEV["dev<br/>Peripheriques"]
+    ROOT --> ETC["etc<br/>Configuration systeme"]
+    ROOT --> HOME["home"]
+    HOME --> ALICE["alice"]
+    HOME --> BOB["bob"]
+    ROOT --> LIB["lib<br/>Bibliotheques systeme"]
+    ROOT --> MEDIA["media<br/>Montage amovibles"]
+    ROOT --> MNT["mnt<br/>Montage temporaires"]
+    ROOT --> OPT["opt<br/>Logiciels optionnels"]
+    ROOT --> PROC["proc<br/>Infos processus virtuel"]
+    ROOT --> ROOTDIR["root<br/>Repertoire admin"]
+    ROOT --> RUN["run<br/>Donnees runtime"]
+    ROOT --> SBIN["sbin<br/>Binaires systeme admin"]
+    ROOT --> SRV["srv<br/>Donnees services"]
+    ROOT --> SYS["sys<br/>Infos systeme virtuel"]
+    ROOT --> TMP["tmp<br/>Fichiers temporaires"]
+    ROOT --> USR["usr<br/>Programmes utilisateur"]
+    USR --> USRBIN["bin"]
+    USR --> USRLIB["lib"]
+    USR --> USRLOCAL["local"]
+    ROOT --> VAR["var<br/>Donnees variables"]
+    
+    style ROOT fill:#ff6b6b
+    style HOME fill:#4ecdc4
+    style USR fill:#95e1d3
 ```
 
 ---
