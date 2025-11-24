@@ -17,14 +17,6 @@ D) `pacman`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : C) `apt`**
-
-apt = Advanced Package Tool (Debian/Ubuntu).
-
----
-
 # Question 2
 
 Quelle commande met à jour la liste des paquets ?
@@ -33,14 +25,6 @@ A) `apt upgrade`
 B) `apt update`
 C) `apt refresh`
 D) `apt sync`
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) `apt update`**
-
-Toujours faire `update` avant `upgrade`.
 
 ---
 
@@ -55,14 +39,6 @@ D) `apt download paquet`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : A) `apt install paquet`**
-
-`sudo apt install nginx` par exemple.
-
----
-
 # Question 4
 
 Quelle commande recherche un paquet ?
@@ -71,14 +47,6 @@ A) `apt find`
 B) `apt search`
 C) `apt query`
 D) `apt locate`
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) `apt search`**
-
-`apt search nginx` cherche tous les paquets contenant "nginx".
 
 ---
 
@@ -93,14 +61,6 @@ D) `apt uninstall`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : C) `apt purge`**
-
-`remove` garde la config, `purge` supprime tout.
-
----
-
 # Question 6
 
 Quel gestionnaire de paquets est utilisé sur Fedora/RHEL ?
@@ -109,14 +69,6 @@ A) `yum`
 B) `dnf`
 C) `apt`
 D) A et B (dnf remplace yum)
-
----
-
-# Réponse 6
-
-**Bonne réponse : D) A et B (dnf remplace yum)**
-
-`dnf` est le successeur moderne de `yum`.
 
 ---
 
@@ -131,14 +83,6 @@ D) Supprime les anciennes versions
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : B) Supprime les paquets inutilisés**
-
-Nettoie les dépendances orphelines.
-
----
-
 # Question 8
 
 Qu'est-ce qu'un PPA ?
@@ -147,14 +91,6 @@ A) Un dépôt personnel (Personal Package Archive)
 B) Un type de paquet
 C) Un gestionnaire de paquets
 D) Un format de fichier
-
----
-
-# Réponse 8
-
-**Bonne réponse : A) Un dépôt personnel (Personal Package Archive)**
-
-Spécifique à Ubuntu, permet d'ajouter des dépôts tiers.
 
 ---
 
@@ -169,14 +105,6 @@ D) `apt delete-cache`
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : A) `apt clean`**
-
-Libère de l'espace disque en supprimant les paquets téléchargés.
-
----
-
 # Question 10
 
 Qu'est-ce que Snap ?
@@ -188,11 +116,41 @@ D) Un éditeur de texte
 
 ---
 
-# Réponse 10
+# Réponses du Module 6 📝
 
-**Bonne réponse : B) Un format de paquet universel conteneurisé**
+**Réponse 1 :** C) `apt`
+- apt = Advanced Package Tool (Debian/Ubuntu)
 
-Alternative : Flatpak et AppImage.
+**Réponse 2 :** B) `apt update`
+- Toujours faire `update` avant `upgrade`
+
+**Réponse 3 :** A) `apt install paquet`
+- `sudo apt install nginx` par exemple
+
+**Réponse 4 :** B) `apt search`
+- `apt search nginx` cherche tous les paquets contenant "nginx"
+
+**Réponse 5 :** C) `apt purge`
+- `remove` garde la config, `purge` supprime tout
+
+---
+
+# Réponses du Module 6 (suite) 📝
+
+**Réponse 6 :** D) A et B (dnf remplace yum)
+- `dnf` est le successeur moderne de `yum`
+
+**Réponse 7 :** B) Supprime les paquets inutilisés
+- Nettoie les dépendances orphelines
+
+**Réponse 8 :** A) Un dépôt personnel (Personal Package Archive)
+- Spécifique à Ubuntu, permet d'ajouter des dépôts tiers
+
+**Réponse 9 :** A) `apt clean`
+- Libère de l'espace disque en supprimant les paquets téléchargés
+
+**Réponse 10 :** B) Un format de paquet universel conteneurisé
+- Alternative : Flatpak et AppImage
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 6
 
 ---
-

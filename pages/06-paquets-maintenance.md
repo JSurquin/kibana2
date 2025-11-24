@@ -158,9 +158,28 @@ sudo apt update && sudo apt upgrade -y
 - Installe vraiment les mises à jour
 - Nécessite `update` avant
 
-**Analogie :** 
-- `update` = regarder le menu
-- `upgrade` = commander
+**Analogie : Netflix** 📺
+
+- **apt update** = Rafraîchir le catalogue Netflix
+  - Voir les nouveaux films disponibles
+  - Ne télécharge rien
+  - Rapide (quelques secondes)
+
+- **apt upgrade** = Télécharger les épisodes
+  - Installe vraiment les nouvelles versions
+  - Peut prendre du temps
+  - Utilise de la bande passante
+
+**Exemple pratique :**
+
+```bash
+# Scénario : votre serveur web
+sudo apt update          # Consulte si nouvelle version de nginx
+# → "nginx 1.20 disponible (vous avez 1.18)"
+
+sudo apt upgrade -y      # Installe nginx 1.20
+# → Télécharge, installe, redémarre si nécessaire
+```
 
 ---
 

@@ -73,6 +73,28 @@ graph LR
 - `/dev/nvme0n1` : premier disque NVMe
 - `/dev/nvme0n1p1` : première partition
 
+**Analogie : les placards numérotés** 🗄️
+
+Imaginez un garde-meuble :
+- **sda, sdb, sdc** : les différents placards (disques)
+- **sda1, sda2** : les étagères dans le placard A (partitions)
+- **Système de fichiers** : comment vous organisez chaque étagère
+
+**Exemple concret :**
+
+```bash
+# Lister vos disques
+lsblk
+
+# Résultat typique sur un PC :
+# sda         (disque dur principal 500 Go)
+# ├─sda1      (partition EFI 512 Mo)
+# ├─sda2      (partition / 100 Go)
+# └─sda3      (partition /home 399 Go)
+# sdb         (clé USB 32 Go)
+# └─sdb1      (partition unique 32 Go)
+```
+
 ---
 
 # Lister les disques et partitions 📋

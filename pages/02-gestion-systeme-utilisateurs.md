@@ -494,6 +494,12 @@ sudo chown alice: fichier.txt
 
 **umask** : masque qui définit les permissions des nouveaux fichiers
 
+**Analogie : le tampon par défaut d'une imprimante** 🖨️
+
+Imaginez que umask est comme les paramètres par défaut de votre imprimante :
+- Sans umask : tout le monde peut tout faire (666 pour fichiers)
+- Avec umask 0022 : on retire certains droits par défaut (autres ne peuvent pas écrire)
+
 ```bash
 # Voir le umask actuel
 umask
@@ -505,6 +511,21 @@ umask
 
 # Répertoires : 777 - umask = permissions
 # 777 - 022 = 755 (rwxr-xr-x)
+```
+
+**Exemple pratique :**
+
+```bash
+# Tester le umask
+touch test1.txt
+ls -l test1.txt
+# -rw-r--r--  (644)
+
+# Changer le umask
+umask 0077
+touch test2.txt
+ls -l test2.txt
+# -rw-------  (600)  → Fichier privé !
 ```
 
 ---
@@ -627,8 +648,18 @@ Un utilisateur remplit le disque → tout le système crashe
 - Limiter l'espace disque par utilisateur/groupe
 - Limiter le nombre de fichiers (inodes)
 
-**Analogie :**
-Comme une limite de stockage sur un cloud (Google Drive, Dropbox)
+**Analogie : le forfait mobile** 📱
+
+- **Sans quota** : utilisation illimitée → un utilisateur peut tout consommer
+- **Avec quota** : chacun a son forfait (10 Go par exemple)
+- **Soft limit** : avertissement à 8 Go (tu vas bientôt dépasser)
+- **Hard limit** : blocage à 10 Go (c'est fini, tu ne peux plus rien télécharger)
+
+**Exemple concret :**
+
+Imaginez une entreprise avec 100 employés et un serveur de 1 To :
+- Sans quotas : un employé peut stocker 500 Go de vidéos personnelles
+- Avec quotas : chacun a droit à 8 Go → espace équitablement réparti
 
 ---
 

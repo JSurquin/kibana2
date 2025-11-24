@@ -346,6 +346,25 @@ pkill -TERM firefox
 
 **Plus le nice est élevé, plus le processus est "gentil" en laissant les autres passer**
 
+**Exemple pratique :**
+
+Imaginez que vous lancez un traitement vidéo qui prend 2 heures :
+
+```bash
+# Sans nice : utilise tout le CPU → votre navigateur rame
+ffmpeg -i video.mp4 output.mp4
+
+# Avec nice : laisse les autres processus passer en priorité
+nice -n 15 ffmpeg -i video.mp4 output.mp4
+# → Le traitement prendra peut-être 2h15, mais vous pouvez
+#   travailler normalement pendant ce temps !
+```
+
+**Cas d'usage réels :**
+- Sauvegardes nocturnes : nice +19 (non urgentes)
+- Serveur web : nice 0 (priorité normale)
+- Calculs critiques : nice -10 (urgent, root only)
+
 ---
 
 # Lancer un processus avec nice 🚀

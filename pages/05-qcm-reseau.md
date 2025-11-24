@@ -17,14 +17,6 @@ D) `0.0.0.0`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) `127.0.0.1`**
-
-Toute la plage 127.0.0.0/8 est réservée au loopback.
-
----
-
 # Question 2
 
 Quel port utilise SSH par défaut ?
@@ -33,14 +25,6 @@ A) 21
 B) 22
 C) 23
 D) 80
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) 22**
-
-Port 22 = SSH, Port 21 = FTP, Port 23 = Telnet, Port 80 = HTTP.
 
 ---
 
@@ -55,14 +39,6 @@ D) `check`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : B) `ping`**
-
-`ping google.com` teste si le serveur est joignable.
-
----
-
 # Question 4
 
 Quelle commande affiche la configuration IP ?
@@ -71,14 +47,6 @@ A) `ipconfig`
 B) `ifconfig`
 C) `ip addr`
 D) B et C sont corrects
-
----
-
-# Réponse 4
-
-**Bonne réponse : D) B et C sont corrects**
-
-`ip addr` est moderne, `ifconfig` est ancien mais toujours utilisé.
 
 ---
 
@@ -93,14 +61,6 @@ D) `ports`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) `netstat` ou `ss`**
-
-`ss` est la version moderne de `netstat`.
-
----
-
 # Question 6
 
 Quel outil génère une paire de clés SSH ?
@@ -109,14 +69,6 @@ A) `ssh-key`
 B) `ssh-keygen`
 C) `keygen`
 D) `ssh-create`
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) `ssh-keygen`**
-
-`ssh-keygen -t ed25519` est recommandé en 2025.
 
 ---
 
@@ -131,14 +83,6 @@ D) `/root/ssh/`
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : B) `~/.ssh/`**
-
-Répertoire personnel de chaque utilisateur.
-
----
-
 # Question 8
 
 Quel pare-feu est simple à utiliser sur Ubuntu ?
@@ -147,14 +91,6 @@ A) `iptables`
 B) `ufw`
 C) `firewalld`
 D) `firewall`
-
----
-
-# Réponse 8
-
-**Bonne réponse : B) `ufw`**
-
-ufw = Uncomplicated Firewall (interface simple pour iptables).
 
 ---
 
@@ -169,14 +105,6 @@ D) `transfer`
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : B) `scp`**
-
-`scp fichier user@serveur:/chemin/`
-
----
-
 # Question 10
 
 Quelle commande résout un nom de domaine en IP ?
@@ -188,11 +116,41 @@ D) `lookup`
 
 ---
 
-# Réponse 10
+# Réponses du Module 5 📝
 
-**Bonne réponse : B) `nslookup` ou `dig`**
+**Réponse 1 :** B) `127.0.0.1`
+- Toute la plage 127.0.0.0/8 est réservée au loopback
 
-`dig` est plus moderne et détaillé.
+**Réponse 2 :** B) 22
+- Port 22 = SSH, Port 21 = FTP, Port 23 = Telnet, Port 80 = HTTP
+
+**Réponse 3 :** B) `ping`
+- `ping google.com` teste si le serveur est joignable
+
+**Réponse 4 :** D) B et C sont corrects
+- `ip addr` est moderne, `ifconfig` est ancien mais toujours utilisé
+
+**Réponse 5 :** B) `netstat` ou `ss`
+- `ss` est la version moderne de `netstat`
+
+---
+
+# Réponses du Module 5 (suite) 📝
+
+**Réponse 6 :** B) `ssh-keygen`
+- `ssh-keygen -t ed25519` est recommandé en 2025
+
+**Réponse 7 :** B) `~/.ssh/`
+- Répertoire personnel de chaque utilisateur
+
+**Réponse 8 :** B) `ufw`
+- ufw = Uncomplicated Firewall (interface simple pour iptables)
+
+**Réponse 9 :** B) `scp`
+- `scp fichier user@serveur:/chemin/`
+
+**Réponse 10 :** B) `nslookup` ou `dig`
+- `dig` est plus moderne et détaillé
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 5
 
 ---
-

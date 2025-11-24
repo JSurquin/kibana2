@@ -46,6 +46,23 @@ routeAlias: 'securite-systeme'
 **5. Audit et surveillance**
 - Savoir ce qui se passe sur le système
 
+**Analogie : la sécurité de votre banque** 🏦
+
+**Moindre privilège** : L'employé au guichet ne peut pas ouvrir le coffre-fort
+
+**Défense en profondeur** :
+1. Vigiles à l'entrée (pare-feu)
+2. Porte blindée (authentification)
+3. Caméras (logs)
+4. Alarme (fail2ban)
+5. Coffre-fort (chiffrement)
+
+**Sécurité par simplicité** : Moins de portes = moins de points d'entrée
+
+**Mise à jour** : Changer les codes d'accès régulièrement
+
+**Audit** : Vérifier les enregistrements vidéo
+
 ---
 
 # Sécurité des comptes utilisateurs 👤

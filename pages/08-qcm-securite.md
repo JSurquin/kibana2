@@ -17,14 +17,6 @@ D) Un éditeur de texte
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) Un système de contrôle d'accès obligatoire (MAC)**
-
-SELinux ajoute une couche de sécurité au-delà des permissions Unix.
-
----
-
 # Question 2
 
 Quel outil bloque les IP après plusieurs échecs de connexion ?
@@ -33,14 +25,6 @@ A) `iptables`
 B) `fail2ban`
 C) `ufw`
 D) `firewalld`
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) `fail2ban`**
-
-Protection contre le brute-force.
 
 ---
 
@@ -55,14 +39,6 @@ D) `/etc/passwords`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : B) `/etc/shadow`**
-
-Accessible uniquement par root.
-
----
-
 # Question 4
 
 Quelle commande désactive temporairement SELinux ?
@@ -71,14 +47,6 @@ A) `selinux disable`
 B) `setenforce 0`
 C) `systemctl stop selinux`
 D) `disable selinux`
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) `setenforce 0`**
-
-0 = permissive, 1 = enforcing.
 
 ---
 
@@ -93,14 +61,6 @@ D) `/etc/security/sudo`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) `/etc/sudoers`**
-
-À éditer UNIQUEMENT avec `visudo`.
-
----
-
 # Question 6
 
 Qu'est-ce que fail2ban surveille ?
@@ -109,14 +69,6 @@ A) Les performances système
 B) Les logs pour détecter des tentatives d'intrusion
 C) L'espace disque
 D) Les processus
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) Les logs pour détecter des tentatives d'intrusion**
-
-Bannit les IPs suspectes temporairement.
 
 ---
 
@@ -131,14 +83,6 @@ D) `faillog`
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : C) `lastb`**
-
-`last` affiche les connexions réussies.
-
----
-
 # Question 8
 
 Quelle est la meilleure pratique pour SSH ?
@@ -147,14 +91,6 @@ A) Utiliser des mots de passe forts
 B) Utiliser des clés SSH
 C) Changer le port
 D) Tout ce qui précède
-
----
-
-# Réponse 8
-
-**Bonne réponse : D) Tout ce qui précède**
-
-Defense en profondeur : plusieurs couches de sécurité.
 
 ---
 
@@ -169,14 +105,6 @@ D) Sauvegarde les fichiers
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : B) Audite les actions système**
-
-Enregistre qui fait quoi et quand.
-
----
-
 # Question 10
 
 Comment chiffrer une partition avec Linux ?
@@ -188,11 +116,41 @@ D) `secure`
 
 ---
 
-# Réponse 10
+# Réponses du Module 8 📝
 
-**Bonne réponse : B) `LUKS`**
+**Réponse 1 :** B) Un système de contrôle d'accès obligatoire (MAC)
+- SELinux ajoute une couche de sécurité au-delà des permissions Unix
 
-LUKS = Linux Unified Key Setup.
+**Réponse 2 :** B) `fail2ban`
+- Protection contre le brute-force
+
+**Réponse 3 :** B) `/etc/shadow`
+- Accessible uniquement par root
+
+**Réponse 4 :** B) `setenforce 0`
+- 0 = permissive, 1 = enforcing
+
+**Réponse 5 :** B) `/etc/sudoers`
+- À éditer UNIQUEMENT avec `visudo`
+
+---
+
+# Réponses du Module 8 (suite) 📝
+
+**Réponse 6 :** B) Les logs pour détecter des tentatives d'intrusion
+- Bannit les IPs suspectes temporairement
+
+**Réponse 7 :** C) `lastb`
+- `last` affiche les connexions réussies
+
+**Réponse 8 :** D) Tout ce qui précède
+- Defense en profondeur : plusieurs couches de sécurité
+
+**Réponse 9 :** B) Audite les actions système
+- Enregistre qui fait quoi et quand
+
+**Réponse 10 :** B) `LUKS`
+- LUKS = Linux Unified Key Setup
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 8
 
 ---
-

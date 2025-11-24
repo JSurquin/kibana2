@@ -17,14 +17,6 @@ D) `free`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) `df`**
-
-`df` (Disk Free) affiche l'espace par partition. `du` affiche l'usage par répertoire.
-
----
-
 # Question 2
 
 Où sont stockées les configurations de montage automatique ?
@@ -33,14 +25,6 @@ A) `/etc/mount`
 B) `/etc/fstab`
 C) `/etc/filesystems`
 D) `/boot/mount.conf`
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) `/etc/fstab`**
-
-fstab = File System TABle.
 
 ---
 
@@ -55,14 +39,6 @@ D) `link`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : A) `mount`**
-
-`mount /dev/sdb1 /mnt/data` monte la partition.
-
----
-
 # Question 4
 
 Que signifie LVM ?
@@ -71,14 +47,6 @@ A) Linux Virtual Memory
 B) Logical Volume Manager
 C) Linux Volume Management
 D) Local Virtual Machine
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) Logical Volume Manager**
-
-LVM permet une gestion flexible du stockage.
 
 ---
 
@@ -93,14 +61,6 @@ D) `symlink`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : C) `ln -s`**
-
-`ln -s cible lien` crée un lien symbolique.
-
----
-
 # Question 6
 
 Que fait `fsck` ?
@@ -109,14 +69,6 @@ A) Monte un système de fichiers
 B) Vérifie l'intégrité d'un système de fichiers
 C) Formate un disque
 D) Affiche l'espace disque
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) Vérifie l'intégrité d'un système de fichiers**
-
-⚠️ Ne jamais fsck une partition montée !
 
 ---
 
@@ -131,14 +83,6 @@ D) Un type de disque
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : C) Une permission étendue (Access Control List)**
-
-Les ACL permettent des permissions plus fines que rwx.
-
----
-
 # Question 8
 
 Quelle commande affiche les ACL d'un fichier ?
@@ -147,14 +91,6 @@ A) `acl`
 B) `getfacl`
 C) `showacl`
 D) `chmod`
-
----
-
-# Réponse 8
-
-**Bonne réponse : B) `getfacl`**
-
-`setfacl` pour définir, `getfacl` pour lire.
 
 ---
 
@@ -169,14 +105,6 @@ D) Un système de fichiers
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : B) Une extension de la RAM sur disque**
-
-Utilisé quand la RAM est pleine.
-
----
-
 # Question 10
 
 Quelle commande liste les disques et partitions ?
@@ -188,11 +116,41 @@ D) `listdisk`
 
 ---
 
-# Réponse 10
+# Réponses du Module 4 📝
 
-**Bonne réponse : C) `lsblk`**
+**Réponse 1 :** B) `df`
+- `df` (Disk Free) affiche l'espace par partition. `du` affiche l'usage par répertoire
 
-lsblk = list block devices.
+**Réponse 2 :** B) `/etc/fstab`
+- fstab = File System TABle
+
+**Réponse 3 :** A) `mount`
+- `mount /dev/sdb1 /mnt/data` monte la partition
+
+**Réponse 4 :** B) Logical Volume Manager
+- LVM permet une gestion flexible du stockage
+
+**Réponse 5 :** C) `ln -s`
+- `ln -s cible lien` crée un lien symbolique
+
+---
+
+# Réponses du Module 4 (suite) 📝
+
+**Réponse 6 :** B) Vérifie l'intégrité d'un système de fichiers
+- ⚠️ Ne jamais fsck une partition montée !
+
+**Réponse 7 :** C) Une permission étendue (Access Control List)
+- Les ACL permettent des permissions plus fines que rwx
+
+**Réponse 8 :** B) `getfacl`
+- `setfacl` pour définir, `getfacl` pour lire
+
+**Réponse 9 :** B) Une extension de la RAM sur disque
+- Utilisé quand la RAM est pleine
+
+**Réponse 10 :** C) `lsblk`
+- lsblk = list block devices
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 4
 
 ---
-

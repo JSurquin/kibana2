@@ -17,14 +17,6 @@ D) Larry Page et Sergey Brin
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) Ken Thompson et Dennis Ritchie**
-
-Unix a été créé en 1969 aux laboratoires Bell (AT&T).
-
----
-
 # Question 2
 
 Que signifie le principe Unix "tout est fichier" ?
@@ -33,14 +25,6 @@ A) Tous les programmes sont stockés dans des fichiers
 B) Les périphériques et processus sont accessibles comme des fichiers
 C) On ne peut travailler qu'avec des fichiers texte
 D) Il faut tout sauvegarder dans des fichiers
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) Les périphériques et processus sont accessibles comme des fichiers**
-
-Unix utilise l'abstraction de fichier pour accéder aux périphériques (`/dev`), aux processus (`/proc`), etc.
 
 ---
 
@@ -55,14 +39,6 @@ D) `view`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : C) `cat`**
-
-`cat` (concatenate) affiche le contenu d'un ou plusieurs fichiers.
-
----
-
 # Question 4
 
 Que fait la commande `cd ..` ?
@@ -71,14 +47,6 @@ A) Affiche le répertoire courant
 B) Remonte d'un niveau dans l'arborescence
 C) Crée un nouveau répertoire
 D) Supprime le répertoire courant
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) Remonte d'un niveau dans l'arborescence**
-
-`..` représente le répertoire parent.
 
 ---
 
@@ -93,14 +61,6 @@ D) `#`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) `~`**
-
-`~` est un raccourci pour `/home/utilisateur`.
-
----
-
 # Question 6
 
 Que fait l'opérateur pipe `|` ?
@@ -109,14 +69,6 @@ A) Redirige vers un fichier
 B) Connecte la sortie d'une commande à l'entrée d'une autre
 C) Exécute deux commandes en parallèle
 D) Arrête l'exécution d'une commande
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) Connecte la sortie d'une commande à l'entrée d'une autre**
-
-Le pipe permet de chaîner des commandes : `cat file.txt | grep "motif"`.
 
 ---
 
@@ -131,14 +83,6 @@ D) `locate`
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : C) `grep`**
-
-`grep` recherche des patterns dans des fichiers texte.
-
----
-
 # Question 8
 
 Que signifie l'option `-l` dans `ls -l` ?
@@ -147,14 +91,6 @@ A) Lister seulement les liens
 B) Affichage long (détaillé)
 C) Lister les fichiers cachés
 D) Lister récursivement
-
----
-
-# Réponse 8
-
-**Bonne réponse : B) Affichage long (détaillé)**
-
-`-l` affiche les permissions, propriétaire, taille, date, etc.
 
 ---
 
@@ -169,14 +105,6 @@ D) `makedir`
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : C) `mkdir`**
-
-`mkdir` (make directory) crée un nouveau répertoire.
-
----
-
 # Question 10
 
 Où se trouve le noyau Linux dans l'architecture système ?
@@ -188,11 +116,41 @@ D) Dans les applications
 
 ---
 
-# Réponse 10
+# Réponses du Module 1 📝
 
-**Bonne réponse : B) Entre le matériel et le shell**
+**Réponse 1 :** B) Ken Thompson et Dennis Ritchie
+- Unix a été créé en 1969 aux laboratoires Bell (AT&T)
 
-Architecture : Matériel → Noyau → Shell → Applications.
+**Réponse 2 :** B) Les périphériques et processus sont accessibles comme des fichiers
+- Unix utilise l'abstraction de fichier pour accéder aux périphériques (`/dev`), aux processus (`/proc`), etc.
+
+**Réponse 3 :** C) `cat`
+- `cat` (concatenate) affiche le contenu d'un ou plusieurs fichiers
+
+**Réponse 4 :** B) Remonte d'un niveau dans l'arborescence
+- `..` représente le répertoire parent
+
+**Réponse 5 :** B) `~`
+- `~` est un raccourci pour `/home/utilisateur`
+
+---
+
+# Réponses du Module 1 (suite) 📝
+
+**Réponse 6 :** B) Connecte la sortie d'une commande à l'entrée d'une autre
+- Le pipe permet de chaîner des commandes : `cat file.txt | grep "motif"`
+
+**Réponse 7 :** C) `grep`
+- `grep` recherche des patterns dans des fichiers texte
+
+**Réponse 8 :** B) Affichage long (détaillé)
+- `-l` affiche les permissions, propriétaire, taille, date, etc.
+
+**Réponse 9 :** C) `mkdir`
+- `mkdir` (make directory) crée un nouveau répertoire
+
+**Réponse 10 :** B) Entre le matériel et le shell
+- Architecture : Matériel → Noyau → Shell → Applications
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 1
 
 ---
-

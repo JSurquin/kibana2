@@ -17,14 +17,6 @@ D) `//bin/bash`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) `#!/bin/bash`**
-
-Le shebang indique l'interpréteur à utiliser.
-
----
-
 # Question 2
 
 Comment rendre un script exécutable ?
@@ -33,14 +25,6 @@ A) `chmod +x script.sh`
 B) `execute script.sh`
 C) `make executable script.sh`
 D) `run script.sh`
-
----
-
-# Réponse 2
-
-**Bonne réponse : A) `chmod +x script.sh`**
-
-Puis l'exécuter avec `./script.sh`.
 
 ---
 
@@ -55,14 +39,6 @@ D) `$var=value`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : B) `var=value`**
-
-⚠️ Pas d'espace autour du `=` !
-
----
-
 # Question 4
 
 Comment accéder à la valeur d'une variable ?
@@ -71,14 +47,6 @@ A) `var`
 B) `$var`
 C) `&var`
 D) `@var`
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) `$var`**
-
-Ou `${var}` (forme recommandée).
 
 ---
 
@@ -93,14 +61,6 @@ D) `schedule`
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) `cron`**
-
-`crontab -e` pour éditer les tâches cron.
-
----
-
 # Question 6
 
 Que signifie `0 2 * * *` dans un crontab ?
@@ -109,14 +69,6 @@ A) Toutes les 2 minutes
 B) À 2h du matin tous les jours
 C) Tous les 2 jours
 D) Le 2 de chaque mois
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) À 2h du matin tous les jours**
-
-Format : minute heure jour mois jour_semaine.
 
 ---
 
@@ -131,14 +83,6 @@ D) `logs -f`
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : B) `journalctl -f`**
-
-`-f` = follow (comme `tail -f`).
-
----
-
 # Question 8
 
 Quelle structure crée une boucle en bash ?
@@ -147,14 +91,6 @@ A) `loop ... end`
 B) `for ... done`
 C) `while ... endwhile`
 D) `repeat ... until`
-
----
-
-# Réponse 8
-
-**Bonne réponse : B) `for ... done`**
-
-Exemple : `for i in {1..5}; do echo $i; done`.
 
 ---
 
@@ -169,14 +105,6 @@ D) `commande >> fichier`
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : C) `commande &> fichier`**
-
-Ou `commande > fichier 2>&1`.
-
----
-
 # Question 10
 
 Quelle commande planifie une tâche ponctuelle ?
@@ -188,11 +116,41 @@ D) `schedule`
 
 ---
 
-# Réponse 10
+# Réponses du Module 7 📝
 
-**Bonne réponse : B) `at`**
+**Réponse 1 :** B) `#!/bin/bash`
+- Le shebang indique l'interpréteur à utiliser
 
-`at now + 1 hour` pour dans 1 heure.
+**Réponse 2 :** A) `chmod +x script.sh`
+- Puis l'exécuter avec `./script.sh`
+
+**Réponse 3 :** B) `var=value`
+- ⚠️ Pas d'espace autour du `=` !
+
+**Réponse 4 :** B) `$var`
+- Ou `${var}` (forme recommandée)
+
+**Réponse 5 :** B) `cron`
+- `crontab -e` pour éditer les tâches cron
+
+---
+
+# Réponses du Module 7 (suite) 📝
+
+**Réponse 6 :** B) À 2h du matin tous les jours
+- Format : minute heure jour mois jour_semaine
+
+**Réponse 7 :** B) `journalctl -f`
+- `-f` = follow (comme `tail -f`)
+
+**Réponse 8 :** B) `for ... done`
+- Exemple : `for i in {1..5}; do echo $i; done`
+
+**Réponse 9 :** C) `commande &> fichier`
+- Ou `commande > fichier 2>&1`
+
+**Réponse 10 :** B) `at`
+- `at now + 1 hour` pour dans 1 heure
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 7
 
 ---
-

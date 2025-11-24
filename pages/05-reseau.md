@@ -88,6 +88,26 @@ graph LR
 - ~340 sextillions d'adresses
 - Adoption progressive
 
+**Analogie : les numéros de téléphone** 📞
+
+**IPv4** : comme un numéro à 10 chiffres
+- Limité : on manque de numéros
+- Solution temporaire : indicatifs (NAT)
+
+**IPv6** : comme un numéro à 40 chiffres
+- Suffisant pour donner un numéro unique à chaque grain de sable sur Terre !
+
+**Exemple concret :**
+
+```bash
+# Voir vos adresses IP
+ip addr show
+
+# Résultat typique :
+# inet 192.168.1.100/24    (IPv4 privée)
+# inet6 fe80::a00:27ff:fe4e:66a1/64  (IPv6 locale)
+```
+
 ---
 
 # Classes d'adresses IPv4 privées 🏠

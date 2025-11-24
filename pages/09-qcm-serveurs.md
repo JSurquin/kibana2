@@ -17,14 +17,6 @@ D) Tomcat
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) Nginx**
-
-Architecture asynchrone, faible consommation mémoire.
-
----
-
 # Question 2
 
 Où sont les fichiers de config de Nginx sur Ubuntu ?
@@ -33,14 +25,6 @@ A) `/etc/apache2/`
 B) `/etc/nginx/`
 C) `/var/www/nginx/`
 D) `/usr/local/nginx/`
-
----
-
-# Réponse 2
-
-**Bonne réponse : B) `/etc/nginx/`**
-
-`/etc/nginx/nginx.conf` est le fichier principal.
 
 ---
 
@@ -55,14 +39,6 @@ D) `test nginx`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : B) `nginx -t`**
-
-Toujours tester avant de recharger !
-
----
-
 # Question 4
 
 Quelle commande sauvegarde une base MySQL ?
@@ -71,14 +47,6 @@ A) `mysql-backup`
 B) `mysqldump`
 C) `mysql-export`
 D) `backup-mysql`
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) `mysqldump`**
-
-`mysqldump -u root -p database > backup.sql`.
 
 ---
 
@@ -93,14 +61,6 @@ D) 1433
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : A) 3306**
-
-5432 = PostgreSQL, 27017 = MongoDB.
-
----
-
 # Question 6
 
 Qu'est-ce qu'un reverse proxy ?
@@ -109,14 +69,6 @@ A) Un proxy qui inverse les données
 B) Un serveur intermédiaire devant les applications
 C) Un type de pare-feu
 D) Un outil de sauvegarde
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) Un serveur intermédiaire devant les applications**
-
-Nginx est souvent utilisé comme reverse proxy.
 
 ---
 
@@ -131,14 +83,6 @@ D) A et C sont corrects
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : A) Let's Encrypt (Certbot)**
-
-Gratuit, automatisé, renouvelé automatiquement.
-
----
-
 # Question 8
 
 Quel est le protocole pour transférer des fichiers de façon sécurisée ?
@@ -147,14 +91,6 @@ A) FTP
 B) HTTP
 C) SCP/SFTP
 D) Telnet
-
----
-
-# Réponse 8
-
-**Bonne réponse : C) SCP/SFTP**
-
-Basés sur SSH, donc chiffrés.
 
 ---
 
@@ -169,14 +105,6 @@ D) Un serveur web
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : B) Une plateforme de conteneurisation**
-
-Permet d'isoler les applications dans des conteneurs.
-
----
-
 # Question 10
 
 Comment démarrer tous les services d'un docker-compose ?
@@ -188,11 +116,41 @@ D) `docker run`
 
 ---
 
-# Réponse 10
+# Réponses du Module 9 📝
 
-**Bonne réponse : B) `docker-compose up`**
+**Réponse 1 :** B) Nginx
+- Architecture asynchrone, faible consommation mémoire
 
-`-d` pour lancer en arrière-plan.
+**Réponse 2 :** B) `/etc/nginx/`
+- `/etc/nginx/nginx.conf` est le fichier principal
+
+**Réponse 3 :** B) `nginx -t`
+- Toujours tester avant de recharger !
+
+**Réponse 4 :** B) `mysqldump`
+- `mysqldump -u root -p database > backup.sql`
+
+**Réponse 5 :** A) 3306
+- 5432 = PostgreSQL, 27017 = MongoDB
+
+---
+
+# Réponses du Module 9 (suite) 📝
+
+**Réponse 6 :** B) Un serveur intermédiaire devant les applications
+- Nginx est souvent utilisé comme reverse proxy
+
+**Réponse 7 :** A) Let's Encrypt (Certbot)
+- Gratuit, automatisé, renouvelé automatiquement
+
+**Réponse 8 :** C) SCP/SFTP
+- Basés sur SSH, donc chiffrés
+
+**Réponse 9 :** B) Une plateforme de conteneurisation
+- Permet d'isoler les applications dans des conteneurs
+
+**Réponse 10 :** B) `docker-compose up`
+- `-d` pour lancer en arrière-plan
 
 ---
 
@@ -206,4 +164,3 @@ Comptez vos bonnes réponses :
 - **< 5** : Relire le module 9
 
 ---
-

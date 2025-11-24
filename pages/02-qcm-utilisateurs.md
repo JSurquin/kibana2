@@ -17,14 +17,6 @@ D) `/etc/accounts`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) `/etc/passwd`**
-
-`/etc/passwd` contient les informations utilisateurs (sauf les mots de passe qui sont dans `/etc/shadow`).
-
----
-
 # Question 2
 
 Quelle commande crée un nouvel utilisateur ?
@@ -33,14 +25,6 @@ A) `adduser` ou `useradd`
 B) `newuser`
 C) `createuser`
 D) `mkuser`
-
----
-
-# Réponse 2
-
-**Bonne réponse : A) `adduser` ou `useradd`**
-
-`useradd` est bas niveau, `adduser` est interactif (Debian/Ubuntu).
 
 ---
 
@@ -55,14 +39,6 @@ D) r--r--r--
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : A) rw-r--r--**
-
-6 = rw- (propriétaire), 4 = r-- (groupe), 4 = r-- (autres).
-
----
-
 # Question 4
 
 Quelle option de `usermod` ajoute un utilisateur à un groupe ?
@@ -71,14 +47,6 @@ A) `-g`
 B) `-G`
 C) `-aG`
 D) `-a`
-
----
-
-# Réponse 4
-
-**Bonne réponse : C) `-aG`**
-
-`-aG` (append Group) ajoute sans supprimer les groupes existants.
 
 ---
 
@@ -93,14 +61,6 @@ D) Change de groupe
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) Exécute une commande avec les privilèges root**
-
-`sudo` permet d'élever les privilèges temporairement.
-
----
-
 # Question 6
 
 Quel fichier configure les droits sudo ?
@@ -109,14 +69,6 @@ A) `/etc/sudo`
 B) `/etc/sudoers`
 C) `/etc/sudo.conf`
 D) `/etc/security/sudo`
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) `/etc/sudoers`**
-
-À éditer UNIQUEMENT avec `visudo`.
 
 ---
 
@@ -131,14 +83,6 @@ D) Change le propriétaire
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : A) Définit les permissions par défaut des nouveaux fichiers**
-
-umask soustrait des permissions : 666 - 022 = 644 pour les fichiers.
-
----
-
 # Question 8
 
 Comment changer le groupe d'un fichier ?
@@ -147,14 +91,6 @@ A) `chmod`
 B) `chown`
 C) `chgrp`
 D) B et C sont corrects
-
----
-
-# Réponse 8
-
-**Bonne réponse : D) B et C sont corrects**
-
-`chgrp groupe fichier` ou `chown :groupe fichier`.
 
 ---
 
@@ -169,14 +105,6 @@ D) Liste les utilisateurs
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : B) Change le mot de passe**
-
-`passwd` change votre mot de passe, `sudo passwd user` change celui d'un autre utilisateur.
-
----
-
 # Question 10
 
 Quelle commande liste les groupes d'un utilisateur ?
@@ -188,11 +116,41 @@ D) A et B sont corrects
 
 ---
 
-# Réponse 10
+# Réponses du Module 2 📝
 
-**Bonne réponse : D) A et B sont corrects**
+**Réponse 1 :** B) `/etc/passwd`
+- `/etc/passwd` contient les informations utilisateurs (sauf les mots de passe qui sont dans `/etc/shadow`)
 
-`groups` et `id` affichent les appartenances aux groupes.
+**Réponse 2 :** A) `adduser` ou `useradd`
+- `useradd` est bas niveau, `adduser` est interactif (Debian/Ubuntu)
+
+**Réponse 3 :** A) rw-r--r--
+- 6 = rw- (propriétaire), 4 = r-- (groupe), 4 = r-- (autres)
+
+**Réponse 4 :** C) `-aG`
+- `-aG` (append Group) ajoute sans supprimer les groupes existants
+
+**Réponse 5 :** B) Exécute une commande avec les privilèges root
+- `sudo` permet d'élever les privilèges temporairement
+
+---
+
+# Réponses du Module 2 (suite) 📝
+
+**Réponse 6 :** B) `/etc/sudoers`
+- À éditer UNIQUEMENT avec `visudo`
+
+**Réponse 7 :** A) Définit les permissions par défaut des nouveaux fichiers
+- umask soustrait des permissions : 666 - 022 = 644 pour les fichiers
+
+**Réponse 8 :** D) B et C sont corrects
+- `chgrp groupe fichier` ou `chown :groupe fichier`
+
+**Réponse 9 :** B) Change le mot de passe
+- `passwd` change votre mot de passe, `sudo passwd user` change celui d'un autre utilisateur
+
+**Réponse 10 :** D) A et B sont corrects
+- `groups` et `id` affichent les appartenances aux groupes
 
 ---
 

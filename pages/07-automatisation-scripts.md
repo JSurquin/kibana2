@@ -151,6 +151,38 @@ echo "PID : $$"              # PID du script
 echo "Dernier code retour : $?"  # Code retour dernière commande
 ```
 
+**Analogie : une fonction en cuisine** 👨‍🍳
+
+Imaginez une recette (script) avec des ingrédients (arguments) :
+- **$0** : le nom de la recette ("Tarte aux pommes")
+- **$1, $2** : les ingrédients ("pommes", "sucre")
+- **$#** : nombre d'ingrédients (2)
+- **$$** : le numéro de la cuisine (PID unique)
+- **$?** : "est-ce que ça a réussi ?" (0=succès, autre=échec)
+
+**Exemple concret :**
+
+```bash
+#!/bin/bash
+# Script : backup.sh
+
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <source> <destination>"
+    echo "Exemple: $0 /home/user /backup"
+    exit 1
+fi
+
+echo "Sauvegarde de $1 vers $2..."
+tar -czf "$2/backup-$(date +%Y%m%d).tar.gz" "$1"
+
+if [ $? -eq 0 ]; then
+    echo "✅ Sauvegarde réussie !"
+else
+    echo "❌ Erreur lors de la sauvegarde"
+    exit 1
+fi
+```
+
 ---
 
 # Exemple avec arguments 📋

@@ -90,8 +90,12 @@ routeAlias: 'sommaire'
 <Link to="securite-systeme">🔐 8. Sécurité système</Link>
 <Link to="services-serveurs">☁️ 9. Services serveurs</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
-<Link to="exercices-pratiques">🎯 Exercices pratiques</Link>
 </div>
+
+**Note :** Chaque module contient :
+- 📖 Cours théorique
+- ✅ QCM de validation
+- 🎯 Exercices pratiques
 
 ---
 layout: two-cols
@@ -173,11 +177,19 @@ src: './pages/01-qcm-introduction.md'
 ---
 
 ---
+src: './pages/01-exercices-introduction.md'
+---
+
+---
 src: './pages/02-gestion-systeme-utilisateurs.md'
 ---
 
 ---
 src: './pages/02-qcm-utilisateurs.md'
+---
+
+---
+src: './pages/02-exercices-utilisateurs.md'
 ---
 
 ---
@@ -189,11 +201,19 @@ src: './pages/03-qcm-processus.md'
 ---
 
 ---
+src: './pages/03-exercices-processus.md'
+---
+
+---
 src: './pages/04-stockage-systeme-fichiers.md'
 ---
 
 ---
 src: './pages/04-qcm-stockage.md'
+---
+
+---
+src: './pages/04-exercices-stockage.md'
 ---
 
 ---
@@ -205,11 +225,19 @@ src: './pages/05-qcm-reseau.md'
 ---
 
 ---
+src: './pages/05-exercices-reseau.md'
+---
+
+---
 src: './pages/06-paquets-maintenance.md'
 ---
 
 ---
 src: './pages/06-qcm-paquets.md'
+---
+
+---
+src: './pages/06-exercices-paquets.md'
 ---
 
 ---
@@ -221,11 +249,19 @@ src: './pages/07-qcm-automatisation.md'
 ---
 
 ---
+src: './pages/07-exercices-automatisation.md'
+---
+
+---
 src: './pages/08-securite-systeme.md'
 ---
 
 ---
 src: './pages/08-qcm-securite.md'
+---
+
+---
+src: './pages/08-exercices-securite.md'
 ---
 
 ---
@@ -237,9 +273,9 @@ src: './pages/09-qcm-serveurs.md'
 ---
 
 ---
-src: './pages/10-qcm-final.md'
+src: './pages/09-exercices-serveurs.md'
 ---
 
 ---
-src: './pages/11-exercices-pratiques.md'
+src: './pages/10-qcm-final.md'
 ---
