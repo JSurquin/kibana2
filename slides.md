@@ -75,20 +75,21 @@ routeAlias: 'sommaire'
 <br>
 
 <div class="flex flex-col gap-2">
-<Link to="introduction-unix-linux">🧱 1. Introduction et rappels Unix/Linux</Link>
-<Link to="gestion-systeme-utilisateurs">⚙️ 2. Gestion du système et des utilisateurs</Link>
-<Link to="processus-services">💾 3. Gestion des processus et des services</Link>
-<Link to="stockage-systeme-fichiers">🧮 4. Gestion du stockage et du système de fichiers</Link>
-<Link to="reseau">📡 5. Réseau</Link>
+<Link to="introduction-unix-linux">🧱 1. Introduction et historique Unix/Linux</Link>
+<Link to="commandes-basiques">🔧 2. Commandes de base essentielles</Link>
+<Link to="paquets-maintenance">📦 3. Gestion des paquets et maintenance</Link>
+<Link to="gestion-systeme-utilisateurs">👥 4. Gestion des utilisateurs et permissions</Link>
+<Link to="stockage-systeme-fichiers">💾 5. Stockage et système de fichiers</Link>
 </div>
 
 ::right::
 
 <div class="flex flex-col gap-2">
-<Link to="paquets-maintenance">🧰 6. Gestion des paquets et maintenance</Link>
-<Link to="automatisation-scripts">📅 7. Automatisation, scripts et tâches planifiées</Link>
-<Link to="securite-systeme">🔐 8. Sécurité système</Link>
-<Link to="services-serveurs">☁️ 9. Services serveurs</Link>
+<Link to="processus-services">⚙️ 6. Gestion des processus et services</Link>
+<Link to="reseau">📡 7. Configuration réseau</Link>
+<Link to="automatisation-scripts">🤖 8. Automatisation et scripts</Link>
+<Link to="securite-systeme">🔐 9. Sécurité système</Link>
+<Link to="services-serveurs">☁️ 10. Services serveurs</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 </div>
 
@@ -106,67 +107,66 @@ routeAlias: 'programme-initiation'
 
 ### Structure pédagogique progressive et complète
 
-**Module 1 - Introduction et rappels**
+**Module 1 - Introduction**
+- Historique Unix, GNU/Linux
+- Philosophie Unix
+- Architecture système
+- Noyau, shell
 
-- Historique Unix, GNU/Linux, distributions
-- Philosophie Unix ("tout est fichier", etc.)
-- Architecture d'un système Linux
-- Noyau, shell, système de fichiers
-- Commandes essentielles de base
+**Module 2 - Commandes de base** 🆕
+- Navigation (cd, ls, pwd)
+- Manipulation fichiers (cp, mv, rm)
+- Recherche (find, grep)
+- Visualisation (cat, less, head, tail)
+- Redirections et pipes
 
-**Module 2 - Gestion système et utilisateurs**
+**Module 3 - Paquets et maintenance**
+- apt/dnf : installation
+- Mise à jour système
+- Gestion dépendances
 
-- Comptes utilisateurs et groupes
-- Permissions, droits, umask, sudoers
-- Gestion des quotas
-- Structure du système de fichiers
+**Module 4 - Utilisateurs et permissions**
+- Comptes et groupes
+- Permissions (chmod, chown)
+- sudo et sudoers
+- Quotas disque
+
+**Module 5 - Stockage**
+- Disques et partitions
+- Montage (mount, fstab)
+- Liens symboliques
+- ACL
 
 ::right::
 
-**Module 3 - Processus et services**
+**Module 6 - Processus et services**
+- PID, signaux
+- nice, kill
+- systemd
+- journalctl
 
-- PID, états des processus
-- Démarrage et arrêt du système
-- systemd et gestion des services
+**Module 7 - Réseau**
+- Configuration IP
+- SSH sécurisé
+- Pare-feu (ufw)
+- Diagnostic (ping, traceroute)
 
-**Module 4 - Stockage et système de fichiers**
+**Module 8 - Automatisation**
+- Scripts Bash
+- Cron et at
+- Logs système
 
-- Disques, partitions, montage
-- Systèmes de fichiers (ext4, xfs, NFS)
-- Permissions étendues (ACL)
-- Gestion de l'espace disque
+**Module 9 - Sécurité**
+- Durcissement SSH
+- fail2ban
+- Audit (auditd)
+- Chiffrement (LUKS)
 
-**Module 5 - Réseau**
-
-- Configuration réseau
-- Diagnostic réseau
-- Gestion du pare-feu
-- SSH et transfert de fichiers
-
-**Module 6 - Paquets et maintenance**
-
-- Systèmes de paquets (apt, dnf)
-- Installation, mise à jour
-- Gestion des dépendances
-
-**Module 7 - Automatisation et scripts**
-
-- Scripts Bash de base
-- Tâches planifiées (cron, at)
-- Supervision et logs
-
-**Module 8 - Sécurité système**
-
-- Sécurité des comptes
-- SELinux/AppArmor
-- Durcissement système
-- Audit et logs de sécurité
-
-**Module 9 - Services serveurs**
-
-- Services de base (Nginx, Apache)
-- Configuration réseau avancée
-- Monitoring basique
+**Module 10 - Services serveurs**
+- Nginx
+- MySQL
+- SSL/TLS
+- Monitoring
 
 ---
 src: './pages/01-introduction-unix-linux.md'
@@ -177,7 +177,27 @@ src: './pages/01-qcm-introduction.md'
 ---
 
 ---
-src: './pages/01-exercices-introduction.md'
+src: './pages/05-commandes-basiques.md'
+---
+
+---
+src: './pages/05-qcm-commandes.md'
+---
+
+---
+src: './pages/05-exercices-commandes.md'
+---
+
+---
+src: './pages/06-paquets-maintenance.md'
+---
+
+---
+src: './pages/06-qcm-paquets.md'
+---
+
+---
+src: './pages/06-exercices-paquets.md'
 ---
 
 ---
@@ -193,18 +213,6 @@ src: './pages/02-exercices-utilisateurs.md'
 ---
 
 ---
-src: './pages/03-processus-services.md'
----
-
----
-src: './pages/03-qcm-processus.md'
----
-
----
-src: './pages/03-exercices-processus.md'
----
-
----
 src: './pages/04-stockage-systeme-fichiers.md'
 ---
 
@@ -217,6 +225,18 @@ src: './pages/04-exercices-stockage.md'
 ---
 
 ---
+src: './pages/03-processus-services.md'
+---
+
+---
+src: './pages/03-qcm-processus.md'
+---
+
+---
+src: './pages/03-exercices-processus.md'
+---
+
+---
 src: './pages/05-reseau.md'
 ---
 
@@ -226,18 +246,6 @@ src: './pages/05-qcm-reseau.md'
 
 ---
 src: './pages/05-exercices-reseau.md'
----
-
----
-src: './pages/06-paquets-maintenance.md'
----
-
----
-src: './pages/06-qcm-paquets.md'
----
-
----
-src: './pages/06-exercices-paquets.md'
 ---
 
 ---

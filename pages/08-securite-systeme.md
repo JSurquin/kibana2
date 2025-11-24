@@ -5,7 +5,7 @@ routeAlias: 'securite-systeme'
 
 <a name="securite-systeme" id="securite-systeme"></a>
 
-# 🔐 Module 8
+# 🔐 Module 9
 ## Sécurité système
 
 ### Protéger et durcir votre système Linux
@@ -1110,7 +1110,7 @@ tar -czf - /home | openssl enc -aes-256-cbc -e > backup.tar.gz.enc
 
 ---
 
-# Récapitulatif du Module 8 ✅
+# Récapitulatif du Module 9 ✅
 
 **Ce que vous avez appris :**
 

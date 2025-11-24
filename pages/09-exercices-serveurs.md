@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 9
+# 🎯 Exercices pratiques - Module 10
 
 **Services serveurs**
 

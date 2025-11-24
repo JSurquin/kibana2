@@ -5,7 +5,7 @@ routeAlias: 'automatisation-scripts'
 
 <a name="automatisation-scripts" id="automatisation-scripts"></a>
 
-# 📅 Module 7
+# 🤖 Module 8
 ## Automatisation, scripts et tâches planifiées
 
 ### Automatiser pour gagner du temps et éviter les erreurs
@@ -1454,7 +1454,7 @@ shellcheck script.sh
 
 ---
 
-# Récapitulatif du Module 7 ✅
+# Récapitulatif du Module 8 ✅
 
 **Ce que vous avez appris :**
 

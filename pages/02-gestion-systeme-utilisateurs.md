@@ -5,7 +5,7 @@ routeAlias: 'gestion-systeme-utilisateurs'
 
 <a name="gestion-systeme-utilisateurs" id="gestion-systeme-utilisateurs"></a>
 
-# ⚙️ Module 2
+# 👥 Module 4
 ## Gestion du système et des utilisateurs
 
 ### Maîtriser les comptes, groupes et permissions
@@ -590,7 +590,7 @@ alice ALL=(ALL:ALL) ALL
 alice ALL=(ALL) NOPASSWD: ALL
 
 # Seulement certaines commandes
-bob ALL=(ALL) /usr/bin/systemctl, /usr/bin/apt
+bob ALL=(ALL) /usr/bin/apt, /bin/mkdir
 
 # Groupe sudo peut tout faire
 %sudo ALL=(ALL:ALL) ALL
@@ -607,8 +607,8 @@ utilisateur HOSTS=(RUN_AS) COMMANDES
 **Exemples détaillés :**
 
 ```
-# Alice peut redémarrer les services
-alice ALL=(ALL) /bin/systemctl restart *
+# Alice peut gérer les fichiers système
+alice ALL=(ALL) /bin/mkdir, /bin/cp, /bin/mv
 
 # Bob peut installer des paquets
 bob ALL=(ALL) /usr/bin/apt install *
@@ -763,7 +763,7 @@ sudo quotaon /
 **Rappel des principaux répertoires :**
 
 `/bin` : binaires essentiels (ls, cat, cp, bash)
-`/sbin` : binaires système (fsck, iptables, reboot)
+`/sbin` : binaires système (fsck, reboot)
 `/usr/bin` : programmes utilisateur
 `/usr/sbin` : programmes admin
 
@@ -979,7 +979,7 @@ sudo systemctl restart sshd
 
 ---
 
-# Récapitulatif du Module 2 ✅
+# Récapitulatif du Module 4 ✅
 
 **Ce que vous avez appris :**
 

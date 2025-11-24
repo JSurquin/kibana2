@@ -3,6 +3,8 @@ layout: intro
 routeAlias: 'commandes-basiques'
 ---
 
+<a name="commandes-basiques" id="commandes-basiques"></a>
+
 # Commandes de base 🔧
 
 ### Les commandes essentielles d'Unix/Linux
@@ -139,6 +141,40 @@ head -n 20 fichier         # 20 premières lignes
 tail fichier               # 10 dernières lignes
 tail -n 20 fichier         # 20 dernières lignes
 tail -f fichier            # Suivre en temps réel
+```
+
+---
+layout: default
+---
+
+# Éditeurs de texte 📝
+
+### Modifier des fichiers en ligne de commande
+
+**nano (débutant-friendly)**
+```bash
+nano fichier.txt              # Ouvrir/créer un fichier
+# Ctrl+O : Sauvegarder
+# Ctrl+X : Quitter
+# Ctrl+K : Couper une ligne
+# Ctrl+U : Coller
+```
+
+**vim/vi (avancé)**
+```bash
+vim fichier.txt               # Ouvrir avec vim
+# i : Mode insertion (pour écrire)
+# Esc : Mode commande
+# :w : Sauvegarder
+# :q : Quitter
+# :wq : Sauvegarder et quitter
+# :q! : Quitter sans sauvegarder
+```
+
+**Édition rapide avec echo**
+```bash
+echo "contenu" > fichier.txt  # Écraser
+echo "ajout" >> fichier.txt   # Ajouter
 ```
 
 ---

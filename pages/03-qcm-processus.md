@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 3 : Processus et services ✅
+# QCM Module 6 : Processus et services ✅
 
 **10 questions sur la gestion des processus et systemd**
 
@@ -116,7 +116,7 @@ D) Un processus sans PID
 
 ---
 
-# Réponses du Module 3 📝
+# Réponses du Module 6 📝
 
 **Réponse 1 :** B) 1
 - Le PID 1 est `systemd` (ou `init` sur les anciens systèmes)
@@ -135,7 +135,7 @@ D) Un processus sans PID
 
 ---
 
-# Réponses du Module 3 (suite) 📝
+# Réponses du Module 6 (suite) 📝
 
 **Réponse 6 :** B) `journalctl -u service`
 - journalctl est l'outil de logs de systemd
@@ -154,7 +154,7 @@ D) Un processus sans PID
 
 ---
 
-# Score du Module 3 📊
+# Score du Module 6 📊
 
 Comptez vos bonnes réponses :
 

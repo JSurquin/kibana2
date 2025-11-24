@@ -5,7 +5,7 @@ routeAlias: 'reseau'
 
 <a name="reseau" id="reseau"></a>
 
-# 📡 Module 5
+# 📡 Module 7
 ## Réseau
 
 ### Configuration, diagnostic et sécurité réseau
@@ -1409,7 +1409,7 @@ ssh -D 1080 utilisateur@serveur
 
 ---
 
-# Récapitulatif du Module 5 ✅
+# Récapitulatif du Module 7 ✅
 
 **Ce que vous avez appris :**
 

@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 4 : Stockage et fichiers ✅
+# QCM Module 5 : Stockage et fichiers ✅
 
 **10 questions sur disques, partitions et systèmes de fichiers**
 
@@ -116,7 +116,7 @@ D) `listdisk`
 
 ---
 
-# Réponses du Module 4 📝
+# Réponses du Module 5 📝
 
 **Réponse 1 :** B) `df`
 - `df` (Disk Free) affiche l'espace par partition. `du` affiche l'usage par répertoire
@@ -135,7 +135,7 @@ D) `listdisk`
 
 ---
 
-# Réponses du Module 4 (suite) 📝
+# Réponses du Module 5 (suite) 📝
 
 **Réponse 6 :** B) Vérifie l'intégrité d'un système de fichiers
 - ⚠️ Ne jamais fsck une partition montée !
@@ -154,7 +154,7 @@ D) `listdisk`
 
 ---
 
-# Score du Module 4 📊
+# Score du Module 5 📊
 
 Comptez vos bonnes réponses :
 

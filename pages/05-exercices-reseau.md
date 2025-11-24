@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 5
+# 🎯 Exercices pratiques - Module 7
 
 **Configuration et diagnostic réseau**
 

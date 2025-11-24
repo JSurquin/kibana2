@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 8 : Sécurité système ✅
+# QCM Module 9 : Sécurité système ✅
 
 **10 questions sur la sécurisation du système**
 
@@ -116,7 +116,7 @@ D) `secure`
 
 ---
 
-# Réponses du Module 8 📝
+# Réponses du Module 9 📝
 
 **Réponse 1 :** B) Un système de contrôle d'accès obligatoire (MAC)
 - SELinux ajoute une couche de sécurité au-delà des permissions Unix
@@ -135,7 +135,7 @@ D) `secure`
 
 ---
 
-# Réponses du Module 8 (suite) 📝
+# Réponses du Module 9 (suite) 📝
 
 **Réponse 6 :** B) Les logs pour détecter des tentatives d'intrusion
 - Bannit les IPs suspectes temporairement
@@ -154,7 +154,7 @@ D) `secure`
 
 ---
 
-# Score du Module 8 📊
+# Score du Module 9 📊
 
 Comptez vos bonnes réponses :
 

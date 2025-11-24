@@ -2,7 +2,7 @@
 
 # QCM Module 1 : Introduction Unix/Linux ✅
 
-**10 questions pour valider vos connaissances**
+**10 questions théoriques sur Unix/Linux**
 
 ---
 
@@ -19,6 +19,28 @@ D) Larry Page et Sergey Brin
 
 # Question 2
 
+Que signifie GNU dans GNU/Linux ?
+
+A) General New Unix
+B) GNU's Not Unix
+C) Global Network Unix
+D) Great Native Unix
+
+---
+
+# Question 3
+
+Quel est le noyau de Linux ?
+
+A) Un programme graphique
+B) Le cœur du système qui gère le matériel
+C) Un éditeur de texte
+D) Un navigateur web
+
+---
+
+# Question 4
+
 Que signifie le principe Unix "tout est fichier" ?
 
 A) Tous les programmes sont stockés dans des fichiers
@@ -28,91 +50,69 @@ D) Il faut tout sauvegarder dans des fichiers
 
 ---
 
-# Question 3
-
-Quelle commande affiche le contenu d'un fichier ?
-
-A) `show`
-B) `display`
-C) `cat`
-D) `view`
-
----
-
-# Question 4
-
-Que fait la commande `cd ..` ?
-
-A) Affiche le répertoire courant
-B) Remonte d'un niveau dans l'arborescence
-C) Crée un nouveau répertoire
-D) Supprime le répertoire courant
-
----
-
 # Question 5
 
-Quel symbole représente le répertoire personnel ?
+Quelle distribution Linux est connue pour sa stabilité en serveur ?
 
-A) `/`
-B) `~`
-C) `@`
-D) `#`
+A) Windows Server
+B) macOS
+C) Debian
+D) MS-DOS
 
 ---
 
 # Question 6
 
-Que fait l'opérateur pipe `|` ?
+Qu'est-ce qu'un shell ?
 
-A) Redirige vers un fichier
-B) Connecte la sortie d'une commande à l'entrée d'une autre
-C) Exécute deux commandes en parallèle
-D) Arrête l'exécution d'une commande
+A) Un type de disque dur
+B) L'interface entre l'utilisateur et le noyau
+C) Un navigateur web
+D) Un éditeur de code
 
 ---
 
 # Question 7
 
-Quelle commande recherche un motif dans un fichier ?
+Quelle est la philosophie Unix principale ?
 
-A) `find`
-B) `search`
-C) `grep`
-D) `locate`
+A) Faire des programmes complexes qui font tout
+B) Faire des programmes simples qui font une chose bien
+C) Toujours utiliser une interface graphique
+D) Éviter la ligne de commande
 
 ---
 
 # Question 8
 
-Que signifie l'option `-l` dans `ls -l` ?
+Quelle entreprise a créé Unix à l'origine ?
 
-A) Lister seulement les liens
-B) Affichage long (détaillé)
-C) Lister les fichiers cachés
-D) Lister récursivement
+A) Microsoft
+B) Apple
+C) AT&T Bell Labs
+D) Google
 
 ---
 
 # Question 9
 
-Quelle commande crée un nouveau répertoire ?
+Qu'est-ce qu'une distribution Linux ?
 
-A) `newdir`
-B) `createdir`
-C) `mkdir`
-D) `makedir`
+A) Un système d'exploitation complet basé sur le noyau Linux
+B) Seulement le noyau Linux
+C) Un type de disque dur
+D) Un langage de programmation
 
 ---
 
 # Question 10
 
-Où se trouve le noyau Linux dans l'architecture système ?
+Quel est l'avantage principal de Linux ?
 
-A) Au-dessus des applications
-B) Entre le matériel et le shell
-C) Dans le shell
-D) Dans les applications
+A) Il coûte très cher
+B) Il est fermé et propriétaire
+C) Il est open source et gratuit
+D) Il ne fonctionne que sur Apple
 
 ---
 
@@ -121,36 +121,36 @@ D) Dans les applications
 **Réponse 1 :** B) Ken Thompson et Dennis Ritchie
 - Unix a été créé en 1969 aux laboratoires Bell (AT&T)
 
-**Réponse 2 :** B) Les périphériques et processus sont accessibles comme des fichiers
+**Réponse 2 :** B) GNU's Not Unix
+- C'est un acronyme récursif créé par Richard Stallman
+
+**Réponse 3 :** B) Le cœur du système qui gère le matériel
+- Le noyau (kernel) est l'interface entre le matériel et les logiciels
+
+**Réponse 4 :** B) Les périphériques et processus sont accessibles comme des fichiers
 - Unix utilise l'abstraction de fichier pour accéder aux périphériques (`/dev`), aux processus (`/proc`), etc.
 
-**Réponse 3 :** C) `cat`
-- `cat` (concatenate) affiche le contenu d'un ou plusieurs fichiers
-
-**Réponse 4 :** B) Remonte d'un niveau dans l'arborescence
-- `..` représente le répertoire parent
-
-**Réponse 5 :** B) `~`
-- `~` est un raccourci pour `/home/utilisateur`
+**Réponse 5 :** C) Debian
+- Debian est réputée pour sa stabilité, notamment en environnement serveur
 
 ---
 
 # Réponses du Module 1 (suite) 📝
 
-**Réponse 6 :** B) Connecte la sortie d'une commande à l'entrée d'une autre
-- Le pipe permet de chaîner des commandes : `cat file.txt | grep "motif"`
+**Réponse 6 :** B) L'interface entre l'utilisateur et le noyau
+- Le shell (bash, zsh, etc.) interprète les commandes
 
-**Réponse 7 :** C) `grep`
-- `grep` recherche des patterns dans des fichiers texte
+**Réponse 7 :** B) Faire des programmes simples qui font une chose bien
+- Philosophie Unix : programmes modulaires et combinables avec pipes
 
-**Réponse 8 :** B) Affichage long (détaillé)
-- `-l` affiche les permissions, propriétaire, taille, date, etc.
+**Réponse 8 :** C) AT&T Bell Labs
+- Unix a été développé aux laboratoires Bell en 1969
 
-**Réponse 9 :** C) `mkdir`
-- `mkdir` (make directory) crée un nouveau répertoire
+**Réponse 9 :** A) Un système d'exploitation complet basé sur le noyau Linux
+- Une distribution inclut le noyau + GNU + outils + gestionnaire de paquets
 
-**Réponse 10 :** B) Entre le matériel et le shell
-- Architecture : Matériel → Noyau → Shell → Applications
+**Réponse 10 :** C) Il est open source et gratuit
+- L'open source permet la transparence, la sécurité et la liberté
 
 ---
 

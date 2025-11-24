@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 3
+# 🎯 Exercices pratiques - Module 6
 
 **Gestion des processus et des services**
 

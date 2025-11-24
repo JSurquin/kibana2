@@ -5,7 +5,7 @@ routeAlias: 'services-serveurs'
 
 <a name="services-serveurs" id="services-serveurs"></a>
 
-# ☁️ Module 9
+# ☁️ Module 10
 ## Services serveurs
 
 ### Installer et gérer des services courants
@@ -1126,7 +1126,7 @@ docker-compose up -d --build
 
 ---
 
-# Récapitulatif du Module 9 ✅
+# Récapitulatif du Module 10 ✅
 
 **Ce que vous avez appris :**
 

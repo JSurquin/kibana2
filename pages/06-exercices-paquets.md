@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 6
+# 🎯 Exercices pratiques - Module 3
 
 **Gestion des paquets et maintenance**
 

@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 7 : Automatisation et scripts ✅
+# QCM Module 8 : Automatisation et scripts ✅
 
 **10 questions sur le scripting et les tâches planifiées**
 
@@ -116,7 +116,7 @@ D) `schedule`
 
 ---
 
-# Réponses du Module 7 📝
+# Réponses du Module 8 📝
 
 **Réponse 1 :** B) `#!/bin/bash`
 - Le shebang indique l'interpréteur à utiliser
@@ -135,7 +135,7 @@ D) `schedule`
 
 ---
 
-# Réponses du Module 7 (suite) 📝
+# Réponses du Module 8 (suite) 📝
 
 **Réponse 6 :** B) À 2h du matin tous les jours
 - Format : minute heure jour mois jour_semaine
@@ -154,7 +154,7 @@ D) `schedule`
 
 ---
 
-# Score du Module 7 📊
+# Score du Module 8 📊
 
 Comptez vos bonnes réponses :
 

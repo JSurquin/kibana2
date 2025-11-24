@@ -5,7 +5,7 @@ routeAlias: 'processus-services'
 
 <a name="processus-services" id="processus-services"></a>
 
-# 💾 Module 3
+# ⚙️ Module 6
 ## Gestion des processus et des services
 
 ### Maîtriser l'exécution et les services système
@@ -1218,7 +1218,7 @@ journalctl -p err -n 50
 
 ---
 
-# Récapitulatif du Module 3 ✅
+# Récapitulatif du Module 6 ✅
 
 **Ce que vous avez appris :**
 

@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 5 : Réseau ✅
+# QCM Module 7 : Réseau ✅
 
 **10 questions sur la configuration et le diagnostic réseau**
 
@@ -116,7 +116,7 @@ D) `lookup`
 
 ---
 
-# Réponses du Module 5 📝
+# Réponses du Module 7 📝
 
 **Réponse 1 :** B) `127.0.0.1`
 - Toute la plage 127.0.0.0/8 est réservée au loopback
@@ -135,7 +135,7 @@ D) `lookup`
 
 ---
 
-# Réponses du Module 5 (suite) 📝
+# Réponses du Module 7 (suite) 📝
 
 **Réponse 6 :** B) `ssh-keygen`
 - `ssh-keygen -t ed25519` est recommandé en 2025
@@ -154,7 +154,7 @@ D) `lookup`
 
 ---
 
-# Score du Module 5 📊
+# Score du Module 7 📊
 
 Comptez vos bonnes réponses :
 

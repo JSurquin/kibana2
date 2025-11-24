@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 9 : Services serveurs ✅
+# QCM Module 10 : Services serveurs ✅
 
 **10 questions sur les services et serveurs**
 
@@ -116,7 +116,7 @@ D) `docker run`
 
 ---
 
-# Réponses du Module 9 📝
+# Réponses du Module 10 📝
 
 **Réponse 1 :** B) Nginx
 - Architecture asynchrone, faible consommation mémoire
@@ -135,7 +135,7 @@ D) `docker run`
 
 ---
 
-# Réponses du Module 9 (suite) 📝
+# Réponses du Module 10 (suite) 📝
 
 **Réponse 6 :** B) Un serveur intermédiaire devant les applications
 - Nginx est souvent utilisé comme reverse proxy
@@ -154,7 +154,7 @@ D) `docker run`
 
 ---
 
-# Score du Module 9 📊
+# Score du Module 10 📊
 
 Comptez vos bonnes réponses :
 

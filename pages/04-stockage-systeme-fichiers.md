@@ -5,7 +5,7 @@ routeAlias: 'stockage-systeme-fichiers'
 
 <a name="stockage-systeme-fichiers" id="stockage-systeme-fichiers"></a>
 
-# 🧮 Module 4
+# 💾 Module 5
 ## Gestion du stockage et du système de fichiers
 
 ### Maîtriser disques, partitions et systèmes de fichiers
@@ -1041,7 +1041,7 @@ sudo nano /etc/exports
 
 # Appliquer
 sudo exportfs -a
-sudo systemctl restart nfs-kernel-server
+# Note: Le redémarrage du service sera vu dans le Module 6
 ```
 
 ---
@@ -1210,7 +1210,7 @@ UUID=xxx  /home  ext4  defaults,relatime  0  2
 
 ---
 
-# Récapitulatif du Module 4 ✅
+# Récapitulatif du Module 5 ✅
 
 **Ce que vous avez appris :**
 
@@ -1232,8 +1232,8 @@ UUID=xxx  /home  ext4  defaults,relatime  0  2
 **Module 5 : Réseau**
 
 - Configuration réseau (ip, nmcli)
-- Diagnostic réseau (ping, netstat, ss, traceroute)
-- Gestion du pare-feu (ufw, firewalld, iptables)
+- Diagnostic réseau (ping, traceroute)
+- Gestion du pare-feu (sera vu dans Module 7)
 - SSH et transfert de fichiers sécurisé
 - Résolution DNS
 - Configuration d'interfaces

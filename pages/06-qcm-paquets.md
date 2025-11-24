@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 6 : Paquets et maintenance ✅
+# QCM Module 3 : Paquets et maintenance ✅
 
 **10 questions sur les gestionnaires de paquets**
 
@@ -116,7 +116,7 @@ D) Un éditeur de texte
 
 ---
 
-# Réponses du Module 6 📝
+# Réponses du Module 3 📝
 
 **Réponse 1 :** C) `apt`
 - apt = Advanced Package Tool (Debian/Ubuntu)
@@ -135,7 +135,7 @@ D) Un éditeur de texte
 
 ---
 
-# Réponses du Module 6 (suite) 📝
+# Réponses du Module 3 (suite) 📝
 
 **Réponse 6 :** D) A et B (dnf remplace yum)
 - `dnf` est le successeur moderne de `yum`
@@ -154,7 +154,7 @@ D) Un éditeur de texte
 
 ---
 
-# Score du Module 6 📊
+# Score du Module 3 📊
 
 Comptez vos bonnes réponses :
 

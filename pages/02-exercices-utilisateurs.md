@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 2
+# 🎯 Exercices pratiques - Module 4
 
 **Gestion utilisateurs, groupes et permissions**
 
@@ -217,8 +217,7 @@ sudo chmod 440 /etc/sudoers.d/sysadmin
 # En tant qu'admin1
 sudo -u admin1 sudo apt update
 
-# En tant que dev1 (seulement nginx)
-sudo -u dev1 sudo systemctl restart nginx
+# En tant que dev1 (devrait échouer)
 sudo -u dev1 sudo apt update  # → Devrait échouer
 
 # 5. Voir les logs

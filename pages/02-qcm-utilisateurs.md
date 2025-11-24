@@ -1,6 +1,6 @@
 ---
 
-# QCM Module 2 : Gestion utilisateurs ✅
+# QCM Module 4 : Gestion utilisateurs ✅
 
 **10 questions sur les utilisateurs, groupes et permissions**
 
@@ -116,7 +116,7 @@ D) A et B sont corrects
 
 ---
 
-# Réponses du Module 2 📝
+# Réponses du Module 4 📝
 
 **Réponse 1 :** B) `/etc/passwd`
 - `/etc/passwd` contient les informations utilisateurs (sauf les mots de passe qui sont dans `/etc/shadow`)
@@ -135,7 +135,7 @@ D) A et B sont corrects
 
 ---
 
-# Réponses du Module 2 (suite) 📝
+# Réponses du Module 4 (suite) 📝
 
 **Réponse 6 :** B) `/etc/sudoers`
 - À éditer UNIQUEMENT avec `visudo`
@@ -154,7 +154,7 @@ D) A et B sont corrects
 
 ---
 
-# Score du Module 2 📊
+# Score du Module 4 📊
 
 Comptez vos bonnes réponses :
 

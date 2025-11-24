@@ -5,7 +5,7 @@ routeAlias: 'paquets-maintenance'
 
 <a name="paquets-maintenance" id="paquets-maintenance"></a>
 
-# 🧰 Module 6
+# 📦 Module 3
 ## Gestion des paquets et maintenance
 
 ### Installation, mise à jour et maintenance des logiciels
@@ -1099,7 +1099,7 @@ sudo systemctl enable --now docker
 
 ---
 
-# Récapitulatif du Module 6 ✅
+# Récapitulatif du Module 3 ✅
 
 **Ce que vous avez appris :**
 

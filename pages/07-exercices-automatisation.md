@@ -1,6 +1,6 @@
 ---
 
-# 🎯 Exercices pratiques - Module 7
+# 🎯 Exercices pratiques - Module 8
 
 **Automatisation, scripts et tâches planifiées**
 
