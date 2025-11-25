@@ -1131,13 +1131,21 @@ docker-compose up -d --build
 **Ce que vous avez appris :**
 
 ✅ Serveurs web (Nginx, Apache)
+
 ✅ Virtual hosts et HTTPS
+
 ✅ Bases de données (MySQL, PostgreSQL)
+
 ✅ Serveur DNS (BIND, dnsmasq)
+
 ✅ Serveurs mail, FTP
+
 ✅ Monitoring (Netdata, Prometheus, Grafana)
+
 ✅ Haute disponibilité et load balancing
+
 ✅ Docker et containerisation
+
 ✅ Bonnes pratiques de gestion de serveurs
 
 ---
@@ -1147,12 +1155,19 @@ docker-compose up -d --build
 **Vous avez complété les 9 modules de la formation Unix/Linux - Initiation !**
 
 **Compétences acquises :**
+
 ✅ Maîtrise des fondamentaux Unix/Linux
+
 ✅ Gestion des utilisateurs et permissions
+
 ✅ Administration système (processus, services, stockage)
+
 ✅ Configuration réseau
+
 ✅ Automatisation et scripting
+
 ✅ Sécurité système
+
 ✅ Gestion de services serveurs
 
 **Prochaines étapes :**

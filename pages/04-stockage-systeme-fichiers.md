@@ -1215,14 +1215,23 @@ UUID=xxx  /home  ext4  defaults,relatime  0  2
 **Ce que vous avez appris :**
 
 ✅ Nomenclature des disques et partitions
+
 ✅ Partitionnement (fdisk, gdisk, parted)
+
 ✅ Systèmes de fichiers (ext4, xfs, btrfs, NFS)
+
 ✅ Montage et /etc/fstab
+
 ✅ Swap et swappiness
+
 ✅ Liens symboliques et durs
+
 ✅ ACL (permissions étendues)
+
 ✅ LVM pour la gestion flexible
+
 ✅ RAID pour la redondance
+
 ✅ Gestion de l'espace disque (df, du, ncdu)
 
 ---

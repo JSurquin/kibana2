@@ -1386,11 +1386,17 @@ D) Partager le mot de passe root
 **Vous avez complété la formation Unix/Linux - Initiation !**
 
 **Compétences acquises :**
+
 ✅ Utilisation de la ligne de commande
+
 ✅ Administration système
+
 ✅ Gestion réseau
+
 ✅ Scripting et automatisation
+
 ✅ Sécurité
+
 ✅ Services serveurs
 
 **Prochaines étapes :**

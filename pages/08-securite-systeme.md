@@ -70,10 +70,15 @@ routeAlias: 'securite-systeme'
 **Rappels des bonnes pratiques :**
 
 ✅ Ne jamais utiliser root directement
+
 ✅ Désactiver le login root en SSH
+
 ✅ Utiliser sudo avec parcimonie
+
 ✅ Politique de mots de passe forte
+
 ✅ Supprimer les comptes inutilisés
+
 ✅ Auditer régulièrement les comptes
 
 ---
@@ -1115,13 +1120,21 @@ tar -czf - /home | openssl enc -aes-256-cbc -e > backup.tar.gz.enc
 **Ce que vous avez appris :**
 
 ✅ Sécurisation des comptes (PAM, sudo, fail2ban)
+
 ✅ SELinux et AppArmor (MAC)
+
 ✅ Durcissement SSH et 2FA
+
 ✅ Audit système (auditd, AIDE)
+
 ✅ Chiffrement (LUKS, ecryptfs)
+
 ✅ Pare-feu et durcissement réseau
+
 ✅ Détection d'intrusion (rkhunter, chkrootkit)
+
 ✅ Kernel hardening (sysctl)
+
 ✅ Bonnes pratiques et checklist
 
 ---

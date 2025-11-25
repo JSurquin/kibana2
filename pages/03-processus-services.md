@@ -1223,14 +1223,23 @@ journalctl -p err -n 50
 **Ce que vous avez appris :**
 
 ✅ Anatomie et états des processus (PID, PPID, états)
+
 ✅ Gestion des processus (ps, top, htop, kill)
+
 ✅ Signaux Unix (SIGTERM, SIGKILL, SIGHUP, etc.)
+
 ✅ Priorités (nice, renice)
+
 ✅ Jobs et arrière-plan (fg, bg, nohup)
+
 ✅ systemd et gestion des services
+
 ✅ Création de services personnalisés
+
 ✅ Logs avec journalctl
+
 ✅ Démarrage et arrêt du système
+
 ✅ Limites de ressources (ulimit, cgroups)
 
 ---

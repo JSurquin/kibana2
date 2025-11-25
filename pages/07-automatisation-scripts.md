@@ -1459,13 +1459,21 @@ shellcheck script.sh
 **Ce que vous avez appris :**
 
 ✅ Bases du shell scripting (variables, conditions, boucles)
+
 ✅ Fonctions et tableaux
+
 ✅ Gestion des erreurs
+
 ✅ cron pour tâches récurrentes
+
 ✅ at pour tâches ponctuelles
+
 ✅ systemd timers (alternative moderne)
+
 ✅ Gestion des logs (journalctl, logrotate)
+
 ✅ Alertes et notifications
+
 ✅ Bonnes pratiques de scripting
 
 ---

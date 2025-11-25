@@ -213,9 +213,13 @@ sudo passwd -u alice
 **Bonnes pratiques :**
 
 ✅ Au moins 12 caractères
+
 ✅ Mélange majuscules/minuscules
+
 ✅ Chiffres et caractères spéciaux
+
 ✅ Pas de mots du dictionnaire
+
 ✅ Pas d'informations personnelles
 
 **Outils :**
@@ -984,12 +988,19 @@ sudo systemctl restart sshd
 **Ce que vous avez appris :**
 
 ✅ Gestion des utilisateurs (useradd, usermod, userdel)
+
 ✅ Gestion des groupes (groupadd, groupmod, gpasswd)
+
 ✅ Fichiers /etc/passwd, /etc/shadow, /etc/group
+
 ✅ Permissions Unix (chmod, chown, umask)
+
 ✅ Sudo et élévation de privilèges
+
 ✅ Quotas disque
+
 ✅ Structure détaillée du système de fichiers
+
 ✅ Bonnes pratiques de sécurité
 
 ---

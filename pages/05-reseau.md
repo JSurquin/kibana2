@@ -1414,12 +1414,19 @@ ssh -D 1080 utilisateur@serveur
 **Ce que vous avez appris :**
 
 ✅ Concepts réseau (IP, masque, gateway, DNS)
+
 ✅ Configuration réseau (ip, nmcli, Netplan)
+
 ✅ Diagnostic (ping, traceroute, dig, ss)
+
 ✅ Pare-feu (iptables, ufw, firewalld)
+
 ✅ SSH et clés SSH
+
 ✅ Transfert de fichiers (scp, rsync, sftp)
+
 ✅ Tunnels SSH
+
 ✅ Dépannage réseau
 
 ---
