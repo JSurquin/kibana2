@@ -99,13 +99,15 @@ routeAlias: 'sommaire'
 - 🎯 Exercices pratiques
 
 ---
-layout: default
+layout: two-cols
 routeAlias: 'programme-initiation'
 ---
 
 ## PROGRAMME INITIATION UNIX/LINUX 📅
 
 ### Structure pédagogique progressive et complète (1/2)
+
+<small>
 
 **Module 1 - Introduction**
 - Historique Unix, GNU/Linux
@@ -119,6 +121,12 @@ routeAlias: 'programme-initiation'
 - Recherche (find, grep)
 - Visualisation (cat, less, head, tail)
 - Redirections et pipes
+
+</small>
+
+::right::
+
+<small>
 
 **Module 3 - Paquets et maintenance**
 - apt/dnf : installation
@@ -137,11 +145,17 @@ routeAlias: 'programme-initiation'
 - Liens symboliques
 - ACL
 
+</small>
+
+---
+layout: two-cols
 ---
 
 ## PROGRAMME INITIATION UNIX/LINUX 📅
 
 ### Structure pédagogique progressive et complète (2/2)
+
+<small>
 
 **Module 6 - Processus et services**
 - PID, signaux
@@ -160,6 +174,12 @@ routeAlias: 'programme-initiation'
 - Cron et at
 - Logs système
 
+</small>
+
+::right::
+
+<small>
+
 **Module 9 - Sécurité**
 - Durcissement SSH
 - fail2ban
@@ -171,6 +191,8 @@ routeAlias: 'programme-initiation'
 - MySQL
 - SSL/TLS
 - Monitoring
+
+</small>
 
 ---
 src: './pages/01-introduction-unix-linux.md'
