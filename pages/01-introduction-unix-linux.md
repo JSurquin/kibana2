@@ -72,7 +72,7 @@ Aujourd'hui, Unix et ses descendants sont partout :
 # GNU + Linux = GNU/Linux 🔗
 
 ```mermaid
-graph TB
+graph LR
     A["Applications utilisateur<br/>Firefox, LibreOffice, etc."]
     B["Outils GNU<br/>bash, gcc, coreutils, etc."]
     C["Noyau Linux<br/>gestion materiel, processus"]

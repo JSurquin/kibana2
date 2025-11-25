@@ -99,13 +99,13 @@ routeAlias: 'sommaire'
 - 🎯 Exercices pratiques
 
 ---
-layout: two-cols
+layout: default
 routeAlias: 'programme-initiation'
 ---
 
 ## PROGRAMME INITIATION UNIX/LINUX 📅
 
-### Structure pédagogique progressive et complète
+### Structure pédagogique progressive et complète (1/2)
 
 **Module 1 - Introduction**
 - Historique Unix, GNU/Linux
@@ -137,7 +137,11 @@ routeAlias: 'programme-initiation'
 - Liens symboliques
 - ACL
 
-::right::
+---
+
+## PROGRAMME INITIATION UNIX/LINUX 📅
+
+### Structure pédagogique progressive et complète (2/2)
 
 **Module 6 - Processus et services**
 - PID, signaux
