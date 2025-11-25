@@ -70,8 +70,6 @@ routeAlias: 'sommaire'
 
 # SOMMAIRE UNIX/LINUX - INITIATION 📜
 
-### Formation pratique complète et progressive
-
 <br>
 
 <div class="flex flex-col gap-2">
@@ -104,8 +102,6 @@ routeAlias: 'programme-initiation'
 ---
 
 ## PROGRAMME INITIATION UNIX/LINUX 📅
-
-### Structure pédagogique progressive et complète (1/2)
 
 <small>
 
