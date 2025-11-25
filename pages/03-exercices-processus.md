@@ -387,5 +387,3 @@ echo "============================" | tee -a $LOG_FILE
 - `systemd-analyze` pour le boot
 - `journalctl` pour l'historique
 
----
-
