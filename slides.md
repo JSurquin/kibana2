@@ -101,7 +101,7 @@ layout: two-cols
 routeAlias: 'programme-initiation'
 ---
 
-## PROGRAMME INITIATION UNIX/LINUX 📅
+### PROGRAMME INITIATION UNIX/LINUX 📅
 
 <small>
 
@@ -147,9 +147,7 @@ routeAlias: 'programme-initiation'
 layout: two-cols
 ---
 
-## PROGRAMME INITIATION UNIX/LINUX 📅
-
-### Structure pédagogique progressive et complète (2/2)
+### PROGRAMME INITIATION UNIX/LINUX 📅
 
 <small>
 
