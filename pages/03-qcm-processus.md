@@ -11,8 +11,11 @@
 Quel est le PID du premier processus système ?
 
 A) 0
+
 B) 1
+
 C) 10
+
 D) 100
 
 ---
@@ -22,8 +25,11 @@ D) 100
 Quelle commande affiche les processus en temps réel ?
 
 A) `ps`
+
 B) `top`
+
 C) `pgrep`
+
 D) `htop`
 
 ---
@@ -33,8 +39,11 @@ D) `htop`
 Quel signal envoie `kill` par défaut ?
 
 A) SIGKILL (9)
+
 B) SIGTERM (15)
+
 C) SIGHUP (1)
+
 D) SIGINT (2)
 
 ---
@@ -44,8 +53,11 @@ D) SIGINT (2)
 Comment démarrer un service avec systemd ?
 
 A) `systemctl start service`
+
 B) `service start`
+
 C) `start service`
+
 D) `systemd start service`
 
 ---
@@ -55,8 +67,11 @@ D) `systemd start service`
 Quelle est la différence entre `start` et `enable` ?
 
 A) Aucune
+
 B) `start` démarre maintenant, `enable` au boot
+
 C) `enable` démarre maintenant, `start` au boot
+
 D) Les deux font la même chose
 
 ---
@@ -66,8 +81,11 @@ D) Les deux font la même chose
 Où voir les logs d'un service systemd ?
 
 A) `/var/log/service.log`
+
 B) `journalctl -u service`
+
 C) `systemctl logs service`
+
 D) `dmesg`
 
 ---
@@ -77,8 +95,11 @@ D) `dmesg`
 Comment changer la priorité d'un processus ?
 
 A) `priority`
+
 B) `nice` ou `renice`
+
 C) `top`
+
 D) `ps`
 
 ---
@@ -88,8 +109,11 @@ D) `ps`
 Que fait `Ctrl+Z` ?
 
 A) Tue le processus
+
 B) Suspend le processus
+
 C) Quitte le programme
+
 D) Redémarre le processus
 
 ---
@@ -99,8 +123,11 @@ D) Redémarre le processus
 Comment lister les services qui ont échoué ?
 
 A) `systemctl failed`
+
 B) `systemctl --failed`
+
 C) `systemctl list-failed`
+
 D) `journalctl --failed`
 
 ---
@@ -110,8 +137,11 @@ D) `journalctl --failed`
 Qu'est-ce qu'un processus zombie ?
 
 A) Un processus qui consomme beaucoup de CPU
+
 B) Un processus terminé mais non récupéré par le parent
+
 C) Un processus malveillant
+
 D) Un processus sans PID
 
 ---

@@ -158,6 +158,8 @@ sudo apt update && sudo apt upgrade -y
 - Installe vraiment les mises à jour
 - Nécessite `update` avant
 
+---
+
 **Analogie : Netflix** 📺
 
 - **apt update** = Rafraîchir le catalogue Netflix
@@ -1104,13 +1106,21 @@ sudo systemctl enable --now docker
 **Ce que vous avez appris :**
 
 ✅ Concepts de paquets et dépendances
+
 ✅ APT (Debian/Ubuntu) : install, remove, update, upgrade
+
 ✅ DNF/YUM (RHEL/Fedora) : install, remove, upgrade
+
 ✅ Gestion des dépôts
+
 ✅ Formats universels (Snap, Flatpak, AppImage)
+
 ✅ Mises à jour automatiques de sécurité
+
 ✅ Compilation depuis les sources
+
 ✅ Dépannage de paquets cassés
+
 ✅ Bonnes pratiques de maintenance
 
 ---

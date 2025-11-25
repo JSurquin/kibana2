@@ -11,8 +11,11 @@
 Quel gestionnaire de paquets est utilisé sur Ubuntu ?
 
 A) `yum`
+
 B) `dnf`
+
 C) `apt`
+
 D) `pacman`
 
 ---
@@ -22,8 +25,11 @@ D) `pacman`
 Quelle commande met à jour la liste des paquets ?
 
 A) `apt upgrade`
+
 B) `apt update`
+
 C) `apt refresh`
+
 D) `apt sync`
 
 ---
@@ -33,8 +39,11 @@ D) `apt sync`
 Comment installer un paquet ?
 
 A) `apt install paquet`
+
 B) `apt get paquet`
+
 C) `apt add paquet`
+
 D) `apt download paquet`
 
 ---
@@ -44,8 +53,11 @@ D) `apt download paquet`
 Quelle commande recherche un paquet ?
 
 A) `apt find`
+
 B) `apt search`
+
 C) `apt query`
+
 D) `apt locate`
 
 ---
@@ -55,8 +67,11 @@ D) `apt locate`
 Comment supprimer un paquet avec sa config ?
 
 A) `apt remove`
+
 B) `apt delete`
+
 C) `apt purge`
+
 D) `apt uninstall`
 
 ---
@@ -66,8 +81,11 @@ D) `apt uninstall`
 Quel gestionnaire de paquets est utilisé sur Fedora/RHEL ?
 
 A) `yum`
+
 B) `dnf`
+
 C) `apt`
+
 D) A et B (dnf remplace yum)
 
 ---
@@ -77,8 +95,11 @@ D) A et B (dnf remplace yum)
 Que fait `apt autoremove` ?
 
 A) Supprime tous les paquets
+
 B) Supprime les paquets inutilisés
+
 C) Supprime le cache
+
 D) Supprime les anciennes versions
 
 ---
@@ -88,8 +109,11 @@ D) Supprime les anciennes versions
 Qu'est-ce qu'un PPA ?
 
 A) Un dépôt personnel (Personal Package Archive)
+
 B) Un type de paquet
+
 C) Un gestionnaire de paquets
+
 D) Un format de fichier
 
 ---
@@ -99,8 +123,11 @@ D) Un format de fichier
 Comment nettoyer le cache de paquets téléchargés ?
 
 A) `apt clean`
+
 B) `apt clear`
+
 C) `apt flush`
+
 D) `apt delete-cache`
 
 ---
@@ -110,8 +137,11 @@ D) `apt delete-cache`
 Qu'est-ce que Snap ?
 
 A) Un gestionnaire de paquets traditionnel
+
 B) Un format de paquet universel conteneurisé
+
 C) Un outil de sauvegarde
+
 D) Un éditeur de texte
 
 ---

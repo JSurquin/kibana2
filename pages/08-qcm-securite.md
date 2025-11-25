@@ -11,8 +11,11 @@
 Qu'est-ce que SELinux ?
 
 A) Un gestionnaire de paquets
+
 B) Un système de contrôle d'accès obligatoire (MAC)
+
 C) Un pare-feu
+
 D) Un éditeur de texte
 
 ---
@@ -22,8 +25,11 @@ D) Un éditeur de texte
 Quel outil bloque les IP après plusieurs échecs de connexion ?
 
 A) `iptables`
+
 B) `fail2ban`
+
 C) `ufw`
+
 D) `firewalld`
 
 ---
@@ -33,8 +39,11 @@ D) `firewalld`
 Où sont stockés les mots de passe chiffrés ?
 
 A) `/etc/passwd`
+
 B) `/etc/shadow`
+
 C) `/etc/security`
+
 D) `/etc/passwords`
 
 ---
@@ -44,8 +53,11 @@ D) `/etc/passwords`
 Quelle commande désactive temporairement SELinux ?
 
 A) `selinux disable`
+
 B) `setenforce 0`
+
 C) `systemctl stop selinux`
+
 D) `disable selinux`
 
 ---
@@ -55,8 +67,11 @@ D) `disable selinux`
 Quel fichier configure sudo ?
 
 A) `/etc/sudo`
+
 B) `/etc/sudoers`
+
 C) `/etc/sudo.conf`
+
 D) `/etc/security/sudo`
 
 ---
@@ -66,8 +81,11 @@ D) `/etc/security/sudo`
 Qu'est-ce que fail2ban surveille ?
 
 A) Les performances système
+
 B) Les logs pour détecter des tentatives d'intrusion
+
 C) L'espace disque
+
 D) Les processus
 
 ---
@@ -77,8 +95,11 @@ D) Les processus
 Quelle commande affiche les tentatives de connexion échouées ?
 
 A) `lastlog`
+
 B) `last`
+
 C) `lastb`
+
 D) `faillog`
 
 ---
@@ -88,8 +109,11 @@ D) `faillog`
 Quelle est la meilleure pratique pour SSH ?
 
 A) Utiliser des mots de passe forts
+
 B) Utiliser des clés SSH
+
 C) Changer le port
+
 D) Tout ce qui précède
 
 ---
@@ -99,8 +123,11 @@ D) Tout ce qui précède
 Que fait `auditd` ?
 
 A) Optimise les performances
+
 B) Audite les actions système
+
 C) Nettoie le système
+
 D) Sauvegarde les fichiers
 
 ---
@@ -110,8 +137,11 @@ D) Sauvegarde les fichiers
 Comment chiffrer une partition avec Linux ?
 
 A) `encrypt`
+
 B) `LUKS`
+
 C) `cryptfs`
+
 D) `secure`
 
 ---

@@ -11,8 +11,11 @@
 Quel serveur web est connu pour ses performances ?
 
 A) Apache
+
 B) Nginx
+
 C) IIS
+
 D) Tomcat
 
 ---
@@ -22,8 +25,11 @@ D) Tomcat
 Où sont les fichiers de config de Nginx sur Ubuntu ?
 
 A) `/etc/apache2/`
+
 B) `/etc/nginx/`
+
 C) `/var/www/nginx/`
+
 D) `/usr/local/nginx/`
 
 ---
@@ -33,8 +39,11 @@ D) `/usr/local/nginx/`
 Comment tester la config de Nginx ?
 
 A) `nginx test`
+
 B) `nginx -t`
+
 C) `systemctl test nginx`
+
 D) `test nginx`
 
 ---
@@ -44,8 +53,11 @@ D) `test nginx`
 Quelle commande sauvegarde une base MySQL ?
 
 A) `mysql-backup`
+
 B) `mysqldump`
+
 C) `mysql-export`
+
 D) `backup-mysql`
 
 ---
@@ -55,8 +67,11 @@ D) `backup-mysql`
 Quel port utilise MySQL par défaut ?
 
 A) 3306
+
 B) 5432
+
 C) 27017
+
 D) 1433
 
 ---
@@ -66,8 +81,11 @@ D) 1433
 Qu'est-ce qu'un reverse proxy ?
 
 A) Un proxy qui inverse les données
+
 B) Un serveur intermédiaire devant les applications
+
 C) Un type de pare-feu
+
 D) Un outil de sauvegarde
 
 ---
@@ -77,8 +95,11 @@ D) Un outil de sauvegarde
 Comment obtenir un certificat SSL gratuit ?
 
 A) Let's Encrypt (Certbot)
+
 B) Acheter chez un CA
+
 C) Générer avec OpenSSL
+
 D) A et C sont corrects
 
 ---
@@ -88,8 +109,11 @@ D) A et C sont corrects
 Quel est le protocole pour transférer des fichiers de façon sécurisée ?
 
 A) FTP
+
 B) HTTP
+
 C) SCP/SFTP
+
 D) Telnet
 
 ---
@@ -99,8 +123,11 @@ D) Telnet
 Qu'est-ce que Docker ?
 
 A) Un gestionnaire de paquets
+
 B) Une plateforme de conteneurisation
+
 C) Un éditeur de texte
+
 D) Un serveur web
 
 ---
@@ -110,8 +137,11 @@ D) Un serveur web
 Comment démarrer tous les services d'un docker-compose ?
 
 A) `docker start`
+
 B) `docker-compose up`
+
 C) `compose start`
+
 D) `docker run`
 
 ---

@@ -374,7 +374,9 @@ chmod +x cleanup.sh
 
 ---
 
-# Points clés à retenir 📌
+<small>
+
+**Points clés à retenir 📌**
 
 **Navigation :**
 - `pwd`, `cd`, `ls`
@@ -396,5 +398,4 @@ chmod +x cleanup.sh
 - `>>` ajoute
 - `|` pipe entre commandes
 
----
-
+</small>

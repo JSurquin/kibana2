@@ -11,8 +11,11 @@
 Qui sont les créateurs d'Unix ?
 
 A) Linus Torvalds et Richard Stallman
+
 B) Ken Thompson et Dennis Ritchie
+
 C) Bill Gates et Steve Jobs
+
 D) Larry Page et Sergey Brin
 
 ---
@@ -22,8 +25,11 @@ D) Larry Page et Sergey Brin
 Que signifie GNU dans GNU/Linux ?
 
 A) General New Unix
+
 B) GNU's Not Unix
+
 C) Global Network Unix
+
 D) Great Native Unix
 
 ---
@@ -33,8 +39,11 @@ D) Great Native Unix
 Quel est le noyau de Linux ?
 
 A) Un programme graphique
+
 B) Le cœur du système qui gère le matériel
+
 C) Un éditeur de texte
+
 D) Un navigateur web
 
 ---
@@ -44,8 +53,11 @@ D) Un navigateur web
 Que signifie le principe Unix "tout est fichier" ?
 
 A) Tous les programmes sont stockés dans des fichiers
+
 B) Les périphériques et processus sont accessibles comme des fichiers
+
 C) On ne peut travailler qu'avec des fichiers texte
+
 D) Il faut tout sauvegarder dans des fichiers
 
 ---
@@ -55,8 +67,11 @@ D) Il faut tout sauvegarder dans des fichiers
 Quelle distribution Linux est connue pour sa stabilité en serveur ?
 
 A) Windows Server
+
 B) macOS
+
 C) Debian
+
 D) MS-DOS
 
 ---
@@ -66,8 +81,11 @@ D) MS-DOS
 Qu'est-ce qu'un shell ?
 
 A) Un type de disque dur
+
 B) L'interface entre l'utilisateur et le noyau
+
 C) Un navigateur web
+
 D) Un éditeur de code
 
 ---
@@ -77,8 +95,11 @@ D) Un éditeur de code
 Quelle est la philosophie Unix principale ?
 
 A) Faire des programmes complexes qui font tout
+
 B) Faire des programmes simples qui font une chose bien
+
 C) Toujours utiliser une interface graphique
+
 D) Éviter la ligne de commande
 
 ---
@@ -88,8 +109,11 @@ D) Éviter la ligne de commande
 Quelle entreprise a créé Unix à l'origine ?
 
 A) Microsoft
+
 B) Apple
+
 C) AT&T Bell Labs
+
 D) Google
 
 ---
@@ -99,8 +123,11 @@ D) Google
 Qu'est-ce qu'une distribution Linux ?
 
 A) Un système d'exploitation complet basé sur le noyau Linux
+
 B) Seulement le noyau Linux
+
 C) Un type de disque dur
+
 D) Un langage de programmation
 
 ---
@@ -110,8 +137,11 @@ D) Un langage de programmation
 Quel est l'avantage principal de Linux ?
 
 A) Il coûte très cher
+
 B) Il est fermé et propriétaire
+
 C) Il est open source et gratuit
+
 D) Il ne fonctionne que sur Apple
 
 ---

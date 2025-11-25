@@ -11,8 +11,11 @@
 Quelle commande affiche l'espace disque disponible ?
 
 A) `du`
+
 B) `df`
+
 C) `disk`
+
 D) `free`
 
 ---
@@ -22,8 +25,11 @@ D) `free`
 Où sont stockées les configurations de montage automatique ?
 
 A) `/etc/mount`
+
 B) `/etc/fstab`
+
 C) `/etc/filesystems`
+
 D) `/boot/mount.conf`
 
 ---
@@ -33,8 +39,11 @@ D) `/boot/mount.conf`
 Quelle commande monte un système de fichiers ?
 
 A) `mount`
+
 B) `attach`
+
 C) `connect`
+
 D) `link`
 
 ---
@@ -44,8 +53,11 @@ D) `link`
 Que signifie LVM ?
 
 A) Linux Virtual Memory
+
 B) Logical Volume Manager
+
 C) Linux Volume Management
+
 D) Local Virtual Machine
 
 ---
@@ -55,8 +67,11 @@ D) Local Virtual Machine
 Comment créer un lien symbolique ?
 
 A) `link`
+
 B) `ln`
+
 C) `ln -s`
+
 D) `symlink`
 
 ---
@@ -66,8 +81,11 @@ D) `symlink`
 Que fait `fsck` ?
 
 A) Monte un système de fichiers
+
 B) Vérifie l'intégrité d'un système de fichiers
+
 C) Formate un disque
+
 D) Affiche l'espace disque
 
 ---
@@ -77,8 +95,11 @@ D) Affiche l'espace disque
 Qu'est-ce qu'une ACL ?
 
 A) Un type de partition
+
 B) Un système de fichiers
+
 C) Une permission étendue (Access Control List)
+
 D) Un type de disque
 
 ---
@@ -88,8 +109,11 @@ D) Un type de disque
 Quelle commande affiche les ACL d'un fichier ?
 
 A) `acl`
+
 B) `getfacl`
+
 C) `showacl`
+
 D) `chmod`
 
 ---
@@ -99,8 +123,11 @@ D) `chmod`
 Qu'est-ce que le swap ?
 
 A) Une partition de sauvegarde
+
 B) Une extension de la RAM sur disque
+
 C) Un type de RAID
+
 D) Un système de fichiers
 
 ---
@@ -110,8 +137,11 @@ D) Un système de fichiers
 Quelle commande liste les disques et partitions ?
 
 A) `disks`
+
 B) `partitions`
+
 C) `lsblk`
+
 D) `listdisk`
 
 ---

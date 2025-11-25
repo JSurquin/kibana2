@@ -11,8 +11,11 @@
 Quel fichier contient les informations des utilisateurs ?
 
 A) `/etc/users`
+
 B) `/etc/passwd`
+
 C) `/etc/shadow`
+
 D) `/etc/accounts`
 
 ---
@@ -22,8 +25,11 @@ D) `/etc/accounts`
 Quelle commande crée un nouvel utilisateur ?
 
 A) `adduser` ou `useradd`
+
 B) `newuser`
+
 C) `createuser`
+
 D) `mkuser`
 
 ---
@@ -33,8 +39,11 @@ D) `mkuser`
 Que signifie `chmod 644 fichier.txt` ?
 
 A) rw-r--r--
+
 B) rwxr--r--
+
 C) rw-rw-r--
+
 D) r--r--r--
 
 ---
@@ -44,8 +53,11 @@ D) r--r--r--
 Quelle option de `usermod` ajoute un utilisateur à un groupe ?
 
 A) `-g`
+
 B) `-G`
+
 C) `-aG`
+
 D) `-a`
 
 ---
@@ -55,8 +67,11 @@ D) `-a`
 Que fait la commande `sudo` ?
 
 A) Connecte en tant que root
+
 B) Exécute une commande avec les privilèges root
+
 C) Crée un nouvel utilisateur
+
 D) Change de groupe
 
 ---
@@ -66,8 +81,11 @@ D) Change de groupe
 Quel fichier configure les droits sudo ?
 
 A) `/etc/sudo`
+
 B) `/etc/sudoers`
+
 C) `/etc/sudo.conf`
+
 D) `/etc/security/sudo`
 
 ---
@@ -77,8 +95,11 @@ D) `/etc/security/sudo`
 Que fait `umask 0022` ?
 
 A) Définit les permissions par défaut des nouveaux fichiers
+
 B) Masque les fichiers cachés
+
 C) Crypte les fichiers
+
 D) Change le propriétaire
 
 ---
@@ -88,8 +109,11 @@ D) Change le propriétaire
 Comment changer le groupe d'un fichier ?
 
 A) `chmod`
+
 B) `chown`
+
 C) `chgrp`
+
 D) B et C sont corrects
 
 ---
@@ -99,8 +123,11 @@ D) B et C sont corrects
 Que fait la commande `passwd` ?
 
 A) Affiche les mots de passe
+
 B) Change le mot de passe
+
 C) Crypte les fichiers
+
 D) Liste les utilisateurs
 
 ---
@@ -110,8 +137,11 @@ D) Liste les utilisateurs
 Quelle commande liste les groupes d'un utilisateur ?
 
 A) `groups utilisateur`
+
 B) `id utilisateur`
+
 C) `whoami`
+
 D) A et B sont corrects
 
 ---

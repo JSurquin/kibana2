@@ -695,14 +695,23 @@ unalias ll
 **Ce que vous avez appris :**
 
 ✅ Historique d'Unix et naissance de Linux
+
 ✅ Philosophie Unix ("tout est fichier", modularité)
+
 ✅ Architecture d'un système Linux (noyau, shell, applications)
+
 ✅ Structure du système de fichiers
+
 ✅ Commandes essentielles de base
+
 ✅ Pipes et redirections
+
 ✅ Permissions de base
+
 ✅ Processus et leur gestion
+
 ✅ Variables d'environnement
+
 ✅ Aide et documentation
 
 ---

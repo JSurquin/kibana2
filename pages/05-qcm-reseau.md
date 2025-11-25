@@ -11,8 +11,11 @@
 Quelle adresse IP est localhost ?
 
 A) `192.168.1.1`
+
 B) `127.0.0.1`
+
 C) `10.0.0.1`
+
 D) `0.0.0.0`
 
 ---
@@ -22,8 +25,11 @@ D) `0.0.0.0`
 Quel port utilise SSH par défaut ?
 
 A) 21
+
 B) 22
+
 C) 23
+
 D) 80
 
 ---
@@ -33,8 +39,11 @@ D) 80
 Quelle commande teste la connectivité réseau ?
 
 A) `test`
+
 B) `ping`
+
 C) `connect`
+
 D) `check`
 
 ---
@@ -44,8 +53,11 @@ D) `check`
 Quelle commande affiche la configuration IP ?
 
 A) `ipconfig`
+
 B) `ifconfig`
+
 C) `ip addr`
+
 D) B et C sont corrects
 
 ---
@@ -55,8 +67,11 @@ D) B et C sont corrects
 Quelle commande affiche les connexions actives ?
 
 A) `connections`
+
 B) `netstat` ou `ss`
+
 C) `active`
+
 D) `ports`
 
 ---
@@ -66,8 +81,11 @@ D) `ports`
 Quel outil génère une paire de clés SSH ?
 
 A) `ssh-key`
+
 B) `ssh-keygen`
+
 C) `keygen`
+
 D) `ssh-create`
 
 ---
@@ -77,8 +95,11 @@ D) `ssh-create`
 Où sont stockées les clés SSH ?
 
 A) `/etc/ssh/`
+
 B) `~/.ssh/`
+
 C) `/var/ssh/`
+
 D) `/root/ssh/`
 
 ---
@@ -88,8 +109,11 @@ D) `/root/ssh/`
 Quel pare-feu est simple à utiliser sur Ubuntu ?
 
 A) `iptables`
+
 B) `ufw`
+
 C) `firewalld`
+
 D) `firewall`
 
 ---
@@ -99,8 +123,11 @@ D) `firewall`
 Comment copier un fichier via SSH ?
 
 A) `copy`
+
 B) `scp`
+
 C) `ssh-copy`
+
 D) `transfer`
 
 ---
@@ -110,8 +137,11 @@ D) `transfer`
 Quelle commande résout un nom de domaine en IP ?
 
 A) `resolve`
+
 B) `nslookup` ou `dig`
+
 C) `dns`
+
 D) `lookup`
 
 ---

@@ -567,7 +567,9 @@ layout: default
 
 # Bonnes pratiques 💡
 
-### Conseils pour l'utilisation des commandes
+<small>
+
+**Conseils pour l'utilisation des commandes**
 
 **Sécurité**
 - Toujours vérifier avant de supprimer
@@ -586,6 +588,8 @@ layout: default
 - Utiliser des noms de fichiers descriptifs
 - Documenter les scripts
 - Maintenir un environnement propre
+
+</small>
 
 ---
 layout: default

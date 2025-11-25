@@ -11,8 +11,11 @@
 Quelle est la première ligne d'un script bash ?
 
 A) `#bash`
+
 B) `#!/bin/bash`
+
 C) `<bash>`
+
 D) `//bin/bash`
 
 ---
@@ -22,8 +25,11 @@ D) `//bin/bash`
 Comment rendre un script exécutable ?
 
 A) `chmod +x script.sh`
+
 B) `execute script.sh`
+
 C) `make executable script.sh`
+
 D) `run script.sh`
 
 ---
@@ -33,8 +39,11 @@ D) `run script.sh`
 Comment définir une variable en bash ?
 
 A) `var = value`
+
 B) `var=value`
+
 C) `set var value`
+
 D) `$var=value`
 
 ---
@@ -44,8 +53,11 @@ D) `$var=value`
 Comment accéder à la valeur d'une variable ?
 
 A) `var`
+
 B) `$var`
+
 C) `&var`
+
 D) `@var`
 
 ---
@@ -55,8 +67,11 @@ D) `@var`
 Quelle commande planifie des tâches récurrentes ?
 
 A) `at`
+
 B) `cron`
+
 C) `timer`
+
 D) `schedule`
 
 ---
@@ -66,8 +81,11 @@ D) `schedule`
 Que signifie `0 2 * * *` dans un crontab ?
 
 A) Toutes les 2 minutes
+
 B) À 2h du matin tous les jours
+
 C) Tous les 2 jours
+
 D) Le 2 de chaque mois
 
 ---
@@ -77,8 +95,11 @@ D) Le 2 de chaque mois
 Comment voir les logs systemd en temps réel ?
 
 A) `tail -f /var/log/syslog`
+
 B) `journalctl -f`
+
 C) `logwatch`
+
 D) `logs -f`
 
 ---
@@ -88,8 +109,11 @@ D) `logs -f`
 Quelle structure crée une boucle en bash ?
 
 A) `loop ... end`
+
 B) `for ... done`
+
 C) `while ... endwhile`
+
 D) `repeat ... until`
 
 ---
@@ -99,8 +123,11 @@ D) `repeat ... until`
 Comment rediriger stdout ET stderr vers un fichier ?
 
 A) `commande > fichier`
+
 B) `commande 2> fichier`
+
 C) `commande &> fichier`
+
 D) `commande >> fichier`
 
 ---
@@ -110,8 +137,11 @@ D) `commande >> fichier`
 Quelle commande planifie une tâche ponctuelle ?
 
 A) `cron`
+
 B) `at`
+
 C) `once`
+
 D) `schedule`
 
 ---

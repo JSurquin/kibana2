@@ -11,8 +11,11 @@
 Quelle commande permet de voir le répertoire actuel ?
 
 A) `dir`
+
 B) `pwd`
+
 C) `whereami`
+
 D) `current`
 
 ---
@@ -22,8 +25,11 @@ D) `current`
 Que fait la commande `ls -la` ?
 
 A) Liste seulement les fichiers
+
 B) Liste avec détails et fichiers cachés
+
 C) Liste seulement les répertoires
+
 D) Liste les liens symboliques
 
 ---
@@ -33,8 +39,11 @@ D) Liste les liens symboliques
 Comment créer un répertoire et ses parents ?
 
 A) `mkdir -p /chemin/complet`
+
 B) `mkdir -r /chemin/complet`
+
 C) `mkdir --all /chemin/complet`
+
 D) `mkdir -a /chemin/complet`
 
 ---
@@ -44,8 +53,11 @@ D) `mkdir -a /chemin/complet`
 Quelle commande copie un répertoire avec son contenu ?
 
 A) `cp source dest`
+
 B) `cp -r source dest`
+
 C) `copy source dest`
+
 D) `cp -a source dest`
 
 ---
@@ -55,8 +67,11 @@ D) `cp -a source dest`
 Que fait la commande `cat fichier.txt` ?
 
 A) Crée le fichier
+
 B) Supprime le fichier
+
 C) Affiche le contenu du fichier
+
 D) Édite le fichier
 
 ---
@@ -66,8 +81,11 @@ D) Édite le fichier
 Comment afficher les 10 dernières lignes d'un fichier ?
 
 A) `head fichier`
+
 B) `tail fichier`
+
 C) `end fichier`
+
 D) `bottom fichier`
 
 ---
@@ -77,8 +95,11 @@ D) `bottom fichier`
 Que signifie le symbole `>` en shell ?
 
 A) Redirection d'entrée
+
 B) Redirection de sortie (écrase)
+
 C) Pipe
+
 D) Commentaire
 
 ---
@@ -88,8 +109,11 @@ D) Commentaire
 Comment chercher "erreur" dans tous les fichiers .log ?
 
 A) `find erreur *.log`
+
 B) `search erreur *.log`
+
 C) `grep erreur *.log`
+
 D) `locate erreur *.log`
 
 ---
@@ -99,8 +123,11 @@ D) `locate erreur *.log`
 Que fait la commande `find / -name "*.txt"` ?
 
 A) Recherche tous les fichiers .txt depuis la racine
+
 B) Crée des fichiers .txt
+
 C) Supprime les fichiers .txt
+
 D) Liste le contenu des fichiers .txt
 
 ---
@@ -110,8 +137,11 @@ D) Liste le contenu des fichiers .txt
 Comment chaîner deux commandes avec un pipe ?
 
 A) `cmd1 & cmd2`
+
 B) `cmd1 | cmd2`
+
 C) `cmd1 > cmd2`
+
 D) `cmd1 >> cmd2`
 
 ---

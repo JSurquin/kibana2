@@ -35,8 +35,11 @@ routeAlias: 'qcm-final'
 Quelle commande permet de voir le répertoire courant ?
 
 A) `ls`
+
 B) `pwd`
+
 C) `cd`
+
 D) `whereis`
 
 ---
@@ -58,8 +61,11 @@ D) `whereis`
 Quelle permission est représentée par le chiffre 7 en octal ?
 
 A) `r--`
+
 B) `rw-`
+
 C) `rwx`
+
 D) `r-x`
 
 ---
@@ -81,8 +87,11 @@ D) `r-x`
 Quel utilisateur a l'UID 0 ?
 
 A) `admin`
+
 B) `root`
+
 C) `system`
+
 D) `sudo`
 
 ---
@@ -104,8 +113,11 @@ D) `sudo`
 Quelle commande permet de changer le propriétaire d'un fichier ?
 
 A) `chmod`
+
 B) `chown`
+
 C) `chgrp`
+
 D) `usermod`
 
 ---
@@ -127,8 +139,11 @@ D) `usermod`
 Quel signal envoie la commande `kill` par défaut ?
 
 A) SIGKILL (9)
+
 B) SIGTERM (15)
+
 C) SIGHUP (1)
+
 D) SIGSTOP (19)
 
 ---
@@ -150,8 +165,11 @@ D) SIGSTOP (19)
 Quel fichier contient les mots de passe chiffrés ?
 
 A) `/etc/passwd`
+
 B) `/etc/shadow`
+
 C) `/etc/group`
+
 D) `/etc/security`
 
 ---
@@ -173,8 +191,11 @@ D) `/etc/security`
 Quelle est la commande pour voir les processus en temps réel ?
 
 A) `ps`
+
 B) `top`
+
 C) `pgrep`
+
 D) `kill`
 
 ---
@@ -196,8 +217,11 @@ D) `kill`
 Quel est le PID du premier processus du système ?
 
 A) 0
+
 B) 1
+
 C) 10
+
 D) 100
 
 ---
@@ -219,8 +243,11 @@ D) 100
 Quelle commande permet de monter un système de fichiers ?
 
 A) `mount`
+
 B) `umount`
+
 C) `fsck`
+
 D) `df`
 
 ---
@@ -242,8 +269,11 @@ D) `df`
 Où sont stockées les configurations de montage automatique au boot ?
 
 A) `/etc/mount`
+
 B) `/etc/fstab`
+
 C) `/etc/filesystems`
+
 D) `/boot/mount.conf`
 
 ---
@@ -265,8 +295,11 @@ D) `/boot/mount.conf`
 Quelle commande permet de voir l'utilisation du disque par répertoire ?
 
 A) `df`
+
 B) `du`
+
 C) `fdisk`
+
 D) `lsblk`
 
 ---
@@ -288,8 +321,11 @@ D) `lsblk`
 Quelle adresse IP est réservée pour localhost ?
 
 A) `192.168.1.1`
+
 B) `10.0.0.1`
+
 C) `127.0.0.1`
+
 D) `0.0.0.0`
 
 ---
@@ -311,8 +347,11 @@ D) `0.0.0.0`
 Quel port utilise le protocole SSH par défaut ?
 
 A) 21
+
 B) 22
+
 C) 23
+
 D) 80
 
 ---
@@ -334,8 +373,11 @@ D) 80
 Quelle commande permet de voir les connexions réseau actives ?
 
 A) `ping`
+
 B) `netstat` ou `ss`
+
 C) `ifconfig`
+
 D) `route`
 
 ---
@@ -357,8 +399,11 @@ D) `route`
 Quel gestionnaire de paquets est utilisé sur Debian/Ubuntu ?
 
 A) `yum`
+
 B) `dnf`
+
 C) `apt`
+
 D) `pacman`
 
 ---
@@ -380,8 +425,11 @@ D) `pacman`
 Quelle commande met à jour la liste des paquets disponibles ?
 
 A) `apt upgrade`
+
 B) `apt update`
+
 C) `apt install`
+
 D) `apt search`
 
 ---
@@ -403,8 +451,11 @@ D) `apt search`
 Quel fichier contient le shebang d'un script bash ?
 
 A) La dernière ligne
+
 B) La première ligne
+
 C) N'importe où dans le fichier
+
 D) Dans un fichier séparé
 
 ---
@@ -426,8 +477,11 @@ D) Dans un fichier séparé
 Quelle est la syntaxe correcte pour une boucle for en bash ?
 
 A) `for i in {1..5}; do echo $i; done`
+
 B) `for (i=1; i<=5; i++) { echo $i }`
+
 C) `foreach i in 1..5: echo $i`
+
 D) `for i = 1 to 5 do echo $i end`
 
 ---
@@ -449,8 +503,11 @@ D) `for i = 1 to 5 do echo $i end`
 Quelle commande permet de planifier des tâches récurrentes ?
 
 A) `at`
+
 B) `cron`
+
 C) `systemd`
+
 D) `timer`
 
 ---
@@ -472,8 +529,11 @@ D) `timer`
 Dans un crontab, que signifie `0 2 * * *` ?
 
 A) Toutes les 2 minutes
+
 B) À 2h du matin tous les jours
+
 C) Tous les 2 jours à minuit
+
 D) Le 2 de chaque mois
 
 ---
@@ -495,8 +555,11 @@ D) Le 2 de chaque mois
 Où sont généralement stockés les logs système ?
 
 A) `/log`
+
 B) `/var/log`
+
 C) `/etc/log`
+
 D) `/home/log`
 
 ---
@@ -518,8 +581,11 @@ D) `/home/log`
 Quelle commande permet de voir les logs systemd en temps réel ?
 
 A) `tail -f /var/log/syslog`
+
 B) `journalctl -f`
+
 C) `dmesg -w`
+
 D) `logwatch`
 
 ---
@@ -541,8 +607,11 @@ D) `logwatch`
 Qu'est-ce que SELinux ?
 
 A) Un gestionnaire de paquets
+
 B) Un système de contrôle d'accès obligatoire (MAC)
+
 C) Un éditeur de texte
+
 D) Un protocole réseau
 
 ---
@@ -564,8 +633,11 @@ D) Un protocole réseau
 Quelle commande permet de désactiver temporairement SELinux ?
 
 A) `selinux disable`
+
 B) `setenforce 0`
+
 C) `systemctl stop selinux`
+
 D) `chmod 000 /etc/selinux`
 
 ---
@@ -587,8 +659,11 @@ D) `chmod 000 /etc/selinux`
 Quel outil bloque les IP après plusieurs tentatives de connexion échouées ?
 
 A) `iptables`
+
 B) `fail2ban`
+
 C) `ufw`
+
 D) `firewalld`
 
 ---
@@ -610,8 +685,11 @@ D) `firewalld`
 Quel est le protocole pour transférer des fichiers de manière sécurisée ?
 
 A) FTP
+
 B) HTTP
+
 C) SCP ou SFTP
+
 D) Telnet
 
 ---
@@ -633,8 +711,11 @@ D) Telnet
 Où sont stockées les clés SSH par défaut ?
 
 A) `/etc/ssh/`
+
 B) `~/.ssh/`
+
 C) `/var/ssh/`
+
 D) `/home/ssh/`
 
 ---
@@ -656,8 +737,11 @@ D) `/home/ssh/`
 Quelle commande génère une paire de clés SSH ?
 
 A) `ssh-key`
+
 B) `ssh-gen`
+
 C) `ssh-keygen`
+
 D) `keygen`
 
 ---
@@ -679,8 +763,11 @@ D) `keygen`
 Quel serveur web est connu pour ses performances et sa faible consommation mémoire ?
 
 A) Apache
+
 B) Nginx
+
 C) IIS
+
 D) Tomcat
 
 ---
@@ -702,8 +789,11 @@ D) Tomcat
 Où sont stockés les fichiers de configuration de Nginx sur Debian/Ubuntu ?
 
 A) `/etc/apache2/`
+
 B) `/etc/nginx/`
+
 C) `/var/www/nginx/`
+
 D) `/usr/local/nginx/`
 
 ---
@@ -725,8 +815,11 @@ D) `/usr/local/nginx/`
 Quelle commande teste la configuration de Nginx sans redémarrer ?
 
 A) `nginx test`
+
 B) `nginx -t`
+
 C) `systemctl test nginx`
+
 D) `nginx --check`
 
 ---
@@ -748,8 +841,11 @@ D) `nginx --check`
 Quel protocole permet d'obtenir des certificats SSL gratuits avec Let's Encrypt ?
 
 A) HTTP
+
 B) FTP
+
 C) ACME
+
 D) SSL
 
 ---
@@ -771,8 +867,11 @@ D) SSL
 Quelle commande permet de sauvegarder une base MySQL ?
 
 A) `mysql-backup`
+
 B) `mysqldump`
+
 C) `mysql-save`
+
 D) `mysqlexport`
 
 ---
@@ -794,8 +893,11 @@ D) `mysqlexport`
 Quelle est la différence entre `systemctl start` et `systemctl enable` ?
 
 A) Aucune différence
+
 B) `start` démarre maintenant, `enable` démarre au boot
+
 C) `start` est permanent, `enable` est temporaire
+
 D) `enable` démarre maintenant, `start` au boot
 
 ---
@@ -817,8 +919,11 @@ D) `enable` démarre maintenant, `start` au boot
 Quel fichier contient la configuration principale de systemd ?
 
 A) `/etc/systemd/system.conf`
+
 B) `/etc/systemd/systemd.conf`
+
 C) `/etc/init.d/systemd`
+
 D) `/lib/systemd/systemd.conf`
 
 ---
@@ -840,8 +945,11 @@ D) `/lib/systemd/systemd.conf`
 Quelle commande permet de voir les services qui ont échoué ?
 
 A) `systemctl failed`
+
 B) `systemctl --failed`
+
 C) `systemctl list-failed`
+
 D) `systemctl status --failed`
 
 ---
@@ -863,8 +971,11 @@ D) `systemctl status --failed`
 Que signifie LVM ?
 
 A) Linux Virtual Memory
+
 B) Logical Volume Manager
+
 C) Linux Volume Management
+
 D) Local Virtual Machine
 
 ---
@@ -886,8 +997,11 @@ D) Local Virtual Machine
 Quelle commande permet de créer un lien symbolique ?
 
 A) `link`
+
 B) `ln -s`
+
 C) `symlink`
+
 D) `mklink`
 
 ---
@@ -909,8 +1023,11 @@ D) `mklink`
 Quelle est la différence entre `>` et `>>` en redirection ?
 
 A) Aucune différence
+
 B) `>` écrase, `>>` ajoute à la fin
+
 C) `>>` écrase, `>` ajoute à la fin
+
 D) `>` est pour stdout, `>>` pour stderr
 
 ---
@@ -932,8 +1049,11 @@ D) `>` est pour stdout, `>>` pour stderr
 Quelle variable d'environnement contient le répertoire personnel ?
 
 A) `$USER`
+
 B) `$PWD`
+
 C) `$HOME`
+
 D) `$PATH`
 
 ---
@@ -955,8 +1075,11 @@ D) `$PATH`
 Comment afficher les 10 premières lignes d'un fichier ?
 
 A) `tail fichier`
+
 B) `head fichier`
+
 C) `cat fichier | head`
+
 D) `top fichier`
 
 ---
@@ -978,8 +1101,11 @@ D) `top fichier`
 Quelle commande recherche un fichier par son nom ?
 
 A) `search`
+
 B) `find`
+
 C) `locate`
+
 D) B et C sont corrects
 
 ---
@@ -1001,8 +1127,11 @@ D) B et C sont corrects
 Quelle commande permet de compresser un fichier avec gzip ?
 
 A) `gzip fichier`
+
 B) `compress fichier`
+
 C) `zip fichier`
+
 D) `tar fichier`
 
 ---
@@ -1024,8 +1153,11 @@ D) `tar fichier`
 Que fait la commande `chmod +x script.sh` ?
 
 A) Rend le script lisible
+
 B) Rend le script exécutable
+
 C) Rend le script modifiable
+
 D) Supprime le script
 
 ---
@@ -1047,8 +1179,11 @@ D) Supprime le script
 Quelle commande permet de voir l'espace disque disponible ?
 
 A) `du`
+
 B) `df`
+
 C) `disk`
+
 D) `free`
 
 ---
@@ -1070,8 +1205,11 @@ D) `free`
 Quel est le répertoire temporaire standard ?
 
 A) `/temp`
+
 B) `/tmp`
+
 C) `/var/tmp`
+
 D) B et C sont corrects
 
 ---
@@ -1093,8 +1231,11 @@ D) B et C sont corrects
 Quelle commande affiche les messages du noyau ?
 
 A) `kernel`
+
 B) `dmesg`
+
 C) `syslog`
+
 D) `messages`
 
 ---
@@ -1116,8 +1257,11 @@ D) `messages`
 Quelle est la commande pour redémarrer le système ?
 
 A) `restart`
+
 B) `reboot`
+
 C) `shutdown -r now`
+
 D) B et C sont corrects
 
 ---
@@ -1139,8 +1283,11 @@ D) B et C sont corrects
 Qu'est-ce qu'un daemon ?
 
 A) Un virus
+
 B) Un processus en arrière-plan
+
 C) Un fichier de configuration
+
 D) Un utilisateur système
 
 ---
@@ -1162,8 +1309,11 @@ D) Un utilisateur système
 Quelle est la meilleure pratique pour travailler en tant qu'administrateur ?
 
 A) Toujours se connecter en root
+
 B) Utiliser sudo pour les tâches admin
+
 C) Désactiver root
+
 D) Partager le mot de passe root
 
 ---
