@@ -163,16 +163,16 @@ layout: two-cols
 - Pare-feu (ufw)
 - Diagnostic (ping, traceroute)
 
-**Module 8 - Automatisation**
-- Scripts Bash
-- Cron et at
-- Logs système
-
 </small>
 
 ::right::
 
 <small>
+
+**Module 8 - Automatisation**
+- Scripts Bash
+- Cron et at
+- Logs système
 
 **Module 9 - Sécurité**
 - Durcissement SSH
