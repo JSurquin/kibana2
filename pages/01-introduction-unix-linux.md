@@ -170,6 +170,8 @@ cat fichier.txt | grep "motif" | sort | wc -l
 
 # Architecture d'un système Linux 🏛️
 
+<small>
+
 **4 couches principales :**
 
 1. **Matériel (Hardware)**
@@ -186,6 +188,8 @@ cat fichier.txt | grep "motif" | sort | wc -l
 
 4. **Applications utilisateur**
    - Programmes que vous utilisez
+
+</small>
 
 ---
 
@@ -267,34 +271,49 @@ $ ls -la
 
 ---
 
-# Structure des répertoires principaux 🗂️
+# Structure des répertoires principaux 🗂️ (1/2)
+
+### Répertoires système essentiels
 
 ```mermaid
-graph LR
+graph TD
     ROOT["Racine /"]
     ROOT --> BIN["bin<br/>Binaires essentiels"]
-    ROOT --> BOOT["boot<br/>Fichiers demarrage"]
-    ROOT --> DEV["dev<br/>Peripheriques"]
-    ROOT --> ETC["etc<br/>Configuration systeme"]
-    ROOT --> HOME["home"]
+    ROOT --> BOOT["boot<br/>Fichiers démarrage"]
+    ROOT --> DEV["dev<br/>Périphériques"]
+    ROOT --> ETC["etc<br/>Configuration système"]
+    ROOT --> LIB["lib<br/>Bibliothèques système"]
+    ROOT --> SBIN["sbin<br/>Binaires admin"]
+    ROOT --> PROC["proc<br/>Infos processus (virtuel)"]
+    ROOT --> SYS["sys<br/>Infos système (virtuel)"]
+    ROOT --> RUN["run<br/>Données runtime"]
+    ROOT --> TMP["tmp<br/>Fichiers temporaires"]
+    
+    style ROOT fill:#ff6b6b
+```
+
+---
+
+# Structure des répertoires principaux 🗂️ (2/2)
+
+### Répertoires utilisateur et données
+
+```mermaid
+graph TD
+    ROOT["Racine /"]
+    ROOT --> HOME["home<br/>Répertoires utilisateurs"]
     HOME --> ALICE["alice"]
     HOME --> BOB["bob"]
-    ROOT --> LIB["lib<br/>Bibliotheques systeme"]
-    ROOT --> MEDIA["media<br/>Montage amovibles"]
-    ROOT --> MNT["mnt<br/>Montage temporaires"]
-    ROOT --> OPT["opt<br/>Logiciels optionnels"]
-    ROOT --> PROC["proc<br/>Infos processus virtuel"]
-    ROOT --> ROOTDIR["root<br/>Repertoire admin"]
-    ROOT --> RUN["run<br/>Donnees runtime"]
-    ROOT --> SBIN["sbin<br/>Binaires systeme admin"]
-    ROOT --> SRV["srv<br/>Donnees services"]
-    ROOT --> SYS["sys<br/>Infos systeme virtuel"]
-    ROOT --> TMP["tmp<br/>Fichiers temporaires"]
+    ROOT --> ROOTDIR["root<br/>Répertoire admin"]
     ROOT --> USR["usr<br/>Programmes utilisateur"]
     USR --> USRBIN["bin"]
     USR --> USRLIB["lib"]
     USR --> USRLOCAL["local"]
-    ROOT --> VAR["var<br/>Donnees variables"]
+    ROOT --> VAR["var<br/>Données variables"]
+    ROOT --> OPT["opt<br/>Logiciels optionnels"]
+    ROOT --> SRV["srv<br/>Données services"]
+    ROOT --> MEDIA["media<br/>Montage amovibles"]
+    ROOT --> MNT["mnt<br/>Montage temporaires"]
     
     style ROOT fill:#ff6b6b
     style HOME fill:#4ecdc4
