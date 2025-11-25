@@ -451,5 +451,3 @@ done
 - Filtres : `-p`, `-u`, `--since`
 - `logger` pour écrire dans syslog
 
----
-

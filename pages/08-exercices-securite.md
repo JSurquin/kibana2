@@ -427,5 +427,3 @@ echo "Hardening terminé !"
 - GPG pour fichiers
 - SSH pour communications
 
----
-

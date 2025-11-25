@@ -314,6 +314,3 @@ echo "============================="
 **ACL :**
 - Permissions plus fines que rwx
 - `setfacl` pour définir, `getfacl` pour lire
-
----
-

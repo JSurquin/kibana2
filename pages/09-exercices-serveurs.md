@@ -506,5 +506,3 @@ docker-compose logs -f
 - Alertes automatiques
 - Logs centralisés
 
----
-

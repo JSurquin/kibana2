@@ -349,5 +349,3 @@ echo "Terminé ! Voir $REPORT"
 - `chmod`, `chown`, `chgrp`
 - `sudo`, `visudo`
 
----
-

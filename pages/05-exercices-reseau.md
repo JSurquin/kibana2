@@ -359,6 +359,3 @@ echo "============================" | tee -a $LOG_FILE
 - UFW pour simplicité
 - `allow`/`deny` pour les règles
 - Toujours autoriser SSH avant d'activer !
-
----
-

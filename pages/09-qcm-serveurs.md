@@ -192,5 +192,3 @@ Comptez vos bonnes réponses :
 - **7-8** : Bien ! ⭐⭐
 - **5-6** : À revoir ⭐
 - **< 5** : Relire le module 9
-
----
