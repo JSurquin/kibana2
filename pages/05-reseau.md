@@ -1409,6 +1409,360 @@ ssh -D 1080 utilisateur@serveur
 
 ---
 
+# Synchronisation temps : NTP et chrony ⏰
+
+**Pourquoi synchroniser l'horloge système ?**
+
+**Critique pour :**
+- Logs cohérents entre serveurs
+- Certificats SSL/TLS (validité basée sur le temps)
+- Transactions base de données
+- Authentification Kerberos
+- Systèmes distribués
+
+**Problème sans synchronisation :**
+- Serveur 1 : 14:00:00
+- Serveur 2 : 14:05:23
+- Serveur 3 : 13:58:15
+→ Impossible de corréler les événements !
+
+---
+
+# NTP vs chrony 🕐
+
+**NTP (Network Time Protocol)** : protocole classique
+- Daemon : `ntpd`
+- Ancien, très répandu
+
+**chrony** : implémentation moderne (recommandé 2025)
+- Daemon : `chronyd`
+- Plus rapide à synchroniser
+- Meilleure gestion des réseaux instables
+- Consomme moins de ressources
+- Par défaut sur RHEL/Fedora depuis v7
+
+**On va utiliser chrony !**
+
+---
+
+# Installer chrony 📥
+
+```bash
+# Debian/Ubuntu
+sudo apt update
+sudo apt install chrony
+
+# RHEL/Fedora (déjà installé généralement)
+sudo dnf install chrony
+
+# Démarrer et activer
+sudo systemctl start chronyd
+sudo systemctl enable chronyd
+
+# Vérifier l'état
+sudo systemctl status chronyd
+```
+
+---
+
+# Configuration chrony 📝
+
+**Fichier : `/etc/chrony/chrony.conf`** (Debian/Ubuntu)  
+**Fichier : `/etc/chrony.conf`** (RHEL/Fedora)
+
+```bash
+sudo nano /etc/chrony/chrony.conf
+```
+
+**Configuration de base :**
+
+```
+# Serveurs NTP (pool français)
+pool fr.pool.ntp.org iburst
+pool 2.debian.pool.ntp.org iburst
+
+# Autoriser les clients du réseau local
+allow 192.168.1.0/24
+
+# Fichier de drift
+driftfile /var/lib/chrony/drift
+
+# Logs
+logdir /var/log/chrony
+```
+
+---
+
+# Commandes chronyc 🔧
+
+```bash
+# Voir les sources NTP
+chronyc sources
+
+# Informations détaillées
+chronyc sources -v
+
+# Statistiques de tracking
+chronyc tracking
+
+# Forcer la synchronisation immédiate
+sudo chronyc makestep
+
+# Voir l'activité réseau
+chronyc activity
+```
+
+---
+
+# Interpréter chronyc sources 📊
+
+```bash
+chronyc sources
+```
+
+```
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* ntp.example.com               2   6   377    32   -123us[ -456us] +/-   15ms
+^+ time.cloudflare.com           3   6   377    33    +89us[ +210us] +/-   20ms
+^- ntp2.example.org              2   6   377    34   -789us[-1012us] +/-   25ms
+```
+
+**Symboles :**
+- `*` : source actuellement utilisée
+- `+` : source alternative acceptable
+- `-` : source écartée
+- `?` : connectivité perdue
+
+**Stratum :** distance de la source atomique (1 = référence, 2 = bon, 15 = max)
+
+---
+
+# Configurer chrony comme serveur NTP 🖥️
+
+**Pour que d'autres machines se synchronisent sur ce serveur :**
+
+```bash
+sudo nano /etc/chrony/chrony.conf
+```
+
+```
+# Autoriser le réseau local
+allow 192.168.1.0/24
+
+# Servir l'heure même si non synchronisé (local stratum 10)
+local stratum 10
+```
+
+```bash
+# Redémarrer
+sudo systemctl restart chronyd
+
+# Ouvrir le firewall
+sudo ufw allow 123/udp
+```
+
+**Les clients pourront utiliser :**
+```
+server 192.168.1.10 iburst
+```
+
+---
+
+# Configurer la timezone ⏰
+
+```bash
+# Voir la timezone actuelle
+timedatectl
+
+# Lister les timezones disponibles
+timedatectl list-timezones
+
+# Chercher une timezone
+timedatectl list-timezones | grep Paris
+
+# Définir la timezone
+sudo timedatectl set-timezone Europe/Paris
+
+# Vérifier
+date
+```
+
+---
+
+# DHCP : attribution automatique d'IP 🌐
+
+**DHCP (Dynamic Host Configuration Protocol)**
+
+**Fonctionnement :**
+
+1. Client démarre : "J'ai besoin d'une IP !"
+2. Serveur DHCP : "Voici 192.168.1.50"
+3. Client : "Merci, je l'utilise"
+
+**Le serveur DHCP fournit :**
+- Adresse IP
+- Masque de sous-réseau
+- Passerelle par défaut
+- Serveurs DNS
+- Durée de location (lease time)
+
+---
+
+# Installer un serveur DHCP 📥
+
+```bash
+# Installer isc-dhcp-server
+sudo apt update
+sudo apt install isc-dhcp-server
+
+# Sur RHEL/Fedora
+sudo dnf install dhcp-server
+```
+
+**Fichier de configuration :**
+- Debian/Ubuntu : `/etc/dhcp/dhcpd.conf`
+- RHEL/Fedora : `/etc/dhcp/dhcpd.conf`
+
+---
+
+# Configuration DHCP de base 📝
+
+**Fichier : `/etc/dhcp/dhcpd.conf`**
+
+```bash
+sudo nano /etc/dhcp/dhcpd.conf
+```
+
+```
+# Paramètres globaux
+default-lease-time 600;
+max-lease-time 7200;
+authoritative;
+
+# Subnet 192.168.1.0/24
+subnet 192.168.1.0 netmask 255.255.255.0 {
+    range 192.168.1.100 192.168.1.200;
+    option routers 192.168.1.1;
+    option subnet-mask 255.255.255.0;
+    option domain-name-servers 8.8.8.8, 1.1.1.1;
+    option domain-name "example.local";
+}
+```
+
+---
+
+# Configuration DHCP : réservations 📌
+
+**Réserver une IP pour une machine spécifique (par MAC address) :**
+
+```
+# Réservation pour l'imprimante
+host imprimante {
+    hardware ethernet 00:11:22:33:44:55;
+    fixed-address 192.168.1.10;
+}
+
+# Réservation pour le serveur
+host serveur-web {
+    hardware ethernet AA:BB:CC:DD:EE:FF;
+    fixed-address 192.168.1.20;
+}
+```
+
+**Avantage :** toujours la même IP, mais géré par DHCP
+
+---
+
+# Configurer l'interface d'écoute 🔌
+
+**Debian/Ubuntu : `/etc/default/isc-dhcp-server`**
+
+```bash
+sudo nano /etc/default/isc-dhcp-server
+```
+
+```
+# Interface sur laquelle le serveur DHCP écoute
+INTERFACESv4="eth0"
+INTERFACESv6=""
+```
+
+**RHEL/Fedora : `/etc/sysconfig/dhcpd`**
+
+```bash
+DHCPDARGS="eth0"
+```
+
+---
+
+# Démarrer le serveur DHCP ▶️
+
+```bash
+# Tester la configuration
+sudo dhcpd -t -cf /etc/dhcp/dhcpd.conf
+
+# Démarrer le service
+sudo systemctl start isc-dhcp-server      # Debian/Ubuntu
+sudo systemctl start dhcpd                 # RHEL/Fedora
+
+# Activer au démarrage
+sudo systemctl enable isc-dhcp-server
+sudo systemctl enable dhcpd
+
+# Vérifier l'état
+sudo systemctl status isc-dhcp-server
+```
+
+---
+
+# Logs et dépannage DHCP 🔍
+
+**Voir les logs DHCP :**
+
+```bash
+# Debian/Ubuntu
+sudo tail -f /var/log/syslog | grep dhcpd
+
+# RHEL/Fedora
+sudo journalctl -u dhcpd -f
+```
+
+**Voir les baux (leases) actifs :**
+
+```bash
+# Fichier des baux
+cat /var/lib/dhcp/dhcpd.leases
+
+# Ou utiliser dhcp-lease-list (à installer)
+sudo apt install dhcp-helper
+dhcp-lease-list
+```
+
+---
+
+# Test du serveur DHCP 🧪
+
+**Sur une machine cliente :**
+
+```bash
+# Libérer l'adresse actuelle
+sudo dhclient -r
+
+# Demander une nouvelle adresse
+sudo dhclient eth0
+
+# Vérifier l'IP reçue
+ip addr show eth0
+```
+
+**Vérifier que le client a bien reçu :**
+- Une IP dans la plage définie
+- La passerelle correcte : `ip route`
+- Les DNS corrects : `cat /etc/resolv.conf`
+
+---
+
 # Récapitulatif du Module 7 ✅
 
 **Ce que vous avez appris :**
@@ -1428,6 +1782,10 @@ ssh -D 1080 utilisateur@serveur
 ✅ Tunnels SSH
 
 ✅ Dépannage réseau
+
+✅ Synchronisation temps (NTP/chrony)
+
+✅ Serveur DHCP (attribution automatique IP)
 
 ---
 

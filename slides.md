@@ -88,6 +88,9 @@ routeAlias: 'sommaire'
 <Link to="automatisation-scripts">🤖 8. Automatisation et scripts</Link>
 <Link to="securite-systeme">🔐 9. Sécurité système</Link>
 <Link to="services-serveurs">☁️ 10. Services serveurs</Link>
+<Link to="supervision-analyse">📊 11. Supervision & Analyse Système</Link>
+<Link to="supervision-avancee">🚨 12. Supervision Avancée (Zabbix)</Link>
+<Link to="optimisation-performances">⚡ 13. Optimisation & Performances (BONUS)</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 </div>
 
@@ -302,6 +305,42 @@ src: './pages/09-qcm-serveurs.md'
 
 ---
 src: './pages/09-exercices-serveurs.md'
+---
+
+---
+src: './pages/13-supervision-analyse-systeme.md'
+---
+
+---
+src: './pages/13-qcm-supervision.md'
+---
+
+---
+src: './pages/13-exercices-supervision.md'
+---
+
+---
+src: './pages/14-supervision-avancee-alertes.md'
+---
+
+---
+src: './pages/14-qcm-supervision-avancee.md'
+---
+
+---
+src: './pages/14-exercices-supervision-avancee.md'
+---
+
+---
+src: './pages/15-optimisation-performances.md'
+---
+
+---
+src: './pages/15-qcm-optimisation.md'
+---
+
+---
+src: './pages/15-exercices-optimisation.md'
 ---
 
 ---
