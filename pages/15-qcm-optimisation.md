@@ -1,6 +1,4 @@
 ---
-layout: question
----
 
 # QCM - Optimisation & Performances (BONUS) ✅
 

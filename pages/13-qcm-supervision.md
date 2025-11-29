@@ -1,6 +1,4 @@
 ---
-layout: question
----
 
 # QCM - Supervision & Analyse Système ✅
 
