@@ -1141,10 +1141,10 @@ tar -czf - /home | openssl enc -aes-256-cbc -e > backup.tar.gz.enc
 
 # Prochaine étape 🎯
 
-**Module 9 : Services serveurs**
+**Module 10 : Services serveurs**
 
-- Serveur web (Nginx, Apache)
-- Serveur SSH
+- Serveur web (Nginx)
+- Base de données (MySQL)
 - Serveur DNS
 - Serveur de base de données
 - Monitoring et supervision

@@ -499,10 +499,10 @@ stress --cpu 4 --timeout 300s
 
 # Prochaine étape 🎯
 
-**Module 6 (BONUS) : Optimisation & Performances**
+**Module 13 (BONUS) : Optimisation & Performances**
 
-- Tuning sysctl
-- Optimisation Nginx
+- Tuning kernel et système
+- Optimisation des services
 - Optimisation MySQL
 - Cache système
 

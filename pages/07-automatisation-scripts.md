@@ -1480,9 +1480,9 @@ shellcheck script.sh
 
 # Prochaine étape 🎯
 
-**Module 8 : Sécurité système**
+**Module 9 : Sécurité système**
 
-- Sécurisation des comptes utilisateurs
+- Durcissement SSH et fail2ban
 - SELinux et AppArmor
 - Pare-feu et durcissement système
 - Audit et logs de sécurité

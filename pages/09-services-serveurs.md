@@ -1170,10 +1170,16 @@ docker-compose up -d --build
 
 ✅ Gestion de services serveurs
 
-**Prochaines étapes :**
-- Exercices pratiques
-- QCM de validation
-- Projet final
+---
+
+# Prochaine étape 🎯
+
+**Module 11 : Supervision & Analyse Système**
+
+- Monitoring avec top, htop, iotop
+- Analyse des logs système
+- Métriques et tableaux de bord
+- Alertes et notifications
 
 ---
 

@@ -1238,10 +1238,10 @@ UUID=xxx  /home  ext4  defaults,relatime  0  2
 
 # Prochaine étape 🎯
 
-**Module 5 : Réseau**
+**Module 6 : Gestion des processus et services**
 
-- Configuration réseau (ip, nmcli)
-- Diagnostic réseau (ping, traceroute)
+- Comprendre les processus et leurs états
+- Gestion avec systemd et systemctl
 - Gestion du pare-feu (sera vu dans Module 7)
 - SSH et transfert de fichiers sécurisé
 - Résolution DNS

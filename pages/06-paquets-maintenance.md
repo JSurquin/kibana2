@@ -1127,13 +1127,13 @@ sudo systemctl enable --now docker
 
 # Prochaine étape 🎯
 
-**Module 7 : Automatisation, scripts et tâches planifiées**
+**Module 4 : Gestion des utilisateurs et permissions**
 
-- Scripts Bash de base
-- Variables, boucles, conditions
-- Tâches planifiées avec cron
-- at pour tâches ponctuelles
-- systemd timers
+- Création et gestion des comptes utilisateurs
+- Groupes et appartenance
+- Permissions avancées (chmod, chown, umask)
+- Sudo et sudoers
+- Quotas disque
 - Logs et journalctl
 
 ---

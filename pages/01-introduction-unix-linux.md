@@ -69,24 +69,65 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 ---
 
-# GNU + Linux = GNU/Linux 🔗
+<div class="grid grid-cols-2 gap-8">
+
+<div>
+
+#### Architecture en couches
+
+<small>
 
 ```mermaid
-graph LR
-    A["Applications utilisateur<br/>Firefox, LibreOffice, etc."]
-    B["Outils GNU<br/>bash, gcc, coreutils, etc."]
-    C["Noyau Linux<br/>gestion materiel, processus"]
-    D["Materiel<br/>CPU, RAM, disques, reseau"]
+%%{init: {'theme':'base', 'themeVariables': {'fontSize':'9px', 'marginLeft': '50px'}}}%%
+graph TB
+    A["👤 UTILISATEUR"]
+    B["📱 APPLICATIONS<br/><small>Firefox, LibreOffice, VSCode</small>"]
+    C["🔧 OUTILS GNU<br/><small>bash, grep, sed, awk, gcc</small>"]
+    D["🐧 NOYAU LINUX<br/><small>Gestion mémoire, processus, drivers</small>"]
+    E["💻 MATÉRIEL<br/><small>CPU, RAM, Disques, Réseau</small>"]
     
     A --> B
     B --> C
     C --> D
+    D --> E
     
-    style A fill:#e1f5ff
-    style B fill:#b3e5fc
-    style C fill:#81d4fa
-    style D fill:#4fc3f7
+    style A fill:#f8f9fa,stroke:#495057,stroke-width:3px
+    style B fill:#e7f5ff,stroke:#1971c2,stroke-width:2px
+    style C fill:#d0ebff,stroke:#1864ab,stroke-width:2px
+    style D fill:#a5d8ff,stroke:#1864ab,stroke-width:3px
+    style E fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
+
+</small>
+
+</div>
+
+<div>
+
+#### Les deux composants essentiels
+
+<small>
+
+**🔧 GNU (Projet GNU)**
+- Outils en ligne de commande
+- Compilateurs et bibliothèques
+- Shell (bash)
+- Utilitaires système
+
+**🐧 Linux (Noyau)**
+- Interface avec le matériel
+- Gestion de la mémoire
+- Ordonnancement des processus
+- Pilotes de périphériques
+
+**= GNU/Linux** 🎯
+Un système d'exploitation complet et fonctionnel
+
+</small>
+
+</div>
+
+</div>
 
 ---
 
@@ -566,6 +607,53 @@ source ~/.bashrc
 
 ---
 
+# Fichiers de configuration du shell 🔧
+
+**Pourquoi 2 fichiers différents ?**
+
+| Fichier | Quand il est lu ? | On met quoi dedans ? |
+|---------|-------------------|----------------------|
+| `~/.bash_profile`<br>`~/.zprofile` | À la **connexion** (SSH, login) | Variables d'environnement (PATH) |
+| `~/.bashrc`<br>`~/.zshrc` | À **chaque nouveau terminal** | Alias, fonctions, prompt |
+
+**💡 En gros :**
+- `.bash_profile` = 1 fois quand tu te connectes
+- `.bashrc` = à chaque fois que tu ouvres un terminal
+
+---
+
+# Configuration du shell : Exemples 🛠️
+
+**Dans `~/.bash_profile` (ou `~/.zprofile` pour Zsh) :**
+
+```bash
+# Variables d'environnement
+export PATH=$PATH:~/bin
+export EDITOR=vim
+```
+
+**Dans `~/.bashrc` (ou `~/.zshrc` pour Zsh) :**
+
+```bash
+# Alias
+alias ll='ls -lah'
+alias update='sudo apt update && sudo apt upgrade'
+
+# Fonction personnalisée
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+```
+
+**Appliquer les changements :**
+
+```bash
+source ~/.bashrc     # Pour Bash
+source ~/.zshrc      # Pour Zsh
+```
+
+---
+
 # Aide et documentation 📚
 
 **Obtenir de l'aide :**
@@ -694,37 +782,83 @@ unalias ll
 
 **Ce que vous avez appris :**
 
-✅ Historique d'Unix et naissance de Linux
+<small>
 
-✅ Philosophie Unix ("tout est fichier", modularité)
+- ✅ Historique d'Unix et naissance de Linux
+- ✅ Philosophie Unix ("tout est fichier", modularité)
+- ✅ Architecture d'un système Linux (noyau, shell, applications)
+- ✅ Structure du système de fichiers
+- ✅ Commandes essentielles de base
+- ✅ Pipes et redirections
+- ✅ Permissions de base
+- ✅ Processus et leur gestion
+- ✅ Variables d'environnement
+- ✅ Aide et documentation
 
-✅ Architecture d'un système Linux (noyau, shell, applications)
+</small>
 
-✅ Structure du système de fichiers
+---
 
-✅ Commandes essentielles de base
+# Environnement de travail 🐳
 
-✅ Pipes et redirections
+**Pour la suite, on a besoin d'un terminal Linux !**
 
-✅ Permissions de base
+**Option simple : Docker** (pas besoin de VM lourde)
 
-✅ Processus et leur gestion
+1. **Installer Docker Desktop :**
+   - Windows : https://docs.docker.com/desktop/install/windows-install/
+   - Mac : https://docs.docker.com/desktop/install/mac-install/
+   - Linux : https://docs.docker.com/desktop/install/linux-install/
 
-✅ Variables d'environnement
+2. **Créer un fichier `docker-compose.yml` :**
 
-✅ Aide et documentation
+```yaml
+services:
+  ubuntu:
+    image: ubuntu:24.04
+    container_name: formation-unix
+    stdin_open: true
+    tty: true
+    command: /bin/bash
+```
+
+---
+
+# Lancer l'environnement 🚀
+
+**3 commandes, c'est tout :**
+
+```bash
+# Démarrer le conteneur Ubuntu
+docker-compose up -d
+
+# Se connecter au terminal Linux
+docker exec -it formation-unix bash
+
+# Quitter : Ctrl+D ou
+exit
+```
+
+**Arrêter/supprimer :**
+
+```bash
+docker-compose down       # Arrêter
+docker-compose down -v    # Arrêter et tout supprimer
+```
+
+**💡 C'est tout !** On va passer 90% du temps dans le terminal, pas besoin de se prendre la tête avec une VM graphique.
 
 ---
 
 # Prochaine étape 🎯
 
-**Module 2 : Gestion du système et des utilisateurs**
+**Module 2 : Commandes de base essentielles**
 
-- Création et gestion des comptes utilisateurs
-- Groupes et appartenance
-- Permissions avancées (umask, sudo)
-- Quotas disque
-- Structure détaillée du système de fichiers
+- Navigation dans le système de fichiers
+- Manipulation de fichiers et répertoires
+- Recherche avec find et grep
+- Visualisation de fichiers
+- Redirections et pipes avancés
 
 ---
 layout: default

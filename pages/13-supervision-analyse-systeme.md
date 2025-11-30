@@ -619,10 +619,10 @@ multitail /var/log/nginx/access.log /var/log/nginx/error.log
 
 # Prochaine étape 🎯
 
-**Module 5 : Supervision avancée avec Zabbix**
+**Module 12 : Supervision avancée avec Zabbix**
 
-- Installation Zabbix serveur et agent
-- Configuration interface web
+- Installation et configuration Zabbix
+- Surveillance avancée et alertes
 - Création hosts et alertes
 - Notifications automatiques
 

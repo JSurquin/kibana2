@@ -1246,10 +1246,10 @@ journalctl -p err -n 50
 
 # Prochaine étape 🎯
 
-**Module 4 : Gestion du stockage et du système de fichiers**
+**Module 7 : Configuration réseau**
 
-- Disques et partitions
-- Systèmes de fichiers (ext4, xfs, btrfs, NFS)
+- Configuration IP (ip, nmcli)
+- SSH et connexions sécurisées
 - Montage et /etc/fstab
 - Permissions étendues (ACL)
 - Liens symboliques et durs

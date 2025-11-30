@@ -1791,10 +1791,10 @@ ip addr show eth0
 
 # Prochaine étape 🎯
 
-**Module 6 : Gestion des paquets et maintenance**
+**Module 8 : Automatisation et scripts**
 
-- Gestionnaires de paquets (apt, dnf)
-- Installation et mise à jour de logiciels
+- Scripts Bash avancés
+- Tâches planifiées avec cron
 - Gestion des dépôts
 - Dépendances
 - Sécurité et mises à jour

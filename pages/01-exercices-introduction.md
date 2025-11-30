@@ -309,12 +309,12 @@ chmod +x formation/scripts/sysinfo.sh
 
 # Prochaine étape 🎯
 
-**Module 2 : Gestion du système et des utilisateurs**
+**Module 2 : Commandes de base essentielles**
 
-Maintenant que vous maîtrisez les bases, nous allons voir :
-- La gestion des utilisateurs et groupes
-- Les permissions
-- Sudo et les droits d'administration
+Maintenant que vous connaissez les concepts, nous allons voir :
+- Les commandes essentielles de navigation
+- La manipulation avancée de fichiers
+- Les outils de recherche et filtrage
 
 ---
 

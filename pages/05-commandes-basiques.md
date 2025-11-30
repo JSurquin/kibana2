@@ -595,20 +595,15 @@ layout: default
 layout: default
 ---
 
-# Prochaines étapes 🎯
+# Prochaine étape 🎯
 
-### Ce qui nous attend
+**Module 3 : Gestion des paquets et maintenance**
 
-1. **Gestion des utilisateurs** et groupes
-2. **Permissions et sécurité** avancées
-3. **Processus et services** système
-4. **Réseaux et connectivité**
-5. **Paquets logiciels** et gestion
-
-**Préparation :**
-- Pratiquez les commandes de base
-- Familiarisez-vous avec les pipes et redirections
-- Créez vos propres scripts simples
+- Gestionnaires de paquets (apt, dnf, yum)
+- Installation et mise à jour de logiciels
+- Gestion des dépendances
+- Nettoyage et maintenance du système
+- Snapshots et rollbacks
 
 ---
 src: './pages/06-gestion-utilisateurs.md'

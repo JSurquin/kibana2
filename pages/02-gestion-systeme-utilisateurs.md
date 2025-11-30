@@ -1007,10 +1007,10 @@ sudo systemctl restart sshd
 
 # Prochaine étape 🎯
 
-**Module 3 : Gestion des processus et des services**
+**Module 5 : Stockage et système de fichiers**
 
-- Comprendre les processus et leurs états
-- PID, PPID, arbre des processus
+- Disques et partitions (fdisk, parted)
+- Systèmes de fichiers (ext4, xfs, btrfs)
 - Signaux Unix
 - systemd et gestion des services
 - Démarrage et arrêt du système
