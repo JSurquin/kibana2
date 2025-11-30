@@ -285,7 +285,7 @@ charlie,developers,/bin/zsh
 
 ---
 
-# Solution Exercice bonus 💡
+#### Solution Exercice bonus 💡
 
 ```bash
 #!/bin/bash
@@ -331,7 +331,9 @@ echo "Terminé ! Voir $REPORT"
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Sécurité :**
 - Ne jamais travailler en root
@@ -349,3 +351,4 @@ echo "Terminé ! Voir $REPORT"
 - `chmod`, `chown`, `chgrp`
 - `sudo`, `visudo`
 
+</div>

@@ -30,7 +30,9 @@ routeAlias: 'supervision-analyse'
 
 ---
 
-# Les 4 ressources clés à surveiller 🎯
+#### Les 4 ressources clés à surveiller 🎯
+
+<div class="text-xs">
 
 **1. CPU** : charge processeur
 - Trop élevé = système lent
@@ -47,6 +49,8 @@ routeAlias: 'supervision-analyse'
 **4. Réseau** : bande passante
 - Saturation = timeouts
 - Objectif : surveiller les pics
+
+</div>
 
 ---
 
@@ -557,7 +561,9 @@ multitail /var/log/nginx/access.log /var/log/nginx/error.log
 
 ---
 
-# Bonnes pratiques 📋
+#### Bonnes pratiques 📋
+
+<div class="text-xs">
 
 **1. Surveiller régulièrement**
 - Consulter htop tous les jours
@@ -574,9 +580,13 @@ multitail /var/log/nginx/access.log /var/log/nginx/error.log
 - Alertes email/SMS
 - Collecte historique (sar)
 
+</div>
+
 ---
 
 # Bonnes pratiques (suite) ✅
+
+<div class="text-xs">
 
 **4. Garder l'historique**
 - sar collecte automatique
@@ -593,9 +603,13 @@ multitail /var/log/nginx/access.log /var/log/nginx/error.log
 - Tendance d'utilisation disque
 - Planifier l'upgrade avant saturation
 
+</div>
+
 ---
 
-# Récapitulatif du Module 4 ✅
+#### Récapitulatif du Module 4 ✅
+
+<div class="text-xs">
 
 **Ce que vous avez appris :**
 
@@ -614,6 +628,8 @@ multitail /var/log/nginx/access.log /var/log/nginx/error.log
 ✅ Diagnostic de performance
 
 ✅ Bonnes pratiques supervision
+
+</div>
 
 ---
 

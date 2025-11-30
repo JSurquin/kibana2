@@ -565,11 +565,9 @@ cat test.txt | sort | uniq
 layout: default
 ---
 
-# Bonnes pratiques 💡
+### Bonnes pratiques 💡
 
-<small>
-
-**Conseils pour l'utilisation des commandes**
+<div class="text-xs">
 
 **Sécurité**
 - Toujours vérifier avant de supprimer
@@ -589,7 +587,7 @@ layout: default
 - Documenter les scripts
 - Maintenir un environnement propre
 
-</small>
+</div>
 
 ---
 layout: default

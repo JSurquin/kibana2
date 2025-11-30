@@ -50,7 +50,10 @@ graph LR
     style D fill:#a8e6cf
 ```
 
-**Processus :**
+---
+
+### Processus classique de création d'une partition :
+
 1. Identifier le disque
 2. Créer des partitions
 3. Créer un système de fichiers
@@ -58,7 +61,9 @@ graph LR
 
 ---
 
-# Nomenclature des disques 💿
+#### Nomenclature des disques 💿
+
+<div class="text-xs">
 
 **Disques SATA/SAS/USB :**
 - `/dev/sda` : premier disque
@@ -73,14 +78,21 @@ graph LR
 - `/dev/nvme0n1` : premier disque NVMe
 - `/dev/nvme0n1p1` : première partition
 
-**Analogie : les placards numérotés** 🗄️
+</div>
+
+---
+
+#### Analogie : les placards numérotés** 🗄️
 
 Imaginez un garde-meuble :
 - **sda, sdb, sdc** : les différents placards (disques)
 - **sda1, sda2** : les étagères dans le placard A (partitions)
 - **Système de fichiers** : comment vous organisez chaque étagère
 
-**Exemple concret :**
+
+---
+
+### Exemple concret :
 
 ```bash
 # Lister vos disques
@@ -959,7 +971,9 @@ sudo lvremove /dev/mon_vg/snapshot_data
 
 ---
 
-# RAID : Redundant Array of Independent Disks 💾💾
+#### RAID : Redundant Array of Independent Disks 💾💾
+
+<div class="text-xs">
 
 **RAID** : combiner plusieurs disques
 
@@ -982,6 +996,8 @@ sudo lvremove /dev/mon_vg/snapshot_data
 **RAID 10** : miroir + striping
 - Min 4 disques
 - Performance + redondance
+
+</div>
 
 ---
 

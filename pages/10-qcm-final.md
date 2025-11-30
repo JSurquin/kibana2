@@ -44,18 +44,6 @@ D) `whereis`
 
 ---
 
-# Réponse 1
-
-**Bonne réponse : B) `pwd`**
-
-**Explication :**
-- `pwd` : Print Working Directory
-- `ls` : liste les fichiers
-- `cd` : change de répertoire
-- `whereis` : localise un binaire
-
----
-
 # Question 2
 
 Quelle permission est représentée par le chiffre 7 en octal ?
@@ -67,18 +55,6 @@ B) `rw-`
 C) `rwx`
 
 D) `r-x`
-
----
-
-# Réponse 2
-
-**Bonne réponse : C) `rwx`**
-
-**Explication :**
-- 7 = 4 (read) + 2 (write) + 1 (execute)
-- 6 = rw-
-- 5 = r-x
-- 4 = r--
 
 ---
 
@@ -96,18 +72,6 @@ D) `sudo`
 
 ---
 
-# Réponse 3
-
-**Bonne réponse : B) `root`**
-
-**Explication :**
-- L'utilisateur `root` a toujours l'UID 0
-- C'est le super-utilisateur avec tous les privilèges
-- Les UIDs 1-999 sont réservés aux comptes système
-- Les UIDs 1000+ sont pour les utilisateurs normaux
-
----
-
 # Question 4
 
 Quelle commande permet de changer le propriétaire d'un fichier ?
@@ -119,18 +83,6 @@ B) `chown`
 C) `chgrp`
 
 D) `usermod`
-
----
-
-# Réponse 4
-
-**Bonne réponse : B) `chown`**
-
-**Explication :**
-- `chown` : change owner (propriétaire)
-- `chmod` : change les permissions
-- `chgrp` : change le groupe uniquement
-- `usermod` : modifie un utilisateur
 
 ---
 
@@ -148,18 +100,6 @@ D) SIGSTOP (19)
 
 ---
 
-# Réponse 5
-
-**Bonne réponse : B) SIGTERM (15)**
-
-**Explication :**
-- SIGTERM permet au processus de se terminer proprement
-- SIGKILL (9) termine immédiatement sans nettoyage
-- Toujours essayer SIGTERM avant SIGKILL
-- `kill -9` doit être utilisé en dernier recours
-
----
-
 # Question 6
 
 Quel fichier contient les mots de passe chiffrés ?
@@ -171,18 +111,6 @@ B) `/etc/shadow`
 C) `/etc/group`
 
 D) `/etc/security`
-
----
-
-# Réponse 6
-
-**Bonne réponse : B) `/etc/shadow`**
-
-**Explication :**
-- `/etc/shadow` : mots de passe chiffrés (accessible uniquement par root)
-- `/etc/passwd` : informations utilisateurs (mais plus les mots de passe)
-- `/etc/group` : informations sur les groupes
-- Le 'x' dans passwd indique que le mot de passe est dans shadow
 
 ---
 
@@ -200,18 +128,6 @@ D) `kill`
 
 ---
 
-# Réponse 7
-
-**Bonne réponse : B) `top`**
-
-**Explication :**
-- `top` : affichage en temps réel des processus
-- `ps` : snapshot des processus à un instant T
-- `pgrep` : recherche de processus par nom
-- `htop` est une alternative moderne à `top`
-
----
-
 # Question 8
 
 Quel est le PID du premier processus du système ?
@@ -223,18 +139,6 @@ B) 1
 C) 10
 
 D) 100
-
----
-
-# Réponse 8
-
-**Bonne réponse : B) 1**
-
-**Explication :**
-- Le PID 1 est toujours `init` ou `systemd`
-- C'est le processus parent de tous les autres
-- Tous les processus descendent de PID 1
-- Si PID 1 crash, le système crash
 
 ---
 
@@ -252,18 +156,6 @@ D) `df`
 
 ---
 
-# Réponse 9
-
-**Bonne réponse : A) `mount`**
-
-**Explication :**
-- `mount` : monte un système de fichiers
-- `umount` : démonte (attention, pas "unmount")
-- `fsck` : vérifie l'intégrité du système de fichiers
-- `df` : affiche l'espace disque utilisé
-
----
-
 # Question 10
 
 Où sont stockées les configurations de montage automatique au boot ?
@@ -275,18 +167,6 @@ B) `/etc/fstab`
 C) `/etc/filesystems`
 
 D) `/boot/mount.conf`
-
----
-
-# Réponse 10
-
-**Bonne réponse : B) `/etc/fstab`**
-
-**Explication :**
-- `/etc/fstab` : File System TABle
-- Contient les montages automatiques au démarrage
-- Format : device, mountpoint, fstype, options, dump, pass
-- Toujours tester avec `mount -a` avant de rebooter
 
 ---
 
@@ -304,18 +184,6 @@ D) `lsblk`
 
 ---
 
-# Réponse 11
-
-**Bonne réponse : B) `du`**
-
-**Explication :**
-- `du` : Disk Usage (par fichier/répertoire)
-- `df` : Disk Free (par partition)
-- `fdisk` : gestion des partitions
-- `lsblk` : liste les périphériques bloc
-
----
-
 # Question 12
 
 Quelle adresse IP est réservée pour localhost ?
@@ -327,18 +195,6 @@ B) `10.0.0.1`
 C) `127.0.0.1`
 
 D) `0.0.0.0`
-
----
-
-# Réponse 12
-
-**Bonne réponse : C) `127.0.0.1`**
-
-**Explication :**
-- `127.0.0.1` est l'adresse de loopback (localhost)
-- Toute la plage `127.0.0.0/8` est réservée au loopback
-- Utilisée pour les communications internes à la machine
-- `::1` est l'équivalent IPv6
 
 ---
 
@@ -356,18 +212,6 @@ D) 80
 
 ---
 
-# Réponse 13
-
-**Bonne réponse : B) 22**
-
-**Explication :**
-- Port 22 : SSH (Secure Shell)
-- Port 21 : FTP
-- Port 23 : Telnet (non sécurisé)
-- Port 80 : HTTP
-
----
-
 # Question 14
 
 Quelle commande permet de voir les connexions réseau actives ?
@@ -379,18 +223,6 @@ B) `netstat` ou `ss`
 C) `ifconfig`
 
 D) `route`
-
----
-
-# Réponse 14
-
-**Bonne réponse : B) `netstat` ou `ss`**
-
-**Explication :**
-- `ss` : Socket Statistics (moderne)
-- `netstat` : ancien mais toujours utilisé
-- `ping` : teste la connectivité
-- `ifconfig` : configuration des interfaces
 
 ---
 
@@ -408,18 +240,6 @@ D) `pacman`
 
 ---
 
-# Réponse 15
-
-**Bonne réponse : C) `apt`**
-
-**Explication :**
-- `apt` : Advanced Package Tool (Debian/Ubuntu)
-- `dnf` : Dandified Yum (RHEL/Fedora)
-- `yum` : ancien gestionnaire Red Hat
-- `pacman` : Arch Linux
-
----
-
 # Question 16
 
 Quelle commande met à jour la liste des paquets disponibles ?
@@ -431,18 +251,6 @@ B) `apt update`
 C) `apt install`
 
 D) `apt search`
-
----
-
-# Réponse 16
-
-**Bonne réponse : B) `apt update`**
-
-**Explication :**
-- `apt update` : met à jour la **liste** des paquets
-- `apt upgrade` : installe les **mises à jour** des paquets
-- Toujours faire `update` avant `upgrade`
-- Comme consulter le catalogue avant d'acheter
 
 ---
 
@@ -460,18 +268,6 @@ D) Dans un fichier séparé
 
 ---
 
-# Réponse 17
-
-**Bonne réponse : B) La première ligne**
-
-**Explication :**
-- Le shebang est `#!/bin/bash`
-- Doit être sur la première ligne du fichier
-- Indique quel interpréteur utiliser
-- Obligatoire pour rendre le script exécutable
-
----
-
 # Question 18
 
 Quelle est la syntaxe correcte pour une boucle for en bash ?
@@ -483,18 +279,6 @@ B) `for (i=1; i<=5; i++) { echo $i }`
 C) `foreach i in 1..5: echo $i`
 
 D) `for i = 1 to 5 do echo $i end`
-
----
-
-# Réponse 18
-
-**Bonne réponse : A) `for i in {1..5}; do echo $i; done`**
-
-**Explication :**
-- Syntaxe Bash standard
-- `do` et `done` encadrent le corps de la boucle
-- Les accolades ne sont pas utilisées en Bash
-- La syntaxe C-style existe mais différente : `for ((i=1; i<=5; i++))`
 
 ---
 
@@ -512,18 +296,6 @@ D) `timer`
 
 ---
 
-# Réponse 19
-
-**Bonne réponse : B) `cron`**
-
-**Explication :**
-- `cron` : tâches récurrentes (quotidiennes, hebdomadaires, etc.)
-- `at` : tâche ponctuelle unique
-- `systemd timers` : alternative moderne à cron
-- `crontab -e` pour éditer les tâches cron
-
----
-
 # Question 20
 
 Dans un crontab, que signifie `0 2 * * *` ?
@@ -535,18 +307,6 @@ B) À 2h du matin tous les jours
 C) Tous les 2 jours à minuit
 
 D) Le 2 de chaque mois
-
----
-
-# Réponse 20
-
-**Bonne réponse : B) À 2h du matin tous les jours**
-
-**Explication :**
-- Format cron : `minute heure jour mois jour_semaine`
-- `0 2 * * *` = minute 0, heure 2, tous les jours
-- `*` signifie "tous"
-- `*/5` signifie "toutes les 5 unités"
 
 ---
 
@@ -564,18 +324,6 @@ D) `/home/log`
 
 ---
 
-# Réponse 21
-
-**Bonne réponse : B) `/var/log`**
-
-**Explication :**
-- `/var/log` : répertoire standard des logs
-- Fichiers importants : `syslog`, `auth.log`, `kern.log`
-- `journalctl` pour les logs systemd
-- Les logs sont rotatés par `logrotate`
-
----
-
 # Question 22
 
 Quelle commande permet de voir les logs systemd en temps réel ?
@@ -587,18 +335,6 @@ B) `journalctl -f`
 C) `dmesg -w`
 
 D) `logwatch`
-
----
-
-# Réponse 22
-
-**Bonne réponse : B) `journalctl -f`**
-
-**Explication :**
-- `journalctl -f` : follow (comme `tail -f`)
-- Affiche les logs systemd en temps réel
-- `journalctl -u service` pour un service spécifique
-- `-f` est l'équivalent de `--follow`
 
 ---
 
@@ -616,18 +352,6 @@ D) Un protocole réseau
 
 ---
 
-# Réponse 23
-
-**Bonne réponse : B) Un système de contrôle d'accès obligatoire (MAC)**
-
-**Explication :**
-- SELinux = Security-Enhanced Linux
-- Ajoute une couche de sécurité au-delà des permissions Unix
-- Trois modes : enforcing, permissive, disabled
-- Par défaut sur RHEL/CentOS/Fedora
-
----
-
 # Question 24
 
 Quelle commande permet de désactiver temporairement SELinux ?
@@ -639,18 +363,6 @@ B) `setenforce 0`
 C) `systemctl stop selinux`
 
 D) `chmod 000 /etc/selinux`
-
----
-
-# Réponse 24
-
-**Bonne réponse : B) `setenforce 0`**
-
-**Explication :**
-- `setenforce 0` : passe en mode permissive
-- `setenforce 1` : passe en mode enforcing
-- Temporaire (jusqu'au reboot)
-- Pour désactiver définitivement : éditer `/etc/selinux/config`
 
 ---
 
@@ -668,18 +380,6 @@ D) `firewalld`
 
 ---
 
-# Réponse 25
-
-**Bonne réponse : B) `fail2ban`**
-
-**Explication :**
-- `fail2ban` : bannit les IP après X échecs
-- Protection contre le brute-force
-- Configurable dans `/etc/fail2ban/jail.conf`
-- Fonctionne avec SSH, HTTP, FTP, etc.
-
----
-
 # Question 26
 
 Quel est le protocole pour transférer des fichiers de manière sécurisée ?
@@ -691,18 +391,6 @@ B) HTTP
 C) SCP ou SFTP
 
 D) Telnet
-
----
-
-# Réponse 26
-
-**Bonne réponse : C) SCP ou SFTP**
-
-**Explication :**
-- SCP : Secure Copy (basé sur SSH)
-- SFTP : SSH File Transfer Protocol
-- FTP est non chiffré (mot de passe en clair)
-- `rsync` est aussi une bonne option avec SSH
 
 ---
 
@@ -720,18 +408,6 @@ D) `/home/ssh/`
 
 ---
 
-# Réponse 27
-
-**Bonne réponse : B) `~/.ssh/`**
-
-**Explication :**
-- `~/.ssh/` : répertoire personnel de l'utilisateur
-- `id_rsa` ou `id_ed25519` : clé privée
-- `id_rsa.pub` ou `id_ed25519.pub` : clé publique
-- `authorized_keys` : clés publiques autorisées
-
----
-
 # Question 28
 
 Quelle commande génère une paire de clés SSH ?
@@ -743,18 +419,6 @@ B) `ssh-gen`
 C) `ssh-keygen`
 
 D) `keygen`
-
----
-
-# Réponse 28
-
-**Bonne réponse : C) `ssh-keygen`**
-
-**Explication :**
-- `ssh-keygen -t ed25519` : recommandé en 2025
-- `ssh-keygen -t rsa -b 4096` : aussi valide
-- Génère une paire de clés (privée + publique)
-- Toujours protéger la clé privée !
 
 ---
 
@@ -772,18 +436,6 @@ D) Tomcat
 
 ---
 
-# Réponse 29
-
-**Bonne réponse : B) Nginx**
-
-**Explication :**
-- Nginx : architecture asynchrone, très performant
-- Apache : plus ancien, architecture multi-processus
-- Nginx souvent utilisé comme reverse proxy
-- Les deux sont excellents selon les cas d'usage
-
----
-
 # Question 30
 
 Où sont stockés les fichiers de configuration de Nginx sur Debian/Ubuntu ?
@@ -795,18 +447,6 @@ B) `/etc/nginx/`
 C) `/var/www/nginx/`
 
 D) `/usr/local/nginx/`
-
----
-
-# Réponse 30
-
-**Bonne réponse : B) `/etc/nginx/`**
-
-**Explication :**
-- `/etc/nginx/nginx.conf` : config principale
-- `/etc/nginx/sites-available/` : sites disponibles
-- `/etc/nginx/sites-enabled/` : sites actifs
-- `/var/www/html/` : répertoire web par défaut
 
 ---
 
@@ -824,18 +464,6 @@ D) `nginx --check`
 
 ---
 
-# Réponse 31
-
-**Bonne réponse : B) `nginx -t`**
-
-**Explication :**
-- `nginx -t` : test de syntaxe
-- Valide la configuration sans appliquer
-- Toujours tester avant de recharger
-- `nginx -T` affiche la config complète
-
----
-
 # Question 32
 
 Quel protocole permet d'obtenir des certificats SSL gratuits avec Let's Encrypt ?
@@ -847,18 +475,6 @@ B) FTP
 C) ACME
 
 D) SSL
-
----
-
-# Réponse 32
-
-**Bonne réponse : C) ACME**
-
-**Explication :**
-- ACME : Automatic Certificate Management Environment
-- Utilisé par Certbot (client Let's Encrypt)
-- Renouvellement automatique tous les 90 jours
-- Gratuit et automatisé
 
 ---
 
@@ -876,18 +492,6 @@ D) `mysqlexport`
 
 ---
 
-# Réponse 33
-
-**Bonne réponse : B) `mysqldump`**
-
-**Explication :**
-- `mysqldump` : export d'une base en SQL
-- `mysqldump -u root -p database > backup.sql`
-- Pour restaurer : `mysql -u root -p database < backup.sql`
-- Toujours sauvegarder avant les mises à jour !
-
----
-
 # Question 34
 
 Quelle est la différence entre `systemctl start` et `systemctl enable` ?
@@ -899,18 +503,6 @@ B) `start` démarre maintenant, `enable` démarre au boot
 C) `start` est permanent, `enable` est temporaire
 
 D) `enable` démarre maintenant, `start` au boot
-
----
-
-# Réponse 34
-
-**Bonne réponse : B) `start` démarre maintenant, `enable` démarre au boot**
-
-**Explication :**
-- `start` : démarre le service immédiatement
-- `enable` : active le démarrage automatique au boot
-- `enable --now` : les deux en une commande
-- `disable` : désactive le démarrage au boot
 
 ---
 
@@ -928,18 +520,6 @@ D) `/lib/systemd/systemd.conf`
 
 ---
 
-# Réponse 35
-
-**Bonne réponse : A) `/etc/systemd/system.conf`**
-
-**Explication :**
-- Configuration globale de systemd
-- Les services sont dans `/etc/systemd/system/`
-- Les services système dans `/lib/systemd/system/`
-- Utiliser `systemctl` pour gérer les services
-
----
-
 # Question 36
 
 Quelle commande permet de voir les services qui ont échoué ?
@@ -951,18 +531,6 @@ B) `systemctl --failed`
 C) `systemctl list-failed`
 
 D) `systemctl status --failed`
-
----
-
-# Réponse 36
-
-**Bonne réponse : B) `systemctl --failed`**
-
-**Explication :**
-- Liste tous les services en état "failed"
-- Utile pour le dépannage
-- `systemctl status service` pour plus de détails
-- `journalctl -u service` pour les logs
 
 ---
 
@@ -980,18 +548,6 @@ D) Local Virtual Machine
 
 ---
 
-# Réponse 37
-
-**Bonne réponse : B) Logical Volume Manager**
-
-**Explication :**
-- LVM : gestion flexible du stockage
-- Permet de redimensionner les partitions à chaud
-- Snapshots possibles
-- Structure : PV → VG → LV
-
----
-
 # Question 38
 
 Quelle commande permet de créer un lien symbolique ?
@@ -1003,18 +559,6 @@ B) `ln -s`
 C) `symlink`
 
 D) `mklink`
-
----
-
-# Réponse 38
-
-**Bonne réponse : B) `ln -s`**
-
-**Explication :**
-- `ln -s source destination` : lien symbolique
-- `ln source destination` : lien dur (sans `-s`)
-- Les liens symboliques peuvent traverser les partitions
-- Les liens durs partagent le même inode
 
 ---
 
@@ -1032,18 +576,6 @@ D) `>` est pour stdout, `>>` pour stderr
 
 ---
 
-# Réponse 39
-
-**Bonne réponse : B) `>` écrase, `>>` ajoute à la fin**
-
-**Explication :**
-- `>` : redirection (écrase le fichier)
-- `>>` : redirection en ajout (append)
-- `2>` : redirection de stderr
-- `&>` : redirection de stdout et stderr
-
----
-
 # Question 40
 
 Quelle variable d'environnement contient le répertoire personnel ?
@@ -1055,18 +587,6 @@ B) `$PWD`
 C) `$HOME`
 
 D) `$PATH`
-
----
-
-# Réponse 40
-
-**Bonne réponse : C) `$HOME`**
-
-**Explication :**
-- `$HOME` : répertoire personnel (`/home/user`)
-- `$USER` : nom de l'utilisateur
-- `$PWD` : répertoire courant
-- `$PATH` : chemins de recherche des exécutables
 
 ---
 
@@ -1084,18 +604,6 @@ D) `top fichier`
 
 ---
 
-# Réponse 41
-
-**Bonne réponse : B) `head fichier`**
-
-**Explication :**
-- `head` : 10 premières lignes par défaut
-- `head -n 5` : 5 premières lignes
-- `tail` : 10 dernières lignes
-- `tail -n 20` : 20 dernières lignes
-
----
-
 # Question 42
 
 Quelle commande recherche un fichier par son nom ?
@@ -1107,18 +615,6 @@ B) `find`
 C) `locate`
 
 D) B et C sont corrects
-
----
-
-# Réponse 42
-
-**Bonne réponse : D) B et C sont corrects**
-
-**Explication :**
-- `find` : recherche en temps réel dans le système
-- `locate` : recherche dans une base de données (plus rapide)
-- `find /chemin -name "fichier.txt"`
-- `updatedb` pour mettre à jour la base de `locate`
 
 ---
 
@@ -1136,18 +632,6 @@ D) `tar fichier`
 
 ---
 
-# Réponse 43
-
-**Bonne réponse : A) `gzip fichier`**
-
-**Explication :**
-- `gzip` : compression (crée `fichier.gz`)
-- `gunzip` : décompression
-- `tar -czf` : tar + gzip en une commande
-- `bzip2` et `xz` sont d'autres algorithmes de compression
-
----
-
 # Question 44
 
 Que fait la commande `chmod +x script.sh` ?
@@ -1159,18 +643,6 @@ B) Rend le script exécutable
 C) Rend le script modifiable
 
 D) Supprime le script
-
----
-
-# Réponse 44
-
-**Bonne réponse : B) Rend le script exécutable**
-
-**Explication :**
-- `+x` : ajoute le droit d'exécution
-- Nécessaire pour lancer `./script.sh`
-- `chmod 755 script.sh` : alternative numérique
-- Sans `x`, bash doit être appelé explicitement
 
 ---
 
@@ -1188,18 +660,6 @@ D) `free`
 
 ---
 
-# Réponse 45
-
-**Bonne réponse : B) `df`**
-
-**Explication :**
-- `df` : Disk Free (par partition)
-- `df -h` : format lisible (human-readable)
-- `du` : Disk Usage (par fichier/répertoire)
-- `free` : affiche la mémoire RAM
-
----
-
 # Question 46
 
 Quel est le répertoire temporaire standard ?
@@ -1211,18 +671,6 @@ B) `/tmp`
 C) `/var/tmp`
 
 D) B et C sont corrects
-
----
-
-# Réponse 46
-
-**Bonne réponse : D) B et C sont corrects**
-
-**Explication :**
-- `/tmp` : effacé au redémarrage
-- `/var/tmp` : persistant entre redémarrages
-- Tous les utilisateurs y ont accès (sticky bit)
-- Nettoyé périodiquement par le système
 
 ---
 
@@ -1240,18 +688,6 @@ D) `messages`
 
 ---
 
-# Réponse 47
-
-**Bonne réponse : B) `dmesg`**
-
-**Explication :**
-- `dmesg` : affiche le buffer du noyau
-- Utile pour diagnostiquer les problèmes matériels
-- `dmesg | grep error` : chercher les erreurs
-- `journalctl -k` : équivalent systemd
-
----
-
 # Question 48
 
 Quelle est la commande pour redémarrer le système ?
@@ -1263,18 +699,6 @@ B) `reboot`
 C) `shutdown -r now`
 
 D) B et C sont corrects
-
----
-
-# Réponse 48
-
-**Bonne réponse : D) B et C sont corrects**
-
-**Explication :**
-- `reboot` : redémarre immédiatement
-- `shutdown -r now` : idem (plus verbeux)
-- `systemctl reboot` : méthode systemd
-- `shutdown -r +10` : redémarre dans 10 minutes
 
 ---
 
@@ -1292,18 +716,6 @@ D) Un utilisateur système
 
 ---
 
-# Réponse 49
-
-**Bonne réponse : B) Un processus en arrière-plan**
-
-**Explication :**
-- Daemon : service qui tourne en arrière-plan
-- Exemples : `sshd`, `nginx`, `cron`
-- Souvent démarrés au boot
-- Gérés par systemd ou init
-
----
-
 # Question 50
 
 Quelle est la meilleure pratique pour travailler en tant qu'administrateur ?
@@ -1318,15 +730,252 @@ D) Partager le mot de passe root
 
 ---
 
-# Réponse 50
+# 📝 RÉPONSES
 
-**Bonne réponse : B) Utiliser sudo pour les tâches admin**
+### Les réponses sont sur les slides suivantes
 
-**Explication :**
+**Ne trichez pas ! 😉**
+
+---
+
+# Réponses 1-5
+
+**Réponse 1 : B) `pwd`**
+- `pwd` : Print Working Directory
+- `ls` : liste les fichiers
+- `cd` : change de répertoire
+
+**Réponse 2 : C) `rwx`**
+- 7 = 4 (read) + 2 (write) + 1 (execute)
+- 6 = rw-, 5 = r-x, 4 = r--
+
+**Réponse 3 : B) `root`**
+- L'utilisateur `root` a toujours l'UID 0
+- C'est le super-utilisateur avec tous les privilèges
+
+**Réponse 4 : B) `chown`**
+- `chown` : change owner (propriétaire)
+- `chmod` : change les permissions
+
+**Réponse 5 : B) SIGTERM (15)**
+- SIGTERM permet au processus de se terminer proprement
+- SIGKILL (9) termine immédiatement
+
+---
+
+# Réponses 6-10
+
+**Réponse 6 : B) `/etc/shadow`**
+- `/etc/shadow` : mots de passe chiffrés (accessible uniquement par root)
+- `/etc/passwd` : informations utilisateurs
+
+**Réponse 7 : B) `top`**
+- `top` : affichage en temps réel des processus
+- `ps` : snapshot à un instant T
+
+**Réponse 8 : B) 1**
+- Le PID 1 est toujours `init` ou `systemd`
+- C'est le processus parent de tous les autres
+
+**Réponse 9 : A) `mount`**
+- `mount` : monte un système de fichiers
+- `umount` : démonte
+
+**Réponse 10 : B) `/etc/fstab`**
+- `/etc/fstab` : File System TABle
+- Contient les montages automatiques au démarrage
+
+---
+
+# Réponses 11-15
+
+**Réponse 11 : B) `du`**
+- `du` : Disk Usage (par fichier/répertoire)
+- `df` : Disk Free (par partition)
+
+**Réponse 12 : C) `127.0.0.1`**
+- `127.0.0.1` est l'adresse de loopback (localhost)
+- `::1` est l'équivalent IPv6
+
+**Réponse 13 : B) 22**
+- Port 22 : SSH (Secure Shell)
+- Port 21 : FTP, Port 23 : Telnet
+
+**Réponse 14 : B) `netstat` ou `ss`**
+- `ss` : Socket Statistics (moderne)
+- `netstat` : ancien mais toujours utilisé
+
+**Réponse 15 : C) `apt`**
+- `apt` : Advanced Package Tool (Debian/Ubuntu)
+- `dnf` : RHEL/Fedora
+
+---
+
+# Réponses 16-20
+
+**Réponse 16 : B) `apt update`**
+- `apt update` : met à jour la **liste** des paquets
+- `apt upgrade` : installe les **mises à jour**
+
+**Réponse 17 : B) La première ligne**
+- Le shebang est `#!/bin/bash`
+- Doit être sur la première ligne
+
+**Réponse 18 : A) `for i in {1..5}; do echo $i; done`**
+- Syntaxe Bash standard
+- `do` et `done` encadrent le corps
+
+**Réponse 19 : B) `cron`**
+- `cron` : tâches récurrentes
+- `at` : tâche ponctuelle unique
+
+**Réponse 20 : B) À 2h du matin tous les jours**
+- Format cron : `minute heure jour mois jour_semaine`
+- `0 2 * * *` = minute 0, heure 2, tous les jours
+
+---
+
+# Réponses 21-25
+
+**Réponse 21 : B) `/var/log`**
+- `/var/log` : répertoire standard des logs
+- Fichiers : `syslog`, `auth.log`, `kern.log`
+
+**Réponse 22 : B) `journalctl -f`**
+- `journalctl -f` : follow (comme `tail -f`)
+- Affiche les logs systemd en temps réel
+
+**Réponse 23 : B) Un système de contrôle d'accès obligatoire (MAC)**
+- SELinux = Security-Enhanced Linux
+- Trois modes : enforcing, permissive, disabled
+
+**Réponse 24 : B) `setenforce 0`**
+- `setenforce 0` : passe en mode permissive
+- `setenforce 1` : passe en mode enforcing
+
+**Réponse 25 : B) `fail2ban`**
+- `fail2ban` : bannit les IP après X échecs
+- Protection contre le brute-force
+
+---
+
+# Réponses 26-30
+
+**Réponse 26 : C) SCP ou SFTP**
+- SCP : Secure Copy (basé sur SSH)
+- SFTP : SSH File Transfer Protocol
+
+**Réponse 27 : B) `~/.ssh/`**
+- `~/.ssh/` : répertoire personnel de l'utilisateur
+- `id_rsa`, `id_ed25519` : clés privées
+
+**Réponse 28 : C) `ssh-keygen`**
+- `ssh-keygen -t ed25519` : recommandé en 2025
+- Génère une paire de clés
+
+**Réponse 29 : B) Nginx**
+- Nginx : architecture asynchrone, très performant
+- Apache : plus ancien, multi-processus
+
+**Réponse 30 : B) `/etc/nginx/`**
+- `/etc/nginx/nginx.conf` : config principale
+- `/etc/nginx/sites-available/` : sites disponibles
+
+---
+
+# Réponses 31-35
+
+**Réponse 31 : B) `nginx -t`**
+- `nginx -t` : test de syntaxe
+- Toujours tester avant de recharger
+
+**Réponse 32 : C) ACME**
+- ACME : Automatic Certificate Management Environment
+- Utilisé par Certbot (Let's Encrypt)
+
+**Réponse 33 : B) `mysqldump`**
+- `mysqldump` : export d'une base en SQL
+- `mysqldump -u root -p database > backup.sql`
+
+**Réponse 34 : B) `start` démarre maintenant, `enable` démarre au boot**
+- `start` : démarre immédiatement
+- `enable` : active le démarrage au boot
+
+**Réponse 35 : A) `/etc/systemd/system.conf`**
+- Configuration globale de systemd
+- Services dans `/etc/systemd/system/`
+
+---
+
+# Réponses 36-40
+
+**Réponse 36 : B) `systemctl --failed`**
+- Liste tous les services en état "failed"
+- Utile pour le dépannage
+
+**Réponse 37 : B) Logical Volume Manager**
+- LVM : gestion flexible du stockage
+- Structure : PV → VG → LV
+
+**Réponse 38 : B) `ln -s`**
+- `ln -s source destination` : lien symbolique
+- `ln source destination` : lien dur
+
+**Réponse 39 : B) `>` écrase, `>>` ajoute à la fin**
+- `>` : redirection (écrase)
+- `>>` : redirection en ajout (append)
+
+**Réponse 40 : C) `$HOME`**
+- `$HOME` : répertoire personnel (`/home/user`)
+- `$USER` : nom de l'utilisateur
+
+---
+
+# Réponses 41-45
+
+**Réponse 41 : B) `head fichier`**
+- `head` : 10 premières lignes par défaut
+- `tail` : 10 dernières lignes
+
+**Réponse 42 : D) B et C sont corrects**
+- `find` : recherche en temps réel
+- `locate` : recherche dans une base de données
+
+**Réponse 43 : A) `gzip fichier`**
+- `gzip` : compression (crée `fichier.gz`)
+- `gunzip` : décompression
+
+**Réponse 44 : B) Rend le script exécutable**
+- `+x` : ajoute le droit d'exécution
+- Nécessaire pour lancer `./script.sh`
+
+**Réponse 45 : B) `df`**
+- `df` : Disk Free (par partition)
+- `df -h` : format lisible
+
+---
+
+# Réponses 46-50
+
+**Réponse 46 : D) B et C sont corrects**
+- `/tmp` : effacé au redémarrage
+- `/var/tmp` : persistant entre redémarrages
+
+**Réponse 47 : B) `dmesg`**
+- `dmesg` : affiche le buffer du noyau
+- Utile pour diagnostiquer les problèmes matériels
+
+**Réponse 48 : D) B et C sont corrects**
+- `reboot` : redémarre immédiatement
+- `shutdown -r now` : idem
+
+**Réponse 49 : B) Un processus en arrière-plan**
+- Daemon : service en arrière-plan
+- Exemples : `sshd`, `nginx`, `cron`
+
+**Réponse 50 : B) Utiliser sudo pour les tâches admin**
 - Principe du moindre privilège
-- `sudo` offre la traçabilité (logs)
-- Ne jamais travailler en root directement
-- Limiter les privilèges sudo aux commandes nécessaires
+- `sudo` offre la traçabilité
 
 ---
 
@@ -1348,7 +997,7 @@ D) Partager le mot de passe root
 
 ---
 
-# Points à réviser selon votre score 📚
+#### Points à réviser selon votre score 📚
 
 **Si vous avez raté les questions 1-10 :**
 - Revoir le Module 1 (Introduction)
@@ -1381,29 +1030,28 @@ D) Partager le mot de passe root
 
 ---
 
-# Félicitations ! 🎉
+#### Félicitations ! 🎉
+
+<div class="text-xs">
 
 **Vous avez complété la formation Unix/Linux - Initiation !**
 
 **Compétences acquises :**
 
-✅ Utilisation de la ligne de commande
-
-✅ Administration système
-
-✅ Gestion réseau
-
-✅ Scripting et automatisation
-
-✅ Sécurité
-
-✅ Services serveurs
+- ✅ Utilisation de la ligne de commande
+- ✅ Administration système
+- ✅ Gestion réseau
+- ✅ Scripting et automatisation
+- ✅ Sécurité
+- ✅ Services serveurs
 
 **Prochaines étapes :**
 - Pratiquer régulièrement
 - Mettre en place un projet personnel
 - Envisager une certification (LPIC-1, RHCSA)
 - Continuer à apprendre !
+
+</div>
 
 ---
 layout: default
@@ -1416,4 +1064,3 @@ layout: default
 Continuez à apprendre, pratiquer et partager.
 
 L'open source est une aventure collaborative.
-

@@ -11,7 +11,9 @@ layout: new-section
 
 ---
 
-# Quand optimiser ? 🤔
+#### Quand optimiser ? 🤔
+
+<div class="text-xs">
 
 **Ne pas optimiser prématurément !**
 
@@ -29,6 +31,8 @@ Citation célèbre :
 2. **Identifier** le problème
 3. **Optimiser** la zone critique
 4. **Re-mesurer** l'impact
+
+</div>
 
 ---
 
@@ -325,7 +329,9 @@ sudo systemctl restart redis-server
 
 ---
 
-# Checklist optimisation serveur web ✅
+#### Checklist optimisation serveur web ✅
+
+<div class="text-xs">
 
 **Pour un serveur web classique (Nginx + PHP + MySQL) :**
 
@@ -345,12 +351,13 @@ sudo systemctl restart redis-server
 - Slow query log activé
 - MySQLTuner exécuté
 
-□ **Cache**
-- Redis installé et configuré
+</div>
 
 ---
 
-# Récapitulatif du Module 6 (BONUS) ✅
+#### Récapitulatif du Module 6 (BONUS) ✅
+
+<div class="text-xs">
 
 **Ce que vous avez appris :**
 
@@ -374,8 +381,8 @@ sudo systemctl restart redis-server
 
 **Important** : toujours mesurer avant/après !
 
----
-layout: default
+</div>
+
 ---
 
 # Félicitations ! 🎉

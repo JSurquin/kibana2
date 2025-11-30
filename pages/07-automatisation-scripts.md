@@ -28,7 +28,9 @@ Avec automatisation :
 
 ---
 
-# Avantages de l'automatisation ✨
+#### Avantages de l'automatisation ✨
+
+<div class="text-xs">
 
 **1. Gain de temps**
 - Tâches répétitives automatisées
@@ -45,6 +47,8 @@ Avec automatisation :
 
 **4. Scalabilité**
 - Un script pour 1 serveur = un script pour 100 serveurs
+
+</div>
 
 ---
 
@@ -160,7 +164,9 @@ Imaginez une recette (script) avec des ingrédients (arguments) :
 - **$$** : le numéro de la cuisine (PID unique)
 - **$?** : "est-ce que ça a réussi ?" (0=succès, autre=échec)
 
-**Exemple concret :**
+---
+
+#### Exemple concret :
 
 ```bash
 #!/bin/bash

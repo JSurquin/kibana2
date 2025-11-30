@@ -369,7 +369,9 @@ Supervision → Problèmes
 
 ---
 
-# Projet fil rouge : Monitoring complet 🎯
+####  Projet fil rouge : Monitoring complet 🎯
+
+<div class="text-xs">
 
 **Objectif :** Mettre en place un monitoring complet de production
 
@@ -390,6 +392,8 @@ Supervision → Problèmes
 5. Créer un dashboard global
 
 **Durée :** 1-2 heures
+
+</div>
 
 ---
 

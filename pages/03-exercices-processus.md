@@ -361,6 +361,8 @@ done
 echo "============================" | tee -a $LOG_FILE
 ```
 
+---
+
 **Automatiser avec cron :**
 
 ```bash

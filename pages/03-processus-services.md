@@ -90,22 +90,25 @@ ps -fp 1234
 # États d'un processus 🔄
 
 ```mermaid
-stateDiagram-v2
-    [*] --> Cree
-    Cree --> Pret
-    Pret --> EnCours
-    EnCours --> Pret
-    EnCours --> Bloque
-    Bloque --> Pret
-    Bloque --> Termine
-    EnCours --> Termine
-    Termine --> [*]
+%%{init: {'theme':'base', 'themeVariables': {'fontSize':'10px'}}}%%
+graph LR
+    Start([Démarrage]) --> Created[🆕 CRÉÉ<br/>New]
+    Created --> Ready[⏸️ PRÊT<br/>Ready]
+    Ready --> Running[▶️ EN COURS<br/>Running]
+    Running --> Ready
+    Running --> Blocked[⏳ BLOQUÉ<br/>Waiting I/O]
+    Blocked --> Ready
+    Running --> Zombie[💀 TERMINÉ<br/>Zombie]
+    Blocked --> Zombie
+    Zombie --> End([Fin])
     
-    state "CREE" as Cree
-    state "PRET Ready" as Pret
-    state "EN COURS Running" as EnCours
-    state "BLOQUE Waiting" as Bloque
-    state "TERMINE Zombie" as Termine
+    style Start fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
+    style Created fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
+    style Ready fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
+    style Running fill:#c8e6c9,stroke:#4caf50,stroke-width:3px
+    style Blocked fill:#ffccbc,stroke:#ff5722,stroke-width:2px
+    style Zombie fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px
+    style End fill:#ffebee,stroke:#f44336,stroke-width:2px
 ```
 
 ---
@@ -266,7 +269,9 @@ kill -SIGNAL PID
 
 ---
 
-# Signaux courants 🚦
+#### Signaux courants 🚦
+
+<div class="text-xs">
 
 **SIGTERM (15)** : terminaison propre (par défaut)
 - Le processus peut nettoyer avant de quitter
@@ -286,6 +291,8 @@ kill -SIGNAL PID
 **SIGSTOP (19)** : pause (Ctrl+Z)
 
 **SIGCONT (18)** : reprise après pause
+
+</div>
 
 ---
 
@@ -331,7 +338,9 @@ pkill -TERM firefox
 
 ---
 
-# Priorité des processus : nice 🎚️
+#### Priorité des processus : nice 🎚️
+
+<div class="text-xs">
 
 **Nice value** : priorité d'un processus (-20 à +19)
 
@@ -346,7 +355,11 @@ pkill -TERM firefox
 
 **Plus le nice est élevé, plus le processus est "gentil" en laissant les autres passer**
 
-**Exemple pratique :**
+</div>
+
+---
+
+#### Exemple pratique :
 
 Imaginez que vous lancez un traitement vidéo qui prend 2 heures :
 
@@ -1222,25 +1235,16 @@ journalctl -p err -n 50
 
 **Ce que vous avez appris :**
 
-✅ Anatomie et états des processus (PID, PPID, états)
-
-✅ Gestion des processus (ps, top, htop, kill)
-
-✅ Signaux Unix (SIGTERM, SIGKILL, SIGHUP, etc.)
-
-✅ Priorités (nice, renice)
-
-✅ Jobs et arrière-plan (fg, bg, nohup)
-
-✅ systemd et gestion des services
-
-✅ Création de services personnalisés
-
-✅ Logs avec journalctl
-
-✅ Démarrage et arrêt du système
-
-✅ Limites de ressources (ulimit, cgroups)
+- ✅ Anatomie et états des processus (PID, PPID, états)
+- ✅ Gestion des processus (ps, top, htop, kill)
+- ✅ Signaux Unix (SIGTERM, SIGKILL, SIGHUP, etc.)
+- ✅ Priorités (nice, renice)
+- ✅ Jobs et arrière-plan (fg, bg, nohup)
+- ✅ systemd et gestion des services
+- ✅ Création de services personnalisés
+- ✅ Logs avec journalctl
+- ✅ Démarrage et arrêt du système
+- ✅ Limites de ressources (ulimit, cgroups)
 
 ---
 

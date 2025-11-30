@@ -42,6 +42,8 @@ sequenceDiagram
     S->>C: Reponse HTML
 ```
 
+---
+
 **Exemples :**
 - **Web** : navigateur ↔ Nginx/Apache
 - **Email** : client mail ↔ serveur SMTP
@@ -93,7 +95,7 @@ curl http://localhost
 # Structure de Nginx 📁
 
 ```mermaid
-graph LR
+graph TB
     A["/etc/nginx/"]
     A --> B["nginx.conf<br/>Config principale"]
     A --> C["sites-available/<br/>Sites disponibles"]
@@ -327,7 +329,7 @@ sudo systemctl enable apache2
 # Structure Apache 📁
 
 ```mermaid
-graph LR
+graph TB
     A["/etc/apache2/"]
     A --> B["apache2.conf<br/>Config principale"]
     A --> C["sites-available/<br/>Sites disponibles"]
@@ -1183,7 +1185,9 @@ docker-compose up -d --build
 
 ---
 
-# Pour aller plus loin 🚀
+#### Pour aller plus loin 🚀
+
+<div class="text-xs">
 
 **Certifications :**
 - **LPIC-1** : Linux Professional Institute Certification
@@ -1200,6 +1204,8 @@ docker-compose up -d --build
 - Installer une VM ou un Raspberry Pi
 - Contribuer à des projets open source
 - Monter son propre serveur
+
+</div>
 
 ---
 layout: default

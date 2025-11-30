@@ -28,7 +28,9 @@ routeAlias: 'securite-systeme'
 
 ---
 
-# Les principes de sécurité 🛡️
+#### Les principes de sécurité 🛡️
+
+<div class="text-xs">
 
 **1. Moindre privilège**
 - Donner uniquement les droits nécessaires
@@ -46,7 +48,11 @@ routeAlias: 'securite-systeme'
 **5. Audit et surveillance**
 - Savoir ce qui se passe sur le système
 
-**Analogie : la sécurité de votre banque** 🏦
+</div>
+
+---
+
+#### Analogie : la sécurité de votre banque** 🏦
 
 **Moindre privilège** : L'employé au guichet ne peut pas ouvrir le coffre-fort
 

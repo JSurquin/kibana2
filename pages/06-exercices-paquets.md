@@ -319,7 +319,9 @@ log "===== Fin mise à jour ====="
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **APT :**
 - `update` : liste des paquets
@@ -337,5 +339,4 @@ log "===== Fin mise à jour ====="
 - Flatpak : alternative à Snap
 - AppImage : applications portables
 
----
-
+</div>

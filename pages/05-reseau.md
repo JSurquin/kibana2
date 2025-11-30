@@ -75,7 +75,9 @@ graph LR
 
 ---
 
-# Adresses IP : IPv4 vs IPv6 🌐
+#### Adresses IP : IPv4 vs IPv6 🌐
+
+<div class="text-xs">
 
 **IPv4** : 32 bits (4 octets)
 - Format : `192.168.1.100`
@@ -97,7 +99,13 @@ graph LR
 **IPv6** : comme un numéro à 40 chiffres
 - Suffisant pour donner un numéro unique à chaque grain de sable sur Terre !
 
-**Exemple concret :**
+</div>
+
+---
+
+#### Exemple concret :
+
+<div class="text-xs">
 
 ```bash
 # Voir vos adresses IP
@@ -107,6 +115,8 @@ ip addr show
 # inet 192.168.1.100/24    (IPv4 privée)
 # inet6 fe80::a00:27ff:fe4e:66a1/64  (IPv6 locale)
 ```
+
+</div>
 
 ---
 
@@ -148,6 +158,8 @@ graph LR
 ```
 
 **Notation CIDR** : `/24` = 255.255.255.0
+
+---
 
 **Calcul :**
 - `/24` = 256 adresses (254 utilisables)

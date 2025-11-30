@@ -69,7 +69,7 @@ Utiliser root en permanence, c'est comme conduire une voiture de sport à 200 km
 
 `/etc/passwd` : informations des utilisateurs
 
-```
+```bash
 alice:x:1001:1001:Alice Martin:/home/alice:/bin/bash
 bob:x:1002:1002:Bob Dupont:/home/bob:/bin/bash
 ```
@@ -83,7 +83,8 @@ Format : `username:x:UID:GID:comment:home:shell`
 **Format :** `alice:x:1001:1001:Alice Martin:/home/alice:/bin/bash`
 
 ```mermaid
-graph LR
+%%{init: {'theme':'base', 'themeVariables': {'fontSize':'11px'}}}%%
+graph TD
     A["alice"] --> A1["Nom utilisateur"]
     B["x"] --> B1["Mot de passe dans /etc/shadow"]
     C["1001"] --> C1["UID identifiant unique"]
@@ -110,13 +111,13 @@ graph LR
 
 Contient les mots de passe chiffrés (accessible uniquement par root)
 
-```
+```bash
 alice:$6$rounds=5000$salt$hashedpassword:19000:0:99999:7:::
 ```
 
 **Format :**
 
-```
+```bash
 username:password_hash:last_change:min:max:warn:inactive:expire
 ```
 
@@ -132,7 +133,7 @@ username:password_hash:last_change:min:max:warn:inactive:expire
 
 Définit les groupes et leurs membres
 
-```
+```bash
 users:x:100:
 developers:x:1010:alice,bob,charlie
 admins:x:1020:alice
@@ -504,6 +505,8 @@ Imaginez que umask est comme les paramètres par défaut de votre imprimante :
 - Sans umask : tout le monde peut tout faire (666 pour fichiers)
 - Avec umask 0022 : on retire certains droits par défaut (autres ne peuvent pas écrire)
 
+---
+
 ```bash
 # Voir le umask actuel
 umask
@@ -586,7 +589,7 @@ sudo visudo
 
 **Exemples de configuration :**
 
-```
+```bash
 # Donner tous les droits
 alice ALL=(ALL:ALL) ALL
 
@@ -604,13 +607,13 @@ bob ALL=(ALL) /usr/bin/apt, /bin/mkdir
 
 # Format de la configuration sudo 📝
 
-```
+```bash
 utilisateur HOSTS=(RUN_AS) COMMANDES
 ```
 
 **Exemples détaillés :**
 
-```
+```bash
 # Alice peut gérer les fichiers système
 alice ALL=(ALL) /bin/mkdir, /bin/cp, /bin/mv
 
@@ -643,7 +646,9 @@ charlie ALL=(alice) ALL
 
 ---
 
-# Quotas disque : pourquoi ? 💾
+### Quotas disque : pourquoi ? 💾
+
+<div class="text-xs">
 
 **Problème :**
 Un utilisateur remplit le disque → tout le système crashe
@@ -651,6 +656,7 @@ Un utilisateur remplit le disque → tout le système crashe
 **Solution : les quotas**
 - Limiter l'espace disque par utilisateur/groupe
 - Limiter le nombre de fichiers (inodes)
+
 
 **Analogie : le forfait mobile** 📱
 
@@ -664,6 +670,8 @@ Un utilisateur remplit le disque → tout le système crashe
 Imaginez une entreprise avec 100 employés et un serveur de 1 To :
 - Sans quotas : un employé peut stocker 500 Go de vidéos personnelles
 - Avec quotas : chacun a droit à 8 Go → espace équitablement réparti
+
+</div>
 
 ---
 
@@ -688,7 +696,7 @@ sudo nano /etc/fstab
 
 Ajouter `usrquota,grpquota` :
 
-```
+```bash
 /dev/sda1 / ext4 defaults,usrquota,grpquota 0 1
 ```
 
@@ -766,12 +774,14 @@ sudo quotaon /
 
 **Rappel des principaux répertoires :**
 
-`/bin` : binaires essentiels (ls, cat, cp, bash)
-`/sbin` : binaires système (fsck, reboot)
-`/usr/bin` : programmes utilisateur
-`/usr/sbin` : programmes admin
+- `/bin` : binaires essentiels (ls, cat, cp, bash)
+- `/sbin` : binaires système (fsck, reboot)
+- `/usr/bin` : programmes utilisateur
+- `/usr/sbin` : programmes admin
 
-**Note moderne :** sur beaucoup de distributions, `/bin`, `/sbin`, `/lib` sont des liens symboliques vers `/usr/bin`, `/usr/sbin`, `/usr/lib`
+<br/>
+
+> **Note moderne :** sur beaucoup de distributions, `/bin`, `/sbin`, `/lib` sont des liens symboliques vers `/usr/bin`, `/usr/sbin`, `/usr/lib`
 
 ---
 
@@ -779,7 +789,7 @@ sudo quotaon /
 
 **Fichiers de configuration système**
 
-```
+```bash
 /etc/
 ├── passwd              # Utilisateurs
 ├── shadow              # Mots de passe
@@ -801,7 +811,7 @@ sudo quotaon /
 
 **Fichiers qui changent fréquemment**
 
-```
+```bash
 /var/
 ├── log/                # Logs système et applications
 │   ├── syslog
@@ -820,7 +830,7 @@ sudo quotaon /
 
 **Chaque utilisateur a son espace :**
 
-```
+```bash
 /home/
 ├── alice/
 │   ├── Documents/

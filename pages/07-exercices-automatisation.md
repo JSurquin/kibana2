@@ -349,6 +349,8 @@ cat $REPORT
 # mail -s "Rapport Logs $(hostname)" admin@example.com < $REPORT
 ```
 
+---
+
 **Planifier quotidiennement à 7h :**
 
 ```bash

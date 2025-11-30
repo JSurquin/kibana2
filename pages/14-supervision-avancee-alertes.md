@@ -153,7 +153,9 @@ sudo systemctl enable zabbix-server zabbix-agent apache2
 
 ---
 
-# Configuration interface web 🌐
+#### Configuration interface web 🌐
+
+<div class="text-xs">
 
 **Accéder à l'interface :**
 
@@ -174,6 +176,8 @@ http://ip-serveur/zabbix
 4. **Settings** : donner un nom au serveur
 5. **Summary** : Next
 6. **Install** : Finish
+
+</div>
 
 ---
 
