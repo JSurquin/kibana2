@@ -192,6 +192,45 @@ layout: two-cols
 </small>
 
 ---
+layout: two-cols
+---
+
+### PROGRAMME INITIATION UNIX/LINUX 📅
+
+<small>
+
+**Module 11 - Supervision & Analyse**
+- Monitoring (top, htop, iotop)
+- Analyse des logs
+- Métriques système
+- Tableaux de bord
+
+**Module 12 - Supervision Avancée**
+- Zabbix serveur et agent
+- Alertes et notifications
+- Templates personnalisés
+- Dashboard avancés
+
+</small>
+
+::right::
+
+<small>
+
+**Module 13 - Optimisation (BONUS)** ⚡
+- Tuning kernel (sysctl)
+- Optimisation mémoire
+- Optimisation réseau
+- Performance des services
+
+**QCM Final** ✅
+- Validation des connaissances
+- Tous les modules
+- Certification de la formation
+
+</small>
+
+---
 src: './pages/01-introduction-unix-linux.md'
 ---
 
