@@ -110,7 +110,11 @@ sudo ethtool -k eth0 | grep -E "tcp-segmentation|generic-receive|generic-segment
 sudo nano /etc/systemd/network/10-eth0.link
 ```
 
-Ajouter :
+---
+
+# Exercice 2 : Configuration systemd 💡
+
+Contenu du fichier `/etc/systemd/network/10-eth0.link` :
 
 ```ini
 [Match]
@@ -167,18 +171,11 @@ ping -c 10 8.8.8.8
 ```bash
 # 5. Rendre permanent
 sudo nano /etc/rc.local
-```
+# Ajouter avant exit 0 :
+# #!/bin/bash
+# tc qdisc replace dev eth0 root fq_codel
 
-Ajouter avant `exit 0` :
-
-```bash
-#!/bin/bash
-tc qdisc replace dev eth0 root fq_codel
-```
-
-Rendre exécutable :
-
-```bash
+# Rendre exécutable
 sudo chmod +x /etc/rc.local
 ```
 
@@ -390,17 +387,9 @@ ab -n 10000 -c 100 http://localhost/
 
 # 6. Ajuster MTU
 sudo nano /etc/docker/daemon.json
-```
+# Ajouter: { "mtu": 1450 }
 
-Ajouter :
-
-```json
-{
-  "mtu": 1450
-}
-```
-
-```bash
+# Redémarrer Docker
 sudo systemctl restart docker
 ```
 
@@ -491,9 +480,14 @@ sudo apt install nginx -y
 
 # 2. Optimisations système
 sudo nano /etc/sysctl.conf
+# Ajouter les paramètres TCP ci-dessous
 ```
 
-Ajouter :
+---
+
+# Projet BONUS : Configuration sysctl 💡
+
+Contenu à ajouter dans `/etc/sysctl.conf` :
 
 ```ini
 # TCP
@@ -511,14 +505,20 @@ net.ipv4.tcp_tw_reuse = 1
 
 # Projet BONUS : Solution (2/4) 💡
 
+Ajouter aussi dans `/etc/sysctl.conf` :
+
 ```ini
 # Congestion
 net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 ```
 
+---
+
+# Projet BONUS : Appliquer les optimisations 💡
+
 ```bash
-# Appliquer
+# Appliquer sysctl
 sudo sysctl -p
 
 # Optimiser NIC
@@ -535,7 +535,12 @@ sudo tc qdisc replace dev eth0 root fq_codel
 ```bash
 # 3. Optimiser Nginx
 sudo nano /etc/nginx/nginx.conf
+# Utiliser la configuration des slides suivantes
 ```
+
+---
+
+# Projet BONUS : Configuration Nginx (partie 1) 💡
 
 ```nginx
 user www-data;
@@ -560,7 +565,7 @@ http {
 
 ---
 
-# Projet BONUS : Solution (4/4) 💡
+# Projet BONUS : Configuration Nginx (partie 2) 💡
 
 ```nginx
     # Gzip
@@ -579,9 +584,15 @@ http {
 }
 ```
 
+---
+
+# Projet BONUS : Tester et appliquer 💡
+
 ```bash
-# Tester et recharger
+# Tester la configuration
 sudo nginx -t
+
+# Recharger Nginx
 sudo systemctl reload nginx
 ```
 
