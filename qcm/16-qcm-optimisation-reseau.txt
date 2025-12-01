@@ -1,0 +1,262 @@
+================================================================================
+QCM - OPTIMISATION RÉSEAU SOUS LINUX (BONUS)
+================================================================================
+Module BONUS : Validation des connaissances en optimisation réseau
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Que signifie "optimiser le réseau" sous Linux ?
+
+A) Rendre Internet plus rapide
+B) Rendre la machine plus efficace pour traiter le trafic réseau
+C) Augmenter la vitesse de la connexion Internet
+D) Installer plus de cartes réseau
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quel est l'outil principal pour modifier les paramètres TCP/IP ?
+
+A) ifconfig
+B) netstat
+C) sysctl
+D) ping
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quel algorithme de congestion TCP est recommandé en 2025 ?
+
+A) Reno
+B) Tahoe
+C) BBR
+D) Vegas
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quel outil permet d'optimiser les paramètres de la carte réseau ?
+
+A) sysctl
+B) ethtool
+C) iptables
+D) netcat
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Qu'est-ce que le bufferbloat ?
+
+A) Un virus réseau
+B) Une latence excessive causée par des buffers trop grands
+C) Un protocole de sécurité
+D) Un type de pare-feu
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel algorithme de file d'attente est moderne et recommandé ?
+
+A) pfifo
+B) fq_codel
+C) bfifo
+D) red
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Quel est le système de pare-feu moderne recommandé en 2025 ?
+
+A) ipchains
+B) iptables (classique)
+C) nftables
+D) firewalld seulement
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Quel mode réseau Docker offre les meilleures performances ?
+
+A) bridge (par défaut)
+B) none
+C) host
+D) overlay
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Quel outil permet de tester le débit réseau entre deux machines ?
+
+A) ping
+B) traceroute
+C) iperf3
+D) wget
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quelle commande remplace netstat dans les systèmes modernes ?
+
+A) ip
+B) ss
+C) ifconfig
+D) route
+
+Votre réponse : ___
+
+================================================================================
+
+Question 11 : Que signifie TSO dans le contexte de l'offloading réseau ?
+
+A) TCP Socket Optimization
+B) TCP Segmentation Offload
+C) Total System Offload
+D) Transport Security Offload
+
+Votre réponse : ___
+
+================================================================================
+
+Question 12 : Quelle valeur de net.core.somaxconn est recommandée pour un serveur web haute charge ?
+
+A) 128 (défaut)
+B) 512
+C) 4096 ou plus
+D) 50
+
+Votre réponse : ___
+
+================================================================================
+
+Question 13 : Quel MTU est utilisé pour les Jumbo Frames ?
+
+A) 1500 (standard)
+B) 1450
+C) 9000
+D) 65535
+
+Votre réponse : ___
+
+================================================================================
+
+Question 14 : Que permet la commande "tc" sous Linux ?
+
+A) Gérer les tâches cron
+B) Contrôler le trafic et les files d'attente réseau
+C) Tester la connectivité
+D) Créer des conteneurs
+
+Votre réponse : ___
+
+================================================================================
+
+Question 15 : Quelle est la première étape avant d'optimiser un système ?
+
+A) Appliquer toutes les optimisations disponibles
+B) Mesurer les performances actuelles
+C) Redémarrer le serveur
+D) Installer de nouveaux outils
+
+Votre réponse : ___
+
+================================================================================
+
+Question 16 : Quel paramètre sysctl permet de réutiliser les sockets TIME_WAIT ?
+
+A) net.ipv4.tcp_reuse
+B) net.ipv4.tcp_tw_reuse
+C) net.ipv4.tcp_recycle
+D) net.ipv4.tcp_socket_reuse
+
+Votre réponse : ___
+
+================================================================================
+
+Question 17 : Quel backend réseau utilise Podman par défaut en 2025 ?
+
+A) CNI
+B) slirp4netns
+C) netavark
+D) bridge
+
+Votre réponse : ___
+
+================================================================================
+
+Question 18 : Pour un serveur de stockage NFS, quel paramètre est important ?
+
+A) Latence minimale uniquement
+B) TCP window large pour débit maximal
+C) Compression des données
+D) Chiffrement systématique
+
+Votre réponse : ___
+
+================================================================================
+
+Question 19 : Quel outil permet de visualiser la bande passante en temps réel ?
+
+A) ping
+B) iftop
+C) top
+D) htop
+
+Votre réponse : ___
+
+================================================================================
+
+Question 20 : Quelle est la bonne approche pour l'optimisation réseau ?
+
+A) Appliquer tous les réglages trouvés sur Internet
+B) Mesurer, optimiser, re-mesurer
+C) Optimiser sans mesurer, ça marche toujours
+D) Ne jamais toucher aux paramètres par défaut
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM OPTIMISATION RÉSEAU (BONUS)
+================================================================================
+
+Barème :
+- 18-20/20 : Expert ! ⭐⭐⭐⭐
+- 15-17/20 : Excellent ! ⭐⭐⭐
+- 12-14/20 : Très bien ! ⭐⭐
+- 10-11/20 : Bien ⭐
+- < 10 : Réviser le module
+
+================================================================================
+CORRECTION
+================================================================================
+
+1. B - Rendre la machine plus efficace pour traiter le trafic réseau
+2. C - sysctl
+3. C - BBR
+4. B - ethtool
+5. B - Une latence excessive causée par des buffers trop grands
+6. B - fq_codel
+7. C - nftables
+8. C - host
+9. C - iperf3
+10. B - ss
+11. B - TCP Segmentation Offload
+12. C - 4096 ou plus
+13. C - 9000
+14. B - Contrôler le trafic et les files d'attente réseau
+15. B - Mesurer les performances actuelles
+16. B - net.ipv4.tcp_tw_reuse
+17. C - netavark
+18. B - TCP window large pour débit maximal
+19. B - iftop
+20. B - Mesurer, optimiser, re-mesurer
