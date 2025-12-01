@@ -1,0 +1,120 @@
+================================================================================
+QCM MODULE 8 : AUTOMATISATION ET SCRIPTS
+================================================================================
+10 questions sur le scripting et les tâches planifiées
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quelle est la première ligne d'un script bash ?
+
+A) #bash
+B) #!/bin/bash
+C) <bash>
+D) //bin/bash
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Comment rendre un script exécutable ?
+
+A) chmod +x script.sh
+B) execute script.sh
+C) make executable script.sh
+D) run script.sh
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Comment définir une variable en bash ?
+
+A) var = value
+B) var=value
+C) set var value
+D) $var=value
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Comment accéder à la valeur d'une variable ?
+
+A) var
+B) $var
+C) &var
+D) @var
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Quelle commande planifie des tâches récurrentes ?
+
+A) at
+B) cron
+C) timer
+D) schedule
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Que signifie 0 2 * * * dans un crontab ?
+
+A) Toutes les 2 minutes
+B) À 2h du matin tous les jours
+C) Tous les 2 jours
+D) Le 2 de chaque mois
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Comment voir les logs systemd en temps réel ?
+
+A) tail -f /var/log/syslog
+B) journalctl -f
+C) logwatch
+D) logs -f
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Quelle structure crée une boucle en bash ?
+
+A) loop ... end
+B) for ... done
+C) while ... endwhile
+D) repeat ... until
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment rediriger stdout ET stderr vers un fichier ?
+
+A) commande > fichier
+B) commande 2> fichier
+C) commande &> fichier
+D) commande >> fichier
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quelle commande planifie une tâche ponctuelle ?
+
+A) cron
+B) at
+C) once
+D) schedule
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 8
+================================================================================

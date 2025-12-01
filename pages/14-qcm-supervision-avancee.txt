@@ -1,0 +1,126 @@
+================================================================================
+QCM - SUPERVISION AVANCÉE AVEC ZABBIX
+================================================================================
+Module 5 : Validation des connaissances
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quelle est l'architecture de Zabbix ?
+
+A) Un agent autonome sur chaque serveur
+B) Serveur centralisé + agents sur les machines surveillées
+C) Uniquement une interface web
+D) Un script cron qui collecte les données
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Sur quel port l'agent Zabbix écoute-t-il par défaut ?
+
+A) 10050
+B) 10051
+C) 3306
+D) 8080
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quelle base de données peut être utilisée avec Zabbix ?
+
+A) Seulement MySQL
+B) Seulement PostgreSQL
+C) MySQL/MariaDB ou PostgreSQL
+D) SQLite uniquement
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quels sont les identifiants par défaut de Zabbix ?
+
+A) admin / admin
+B) Admin / zabbix
+C) root / password
+D) zabbix / zabbix
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Qu'est-ce qu'un "trigger" dans Zabbix ?
+
+A) Un bouton pour démarrer la surveillance
+B) Une règle qui déclenche une alerte selon des conditions
+C) Un type de graphique
+D) Un service système
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Qu'est-ce qu'un template dans Zabbix ?
+
+A) Un modèle d'email
+B) Un thème graphique
+C) Un ensemble pré-configuré d'items, triggers et graphiques
+D) Un fichier de configuration
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Dans le fichier zabbix_agentd.conf, à quoi sert le paramètre "Server" ?
+
+A) Le nom du serveur à surveiller
+B) L'IP du serveur Zabbix autorisé à se connecter
+C) Le type de serveur (web, db, etc.)
+D) Le port du serveur
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Dans Zabbix, que signifie "ZBX" vert dans la colonne Availability ?
+
+A) L'agent est en erreur
+B) L'agent est accessible et répond
+C) L'agent est en maintenance
+D) L'agent est désactivé
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Où voir les dernières données collectées pour un host ?
+
+A) Configuration → Hosts
+B) Monitoring → Latest data
+C) Reports → Data
+D) Administration → Queue
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Pour recevoir des alertes par email, que faut-il configurer ?
+
+A) Seulement le serveur SMTP
+B) Seulement le trigger
+C) Le media type Email + l'assigner à l'utilisateur + créer une action
+D) Rien, c'est automatique
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM SUPERVISION AVANCÉE
+================================================================================
+
+Barème :
+- 9-10 : Excellent ! ⭐⭐⭐
+- 7-8 : Très bien ! ⭐⭐
+- 5-6 : Bien, à consolider ⭐
+- < 5 : Réviser le module

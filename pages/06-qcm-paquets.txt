@@ -1,0 +1,120 @@
+================================================================================
+QCM MODULE 3 : PAQUETS ET MAINTENANCE
+================================================================================
+10 questions sur les gestionnaires de paquets
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quel gestionnaire de paquets est utilisé sur Ubuntu ?
+
+A) yum
+B) dnf
+C) apt
+D) pacman
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quelle commande met à jour la liste des paquets ?
+
+A) apt upgrade
+B) apt update
+C) apt refresh
+D) apt sync
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Comment installer un paquet ?
+
+A) apt install paquet
+B) apt get paquet
+C) apt add paquet
+D) apt download paquet
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quelle commande recherche un paquet ?
+
+A) apt find
+B) apt search
+C) apt query
+D) apt locate
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Comment supprimer un paquet avec sa config ?
+
+A) apt remove
+B) apt delete
+C) apt purge
+D) apt uninstall
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel gestionnaire de paquets est utilisé sur Fedora/RHEL ?
+
+A) yum
+B) dnf
+C) apt
+D) A et B (dnf remplace yum)
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Que fait apt autoremove ?
+
+A) Supprime tous les paquets
+B) Supprime les paquets inutilisés
+C) Supprime le cache
+D) Supprime les anciennes versions
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Qu'est-ce qu'un PPA ?
+
+A) Un dépôt personnel (Personal Package Archive)
+B) Un type de paquet
+C) Un gestionnaire de paquets
+D) Un format de fichier
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment nettoyer le cache de paquets téléchargés ?
+
+A) apt clean
+B) apt clear
+C) apt flush
+D) apt delete-cache
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Qu'est-ce que Snap ?
+
+A) Un gestionnaire de paquets traditionnel
+B) Un format de paquet universel conteneurisé
+C) Un outil de sauvegarde
+D) Un éditeur de texte
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 3
+================================================================================

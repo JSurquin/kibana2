@@ -1,0 +1,578 @@
+================================================================================
+QCM DE VALIDATION FINALE
+================================================================================
+Évaluation des connaissances Unix/Linux
+
+Format du QCM :
+- 50 questions
+- 4 réponses possibles par question
+- 1 seule bonne réponse
+- Durée recommandée : 60 minutes
+
+Notation :
+- 80% et + : Excellent ⭐⭐⭐
+- 60-79% : Bien ⭐⭐
+- 40-59% : Moyen ⭐
+- Moins de 40% : À revoir
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quelle commande permet de voir le répertoire courant ?
+
+A) ls
+B) pwd
+C) cd
+D) whereis
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quelle permission est représentée par le chiffre 7 en octal ?
+
+A) r--
+B) rw-
+C) rwx
+D) r-x
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quel utilisateur a l'UID 0 ?
+
+A) admin
+B) root
+C) system
+D) sudo
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quelle commande permet de changer le propriétaire d'un fichier ?
+
+A) chmod
+B) chown
+C) chgrp
+D) usermod
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Quel signal envoie la commande kill par défaut ?
+
+A) SIGKILL (9)
+B) SIGTERM (15)
+C) SIGHUP (1)
+D) SIGSTOP (19)
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel fichier contient les mots de passe chiffrés ?
+
+A) /etc/passwd
+B) /etc/shadow
+C) /etc/group
+D) /etc/security
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Quelle est la commande pour voir les processus en temps réel ?
+
+A) ps
+B) top
+C) pgrep
+D) kill
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Quel est le PID du premier processus du système ?
+
+A) 0
+B) 1
+C) 10
+D) 100
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Quelle commande permet de monter un système de fichiers ?
+
+A) mount
+B) umount
+C) fsck
+D) df
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Où sont stockées les configurations de montage automatique au boot ?
+
+A) /etc/mount
+B) /etc/fstab
+C) /etc/filesystems
+D) /boot/mount.conf
+
+Votre réponse : ___
+
+================================================================================
+
+Question 11 : Quelle commande permet de voir l'utilisation du disque par répertoire ?
+
+A) df
+B) du
+C) fdisk
+D) lsblk
+
+Votre réponse : ___
+
+================================================================================
+
+Question 12 : Quelle adresse IP est réservée pour localhost ?
+
+A) 192.168.1.1
+B) 10.0.0.1
+C) 127.0.0.1
+D) 0.0.0.0
+
+Votre réponse : ___
+
+================================================================================
+
+Question 13 : Quel port utilise le protocole SSH par défaut ?
+
+A) 21
+B) 22
+C) 23
+D) 80
+
+Votre réponse : ___
+
+================================================================================
+
+Question 14 : Quelle commande permet de voir les connexions réseau actives ?
+
+A) ping
+B) netstat ou ss
+C) ifconfig
+D) route
+
+Votre réponse : ___
+
+================================================================================
+
+Question 15 : Quel gestionnaire de paquets est utilisé sur Debian/Ubuntu ?
+
+A) yum
+B) dnf
+C) apt
+D) pacman
+
+Votre réponse : ___
+
+================================================================================
+
+Question 16 : Quelle commande met à jour la liste des paquets disponibles ?
+
+A) apt upgrade
+B) apt update
+C) apt install
+D) apt search
+
+Votre réponse : ___
+
+================================================================================
+
+Question 17 : Quel fichier contient le shebang d'un script bash ?
+
+A) La dernière ligne
+B) La première ligne
+C) N'importe où dans le fichier
+D) Dans un fichier séparé
+
+Votre réponse : ___
+
+================================================================================
+
+Question 18 : Quelle est la syntaxe correcte pour une boucle for en bash ?
+
+A) for i in {1..5}; do echo $i; done
+B) for (i=1; i<=5; i++) { echo $i }
+C) foreach i in 1..5: echo $i
+D) for i = 1 to 5 do echo $i end
+
+Votre réponse : ___
+
+================================================================================
+
+Question 19 : Quelle commande permet de planifier des tâches récurrentes ?
+
+A) at
+B) cron
+C) systemd
+D) timer
+
+Votre réponse : ___
+
+================================================================================
+
+Question 20 : Dans un crontab, que signifie 0 2 * * * ?
+
+A) Toutes les 2 minutes
+B) À 2h du matin tous les jours
+C) Tous les 2 jours à minuit
+D) Le 2 de chaque mois
+
+Votre réponse : ___
+
+================================================================================
+
+Question 21 : Où sont généralement stockés les logs système ?
+
+A) /log
+B) /var/log
+C) /etc/log
+D) /home/log
+
+Votre réponse : ___
+
+================================================================================
+
+Question 22 : Quelle commande permet de voir les logs systemd en temps réel ?
+
+A) tail -f /var/log/syslog
+B) journalctl -f
+C) dmesg -w
+D) logwatch
+
+Votre réponse : ___
+
+================================================================================
+
+Question 23 : Qu'est-ce que SELinux ?
+
+A) Un gestionnaire de paquets
+B) Un système de contrôle d'accès obligatoire (MAC)
+C) Un éditeur de texte
+D) Un protocole réseau
+
+Votre réponse : ___
+
+================================================================================
+
+Question 24 : Quelle commande permet de désactiver temporairement SELinux ?
+
+A) selinux disable
+B) setenforce 0
+C) systemctl stop selinux
+D) chmod 000 /etc/selinux
+
+Votre réponse : ___
+
+================================================================================
+
+Question 25 : Quel outil bloque les IP après plusieurs tentatives de connexion échouées ?
+
+A) iptables
+B) fail2ban
+C) ufw
+D) firewalld
+
+Votre réponse : ___
+
+================================================================================
+
+Question 26 : Quel est le protocole pour transférer des fichiers de manière sécurisée ?
+
+A) FTP
+B) HTTP
+C) SCP ou SFTP
+D) Telnet
+
+Votre réponse : ___
+
+================================================================================
+
+Question 27 : Où sont stockées les clés SSH par défaut ?
+
+A) /etc/ssh/
+B) ~/.ssh/
+C) /var/ssh/
+D) /home/ssh/
+
+Votre réponse : ___
+
+================================================================================
+
+Question 28 : Quelle commande génère une paire de clés SSH ?
+
+A) ssh-key
+B) ssh-gen
+C) ssh-keygen
+D) keygen
+
+Votre réponse : ___
+
+================================================================================
+
+Question 29 : Quel serveur web est connu pour ses performances et sa faible consommation mémoire ?
+
+A) Apache
+B) Nginx
+C) IIS
+D) Tomcat
+
+Votre réponse : ___
+
+================================================================================
+
+Question 30 : Où sont stockés les fichiers de configuration de Nginx sur Debian/Ubuntu ?
+
+A) /etc/apache2/
+B) /etc/nginx/
+C) /var/www/nginx/
+D) /usr/local/nginx/
+
+Votre réponse : ___
+
+================================================================================
+
+Question 31 : Quelle commande teste la configuration de Nginx sans redémarrer ?
+
+A) nginx test
+B) nginx -t
+C) systemctl test nginx
+D) nginx --check
+
+Votre réponse : ___
+
+================================================================================
+
+Question 32 : Quel protocole permet d'obtenir des certificats SSL gratuits avec Let's Encrypt ?
+
+A) HTTP
+B) FTP
+C) ACME
+D) SSL
+
+Votre réponse : ___
+
+================================================================================
+
+Question 33 : Quelle commande permet de sauvegarder une base MySQL ?
+
+A) mysql-backup
+B) mysqldump
+C) mysql-save
+D) mysqlexport
+
+Votre réponse : ___
+
+================================================================================
+
+Question 34 : Quelle est la différence entre systemctl start et systemctl enable ?
+
+A) Aucune différence
+B) start démarre maintenant, enable démarre au boot
+C) start est permanent, enable est temporaire
+D) enable démarre maintenant, start au boot
+
+Votre réponse : ___
+
+================================================================================
+
+Question 35 : Quel fichier contient la configuration principale de systemd ?
+
+A) /etc/systemd/system.conf
+B) /etc/systemd/systemd.conf
+C) /etc/init.d/systemd
+D) /lib/systemd/systemd.conf
+
+Votre réponse : ___
+
+================================================================================
+
+Question 36 : Quelle commande permet de voir les services qui ont échoué ?
+
+A) systemctl failed
+B) systemctl --failed
+C) systemctl list-failed
+D) systemctl status --failed
+
+Votre réponse : ___
+
+================================================================================
+
+Question 37 : Que signifie LVM ?
+
+A) Linux Virtual Memory
+B) Logical Volume Manager
+C) Linux Volume Management
+D) Local Virtual Machine
+
+Votre réponse : ___
+
+================================================================================
+
+Question 38 : Quelle commande permet de créer un lien symbolique ?
+
+A) link
+B) ln -s
+C) symlink
+D) mklink
+
+Votre réponse : ___
+
+================================================================================
+
+Question 39 : Quelle est la différence entre > et >> en redirection ?
+
+A) Aucune différence
+B) > écrase, >> ajoute à la fin
+C) >> écrase, > ajoute à la fin
+D) > est pour stdout, >> pour stderr
+
+Votre réponse : ___
+
+================================================================================
+
+Question 40 : Quelle variable d'environnement contient le répertoire personnel ?
+
+A) $USER
+B) $PWD
+C) $HOME
+D) $PATH
+
+Votre réponse : ___
+
+================================================================================
+
+Question 41 : Comment afficher les 10 premières lignes d'un fichier ?
+
+A) tail fichier
+B) head fichier
+C) cat fichier | head
+D) top fichier
+
+Votre réponse : ___
+
+================================================================================
+
+Question 42 : Quelle commande recherche un fichier par son nom ?
+
+A) search
+B) find
+C) locate
+D) B et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 43 : Quelle commande permet de compresser un fichier avec gzip ?
+
+A) gzip fichier
+B) compress fichier
+C) zip fichier
+D) tar fichier
+
+Votre réponse : ___
+
+================================================================================
+
+Question 44 : Que fait la commande chmod +x script.sh ?
+
+A) Rend le script lisible
+B) Rend le script exécutable
+C) Rend le script modifiable
+D) Supprime le script
+
+Votre réponse : ___
+
+================================================================================
+
+Question 45 : Quelle commande permet de voir l'espace disque disponible ?
+
+A) du
+B) df
+C) disk
+D) free
+
+Votre réponse : ___
+
+================================================================================
+
+Question 46 : Quel est le répertoire temporaire standard ?
+
+A) /temp
+B) /tmp
+C) /var/tmp
+D) B et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 47 : Quelle commande affiche les messages du noyau ?
+
+A) kernel
+B) dmesg
+C) syslog
+D) messages
+
+Votre réponse : ___
+
+================================================================================
+
+Question 48 : Quelle est la commande pour redémarrer le système ?
+
+A) restart
+B) reboot
+C) shutdown -r now
+D) B et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 49 : Qu'est-ce qu'un daemon ?
+
+A) Un virus
+B) Un processus en arrière-plan
+C) Un fichier de configuration
+D) Un utilisateur système
+
+Votre réponse : ___
+
+================================================================================
+
+Question 50 : Quelle est la meilleure pratique pour travailler en tant qu'administrateur ?
+
+A) Toujours se connecter en root
+B) Utiliser sudo pour les tâches admin
+C) Désactiver root
+D) Partager le mot de passe root
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM FINAL
+================================================================================
+
+Comptez vos bonnes réponses :
+- 40-50 points (80%+) : Excellent ! ⭐⭐⭐
+- 30-39 points (60-79%) : Bien ! ⭐⭐
+- 20-29 points (40-59%) : Moyen ⭐
+- < 20 points (< 40%) : À revoir

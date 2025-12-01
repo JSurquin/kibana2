@@ -1,0 +1,126 @@
+================================================================================
+QCM - SUPERVISION & ANALYSE SYSTÈME
+================================================================================
+Module 4 : Validation des connaissances
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Que signifie un load average de 4.0 sur une machine avec 2 CPUs ?
+
+A) Le système est sous-utilisé
+B) Le système est à 50% de charge
+C) Le système est surchargé (2x plus de travail que de CPUs)
+D) Le système fonctionne normalement
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quel est l'avantage principal de htop par rapport à top ?
+
+A) htop est plus rapide
+B) htop utilise moins de ressources
+C) htop a une interface colorée et plus intuitive
+D) htop fonctionne sur plus de systèmes
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quelle commande permet de voir quel processus utilise le plus d'I/O disque ?
+
+A) top
+B) htop
+C) iostat
+D) iotop
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Comment voir les logs d'erreur du service nginx avec journalctl ?
+
+A) journalctl nginx
+B) journalctl -u nginx -p err
+C) journalctl --error nginx
+D) journalctl -e nginx
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Quel outil collecte automatiquement les statistiques système toutes les 10 minutes ?
+
+A) top
+B) sar (sysstat)
+C) htop
+D) vmstat
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel fichier configure la rotation automatique des logs nginx ?
+
+A) /etc/nginx/logrotate.conf
+B) /etc/logrotate.d/nginx
+C) /var/log/nginx/rotate.conf
+D) /etc/log/rotate/nginx
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Quel seuil d'utilisation disque est généralement considéré comme critique ?
+
+A) > 50%
+B) > 70%
+C) > 85%
+D) > 95%
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Dans vmstat, que signifie si/so > 0 ?
+
+A) Le CPU est surchargé
+B) Le système utilise le swap (problème mémoire)
+C) Le disque est lent
+D) Le réseau est saturé
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment nettoyer les logs journald pour garder seulement 7 jours ?
+
+A) journalctl --clean 7d
+B) journalctl --vacuum-time=7d
+C) journalctl --delete-old 7
+D) journalctl -r 7d
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quelle syntaxe cron pour exécuter un script toutes les 5 minutes ?
+
+A) 5 * * * * /script.sh
+B) */5 * * * * /script.sh
+C) * 5 * * * /script.sh
+D) 0/5 * * * * /script.sh
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM SUPERVISION
+================================================================================
+
+Barème :
+- 9-10 : Excellent ! ⭐⭐⭐
+- 7-8 : Très bien ! ⭐⭐
+- 5-6 : Bien, à consolider ⭐
+- < 5 : Réviser le module
