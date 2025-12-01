@@ -138,14 +138,18 @@ graph LR
 - ~340 sextillions d'adresses
 - Adoption progressive
 
-**Analogie : les numéros de téléphone** 📞
-
 **IPv4** : comme un numéro à 10 chiffres
 - Limité : on manque de numéros
 - Solution temporaire : indicatifs (NAT)
 
 **IPv6** : comme un numéro à 40 chiffres
 - Suffisant pour donner un numéro unique à chaque grain de sable sur Terre !
+
+<div class="ml-16">
+
+**Analogie : les numéros de téléphone** 📞
+
+</div>
 
 </div>
 
@@ -168,20 +172,28 @@ ip addr show
 
 ---
 
-# Classes d'adresses IPv4 privées 🏠
+#### Classes d'adresses IPv4 privées 🏠
+
+<div class="text-xs">
 
 **Plages privées (non routables sur Internet) :**
 
 - **Classe A** : `10.0.0.0` à `10.255.255.255` (/8)
   - 16 millions d'adresses
+  - 💼 **Exemple** : Grandes entreprises, data centers → `10.50.120.45`
 
 - **Classe B** : `172.16.0.0` à `172.31.255.255` (/12)
   - 1 million d'adresses
+  - 🏢 **Exemple** : Entreprises moyennes, campus universitaires → `172.20.15.100`
 
 - **Classe C** : `192.168.0.0` à `192.168.255.255` (/16)
   - 65 536 adresses
+  - 🏠 **Exemple** : Réseaux domestiques, petits bureaux → `192.168.1.25`
 
 **Loopback** : `127.0.0.1` (localhost)
+  - 🔄 **Exemple** : Tester un serveur web local → `http://127.0.0.1:8080`
+
+</div>
 
 ---
 
@@ -209,10 +221,58 @@ graph LR
 
 ---
 
-**Calcul :**
-- `/24` = 256 adresses (254 utilisables)
-- `/16` = 65 536 adresses
-- `/8` = 16 millions d'adresses
+# Comprendre le masque de sous-réseau 🎓
+
+<div class="text-sm">
+
+**C'est quoi concrètement ?**
+
+Le masque détermine **quelle partie de l'IP identifie le réseau** et **quelle partie identifie la machine**.
+
+**Exemple avec `192.168.1.100` et masque `255.255.255.0` (/24)**
+
+```bash
+IP :      192  .  168  .   1   .  100
+Masque :  255  .  255  .  255  .   0
+
+         [    Réseau    ] [Hôte]
+         192.168.1         .100
+```
+
+- **Partie réseau** (`192.168.1`) → Toutes les machines du même réseau local
+- **Partie hôte** (`100`) → Identifie UNE machine spécifique sur ce réseau
+
+**En pratique ça veut dire quoi ?** 🤔
+
+Avec ce masque, votre machine `192.168.1.100` peut communiquer directement avec :
+- ✅ `192.168.1.1` (même réseau)
+- ✅ `192.168.1.50` (même réseau)
+- ❌ `192.168.2.100` (autre réseau → besoin d'un routeur)
+
+</div>
+
+---
+
+# Notation CIDR - Les masques courants 📊
+
+<div class="text-sm">
+
+**Format `/XX` = nombre de bits pour le réseau**
+
+| CIDR | Masque | Adresses dispo | Cas d'usage | Exemple réseau |
+|------|--------|----------------|-------------|----------------|
+| `/8` | `255.0.0.0` | 16 777 216 | Très grands réseaux | `10.0.0.0/8` |
+| `/16` | `255.255.0.0` | 65 536 | Grands réseaux | `172.16.0.0/16` |
+| `/24` | `255.255.255.0` | 256 (254 utiles) | Réseau standard | `192.168.1.0/24` |
+| `/30` | `255.255.255.252` | 4 (2 utiles) | Liaison point-à-point | `10.0.0.0/30` |
+
+**Pourquoi 254 et pas 256 en /24 ?** 🤨
+
+- **Adresse réseau** : `192.168.1.0` → réservée (identifie le réseau)
+- **Adresse broadcast** : `192.168.1.255` → réservée (message à tous)
+- **Adresses utilisables** : `192.168.1.1` à `192.168.1.254` (254 machines)
+
+</div>
 
 ---
 
@@ -242,6 +302,73 @@ graph LR
 ```
 
 **Analogie :** la porte d'entrée de votre quartier
+
+---
+
+# Comprendre la Passerelle (Gateway) 🚪
+
+<div class="text-sm">
+
+**C'est quoi une Gateway ?**
+
+C'est **le routeur** qui fait le pont entre votre réseau local et le monde extérieur (Internet).
+
+**Fonctionnement concret :**
+
+Imaginons que vous voulez accéder à `google.com` depuis votre ordinateur `192.168.1.100` :
+
+1. **Votre machine** vérifie : "Est-ce que Google est dans mon réseau local (192.168.1.x) ?"
+   - ❌ Non → Google est sur Internet
+
+2. **Votre machine** envoie alors le paquet à la **Gateway** (`192.168.1.1`)
+   - 💬 "Tiens, routeur ! Peux-tu transmettre ça à Google pour moi ?"
+
+3. **La Gateway** (routeur) :
+   - Reçoit le paquet
+   - Change l'adresse IP source (de privée à publique via NAT)
+   - Envoie le paquet vers Internet
+   - Reçoit la réponse et la renvoie à votre machine
+
+**En résumé :** Sans Gateway, vous êtes prisonnier de votre réseau local ! 🔒
+
+</div>
+
+---
+
+# Cas concret : Configuration réseau complète 💻
+
+<div class="text-xs">
+
+**Scénario :** Vous travaillez depuis chez vous sur un réseau domestique
+
+**Configuration de votre ordinateur :**
+
+```bash
+Adresse IP :     192.168.1.50
+Masque :         255.255.255.0  (/24)
+Gateway :        192.168.1.1
+DNS :            8.8.8.8
+```
+
+**Décryptage :**
+
+| Élément | Signification | Analogie |
+|---------|--------------|----------|
+| **192.168.1.50** | Votre adresse sur le réseau local | Votre numéro de maison dans le quartier |
+| **255.255.255.0** | Vous pouvez parler directement aux IP de 192.168.1.1 à 192.168.1.254 | Votre quartier contient 254 maisons |
+| **192.168.1.1** | L'adresse du routeur pour sortir du réseau | La porte d'entrée du quartier |
+| **8.8.8.8** | Serveur Google pour traduire les noms de domaine | L'annuaire téléphonique |
+
+**Exemples de communication :**
+
+- 💬 Accéder à `192.168.1.10` (imprimante réseau) → ✅ Communication directe (même réseau)
+- 💬 Accéder à `192.168.1.100` (NAS) → ✅ Communication directe (même réseau)
+- 💬 Accéder à `google.com` → ❌ Pas dans le réseau local
+  - → Demander au DNS : "C'est quoi l'IP de google.com ?" → `142.250.185.46`
+  - → Envoyer le paquet à la Gateway (`192.168.1.1`)
+  - → La Gateway transmet vers Internet
+
+</div>
 
 ---
 
@@ -529,7 +656,11 @@ sudo nmcli connection up eth0
 
 # Configuration DNS 🌐
 
-**Fichier : `/etc/resolv.conf`**
+<div class="text-sm">
+
+**Deux fichiers importants pour la résolution de noms :**
+
+**1. `/etc/resolv.conf` - Configuration des serveurs DNS**
 
 ```bash
 cat /etc/resolv.conf
@@ -541,7 +672,92 @@ nameserver 8.8.4.4
 search example.com
 ```
 
-**⚠️ Souvent géré automatiquement par systemd-resolved ou NetworkManager**
+**2. `/etc/hosts` - Résolution locale (prioritaire)**
+
+```bash
+cat /etc/hosts
+```
+
+```
+127.0.0.1       localhost
+127.0.1.1       ma-machine
+192.168.1.10    serveur-web.local serveur-web
+192.168.1.20    base-donnees.local db
+```
+
+**⚠️ `/etc/resolv.conf` est souvent géré automatiquement par systemd-resolved ou NetworkManager**
+
+</div>
+
+---
+
+# /etc/hosts vs /etc/resolv.conf - Quelle différence ? 🤔
+
+<div class="text-sm">
+
+**Ordre de résolution des noms :**
+
+```mermaid
+graph LR
+    A["Vous tapez:<br/>serveur-web.local"] --> B["1. /etc/hosts<br/>Recherche locale"]
+    B -->|"Trouvé ✅"| C["Utilise l'IP:<br/>192.168.1.10"]
+    B -->|"Pas trouvé ❌"| D["2. /etc/resolv.conf<br/>Interroge DNS"]
+    D --> E["Serveur DNS<br/>8.8.8.8"]
+    E -->|"Trouvé ✅"| F["Retourne l'IP"]
+    E -->|"Pas trouvé ❌"| G["Erreur:<br/>Nom inconnu"]
+    
+    style B fill:#4ecdc4
+    style D fill:#ffe66d
+    style C fill:#95e1d3
+```
+
+**En résumé :**
+
+| Fichier | Rôle | Priorité | Cas d'usage |
+|---------|------|----------|-------------|
+| **`/etc/hosts`** | Association directe nom → IP | ✅ **1er** (prioritaire) | Résolution locale rapide, alias, tests |
+| **`/etc/resolv.conf`** | Liste des serveurs DNS à interroger | 2ème (si hosts ne trouve pas) | Résolution des noms Internet |
+
+</div>
+
+---
+
+# Cas d'usage pratiques 💡
+
+<div class="text-xs">
+
+**Exemple 1 : Forcer une résolution locale avec `/etc/hosts`**
+
+```bash
+# Bloquer un site (redirige vers localhost)
+echo "127.0.0.1    facebook.com" | sudo tee -a /etc/hosts
+
+# Créer des alias pour vos serveurs internes
+echo "192.168.1.50    db" | sudo tee -a /etc/hosts
+echo "192.168.1.51    web" | sudo tee -a /etc/hosts
+
+# Ensuite vous pouvez faire :
+ssh db        # Au lieu de ssh 192.168.1.50
+ping web      # Au lieu de ping 192.168.1.51
+```
+
+**Exemple 2 : Changer de serveur DNS dans `/etc/resolv.conf`**
+
+```bash
+# Voir les DNS actuels
+cat /etc/resolv.conf
+
+# Utiliser les DNS de Cloudflare (plus rapides/privés)
+echo "nameserver 1.1.1.1" | sudo tee /etc/resolv.conf
+echo "nameserver 1.0.0.1" | sudo tee -a /etc/resolv.conf
+```
+
+**Analogie complète 📞**
+
+- **`/etc/hosts`** = Votre carnet de contacts personnel (consulté en premier)
+- **`/etc/resolv.conf`** = L'annuaire téléphonique public (consulté si pas dans vos contacts)
+
+</div>
 
 ---
 

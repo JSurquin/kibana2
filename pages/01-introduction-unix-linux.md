@@ -71,7 +71,7 @@ Aujourd'hui, Unix et ses descendants sont partout :
 
 <div class="grid grid-cols-2 gap-8">
 
-<div>
+<div class="-mt-10">
 
 #### Architecture en couches
 
