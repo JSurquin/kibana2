@@ -1,0 +1,120 @@
+================================================================================
+QCM MODULE 4 : GESTION UTILISATEURS
+================================================================================
+10 questions sur les utilisateurs, groupes et permissions
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quel fichier contient les informations des utilisateurs ?
+
+A) /etc/users
+B) /etc/passwd
+C) /etc/shadow
+D) /etc/accounts
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quelle commande crée un nouvel utilisateur ?
+
+A) adduser ou useradd
+B) newuser
+C) createuser
+D) mkuser
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Que signifie chmod 644 fichier.txt ?
+
+A) rw-r--r--
+B) rwxr--r--
+C) rw-rw-r--
+D) r--r--r--
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quelle option de usermod ajoute un utilisateur à un groupe ?
+
+A) -g
+B) -G
+C) -aG
+D) -a
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Que fait la commande sudo ?
+
+A) Connecte en tant que root
+B) Exécute une commande avec les privilèges root
+C) Crée un nouvel utilisateur
+D) Change de groupe
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel fichier configure les droits sudo ?
+
+A) /etc/sudo
+B) /etc/sudoers
+C) /etc/sudo.conf
+D) /etc/security/sudo
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Que fait umask 0022 ?
+
+A) Définit les permissions par défaut des nouveaux fichiers
+B) Masque les fichiers cachés
+C) Crypte les fichiers
+D) Change le propriétaire
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Comment changer le groupe d'un fichier ?
+
+A) chmod
+B) chown
+C) chgrp
+D) B et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Que fait la commande passwd ?
+
+A) Affiche les mots de passe
+B) Change le mot de passe
+C) Crypte les fichiers
+D) Liste les utilisateurs
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quelle commande liste les groupes d'un utilisateur ?
+
+A) groups utilisateur
+B) id utilisateur
+C) whoami
+D) A et B sont corrects
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 4
+================================================================================

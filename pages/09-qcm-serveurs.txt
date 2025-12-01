@@ -1,0 +1,120 @@
+================================================================================
+QCM MODULE 10 : SERVICES SERVEURS
+================================================================================
+10 questions sur les services et serveurs
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quel serveur web est connu pour ses performances ?
+
+A) Apache
+B) Nginx
+C) IIS
+D) Tomcat
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Où sont les fichiers de config de Nginx sur Ubuntu ?
+
+A) /etc/apache2/
+B) /etc/nginx/
+C) /var/www/nginx/
+D) /usr/local/nginx/
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Comment tester la config de Nginx ?
+
+A) nginx test
+B) nginx -t
+C) systemctl test nginx
+D) test nginx
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quelle commande sauvegarde une base MySQL ?
+
+A) mysql-backup
+B) mysqldump
+C) mysql-export
+D) backup-mysql
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Quel port utilise MySQL par défaut ?
+
+A) 3306
+B) 5432
+C) 27017
+D) 1433
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Qu'est-ce qu'un reverse proxy ?
+
+A) Un proxy qui inverse les données
+B) Un serveur intermédiaire devant les applications
+C) Un type de pare-feu
+D) Un outil de sauvegarde
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Comment obtenir un certificat SSL gratuit ?
+
+A) Let's Encrypt (Certbot)
+B) Acheter chez un CA
+C) Générer avec OpenSSL
+D) A et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Quel est le protocole pour transférer des fichiers de façon sécurisée ?
+
+A) FTP
+B) HTTP
+C) SCP/SFTP
+D) Telnet
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Qu'est-ce que Docker ?
+
+A) Un gestionnaire de paquets
+B) Une plateforme de conteneurisation
+C) Un éditeur de texte
+D) Un serveur web
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Comment démarrer tous les services d'un docker-compose ?
+
+A) docker start
+B) docker-compose up
+C) compose start
+D) docker run
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 10
+================================================================================

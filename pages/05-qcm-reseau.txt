@@ -1,0 +1,120 @@
+================================================================================
+QCM MODULE 7 : RÉSEAU
+================================================================================
+10 questions sur la configuration et le diagnostic réseau
+
+Instructions : Pour chaque question, indiquez votre réponse (A, B, C ou D)
+
+================================================================================
+
+Question 1 : Quelle adresse IP est localhost ?
+
+A) 192.168.1.1
+B) 127.0.0.1
+C) 10.0.0.1
+D) 0.0.0.0
+
+Votre réponse : ___
+
+================================================================================
+
+Question 2 : Quel port utilise SSH par défaut ?
+
+A) 21
+B) 22
+C) 23
+D) 80
+
+Votre réponse : ___
+
+================================================================================
+
+Question 3 : Quelle commande teste la connectivité réseau ?
+
+A) test
+B) ping
+C) connect
+D) check
+
+Votre réponse : ___
+
+================================================================================
+
+Question 4 : Quelle commande affiche la configuration IP ?
+
+A) ipconfig
+B) ifconfig
+C) ip addr
+D) B et C sont corrects
+
+Votre réponse : ___
+
+================================================================================
+
+Question 5 : Quelle commande affiche les connexions actives ?
+
+A) connections
+B) netstat ou ss
+C) active
+D) ports
+
+Votre réponse : ___
+
+================================================================================
+
+Question 6 : Quel outil génère une paire de clés SSH ?
+
+A) ssh-key
+B) ssh-keygen
+C) keygen
+D) ssh-create
+
+Votre réponse : ___
+
+================================================================================
+
+Question 7 : Où sont stockées les clés SSH ?
+
+A) /etc/ssh/
+B) ~/.ssh/
+C) /var/ssh/
+D) /root/ssh/
+
+Votre réponse : ___
+
+================================================================================
+
+Question 8 : Quel pare-feu est simple à utiliser sur Ubuntu ?
+
+A) iptables
+B) ufw
+C) firewalld
+D) firewall
+
+Votre réponse : ___
+
+================================================================================
+
+Question 9 : Comment copier un fichier via SSH ?
+
+A) copy
+B) scp
+C) ssh-copy
+D) transfer
+
+Votre réponse : ___
+
+================================================================================
+
+Question 10 : Quelle commande résout un nom de domaine en IP ?
+
+A) resolve
+B) nslookup ou dig
+C) dns
+D) lookup
+
+Votre réponse : ___
+
+================================================================================
+FIN DU QCM MODULE 7
+================================================================================
