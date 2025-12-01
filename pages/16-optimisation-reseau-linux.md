@@ -1,5 +1,6 @@
 ---
 layout: new-section
+routeAlias: 'optimisation-reseau-linux'
 ---
 
 <a name="optimisation-reseau-linux" id="optimisation-reseau-linux"></a>
