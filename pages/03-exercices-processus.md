@@ -372,7 +372,9 @@ echo "============================" | tee -a $LOG_FILE
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Processus :**
 - PID, PPID, états (R, S, D, Z, T)
@@ -389,3 +391,4 @@ echo "============================" | tee -a $LOG_FILE
 - `systemd-analyze` pour le boot
 - `journalctl` pour l'historique
 
+</div>

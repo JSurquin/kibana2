@@ -376,7 +376,9 @@ chmod +x cleanup.sh
 
 <small>
 
-**Points clés à retenir 📌**
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Navigation :**
 - `pwd`, `cd`, `ls`
@@ -397,5 +399,7 @@ chmod +x cleanup.sh
 - `>` écrase
 - `>>` ajoute
 - `|` pipe entre commandes
+
+</div>
 
 </small>

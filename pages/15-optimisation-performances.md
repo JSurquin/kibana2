@@ -361,23 +361,14 @@ sudo systemctl restart redis-server
 
 **Ce que vous avez appris :**
 
-✅ Optimisation noyau avec sysctl
-
-✅ Tuning mémoire (swappiness)
-
-✅ Optimisation réseau (TCP)
-
-✅ Limites fichiers ouverts
-
-✅ Profiles tuned automatiques
-
-✅ Optimisation Nginx (workers, gzip, cache)
-
-✅ Optimisation MySQL (buffer pool, slow queries)
-
-✅ MySQLTuner pour l'analyse
-
-✅ Cache Redis
+- ✅ Tuning mémoire (swappiness)
+- ✅ Optimisation réseau (TCP)
+- ✅ Limites fichiers ouverts
+- ✅ Profiles tuned automatiques
+- ✅ Optimisation Nginx (workers, gzip, cache)
+- ✅ Optimisation MySQL (buffer pool, slow queries)
+- ✅ MySQLTuner pour l'analyse
+- ✅ Cache Redis
 
 **Important** : toujours mesurer avant/après !
 

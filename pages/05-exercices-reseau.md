@@ -342,7 +342,9 @@ echo "============================" | tee -a $LOG_FILE
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Diagnostic :**
 - `ping` : connectivité
@@ -359,3 +361,5 @@ echo "============================" | tee -a $LOG_FILE
 - UFW pour simplicité
 - `allow`/`deny` pour les règles
 - Toujours autoriser SSH avant d'activer !
+
+</div>

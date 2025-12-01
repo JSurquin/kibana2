@@ -489,7 +489,9 @@ docker-compose logs -f
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Nginx :**
 - Virtual hosts pour multi-sites
@@ -506,3 +508,4 @@ docker-compose logs -f
 - Alertes automatiques
 - Logs centralisés
 
+</div>

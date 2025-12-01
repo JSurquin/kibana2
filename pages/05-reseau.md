@@ -31,13 +31,13 @@ routeAlias: 'reseau'
 ```mermaid
 graph LR
     subgraph "Modele OSI"
-        O7[7. Application]
-        O6[6. Presentation]
-        O5[5. Session]
-        O4[4. Transport]
-        O3[3. Reseau]
-        O2[2. Liaison]
-        O1[1. Physique]
+        O7[7 - Application]
+        O6[6 - Presentation]
+        O5[5 - Session]
+        O4[4 - Transport]
+        O3[3 - Reseau]
+        O2[2 - Liaison]
+        O1[1 - Physique]
         O7 --> O6 --> O5 --> O4 --> O3 --> O2 --> O1
     end
     
@@ -72,6 +72,54 @@ graph LR
 ```
 
 **En pratique, on utilise le modèle TCP/IP**
+
+---
+
+# Comprendre les modèles réseau 📚
+
+<div class="text-sm">
+
+**Le modèle OSI (7 couches)** - Modèle théorique de référence
+
+- **7 - Application** : Interface utilisateur (HTTP, FTP, SSH, DNS)
+- **6 - Présentation** : Formatage des données (chiffrement, compression)
+- **5 - Session** : Gestion des connexions
+- **4 - Transport** : Communication de bout en bout (TCP, UDP)
+- **3 - Réseau** : Routage et adressage (IP)
+- **2 - Liaison** : Transfert entre nœuds adjacents (Ethernet)
+- **1 - Physique** : Transmission des bits (câbles, ondes)
+
+**Le modèle TCP/IP (4 couches)** - Modèle pratique utilisé sur Internet
+
+- **Application** : Combine les couches 5, 6 et 7 de l'OSI
+- **Transport** : Équivalent à la couche 4 de l'OSI
+- **Internet** : Équivalent à la couche 3 de l'OSI
+- **Accès réseau** : Combine les couches 1 et 2 de l'OSI
+
+</div>
+
+---
+
+# Flux de communication réseau 🔄
+
+<div class="text-sm">
+
+**Exemple : Envoi d'un email**
+
+1. **Application** → L'utilisateur écrit et envoie l'email (SMTP)
+2. **Transport** → Les données sont découpées en segments (TCP)
+3. **Internet** → Chaque segment reçoit une adresse IP source/destination
+4. **Accès réseau** → Les paquets sont transmis physiquement sur le réseau
+
+**Le processus inverse se produit à la réception** ⬅️
+
+- Chaque couche retire son en-tête
+- Les données remontent jusqu'à l'application destinataire
+- L'email est reconstitué et affiché
+
+**💡 Astuce** : Chaque couche communique uniquement avec la couche adjacente, comme des étages dans un immeuble !
+
+</div>
 
 ---
 

@@ -300,7 +300,9 @@ echo "============================="
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Gestion disque :**
 - `df` pour partitions, `du` pour répertoires
@@ -314,3 +316,5 @@ echo "============================="
 **ACL :**
 - Permissions plus fines que rwx
 - `setfacl` pour définir, `getfacl` pour lire
+
+</div>

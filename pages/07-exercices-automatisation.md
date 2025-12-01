@@ -435,7 +435,9 @@ done
 
 ---
 
-# Points clés à retenir 📌
+### Points clés à retenir 📌
+
+<div class="text-xs">
 
 **Scripts :**
 - Shebang `#!/bin/bash`
@@ -453,3 +455,4 @@ done
 - Filtres : `-p`, `-u`, `--since`
 - `logger` pour écrire dans syslog
 
+</div>
