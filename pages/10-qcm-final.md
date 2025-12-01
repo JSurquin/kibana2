@@ -738,7 +738,9 @@ D) Partager le mot de passe root
 
 ---
 
-# Réponses 1-5
+#### Réponses 1-5
+
+<div class="text-xs">
 
 **Réponse 1 : B) `pwd`**
 - `pwd` : Print Working Directory
@@ -761,9 +763,13 @@ D) Partager le mot de passe root
 - SIGTERM permet au processus de se terminer proprement
 - SIGKILL (9) termine immédiatement
 
+</div>
+
 ---
 
-# Réponses 6-10
+#### Réponses 6-10
+
+<div class="text-xs">
 
 **Réponse 6 : B) `/etc/shadow`**
 - `/etc/shadow` : mots de passe chiffrés (accessible uniquement par root)
@@ -785,9 +791,13 @@ D) Partager le mot de passe root
 - `/etc/fstab` : File System TABle
 - Contient les montages automatiques au démarrage
 
+</div>
+
 ---
 
-# Réponses 11-15
+#### Réponses 11-15
+
+<div class="text-xs">
 
 **Réponse 11 : B) `du`**
 - `du` : Disk Usage (par fichier/répertoire)
@@ -809,9 +819,13 @@ D) Partager le mot de passe root
 - `apt` : Advanced Package Tool (Debian/Ubuntu)
 - `dnf` : RHEL/Fedora
 
+</div>
+
 ---
 
-# Réponses 16-20
+#### Réponses 16-20
+
+<div class="text-xs">
 
 **Réponse 16 : B) `apt update`**
 - `apt update` : met à jour la **liste** des paquets
@@ -833,9 +847,13 @@ D) Partager le mot de passe root
 - Format cron : `minute heure jour mois jour_semaine`
 - `0 2 * * *` = minute 0, heure 2, tous les jours
 
+</div>
+
 ---
 
-# Réponses 21-25
+#### Réponses 21-25
+
+<div class="text-xs">
 
 **Réponse 21 : B) `/var/log`**
 - `/var/log` : répertoire standard des logs
@@ -857,9 +875,13 @@ D) Partager le mot de passe root
 - `fail2ban` : bannit les IP après X échecs
 - Protection contre le brute-force
 
+</div>
+
 ---
 
-# Réponses 26-30
+#### Réponses 26-30
+
+<div class="text-xs">
 
 **Réponse 26 : C) SCP ou SFTP**
 - SCP : Secure Copy (basé sur SSH)
@@ -881,9 +903,13 @@ D) Partager le mot de passe root
 - `/etc/nginx/nginx.conf` : config principale
 - `/etc/nginx/sites-available/` : sites disponibles
 
+</div>
+
 ---
 
-# Réponses 31-35
+#### Réponses 31-35
+
+<div class="text-xs">
 
 **Réponse 31 : B) `nginx -t`**
 - `nginx -t` : test de syntaxe
@@ -905,9 +931,13 @@ D) Partager le mot de passe root
 - Configuration globale de systemd
 - Services dans `/etc/systemd/system/`
 
+</div>
+
 ---
 
-# Réponses 36-40
+#### Réponses 36-40
+
+<div class="text-xs">
 
 **Réponse 36 : B) `systemctl --failed`**
 - Liste tous les services en état "failed"
@@ -929,9 +959,13 @@ D) Partager le mot de passe root
 - `$HOME` : répertoire personnel (`/home/user`)
 - `$USER` : nom de l'utilisateur
 
+</div>
+
 ---
 
-# Réponses 41-45
+#### Réponses 41-45
+
+<div class="text-xs">
 
 **Réponse 41 : B) `head fichier`**
 - `head` : 10 premières lignes par défaut
@@ -953,9 +987,13 @@ D) Partager le mot de passe root
 - `df` : Disk Free (par partition)
 - `df -h` : format lisible
 
+</div>
+
 ---
 
-# Réponses 46-50
+#### Réponses 46-50
+
+<div class="text-xs">
 
 **Réponse 46 : D) B et C sont corrects**
 - `/tmp` : effacé au redémarrage
@@ -977,9 +1015,13 @@ D) Partager le mot de passe root
 - Principe du moindre privilège
 - `sudo` offre la traçabilité
 
+</div>
+
 ---
 
-# Correction du QCM 🎓
+#### Correction du QCM 🎓
+
+<div class="text-xs">
 
 **Comptez vos bonnes réponses :**
 
@@ -994,6 +1036,8 @@ D) Partager le mot de passe root
 
 - **< 20 points (< 40%)** : À revoir
   Reprenez la formation depuis le début
+
+</div>
 
 ---
 
@@ -1048,13 +1092,11 @@ D) Partager le mot de passe root
 **Prochaines étapes :**
 - Pratiquer régulièrement
 - Mettre en place un projet personnel
-- Envisager une certification (LPIC-1, RHCSA)
+- Envisager une certification **(LPIC-1, RHCSA)**
 - Continuer à apprendre !
 
 </div>
 
----
-layout: default
 ---
 
 # Merci et bon courage ! 💪
