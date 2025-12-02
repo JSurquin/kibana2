@@ -1,5 +1,6 @@
 ---
 layout: new-section
+routeAlias: 'optimisation-performances'
 ---
 
 <a name="optimisation-performances" id="optimisation-performances"></a>

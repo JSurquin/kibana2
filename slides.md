@@ -91,6 +91,7 @@ routeAlias: 'sommaire'
 <Link to="supervision-analyse">📊 11. Supervision & Analyse Système</Link>
 <Link to="supervision-avancee">🚨 12. Supervision Avancée (Zabbix)</Link>
 <Link to="optimisation-performances">⚡ 13. Optimisation & Performances (BONUS)</Link>
+<Link to="optimisation-reseau-linux">🌐 14. Optimisation Réseau Linux (BONUS)</Link>
 <Link to="qcm-final">✅ QCM de validation finale</Link>
 </div>
 
@@ -220,8 +221,14 @@ layout: two-cols
 **Module 13 - Optimisation (BONUS)** ⚡
 - Tuning kernel (sysctl)
 - Optimisation mémoire
-- Optimisation réseau
+- Optimisation serveurs
 - Performance des services
+
+**Module 14 - Optimisation Réseau (BONUS)** 🌐
+- Pile TCP/IP et sysctl
+- Carte réseau (NIC)
+- Files d'attente & bufferbloat
+- Pare-feu & conteneurs
 
 **QCM Final** ✅
 - Validation des connaissances
@@ -380,6 +387,18 @@ src: './pages/15-qcm-optimisation.md'
 
 ---
 src: './pages/15-exercices-optimisation.md'
+---
+
+---
+src: './pages/16-optimisation-reseau-linux.md'
+---
+
+---
+src: './pages/16-qcm-optimisation-reseau.md'
+---
+
+---
+src: './pages/16-exercices-optimisation-reseau.md'
 ---
 
 ---
