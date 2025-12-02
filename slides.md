@@ -66,7 +66,7 @@ layout: two-cols
 routeAlias: 'sommaire'
 ---
 
-<a name="SOMMAIRE-UNIX-LINUX" id="sommaire-unix-linux"></a>
+<a name="sommaire" id="sommaire"></a>
 
 # SOMMAIRE UNIX/LINUX - INITIATION 📜
 
