@@ -2,7 +2,7 @@
 
 # QCM Module 7 : Réseau ✅
 
-**10 questions sur la configuration et le diagnostic réseau**
+**20 questions sur la configuration et le diagnostic réseau**
 
 ---
 
@@ -92,7 +92,7 @@ D) `ssh-create`
 
 # Question 7
 
-Où sont stockées les clés SSH ?
+Où sont stockées les clés SSH de l'utilisateur ?
 
 A) `/etc/ssh/`
 
@@ -146,7 +146,147 @@ D) `lookup`
 
 ---
 
-# Réponses du Module 7 📝
+# Question 11
+
+Que signifie la notation CIDR /24 ?
+
+A) 24 machines dans le réseau
+
+B) Masque 255.255.255.0 (256 adresses)
+
+C) 24 ports ouverts
+
+D) 24 sous-réseaux
+
+---
+
+# Question 12
+
+Quelle option SSH crée un tunnel local (Local Forwarding) ?
+
+A) `-R`
+
+B) `-L`
+
+C) `-D`
+
+D) `-T`
+
+---
+
+# Question 13
+
+Quel fichier contient les serveurs DNS sur Linux ?
+
+A) `/etc/dns.conf`
+
+B) `/etc/resolv.conf`
+
+C) `/etc/network/dns`
+
+D) `/etc/dns/servers`
+
+---
+
+# Question 14
+
+Quelle commande synchronise des fichiers via SSH avec reprise ?
+
+A) `scp`
+
+B) `sftp`
+
+C) `rsync`
+
+D) `ssh-sync`
+
+---
+
+# Question 15
+
+Quel algorithme de clé SSH est recommandé en 2025 ?
+
+A) RSA 1024
+
+B) DSA
+
+C) Ed25519
+
+D) ECDSA 256
+
+---
+
+# Question 16
+
+Que fait la commande `traceroute` ?
+
+A) Teste la vitesse de connexion
+
+B) Affiche le chemin réseau vers un hôte
+
+C) Liste les interfaces réseau
+
+D) Scanne les ports ouverts
+
+---
+
+# Question 17
+
+Quel outil configure le réseau sur Ubuntu moderne (22.04+) ?
+
+A) ifconfig
+
+B) network-scripts
+
+C) Netplan
+
+D) wicked
+
+---
+
+# Question 18
+
+Quel fichier permet de définir des alias DNS locaux ?
+
+A) `/etc/hosts`
+
+B) `/etc/aliases`
+
+C) `/etc/dns/local`
+
+D) `/etc/hostname`
+
+---
+
+# Question 19
+
+Quelle est la plage de ports "bien connus" (well-known) ?
+
+A) 1-100
+
+B) 0-1023
+
+C) 1024-49151
+
+D) 49152-65535
+
+---
+
+# Question 20
+
+Quel service attribue automatiquement des IP aux clients ?
+
+A) DNS
+
+B) NAT
+
+C) DHCP
+
+D) ARP
+
+---
+
+# Réponses du Module 7 📝 (1/4)
 
 **Réponse 1 :** B) `127.0.0.1`
 - Toute la plage 127.0.0.0/8 est réservée au loopback
@@ -165,7 +305,7 @@ D) `lookup`
 
 ---
 
-# Réponses du Module 7 (suite) 📝
+# Réponses du Module 7 📝 (2/4)
 
 **Réponse 6 :** B) `ssh-keygen`
 - `ssh-keygen -t ed25519` est recommandé en 2025
@@ -184,11 +324,50 @@ D) `lookup`
 
 ---
 
+# Réponses du Module 7 📝 (3/4)
+
+**Réponse 11 :** B) Masque 255.255.255.0 (256 adresses)
+- /24 signifie 24 bits pour le réseau, 8 bits pour les hôtes (2^8 = 256)
+
+**Réponse 12 :** B) `-L`
+- `-L` = Local forwarding (ramène un port distant vers local)
+- `-R` = Remote forwarding, `-D` = Dynamic (proxy SOCKS)
+
+**Réponse 13 :** B) `/etc/resolv.conf`
+- Contient les serveurs DNS avec `nameserver 8.8.8.8`
+
+**Réponse 14 :** C) `rsync`
+- `rsync -avz` synchronise avec compression et reprise en cas d'interruption
+
+**Réponse 15 :** C) Ed25519
+- Ed25519 est le plus moderne, sûr et performant. RSA 4096 reste acceptable.
+
+---
+
+# Réponses du Module 7 📝 (4/4)
+
+**Réponse 16 :** B) Affiche le chemin réseau vers un hôte
+- Montre chaque routeur traversé entre vous et la destination
+
+**Réponse 17 :** C) Netplan
+- Netplan est l'outil standard sur Ubuntu 18.04+ pour configurer le réseau
+
+**Réponse 18 :** A) `/etc/hosts`
+- Permet de définir des correspondances nom → IP localement
+
+**Réponse 19 :** B) 0-1023
+- Well-known ports (réservés aux services système), nécessitent root
+
+**Réponse 20 :** C) DHCP
+- Dynamic Host Configuration Protocol : attribution automatique d'IP, masque, gateway, DNS
+
+---
+
 # Score du Module 7 📊
 
 Comptez vos bonnes réponses :
 
-- **9-10** : Excellent ! ⭐⭐⭐
-- **7-8** : Bien ! ⭐⭐
-- **5-6** : À revoir ⭐
-- **< 5** : Relire le module 5
+- **18-20** : Expert réseau ! ⭐⭐⭐
+- **14-17** : Très bien ! ⭐⭐
+- **10-13** : Bien, à consolider ⭐
+- **< 10** : Relire le module 7

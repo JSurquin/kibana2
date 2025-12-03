@@ -75,26 +75,101 @@ graph LR
 
 ---
 
-# Comprendre les modèles réseau 📚
+### Comprendre les modèles réseau : L'analogie de la lettre 📬
+
+<small>
+
+| Étape | Modèle OSI | Ce que ça fait | Analogie postale |
+|-------|------------|----------------|------------------|
+| 7 | **Application** | Vous écrivez le message | ✍️ Rédiger la lettre |
+| 6 | **Présentation** | Mise en forme, chiffrement | 🔐 Mettre dans une enveloppe scellée |
+| 5 | **Session** | Établir la conversation | 📞 Décider à qui écrire |
+| 4 | **Transport** | Découper en morceaux numérotés | 📦 Numéroter les pages si lettre longue |
+| 3 | **Réseau** | Ajouter les adresses | 🏠 Écrire l'adresse expéditeur/destinataire |
+| 2 | **Liaison** | Préparer pour le transport local | 📮 Mettre dans la boîte aux lettres |
+| 1 | **Physique** | Transmettre physiquement | 🚚 Le camion qui transporte |
+
+</small>
+
+---
+
+### Modèle OSI : Détail des 7 couches 📚
 
 <div class="text-sm">
 
-**Le modèle OSI (7 couches)** - Modèle théorique de référence
+**Couche 7 - Application** : Ce que VOUS voyez
+- HTTP (web), FTP (fichiers), SMTP (mail), SSH (terminal distant)
+- 💡 *C'est votre navigateur, votre client mail...*
 
-- **7 - Application** : Interface utilisateur (HTTP, FTP, SSH, DNS)
-- **6 - Présentation** : Formatage des données (chiffrement, compression)
-- **5 - Session** : Gestion des connexions
-- **4 - Transport** : Communication de bout en bout (TCP, UDP)
-- **3 - Réseau** : Routage et adressage (IP)
-- **2 - Liaison** : Transfert entre nœuds adjacents (Ethernet)
-- **1 - Physique** : Transmission des bits (câbles, ondes)
+**Couche 6 - Présentation** : Traduction et formatage
+- Chiffrement SSL/TLS, compression, encodage (UTF-8, ASCII)
+- 💡 *Convertit les données pour qu'elles soient compréhensibles*
 
-**Le modèle TCP/IP (4 couches)** - Modèle pratique utilisé sur Internet
+**Couche 5 - Session** : Gestion de la conversation
+- Ouverture, maintien, fermeture de session
+- 💡 *"Bonjour, je voudrais parler à..."*
 
-- **Application** : Combine les couches 5, 6 et 7 de l'OSI
-- **Transport** : Équivalent à la couche 4 de l'OSI
-- **Internet** : Équivalent à la couche 3 de l'OSI
-- **Accès réseau** : Combine les couches 1 et 2 de l'OSI
+**Couche 4 - Transport** : Fiabilité de bout en bout
+- TCP (fiable, ordonné) ou UDP (rapide, sans garantie)
+- 💡 *"Je vérifie que tout est bien arrivé"*
+
+</div>
+
+---
+
+### Modèle OSI : Couches basses (1-3) 🔌
+
+<div class="text-sm">
+
+**Couche 3 - Réseau** : Routage et adressage IP
+- Détermine le CHEMIN que prennent les données
+- Protocole IP : adressage logique
+- 💡 *"Comment aller de Paris à Tokyo ?"*
+
+**Couche 2 - Liaison de données** : Communication locale
+- Adresse MAC (physique, gravée dans la carte réseau)
+- Détection d'erreurs, contrôle de flux local
+- 💡 *"Communication avec le voisin immédiat"*
+
+**Couche 1 - Physique** : Les bits sur le fil
+- Câbles Ethernet, fibres optiques, ondes WiFi
+- Tensions électriques, fréquences radio
+- 💡 *"Le support physique qui transporte les 0 et 1"*
+
+**Astuce mémo** : "**A**ll **P**eople **S**eem **T**o **N**eed **D**ata **P**rocessing"
+(Application → Physique)
+
+</div>
+
+---
+
+### TCP/IP : Le modèle pratique simplifié 🌐
+
+<div class="text-sm">
+
+**Pourquoi TCP/IP plutôt qu'OSI ?**
+
+Le modèle OSI est **théorique** (créé pour enseigner).
+Le modèle TCP/IP est **pratique** (créé pour Internet).
+
+| TCP/IP | Équivalent OSI | Protocoles | Analogie |
+|--------|---------------|------------|----------|
+| **Application** | 5, 6, 7 | HTTP, SSH, DNS, FTP | L'application que vous utilisez |
+| **Transport** | 4 | TCP, UDP | Le facteur qui garantit la livraison |
+| **Internet** | 3 | IP, ICMP | Le système d'adressage mondial |
+| **Accès réseau** | 1, 2 | Ethernet, WiFi | Le camion et la route physique |
+
+</div>
+
+---
+
+<div class="text-sm">
+
+**En pratique, vous manipulez :**
+- 🖥️ **Application** : `curl`, navigateur, `ssh`
+- 🔢 **Transport** : Ports (22, 80, 443)
+- 🌍 **Internet** : Adresses IP (192.168.1.100)
+- 🔌 **Accès réseau** : `eth0`, `wlan0`, câble RJ45
 
 </div>
 
@@ -123,33 +198,125 @@ graph LR
 
 ---
 
-#### Adresses IP : IPv4 vs IPv6 🌐
+# Adresses IP : Qu'est-ce que c'est ? 🏠
 
-<div class="text-xs">
+**Une adresse IP, c'est l'adresse postale de votre machine sur le réseau.**
 
-**IPv4** : 32 bits (4 octets)
-- Format : `192.168.1.100`
-- ~4.3 milliards d'adresses
-- Épuisement → besoin d'IPv6
+Sans adresse IP, impossible de :
+- ❌ Recevoir des données
+- ❌ Envoyer des données
+- ❌ Être identifié sur le réseau
 
-**IPv6** : 128 bits (16 octets)
-- Format : `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
-- Simplifié : `2001:db8:85a3::8a2e:370:7334`
-- ~340 sextillions d'adresses
-- Adoption progressive
+---
 
-**IPv4** : comme un numéro à 10 chiffres
-- Limité : on manque de numéros
-- Solution temporaire : indicatifs (NAT)
+**Deux versions coexistent :**
 
-**IPv6** : comme un numéro à 40 chiffres
-- Suffisant pour donner un numéro unique à chaque grain de sable sur Terre !
+| | IPv4 | IPv6 |
+|---|------|------|
+| **Créé en** | 1983 | 1998 |
+| **Bits** | 32 bits | 128 bits |
+| **Format** | `192.168.1.100` | `2001:db8::1` |
+| **Adresses** | ~4,3 milliards | ~340 sextillions |
+| **Situation** | Épuisé ! | Adoption progressive |
 
-<div class="ml-16">
+---
 
-**Analogie : les numéros de téléphone** 📞
+# IPv4 en détail : Anatomie d'une adresse 🔍
+
+**Format : 4 nombres de 0 à 255, séparés par des points**
+
+```
+    192    .    168    .     1     .    100
+   └─┬─┘       └─┬─┘       └─┬─┘       └─┬─┘
+  Octet 1    Octet 2    Octet 3    Octet 4
+```
+
+---
+
+**Chaque octet = 8 bits = valeur de 0 à 255**
+
+```bash
+# En binaire, 192.168.1.100 s'écrit :
+11000000.10101000.00000001.01100100
+```
+
+---
+
+**Analogie téléphonique 📞**
+
+```
+   +33      1     23    45    67    89
+   └┬┘     └┬┘   └───────┬──────────┘
+  Pays   Région    Numéro local
+
+  192.168   .1     .100
+  └──┬──┘   └┬┘    └─┬─┘
+  Réseau  Sous-   Machine
+         réseau
+```
+
+---
+
+# IPv6 : L'avenir du réseau 🚀
+
+**Pourquoi IPv6 ?**
+
+Avec ~4,3 milliards d'adresses IPv4 et **20+ milliards** d'appareils connectés → pénurie !
+
+**Format IPv6 : 8 groupes de 4 caractères hexadécimaux**
+
+```
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+└──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘ └──┘
+  1    2    3    4    5    6    7    8
+```
+
+**Simplification autorisée :**
+
+```
+Complet :   2001:0db8:0000:0000:0000:0000:0000:0001
+Simplifié : 2001:db8::1
+```
+
+- **Zéros initiaux** : peuvent être supprimés (`0db8` → `db8`)
+- **Groupes de zéros** : remplacés par `::` (une seule fois)
+
+---
+
+# IPv4 vs IPv6 : Comparaison pratique 📊
+
+<div class="text-sm">
+
+**Combien d'adresses ?**
+
+| Version | Nombre | Analogie |
+|---------|--------|----------|
+| **IPv4** | 4 294 967 296 | 1 adresse pour 2 humains |
+| **IPv6** | 340 282 366 920 938 463 463 374 607 431 768 211 456 | 50 000 milliards d'adresses par **millimètre carré** de la Terre ! |
+
+**En pratique aujourd'hui :**
+
+```bash
+# Voir vos adresses IPv4 et IPv6
+ip -4 addr    # Seulement IPv4
+ip -6 addr    # Seulement IPv6
+```
 
 </div>
+
+---
+
+<div class="text-sm">
+
+**Pourquoi on utilise encore IPv4 ?**
+- 🏠 Réseaux locaux privés (192.168.x.x)
+- 🔄 NAT (plusieurs machines partagent 1 IP publique)
+- 📚 Habitude et compatibilité
+
+**IPv6 est utilisé pour :**
+- 🌍 Connexions Internet directes
+- 📱 Opérateurs mobiles (Free, Orange...)
+- ☁️ Services cloud modernes
 
 </div>
 
@@ -157,7 +324,7 @@ graph LR
 
 #### Exemple concret :
 
-<div class="text-xs">
+<div>
 
 ```bash
 # Voir vos adresses IP
@@ -305,9 +472,9 @@ graph LR
 
 ---
 
-# Comprendre la Passerelle (Gateway) 🚪
+### Comprendre la Passerelle (Gateway) 🚪
 
-<div class="text-sm">
+<div class="text-xs">
 
 **C'est quoi une Gateway ?**
 
@@ -359,6 +526,12 @@ DNS :            8.8.8.8
 | **192.168.1.1** | L'adresse du routeur pour sortir du réseau | La porte d'entrée du quartier |
 | **8.8.8.8** | Serveur Google pour traduire les noms de domaine | L'annuaire téléphonique |
 
+</div>
+
+---
+
+<div class="text-xs">
+
 **Exemples de communication :**
 
 - 💬 Accéder à `192.168.1.10` (imprimante réseau) → ✅ Communication directe (même réseau)
@@ -374,18 +547,129 @@ DNS :            8.8.8.8
 
 # DNS : Domain Name System 🌐
 
-**DNS** : traduit les noms en adresses IP
+**Pourquoi le DNS existe ?**
+
+Les ordinateurs communiquent avec des **adresses IP** (142.250.185.46)
+Les humains préfèrent des **noms** (google.com)
+
+**Le DNS fait la traduction !** 📖
 
 ```
-google.com → 142.250.185.46
+Vous tapez :     google.com
+DNS traduit :    142.250.185.46
+Votre PC :       "Ah OK, je contacte 142.250.185.46"
 ```
 
-**Serveurs DNS populaires :**
-- Google : `8.8.8.8`, `8.8.4.4`
-- Cloudflare : `1.1.1.1`, `1.0.0.1`
-- Quad9 : `9.9.9.9`
+**Analogie : L'annuaire téléphonique 📞**
+- Vous cherchez "Pizza du coin" → L'annuaire vous donne 01 23 45 67 89
+- Vous cherchez "google.com" → Le DNS vous donne 142.250.185.46
 
-**Analogie :** l'annuaire téléphonique d'Internet
+---
+
+# Comment fonctionne le DNS ? 🔄
+
+**Quand vous tapez `www.example.com` dans votre navigateur :**
+
+```mermaid
+sequenceDiagram
+    participant V as Votre PC
+    participant R as Résolveur DNS<br/>(votre FAI/8.8.8.8)
+    participant Root as Serveur Racine
+    participant TLD as Serveur .com
+    participant Auth as Serveur example.com
+    
+    V->>R: "C'est quoi l'IP de www.example.com ?"
+    R->>Root: "Qui gère .com ?"
+    Root-->>R: "Voici les serveurs .com"
+    R->>TLD: "Qui gère example.com ?"
+    TLD-->>R: "Voici le serveur de example.com"
+    R->>Auth: "IP de www.example.com ?"
+    Auth-->>R: "93.184.216.34"
+    R-->>V: "C'est 93.184.216.34 !"
+```
+
+---
+
+# La hiérarchie DNS 🏛️
+
+**Le DNS est organisé en arbre inversé :**
+
+```
+                    . (racine)
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+       com         org         fr
+        │           │           │
+    ┌───┴───┐      │       ┌───┴───┐
+  google  amazon  wikipedia  gouv  example
+    │       │       │         │       │
+   www    aws     www       service  www
+```
+
+**Les niveaux :**
+- **Racine (.)** : 13 serveurs mondiaux (a.root-servers.net → m.root-servers.net)
+- **TLD** : .com, .org, .fr, .net... (géré par des registres)
+- **Domaine** : google.com, example.fr (géré par le propriétaire)
+- **Sous-domaine** : www.google.com, mail.google.com
+
+---
+
+# Types d'enregistrements DNS 📋
+
+<div class="text-sm">
+
+| Type | Signification | Exemple | Usage |
+|------|---------------|---------|-------|
+| **A** | Adresse IPv4 | `93.184.216.34` | IP du serveur |
+| **AAAA** | Adresse IPv6 | `2606:2800:220:1::` | IP v6 du serveur |
+| **CNAME** | Alias | `www` → `example.com` | Redirection de nom |
+| **MX** | Mail eXchanger | `mail.example.com` | Serveur email |
+| **NS** | Name Server | `ns1.example.com` | Serveur DNS autoritaire |
+| **TXT** | Texte libre | `v=spf1 include:...` | Vérifications (SPF, DKIM) |
+| **PTR** | Reverse | `34.216.184.93.in-addr.arpa` | IP → Nom (inverse) |
+
+</div>
+
+---
+
+<div class="text-sm">
+
+**Exemple concret :**
+
+```bash
+# Voir tous les enregistrements
+dig example.com ANY
+
+# Seulement les MX (serveurs mail)
+dig example.com MX
+```
+
+</div>
+
+---
+
+# Serveurs DNS publics recommandés 🌍
+
+| Fournisseur | DNS Primaire | DNS Secondaire | Avantages |
+|-------------|--------------|----------------|-----------|
+| **Google** | `8.8.8.8` | `8.8.4.4` | Rapide, fiable |
+| **Cloudflare** | `1.1.1.1` | `1.0.0.1` | Très rapide, vie privée |
+| **Quad9** | `9.9.9.9` | `149.112.112.112` | Sécurité (bloque malwares) |
+| **OpenDNS** | `208.67.222.222` | `208.67.220.220` | Filtrage parental dispo |
+
+---
+
+**Lequel choisir ?**
+- 🚀 **Performance** : Cloudflare (1.1.1.1)
+- 🔒 **Sécurité** : Quad9 (bloque les sites malveillants)
+- 🏢 **Entreprise** : Souvent DNS interne + Google/Cloudflare en backup
+
+```bash
+# Tester la vitesse d'un DNS
+time dig @1.1.1.1 google.com
+time dig @8.8.8.8 google.com
+```
 
 ---
 
@@ -427,26 +711,131 @@ ip addr
     inet6 fe80::a00:27ff:fe4e:66a1/64 scope link
 ```
 
-**Informations importantes :**
-- `lo` : interface loopback (localhost)
-- `eth0` : interface Ethernet
-- `UP` : interface active
-- `inet` : adresse IPv4
-- `inet6` : adresse IPv6
+---
+
+# Décryptage de `ip addr` ligne par ligne (1/2) 🔍
+
+**Ligne 1 : `1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536`**
+
+| Élément | Signification |
+|---------|---------------|
+| `1:` | Numéro de l'interface (ordre d'apparition) |
+| `lo` | Nom de l'interface (loopback = boucle locale) |
+| `<LOOPBACK>` | Type d'interface (boucle interne) |
+| `UP` | Interface **activée** au niveau système |
+| `LOWER_UP` | Câble branché / signal présent |
+| `mtu 65536` | Taille max d'un paquet (65 Ko pour loopback) |
 
 ---
 
-# Interfaces réseau 🔌
+**Les flags entre `< >` sont cruciaux :**
+- `UP` = activée → Sans ça, l'interface ne fonctionne pas !
+- `LOWER_UP` = connexion physique OK → Si absent = câble débranché
+- `BROADCAST` = peut envoyer à tous les appareils du réseau
+- `MULTICAST` = peut envoyer à un groupe d'appareils
 
-**Nomenclature classique :**
-- `eth0`, `eth1` : Ethernet
-- `wlan0`, `wlan1` : WiFi
-- `lo` : loopback (localhost)
+---
 
-**Nomenclature moderne (systemd) :**
-- `enp0s3` : Ethernet PCI slot 0, port 3
-- `eno1` : Ethernet on-board 1
-- `wlp3s0` : Wireless LAN PCI slot 3, port 0
+# Décryptage de `ip addr` ligne par ligne (2/2) 🔍
+
+**Ligne : `inet 192.168.1.100/24 brd 192.168.1.255 scope global eth0`**
+
+| Élément | Signification |
+|---------|---------------|
+| `inet` | Adresse **IPv4** (inet6 = IPv6) |
+| `192.168.1.100` | Votre adresse IP |
+| `/24` | Masque de sous-réseau (255.255.255.0) |
+| `brd 192.168.1.255` | Adresse de **broadcast** (message à tous) |
+| `scope global` | Utilisable pour communiquer **partout** |
+| `eth0` | Interface à laquelle cette IP est liée |
+
+---
+
+**Les différents "scopes" :**
+
+| Scope | Signification | Exemple |
+|-------|---------------|---------|
+| `global` | Routable partout | 192.168.1.100 (réseau local) |
+| `link` | Seulement sur le lien local | fe80::... (IPv6 link-local) |
+| `host` | Seulement cette machine | 127.0.0.1 (localhost) |
+
+💡 **Si vous n'avez pas d'adresse `inet` → pas de réseau IPv4 !**
+
+---
+
+# Interfaces réseau : Les noms 🔌
+
+**Pourquoi les noms sont-ils bizarres ?**
+
+Avant, c'était simple : `eth0`, `eth1`, `wlan0`...
+Problème : l'ordre pouvait **changer au redémarrage** ! 😱
+
+**Solution moderne : noms prévisibles (systemd)**
+
+Les noms sont basés sur l'**emplacement physique** du matériel.
+
+---
+
+# Nomenclature des interfaces : Décodage 🔍
+
+<div class="text-sm">
+
+**Structure : `<type><emplacement>`**
+
+| Préfixe | Signification | Exemple |
+|---------|---------------|---------|
+| `en` | **E**ther**n**et (filaire) | `enp0s3` |
+| `wl` | **W**ire**l**ess (WiFi) | `wlp3s0` |
+| `ww` | **W**ireless **W**AN (4G/5G) | `wwan0` |
+| `lo` | **Lo**opback (boucle locale) | `lo` |
+
+</div>
+
+---
+
+**Décodage de l'emplacement :**
+
+| Suffixe | Signification | Exemple complet |
+|---------|---------------|-----------------|
+| `o<N>` | **O**n-board (intégré carte mère) | `eno1` = Ethernet intégré #1 |
+| `p<bus>s<slot>` | **P**CI bus X, **S**lot Y | `enp0s3` = Ethernet PCI bus 0, slot 3 |
+| `s<slot>` | Hot-plug **S**lot | `ens33` = Slot 33 (VMware) |
+
+**Exemples concrets :**
+- `enp0s3` → Ethernet, PCI bus 0, slot 3 (VirtualBox)
+- `ens33` → Ethernet, slot 33 (VMware)
+- `wlp3s0` → WiFi, PCI bus 3, slot 0
+- `eno1` → Premier Ethernet intégré à la carte mère
+
+---
+
+# Trouver le nom de votre interface 🎯
+
+```bash
+# Lister toutes les interfaces
+ip link show
+
+# Résultat typique :
+# 1: lo: <LOOPBACK,UP>
+# 2: enp0s3: <BROADCAST,MULTICAST,UP>
+# 3: wlp2s0: <BROADCAST,MULTICAST>
+```
+
+**Astuce : identifier rapidement**
+
+```bash
+# Interface avec une adresse IP (probablement la principale)
+ip -br addr
+
+# Résultat :
+# lo        UNKNOWN  127.0.0.1/8
+# enp0s3    UP       192.168.1.100/24   <-- C'est celle-ci !
+```
+
+💡 **En VM, les noms courants sont :**
+- **VirtualBox** : `enp0s3`, `enp0s8`
+- **VMware** : `ens33`, `ens34`
+- **QEMU/KVM** : `enp1s0`, `ens3`
 
 ---
 
@@ -518,6 +907,8 @@ sudo systemctl restart networking
 
 # Configuration permanente : Netplan (Ubuntu moderne) 🆕
 
+**Netplan** est le système de configuration réseau par défaut sur Ubuntu (depuis 17.10)
+
 **Fichier : `/etc/netplan/01-netcfg.yaml`**
 
 ```yaml
@@ -536,13 +927,94 @@ network:
           - 8.8.4.4
 ```
 
-```bash
-# Appliquer la config
-sudo netplan apply
+---
 
-# Tester avant d'appliquer
+# Netplan : Explication ligne par ligne (1/3) 📖
+
+**Structure de base :**
+
+```yaml
+network:
+  version: 2
+```
+
+- `network:` → Racine du fichier de configuration réseau
+- `version: 2` → Utilise le format Netplan v2 (standard actuel)
+
+---
+
+# Netplan : Explication ligne par ligne (2/3) 📖
+
+**Choix du renderer et interface :**
+
+```yaml
+  renderer: networkd
+  ethernets:
+    eth0:
+```
+
+- `renderer: networkd` → Utilise **systemd-networkd** pour gérer le réseau
+  - Alternative : `NetworkManager` (plus courant sur desktop)
+- `ethernets:` → Section pour les interfaces Ethernet filaires
+- `eth0:` → Nom de l'interface à configurer
+
+⚠️ **Important** : Le nom peut varier (`ens33`, `enp0s3`...) → Vérifier avec `ip a`
+
+---
+
+# Netplan : Explication ligne par ligne (3/3) 📖
+
+**Configuration IP statique :**
+
+<div class="text-sm">
+
+```yaml
+      dhcp4: no
+      addresses:
+        - 192.168.1.100/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+```
+</div>
+
+---
+
+| Ligne | Signification |
+|-------|---------------|
+| `dhcp4: no` | Désactive l'attribution automatique d'IP (DHCP) |
+| `addresses: - 192.168.1.100/24` | IP fixe avec masque /24 (255.255.255.0) |
+| `gateway4: 192.168.1.1` | Passerelle par défaut (routeur) |
+| `nameservers:` | Serveurs DNS à utiliser |
+| `8.8.8.8` / `8.8.4.4` | DNS publics de Google |
+
+---
+
+# Netplan : Commandes d'application 🚀
+
+```bash
+# Appliquer la configuration
+sudo netplan apply
+```
+
+```bash
+# Tester avant d'appliquer (rollback automatique après 120s)
 sudo netplan try
 ```
+
+```bash
+# Générer la config et voir les erreurs
+sudo netplan generate
+```
+
+```bash
+# Afficher la configuration actuelle
+sudo netplan get
+```
+
+⚠️ **Attention** : Une erreur de syntaxe YAML peut couper le réseau !
 
 ---
 
@@ -563,12 +1035,34 @@ DNS1=8.8.8.8
 DNS2=8.8.4.4
 ```
 
-```bash
-# Redémarrer l'interface
-sudo ifdown eth0 && sudo ifup eth0
+---
 
-# Ou redémarrer le service
+# Red Hat/CentOS : Appliquer les changements 🚀
+
+```bash
+# Redémarrer l'interface (méthode classique)
+sudo ifdown eth0 && sudo ifup eth0
+```
+
+```bash
+# Ou via NetworkManager (recommandé)
+sudo nmcli connection reload
+sudo nmcli connection up eth0
+```
+
+```bash
+# Ou redémarrer le service complet
 sudo systemctl restart NetworkManager
+```
+
+**Vérifier que ça fonctionne :**
+
+```bash
+# Voir la nouvelle configuration
+ip addr show eth0
+
+# Tester la connectivité
+ping -c 3 8.8.8.8
 ```
 
 ---
@@ -1007,23 +1501,74 @@ up ip route add 10.0.0.0/24 via 192.168.1.254
 
 ---
 
-# Ports et protocoles 🚪
+# Ports : C'est quoi exactement ? 🚪
 
-**Port** : numéro qui identifie un service
+**Problème :** Une machine a UNE adresse IP, mais fait tourner PLUSIEURS services (web, mail, SSH...)
 
-**Ports bien connus (0-1023) :**
-- `22` : SSH
-- `80` : HTTP
-- `443` : HTTPS
-- `25` : SMTP (mail)
-- `53` : DNS
-- `21` : FTP
-- `3306` : MySQL
-- `5432` : PostgreSQL
+**Comment distinguer les services ?** → Les **ports** !
 
-**Ports enregistrés (1024-49151)** : applications
+**Analogie : L'immeuble 🏢**
 
-**Ports dynamiques (49152-65535)** : temporaires
+```
+Adresse IP = Adresse de l'immeuble (10 rue de Paris)
+Port       = Numéro d'appartement
+
+192.168.1.100:22   → Immeuble 192.168.1.100, appartement 22 (SSH)
+192.168.1.100:80   → Immeuble 192.168.1.100, appartement 80 (Web)
+192.168.1.100:443  → Immeuble 192.168.1.100, appartement 443 (Web sécurisé)
+```
+
+**Format complet d'une connexion :**
+```
+IP_source:port_source  →  IP_destination:port_destination
+192.168.1.50:54321    →  142.250.185.46:443
+  (Votre PC)                (Google HTTPS)
+```
+
+---
+
+# Les 3 catégories de ports 📊
+
+| Catégorie | Plage | Qui les utilise | Exemples |
+|-----------|-------|-----------------|----------|
+| **Bien connus** | 0 - 1023 | Services système (root) | SSH (22), HTTP (80), DNS (53) |
+| **Enregistrés** | 1024 - 49151 | Applications | MySQL (3306), Minecraft (25565) |
+| **Dynamiques** | 49152 - 65535 | Connexions temporaires | Votre navigateur utilise un port ici |
+
+**Pourquoi cette séparation ?**
+- Ports 0-1023 : Réservés aux services critiques (besoin d'être root pour les ouvrir)
+- Ports éphémères : Votre PC en prend un au hasard pour chaque connexion sortante
+
+---
+
+### Ports essentiels à connaître par cœur 🧠
+
+<div class="text-xs">
+
+| Port | Service | Protocole | À quoi ça sert |
+|------|---------|-----------|----------------|
+| **22** | SSH | TCP | Connexion à distance sécurisée |
+| **80** | HTTP | TCP | Sites web non sécurisés |
+| **443** | HTTPS | TCP | Sites web sécurisés (TLS) |
+| **21** | FTP | TCP | Transfert de fichiers (ancien) |
+| **25** | SMTP | TCP | Envoi d'emails |
+| **53** | DNS | UDP/TCP | Résolution de noms |
+| **67/68** | DHCP | UDP | Attribution d'IP automatique |
+| **3306** | MySQL | TCP | Base de données MySQL |
+| **5432** | PostgreSQL | TCP | Base de données PostgreSQL |
+
+</div>
+
+---
+
+<div class="text-xs">
+
+**Astuce mémo :**
+- 🔐 **22** = "2 personnes discutent en **S**ecret" (SSH)
+- 🌐 **80** = "**H**TTP" (le H ressemble à 8+0)
+- 🔒 **443** = 80 × 5.5 ≈ "HTTP × Sécurité"
+
+</div>
 
 ---
 
@@ -1070,6 +1615,66 @@ tcp    LISTEN  0       128     0.0.0.0:80           0.0.0.0:*          users:(("
 tcp    LISTEN  0       128     [::]:22              [::]:*             users:(("sshd",pid=1234,fd=4))
 udp    UNCONN  0       0       0.0.0.0:68           0.0.0.0:*          users:(("dhclient",pid=9012,fd=6))
 ```
+
+---
+
+### Décryptage de `ss -tulnp` colonne par colonne 🔍
+
+<div class="text-sm">
+
+**Prenons cette ligne :**
+```
+tcp    LISTEN  0       128     0.0.0.0:22           0.0.0.0:*          users:(("sshd",pid=1234,fd=3))
+```
+
+| Colonne | Valeur | Signification |
+|---------|--------|---------------|
+| **Netid** | `tcp` | Protocole (tcp ou udp) |
+| **State** | `LISTEN` | État : en attente de connexions |
+| **Recv-Q** | `0` | File d'attente réception (0 = OK) |
+| **Send-Q** | `128` | Taille max de la file d'attente |
+| **Local Address:Port** | `0.0.0.0:22` | Écoute sur **toutes les interfaces**, port 22 |
+| **Peer Address:Port** | `0.0.0.0:*` | Accepte des connexions de **n'importe où** |
+| **Process** | `sshd,pid=1234` | Programme qui écoute (SSH daemon, PID 1234) |
+
+</div>
+
+---
+
+# Comprendre les adresses dans ss 🎯
+
+<div class="text-sm">
+
+**Local Address : Sur quelle(s) interface(s) le service écoute ?**
+
+| Adresse | Signification | Sécurité |
+|---------|---------------|----------|
+| `0.0.0.0:80` | Écoute sur **TOUTES** les interfaces IPv4 | ⚠️ Accessible de partout |
+| `127.0.0.1:3306` | Écoute **SEULEMENT** sur localhost | ✅ Seulement local |
+| `192.168.1.100:22` | Écoute sur cette IP spécifique | ⚠️ Accessible du réseau local |
+| `[::]:80` | Écoute sur **TOUTES** les interfaces IPv6 | ⚠️ Accessible de partout |
+| `[::1]:5432` | IPv6 localhost uniquement | ✅ Seulement local |
+
+</div>
+
+---
+
+<div class="text-sm">
+
+**Peer Address : Qui peut se connecter ?**
+
+| Adresse | Signification |
+|---------|---------------|
+| `0.0.0.0:*` | N'importe quelle IP, n'importe quel port |
+| `192.168.1.50:54321` | Connexion établie avec cette IP:port |
+
+**État (State) pour TCP :**
+- `LISTEN` : En attente de connexions (serveur)
+- `ESTABLISHED` : Connexion active
+- `TIME_WAIT` : Connexion en cours de fermeture
+- `CLOSE_WAIT` : L'autre côté a fermé, on attend la fermeture locale
+
+</div>
 
 ---
 
@@ -1428,42 +2033,135 @@ sudo firewall-cmd --add-rich-rule='rule service name="http" accept limit value="
 
 # SSH : Secure Shell 🔒
 
-**SSH** : connexion à distance sécurisée
+**SSH** : Se connecter à une machine distante de manière **sécurisée**
 
-**Client SSH (se connecter) :**
+**Avant SSH (années 90) :** Telnet, rsh → Tout passait en **clair** sur le réseau ! 😱
+- Mot de passe visible par n'importe qui sur le réseau
+- Commandes lisibles
+- Aucune garantie que c'est le bon serveur
+
+**Avec SSH :** Tout est **chiffré** de bout en bout 🔐
+- Mot de passe illisible même si intercepté
+- Authentification du serveur (pas d'usurpation)
+- Intégrité des données garantie
+
+---
+
+### Comment SSH sécurise la connexion ? 🔐
+
+**Étape 1 : Établissement du tunnel chiffré**
+
+```mermaid {scale: 0.7}
+sequenceDiagram
+    participant C as Votre PC
+    participant S as Serveur
+    
+    C->>S: "Bonjour, je veux me connecter"
+    S-->>C: "Voici ma clé publique (empreinte)"
+    Note over C: Vérification : "C'est bien le bon serveur ?"
+    C->>S: "OK, voici ma clé de session chiffrée"
+    Note over C,S: 🔒 Tunnel chiffré établi
+    C->>S: "Maintenant, voici mon mot de passe (chiffré)"
+```
+
+---
+
+**Étape 2 : Authentification**
+- Par **mot de passe** : Vous tapez votre mot de passe (chiffré dans le tunnel)
+- Par **clé SSH** : Preuve cryptographique sans mot de passe
+
+---
+
+# SSH : Connexion basique 💻
 
 ```bash
 # Connexion simple
 ssh utilisateur@serveur
 
-# Port spécifique
+# Avec un port différent
 ssh -p 2222 utilisateur@serveur
 
-# Avec clé privée
+# Avec une clé privée spécifique
 ssh -i ~/.ssh/ma_cle utilisateur@serveur
 
-# Exécuter une commande à distance
-ssh utilisateur@serveur 'ls -la'
+# Exécuter une commande à distance (sans session interactive)
+ssh utilisateur@serveur 'ls -la /var/log'
 
-# Tunnel X11 (interface graphique)
+# Activer le forwarding X11 (applications graphiques)
 ssh -X utilisateur@serveur
 ```
+
+**Première connexion ? Normal de voir ça :**
+
+```
+The authenticity of host 'serveur (192.168.1.100)' can't be established.
+ED25519 key fingerprint is SHA256:xxxxxxxxxxxxxxxxxxx.
+Are you sure you want to continue connecting (yes/no)?
+```
+
+→ Tapez `yes` pour accepter et mémoriser l'empreinte du serveur
+
+---
+
+# Authentification par clés SSH : Pourquoi ? 🔑
+
+**Problèmes avec les mots de passe :**
+- ❌ Peuvent être devinés (attaque brute-force)
+- ❌ Doivent être tapés à chaque fois
+- ❌ Peuvent être volés (keylogger, phishing)
+
+**Avantages des clés SSH :**
+- ✅ Impossibles à deviner (4096 bits = astronomiquement complexe)
+- ✅ Pas besoin de taper de mot de passe
+- ✅ Peuvent être protégées par une passphrase locale
+
+---
+
+# Clés SSH : L'analogie du cadenas 🔓
+
+**Principe de la cryptographie asymétrique :**
+
+```
+🔐 Clé PRIVÉE (id_ed25519)     →  Votre clé de maison (JAMAIS partagée)
+🔓 Clé PUBLIQUE (id_ed25519.pub)  →  Un cadenas que vous distribuez
+
+Vous donnez votre cadenas (clé publique) au serveur.
+Le serveur vous envoie un défi verrouillé avec votre cadenas.
+Seule votre clé privée peut l'ouvrir → Vous êtes authentifié !
+```
+
+**Concrètement :**
+1. Vous générez une **paire** de clés (privée + publique)
+2. Vous copiez la clé **publique** sur le serveur
+3. À chaque connexion, le serveur vérifie que vous avez la clé **privée**
 
 ---
 
 # Générer des clés SSH 🔑
 
 ```bash
-# Générer une paire de clés (RSA 4096 bits)
-ssh-keygen -t rsa -b 4096 -C "mon-email@example.com"
-
-# Générer avec Ed25519 (plus moderne, recommandé)
+# Méthode recommandée en 2025 : Ed25519 (plus sûr, plus rapide)
 ssh-keygen -t ed25519 -C "mon-email@example.com"
 
-# Fichiers générés :
-# ~/.ssh/id_rsa (ou id_ed25519) : clé PRIVÉE (à protéger !)
-# ~/.ssh/id_rsa.pub (ou id_ed25519.pub) : clé PUBLIQUE (à partager)
+# Alternative : RSA 4096 bits (compatibilité maximale)
+ssh-keygen -t rsa -b 4096 -C "mon-email@example.com"
 ```
+
+**Ce qui se passe :**
+
+```
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/user/.ssh/id_ed25519): [Entrée]
+Enter passphrase (empty for no passphrase): [optionnel mais recommandé]
+Enter same passphrase again:
+
+Your identification has been saved in /home/user/.ssh/id_ed25519       ← PRIVÉE
+Your public key has been saved in /home/user/.ssh/id_ed25519.pub       ← PUBLIQUE
+```
+
+**⚠️ RÈGLE D'OR :**
+- Clé **privée** → NE JAMAIS la partager, la copier, l'envoyer par mail !
+- Clé **publique** → Peut être partagée librement
 
 ---
 
@@ -1611,31 +2309,117 @@ sftp> exit
 
 ---
 
-# Tunnels SSH : port forwarding 🚇
+# Tunnels SSH : C'est quoi ? 🚇
 
-**Local forwarding** : accéder à un service distant localement
+**Problème courant :**
+- Vous êtes chez vous
+- Vous voulez accéder à une base de données qui n'est accessible QUE depuis le serveur
+- La base n'est pas exposée sur Internet (sécurité !)
 
-```bash
-# Accéder à un serveur web distant sur localhost:8080
-ssh -L 8080:localhost:80 utilisateur@serveur
+**Solution : Créer un "tunnel" à travers SSH**
 
-# Puis ouvrir : http://localhost:8080
+```
+┌─────────────┐                    ┌─────────────┐      ┌─────────────┐
+│  Votre PC   │ ══════════════════ │   Serveur   │ ──── │    Base     │
+│             │   Tunnel SSH       │   (relais)  │      │   données   │
+│ localhost   │   chiffré          │             │      │ 127.0.0.1   │
+│   :8080     │                    │             │      │   :3306     │
+└─────────────┘                    └─────────────┘      └─────────────┘
+
+Vous accédez à localhost:8080 → ça arrive sur la base :3306 !
 ```
 
-**Remote forwarding** : exposer un service local à distance
+**Analogie : Le tunnel sous la montagne 🏔️**
+Au lieu de contourner la montagne (Internet, firewalls), vous passez **à travers** via SSH.
+
+---
+
+# Local Forwarding : Ramener un service distant 📥
+
+**Cas d'usage : Accéder à un service qui n'est accessible que depuis le serveur**
 
 ```bash
-# Exposer votre port 3000 sur le port 8080 du serveur
-ssh -R 8080:localhost:3000 utilisateur@serveur
+ssh -L port_local:destination:port_distant utilisateur@serveur
 ```
 
-**Dynamic forwarding** : proxy SOCKS
+**Exemple concret : Accéder à MySQL distant**
 
 ```bash
-# Créer un proxy SOCKS sur le port 1080
-ssh -D 1080 utilisateur@serveur
+# MySQL n'écoute que sur localhost du serveur (sécurité)
+# On crée un tunnel pour y accéder depuis notre PC
 
-# Configurer votre navigateur pour utiliser localhost:1080 comme proxy SOCKS
+ssh -L 3307:localhost:3306 admin@serveur-prod
+
+# Maintenant sur votre PC :
+mysql -h 127.0.0.1 -P 3307 -u root -p
+# → Connecté à MySQL du serveur distant !
+```
+
+**Schéma :**
+```
+[Votre PC :3307] ──SSH──> [serveur-prod] ──> [localhost:3306 MySQL]
+```
+
+---
+
+# Remote Forwarding : Exposer un service local 📤
+
+**Cas d'usage : Montrer votre site en développement à un collègue**
+
+```bash
+ssh -R port_distant:localhost:port_local utilisateur@serveur
+```
+
+**Exemple : Partager votre app locale sur un serveur public**
+
+```bash
+# Votre app tourne sur localhost:3000
+# Vous voulez qu'elle soit accessible sur serveur.com:8080
+
+ssh -R 8080:localhost:3000 admin@serveur.com
+
+# Maintenant n'importe qui peut accéder à :
+# http://serveur.com:8080 → voit votre localhost:3000 !
+```
+
+**Schéma :**
+```
+[Internet] → [serveur.com:8080] ──SSH──> [Votre PC localhost:3000]
+```
+
+⚠️ Le serveur doit avoir `GatewayPorts yes` dans `/etc/ssh/sshd_config`
+
+---
+
+# Récapitulatif des tunnels SSH 📊
+
+| Type | Option | Direction | Cas d'usage |
+|------|--------|-----------|-------------|
+| **Local** | `-L` | Distant → Local | Accéder à un service distant depuis votre PC |
+| **Remote** | `-R` | Local → Distant | Exposer votre service local sur un serveur |
+| **Dynamic** | `-D` | Proxy complet | Tout le trafic passe par le serveur |
+
+**Syntaxe mnémotechnique :**
+
+```bash
+# L = Local : je RAMÈNE le port distant chez moi
+ssh -L local:cible:distant user@serveur
+
+# R = Remote : j'ENVOIE mon port local vers le serveur
+ssh -R distant:localhost:local user@serveur
+
+# D = Dynamic : TOUT passe par là
+ssh -D port_proxy user@serveur
+```
+
+---
+
+**Astuce : garder le tunnel en arrière-plan**
+
+```bash
+ssh -fN -L 3307:localhost:3306 admin@serveur
+# -f : passe en arrière-plan
+# -N : pas de commande à exécuter (juste le tunnel)
 ```
 
 ---
@@ -1682,187 +2466,6 @@ ssh -D 1080 utilisateur@serveur
    sudo ufw status
    sudo firewall-cmd --list-all
    ```
-
----
-
-# Synchronisation temps : NTP et chrony ⏰
-
-**Pourquoi synchroniser l'horloge système ?**
-
-**Critique pour :**
-- Logs cohérents entre serveurs
-- Certificats SSL/TLS (validité basée sur le temps)
-- Transactions base de données
-- Authentification Kerberos
-- Systèmes distribués
-
-**Problème sans synchronisation :**
-- Serveur 1 : 14:00:00
-- Serveur 2 : 14:05:23
-- Serveur 3 : 13:58:15
-→ Impossible de corréler les événements !
-
----
-
-# NTP vs chrony 🕐
-
-**NTP (Network Time Protocol)** : protocole classique
-- Daemon : `ntpd`
-- Ancien, très répandu
-
-**chrony** : implémentation moderne (recommandé 2025)
-- Daemon : `chronyd`
-- Plus rapide à synchroniser
-- Meilleure gestion des réseaux instables
-- Consomme moins de ressources
-- Par défaut sur RHEL/Fedora depuis v7
-
-**On va utiliser chrony !**
-
----
-
-# Installer chrony 📥
-
-```bash
-# Debian/Ubuntu
-sudo apt update
-sudo apt install chrony
-
-# RHEL/Fedora (déjà installé généralement)
-sudo dnf install chrony
-
-# Démarrer et activer
-sudo systemctl start chronyd
-sudo systemctl enable chronyd
-
-# Vérifier l'état
-sudo systemctl status chronyd
-```
-
----
-
-# Configuration chrony 📝
-
-**Fichier : `/etc/chrony/chrony.conf`** (Debian/Ubuntu)  
-**Fichier : `/etc/chrony.conf`** (RHEL/Fedora)
-
-```bash
-sudo nano /etc/chrony/chrony.conf
-```
-
-**Configuration de base :**
-
-```
-# Serveurs NTP (pool français)
-pool fr.pool.ntp.org iburst
-pool 2.debian.pool.ntp.org iburst
-
-# Autoriser les clients du réseau local
-allow 192.168.1.0/24
-
-# Fichier de drift
-driftfile /var/lib/chrony/drift
-
-# Logs
-logdir /var/log/chrony
-```
-
----
-
-# Commandes chronyc 🔧
-
-```bash
-# Voir les sources NTP
-chronyc sources
-
-# Informations détaillées
-chronyc sources -v
-
-# Statistiques de tracking
-chronyc tracking
-
-# Forcer la synchronisation immédiate
-sudo chronyc makestep
-
-# Voir l'activité réseau
-chronyc activity
-```
-
----
-
-# Interpréter chronyc sources 📊
-
-```bash
-chronyc sources
-```
-
-```
-MS Name/IP address         Stratum Poll Reach LastRx Last sample
-===============================================================================
-^* ntp.example.com               2   6   377    32   -123us[ -456us] +/-   15ms
-^+ time.cloudflare.com           3   6   377    33    +89us[ +210us] +/-   20ms
-^- ntp2.example.org              2   6   377    34   -789us[-1012us] +/-   25ms
-```
-
-**Symboles :**
-- `*` : source actuellement utilisée
-- `+` : source alternative acceptable
-- `-` : source écartée
-- `?` : connectivité perdue
-
-**Stratum :** distance de la source atomique (1 = référence, 2 = bon, 15 = max)
-
----
-
-# Configurer chrony comme serveur NTP 🖥️
-
-**Pour que d'autres machines se synchronisent sur ce serveur :**
-
-```bash
-sudo nano /etc/chrony/chrony.conf
-```
-
-```
-# Autoriser le réseau local
-allow 192.168.1.0/24
-
-# Servir l'heure même si non synchronisé (local stratum 10)
-local stratum 10
-```
-
-```bash
-# Redémarrer
-sudo systemctl restart chronyd
-
-# Ouvrir le firewall
-sudo ufw allow 123/udp
-```
-
-**Les clients pourront utiliser :**
-```
-server 192.168.1.10 iburst
-```
-
----
-
-# Configurer la timezone ⏰
-
-```bash
-# Voir la timezone actuelle
-timedatectl
-
-# Lister les timezones disponibles
-timedatectl list-timezones
-
-# Chercher une timezone
-timedatectl list-timezones | grep Paris
-
-# Définir la timezone
-sudo timedatectl set-timezone Europe/Paris
-
-# Vérifier
-date
-```
 
 ---
 
@@ -2039,29 +2642,19 @@ ip addr show eth0
 
 ---
 
-# Récapitulatif du Module 7 ✅
+### Récapitulatif du Module 7 ✅
 
 **Ce que vous avez appris :**
 
-✅ Concepts réseau (IP, masque, gateway, DNS)
-
-✅ Configuration réseau (ip, nmcli, Netplan)
-
-✅ Diagnostic (ping, traceroute, dig, ss)
-
-✅ Pare-feu (iptables, ufw, firewalld)
-
-✅ SSH et clés SSH
-
-✅ Transfert de fichiers (scp, rsync, sftp)
-
-✅ Tunnels SSH
-
-✅ Dépannage réseau
-
-✅ Synchronisation temps (NTP/chrony)
-
-✅ Serveur DHCP (attribution automatique IP)
+- ✅ Concepts réseau (IP, masque, gateway, DNS)
+- ✅ Configuration réseau (ip, nmcli, Netplan)
+- ✅ Diagnostic (ping, traceroute, dig, ss)
+- ✅ Pare-feu (iptables, ufw, firewalld)
+- ✅ SSH et clés SSH
+- ✅ Transfert de fichiers (scp, rsync, sftp)
+- ✅ Tunnels SSH
+- ✅ Dépannage réseau
+- ✅ Serveur DHCP (attribution automatique IP)
 
 ---
 
