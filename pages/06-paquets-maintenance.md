@@ -758,22 +758,227 @@ sudo make uninstall
 - Correctifs de sécurité critiques
 - Pas d'oubli
 - Système toujours à jour
+- Réduction de la surface d'attaque
+- Conformité aux politiques de sécurité
 
-**Ubuntu : unattended-upgrades**
+**Solutions disponibles :**
+- **Ubuntu/Debian** : unattended-upgrades
+- **RHEL/Fedora** : dnf-automatic
+
+---
+
+# Qu'est-ce que unattended-upgrades ? 🤖
+
+**unattended-upgrades** : paquet pour automatiser les mises à jour Ubuntu/Debian
+
+**Fonctionnement :**
+- Télécharge et installe automatiquement les mises à jour
+- Sans intervention manuelle
+- Peut être configuré pour différents types de mises à jour
+
+**Cas d'usage idéaux :**
+- Serveurs de production
+- Machines qu'on ne gère pas quotidiennement
+- Environnements nécessitant une sécurité renforcée
+- Parc de machines important
+
+---
+
+# Installation de unattended-upgrades 📥
 
 ```bash
-# Installer
+# Installer le paquet
 sudo apt install unattended-upgrades
+```
 
-# Activer
+---
+
+# Activation de unattended-upgrades ⚙️
+
+```bash
+# Activer le service (mode interactif)
 sudo dpkg-reconfigure unattended-upgrades
 ```
 
 ---
 
-# Configuration unattended-upgrades ⚙️
+# Activation de unattended-upgrades (suite) ⚙️
 
-**Fichier : `/etc/apt/apt.conf.d/50unattended-upgrades`**
+Cette commande vous demandera :
+- **Yes** : Active les mises à jour automatiques
+- **No** : Désactive les mises à jour automatiques
+
+**Alternative : configuration manuelle**
+
+```bash
+# Éditer le fichier de configuration
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+```
+
+---
+
+# Configuration auto-upgrades 📝
+
+**Fichier : `/etc/apt/apt.conf.d/20auto-upgrades`**
+
+```bash
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+```
+
+---
+
+# Configuration auto-upgrades (explication) 📝
+
+**Signification des paramètres :**
+
+- **Update-Package-Lists "1"** : Met à jour la liste des paquets quotidiennement
+- **Unattended-Upgrade "1"** : Active les mises à jour automatiques quotidiennes
+- **Download-Upgradeable-Packages "1"** : Télécharge les mises à jour disponibles
+- **AutocleanInterval "7"** : Nettoie le cache tous les 7 jours
+
+**Valeurs possibles :**
+- **"0"** = Désactivé
+- **"1"** = Tous les jours
+- **"7"** = Tous les 7 jours
+
+---
+
+# Configuration avancée : 50unattended-upgrades 🔧
+
+**Fichier principal : `/etc/apt/apt.conf.d/50unattended-upgrades`**
+
+Ce fichier contrôle :
+- Quelles mises à jour installer
+- Si le système doit redémarrer
+- Notifications par email
+- Gestion des paquets
+
+```bash
+# Éditer la configuration
+sudo nano /etc/apt/apt.conf.d/50unattended-upgrades
+```
+
+---
+
+# Configuration : sources de mises à jour 📚
+
+```bash
+Unattended-Upgrade::Allowed-Origins {
+    "${distro_id}:${distro_codename}-security";
+    "${distro_id}:${distro_codename}-updates";
+    // "${distro_id}:${distro_codename}-proposed";
+    // "${distro_id}:${distro_codename}-backports";
+};
+```
+
+---
+
+# Configuration : sources (explication) 📚
+
+**Options disponibles :**
+
+- **`-security`** : Correctifs de sécurité uniquement (recommandé ✅)
+- **`-updates`** : Mises à jour stables
+- **`-proposed`** : Paquets proposés (tests) ⚠️
+- **`-backports`** : Nouvelles versions backportées ⚠️
+
+**Recommandation :** n'activer que `-security` pour les serveurs critiques
+
+---
+
+# Configuration : redémarrage automatique 🔄
+
+```bash
+# Autoriser le redémarrage automatique ?
+Unattended-Upgrade::Automatic-Reboot "false";
+
+# Si oui, à quelle heure ?
+Unattended-Upgrade::Automatic-Reboot-Time "03:00";
+
+# Redémarrer même si des utilisateurs sont connectés ?
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+```
+
+---
+
+# Configuration : notifications email 📧
+
+```bash
+# Adresse email pour les notifications
+Unattended-Upgrade::Mail "admin@example.com";
+
+# Quand envoyer un email ?
+// "always" : toujours
+// "only-on-error" : seulement en cas d'erreur
+// "on-change" : quand des mises à jour sont installées
+Unattended-Upgrade::MailReport "on-change";
+```
+
+---
+
+# Configuration : gestion des paquets 📦
+
+```bash
+# Supprimer les dépendances inutilisées ?
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+
+# Supprimer les nouveaux paquets inutilisés ?
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+
+# Mise à jour automatique des paquets en liste noire ?
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+```
+
+---
+
+# Configuration : liste noire 🚫
+
+```bash
+# Paquets à ne JAMAIS mettre à jour automatiquement
+Unattended-Upgrade::Package-Blacklist {
+    "nginx";
+    "mysql-server";
+    "postgresql";
+};
+```
+
+---
+
+# Configuration : liste noire (pourquoi ?) 🤔
+
+**Cas d'usage :**
+- Paquets critiques nécessitant supervision
+- Applications avec configurations spécifiques
+- Services nécessitant des tests avant mise à jour
+- Paquets pouvant casser des dépendances
+
+**Exemple :** serveur web avec configuration custom
+- Mise à jour de nginx pourrait écraser la config
+- Préférable de gérer manuellement
+
+---
+
+# Exemple de configuration complète (sécurité seule) 🔐
+
+```bash
+Unattended-Upgrade::Allowed-Origins {
+    "${distro_id}:${distro_codename}-security";
+};
+
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Mail "admin@example.com";
+Unattended-Upgrade::MailReport "on-change";
+
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+Unattended-Upgrade::Remove-New-Unused-Dependencies "true";
+```
+
+---
+
+# Exemple de configuration complète (avec redémarrage) 🔄
 
 ```bash
 Unattended-Upgrade::Allowed-Origins {
@@ -781,9 +986,121 @@ Unattended-Upgrade::Allowed-Origins {
     "${distro_id}:${distro_codename}-updates";
 };
 
-Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Automatic-Reboot "true";
 Unattended-Upgrade::Automatic-Reboot-Time "03:00";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+
 Unattended-Upgrade::Mail "admin@example.com";
+Unattended-Upgrade::MailReport "always";
+```
+
+---
+
+# Avantages de unattended-upgrades ✅
+
+**Sécurité renforcée 🔐**
+- Correctifs critiques appliqués immédiatement
+- Pas de délai d'intervention humaine
+- Réduction de la fenêtre de vulnérabilité
+
+**Gain de temps ⏰**
+- Plus besoin de lancer manuellement `apt update && apt upgrade`
+- Gestion automatique de plusieurs serveurs
+- Concentration sur les tâches importantes
+
+---
+
+# Avantages de unattended-upgrades (suite) ✅
+
+**Contrôle total 🎛️**
+- Choix précis des catégories de mises à jour
+- Liste noire pour les paquets sensibles
+- Configuration des horaires de redémarrage
+- Notifications personnalisables
+
+**Fiabilité 🛡️**
+- Process testé et éprouvé
+- Gestion intelligente des dépendances
+- Rollback possible en cas de problème
+
+---
+
+# Points à savoir ⚠️
+
+**Redémarrages nécessaires :**
+- Les mises à jour du noyau nécessitent un redémarrage
+- Certaines bibliothèques système également
+- Vérifier `/var/run/reboot-required` pour savoir si un redémarrage est nécessaire
+
+```bash
+# Vérifier si un redémarrage est nécessaire
+test -f /var/run/reboot-required && echo "Redémarrage nécessaire"
+
+# Voir pourquoi
+cat /var/run/reboot-required.pkgs
+```
+
+---
+
+# Logs et surveillance 📋
+
+**Localisation des logs :**
+
+```bash
+# Logs principaux
+/var/log/unattended-upgrades/
+
+# Journal détaillé
+/var/log/unattended-upgrades/unattended-upgrades.log
+
+# Journal de dpkg
+/var/log/unattended-upgrades/unattended-upgrades-dpkg.log
+```
+
+---
+
+# Consulter les logs 🔍
+
+```bash
+# Voir les dernières mises à jour
+sudo tail -f /var/log/unattended-upgrades/unattended-upgrades.log
+
+# Voir les erreurs
+sudo grep -i error /var/log/unattended-upgrades/unattended-upgrades.log
+
+# Voir les mises à jour d'aujourd'hui
+sudo grep "$(date +%Y-%m-%d)" \
+  /var/log/unattended-upgrades/unattended-upgrades.log
+```
+
+---
+
+# Tester la configuration ✅
+
+```bash
+# Tester en mode debug (simulation)
+sudo unattended-upgrade --debug --dry-run
+
+# Forcer l'exécution immédiate
+sudo unattended-upgrade --debug
+
+# Vérifier le statut du service
+sudo systemctl status unattended-upgrades
+```
+
+---
+
+# Désactiver temporairement 🛑
+
+```bash
+# Arrêter le service
+sudo systemctl stop unattended-upgrades
+
+# Désactiver au démarrage
+sudo systemctl disable unattended-upgrades
+
+# Réactiver
+sudo systemctl enable --now unattended-upgrades
 ```
 
 ---

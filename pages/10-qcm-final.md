@@ -740,7 +740,7 @@ D) Partager le mot de passe root
 
 #### Réponses 1-5
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 1 : B) `pwd`**
 - `pwd` : Print Working Directory
@@ -769,7 +769,7 @@ D) Partager le mot de passe root
 
 #### Réponses 6-10
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 6 : B) `/etc/shadow`**
 - `/etc/shadow` : mots de passe chiffrés (accessible uniquement par root)
@@ -797,7 +797,7 @@ D) Partager le mot de passe root
 
 #### Réponses 11-15
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 11 : B) `du`**
 - `du` : Disk Usage (par fichier/répertoire)
@@ -825,7 +825,7 @@ D) Partager le mot de passe root
 
 #### Réponses 16-20
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 16 : B) `apt update`**
 - `apt update` : met à jour la **liste** des paquets
@@ -853,7 +853,7 @@ D) Partager le mot de passe root
 
 #### Réponses 21-25
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 21 : B) `/var/log`**
 - `/var/log` : répertoire standard des logs
@@ -881,7 +881,7 @@ D) Partager le mot de passe root
 
 #### Réponses 26-30
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 26 : C) SCP ou SFTP**
 - SCP : Secure Copy (basé sur SSH)
@@ -909,7 +909,7 @@ D) Partager le mot de passe root
 
 #### Réponses 31-35
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 31 : B) `nginx -t`**
 - `nginx -t` : test de syntaxe
@@ -937,7 +937,7 @@ D) Partager le mot de passe root
 
 #### Réponses 36-40
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 36 : B) `systemctl --failed`**
 - Liste tous les services en état "failed"
@@ -965,7 +965,7 @@ D) Partager le mot de passe root
 
 #### Réponses 41-45
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 41 : B) `head fichier`**
 - `head` : 10 premières lignes par défaut
@@ -993,7 +993,7 @@ D) Partager le mot de passe root
 
 #### Réponses 46-50
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Réponse 46 : D) B et C sont corrects**
 - `/tmp` : effacé au redémarrage
@@ -1021,7 +1021,7 @@ D) Partager le mot de passe root
 
 #### Correction du QCM 🎓
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **Comptez vos bonnes réponses :**
 
