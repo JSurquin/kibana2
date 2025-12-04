@@ -443,6 +443,37 @@ Avec ce masque, votre machine `192.168.1.100` peut communiquer directement avec 
 
 ---
 
+# Analogie du quartier : Comprendre les masques 🏘️
+
+<div class="text-sm">
+
+**Imaginez que les adresses IP sont des adresses postales dans des quartiers :**
+
+| CIDR | Analogie | Nombre de "maisons" |
+|------|----------|---------------------|
+| `/24` | **Un petit quartier** 🏠 | 254 maisons numérotées de 1 à 254 |
+| `/16` | **Une ville entière** 🏙️ | 65 534 maisons (254 quartiers × 254 maisons) |
+| `/8` | **Une mégalopole** 🌆 | 16 millions de maisons ! |
+| `/30` | **Un duplex** 🏡 | Seulement 2 maisons (liaison directe) |
+
+**Exemple concret avec /24 (255.255.255.0) :**
+
+```
+Quartier : 192.168.1.x  (le "x" = numéro de maison)
+
+🏠 Maison 0    → Réservée (panneau "Bienvenue dans le quartier")
+🏠 Maisons 1-254 → Habitables (vos machines)
+🏠 Maison 255  → Réservée (haut-parleur pour parler à tout le quartier)
+```
+
+**Plus le `/XX` est petit, plus le "quartier" est grand !**
+- `/24` = petit quartier où tout le monde se connaît
+- `/8` = immense ville où il faut des "routeurs" pour trouver son chemin
+
+</div>
+
+---
+
 # Passerelle (Gateway) 🚪
 
 **Gateway** : le routeur qui permet de sortir du réseau local

@@ -248,23 +248,398 @@ ncdu -f /tmp/scan.ncdu
 
 ---
 
-# Créer des partitions : fdisk 🔧
+# ⚠️ RÈGLE FONDAMENTALE : Un disque = Un seul format !
+
+<div class="text-sm">
+
+**Un disque ne peut avoir QU'UN SEUL type de table de partitions : MBR OU GPT, jamais les deux !**
+
+```
+❌ IMPOSSIBLE :
+┌──────────────────────────────────────────────┐
+│  /dev/sda                                    │
+│  ┌─────────────┐  ┌─────────────────────────┐│
+│  │ sda1 (MBR)  │  │      sda2 (GPT)         ││
+│  └─────────────┘  └─────────────────────────┘│
+└──────────────────────────────────────────────┘
+
+✅ CORRECT :
+┌──────────────────────────────────────────────┐
+│  /dev/sda (GPT)                              │
+│  ┌─────────────┐  ┌─────────────────────────┐│
+│  │    sda1     │  │         sda2            ││
+│  └─────────────┘  └─────────────────────────┘│
+└──────────────────────────────────────────────┘
+```
+
+**Conséquence :** Si vous changez de MBR vers GPT (ou inversement), **toutes les données sont perdues !**
+
+</div>
+
+---
+
+# Vérifier le type de table : MBR ou GPT ? 🔍
+
+**Méthode 1 : `fdisk -l` (la plus simple)**
 
 ```bash
-# Lancer fdisk (MBR)
+sudo fdisk -l /dev/sda
+```
+
+```
+Disque /dev/sda : 100 GiB
+Type de table de partition : gpt    # <-- ICI !
+```
+
+---
+
+**Méthode 2 : `parted` (plus détaillé)**
+
+```bash
+sudo parted /dev/sda print
+```
+
+```
+Modèle: ATA VBOX HARDDISK
+Disque /dev/sda : 107GB
+Table de partitions : gpt           # <-- ICI !
+```
+
+---
+
+**Méthode 3 : `lsblk` avec l'option PTTYPE**
+
+```bash
+lsblk -o NAME,SIZE,PTTYPE /dev/sda
+```
+
+```
+NAME   SIZE PTTYPE
+sda    100G gpt     # <-- ICI !
+├─sda1  50G
+└─sda2  50G
+```
+
+---
+
+**Méthode 4 : `blkid` (rapide)**
+
+```bash
+sudo blkid -o value -s PTTYPE /dev/sda
+```
+
+```
+gpt
+```
+
+💡 **Astuce mémo :** `fdisk -l` est la méthode la plus universelle !
+
+---
+
+# Créer des partitions : fdisk 🔧
+
+<div class="text-sm">
+
+**fdisk** : outil classique pour partitionner
+
+```bash
+# Lancer fdisk sur un disque
 sudo fdisk /dev/sdb
 
 # Commandes interactives :
-# m : aide
-# p : afficher les partitions
+# m : aide (menu)
+# p : afficher les partitions actuelles
+# g : créer une nouvelle table GPT (efface tout !)
+# o : créer une nouvelle table MBR (efface tout !)
 # n : nouvelle partition
 # d : supprimer une partition
-# t : changer le type
-# w : écrire et quitter
+# t : changer le type de partition
+# w : écrire et quitter (APPLIQUE les changements)
 # q : quitter sans sauvegarder
 ```
 
 **⚠️ ATTENTION :** Les changements sont écrits seulement avec `w`
+
+</div>
+
+---
+
+# fdisk : Créer une partition GPT de A à Z 📝
+
+<div class="text-xs">
+
+**Scénario :** Nouveau disque `/dev/sdb` vide, on veut une partition GPT
+
+**Étape 1 : Lancer fdisk**
+
+```bash
+sudo fdisk /dev/sdb
+```
+
+**Étape 2 : Créer la table GPT** (si disque neuf ou changement de format)
+
+```
+Command (m for help): g    # <-- Crée une table GPT vide
+Created a new GPT disklabel (GUID: xxxx-xxxx-xxxx)
+```
+
+⚠️ **Cette commande efface TOUTE la table de partitions existante !**
+
+</div>
+
+---
+
+# fdisk : Créer une partition GPT (suite) 📝
+
+<div class="text-xs">
+
+**Étape 3 : Créer la partition**
+
+```
+Command (m for help): n     # <-- Nouvelle partition
+Partition number (1-128, default 1): 1    # <-- Entrée (accepter 1)
+First sector: [Entrée]      # <-- Début par défaut
+Last sector: [Entrée]       # <-- Tout le disque
+                            # Ou +50G pour 50 Go, +500M pour 500 Mo
+
+Created a new partition 1 of type 'Linux filesystem'
+```
+
+**Étape 4 : Vérifier avant d'écrire**
+
+```
+Command (m for help): p     # <-- Affiche les partitions
+Device     Start      End  Sectors Size Type
+/dev/sdb1   2048 209715166 209713119 100G Linux filesystem
+```
+
+</div>
+
+---
+
+# fdisk : Créer une partition GPT (fin) 📝
+
+<div class="text-xs">
+
+**Étape 5 : Écrire les changements**
+
+```
+Command (m for help): w     # <-- ÉCRIT sur le disque !
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+
+**Étape 6 : Vérifier que la partition existe**
+
+```bash
+lsblk /dev/sdb
+```
+
+```
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sdb      8:16   0  100G  0 disk 
+└─sdb1   8:17   0  100G  0 part    # <-- Partition créée !
+```
+
+**Prochaine étape :** Formater avec `mkfs.ext4 /dev/sdb1` puis monter !
+
+</div>
+
+---
+
+# fdisk : Créer une partition MBR 📝
+
+<div class="text-xs">
+
+**Si vous avez besoin de MBR** (compatibilité ancien BIOS) :
+
+```bash
+sudo fdisk /dev/sdb
+```
+
+```
+Command (m for help): o      # <-- Crée une table MBR (au lieu de 'g')
+Created a new DOS disklabel
+
+Command (m for help): n      # <-- Nouvelle partition
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): p        # <-- Partition primaire
+Partition number (1-4): 1    # <-- Numéro 1
+First sector: [Entrée]
+Last sector: [Entrée]        # <-- Tout le disque
+
+Command (m for help): w      # <-- Écrire
+```
+
+💡 **Rappel MBR :** Maximum 4 partitions primaires (ou 3 primaires + 1 étendue avec des logiques)
+
+</div>
+
+---
+
+# 🧪 Tester sans risque : Créer un faux disque (loop device)
+
+<div class="text-sm">
+
+**Problème :** Vous êtes en VM et voulez tester `fdisk`, `mkfs`, `mount`... sans ajouter de disque ?
+
+**Solution :** Créer un **fichier** qui se comporte comme un disque !
+
+**C'est quoi un loop device ?**
+- Un fichier ordinaire que Linux traite comme un périphérique bloc
+- Apparaît comme `/dev/loop0`, `/dev/loop1`, etc.
+- Parfait pour apprendre et tester sans risque !
+
+**Analogie 🎭 :** C'est comme un acteur qui joue le rôle d'un disque dur
+
+</div>
+
+---
+
+# Créer un faux disque : Étape par étape 📝
+
+**Étape 1 : Créer le fichier image (500 Mo)**
+
+```bash
+# Crée un fichier rempli de zéros de 500 Mo
+dd if=/dev/zero of=/tmp/fake_disk.img bs=1M count=500
+```
+
+```
+500+0 records in
+500+0 records out
+524288000 bytes (524 MB, 500 MiB) copied, 0.5 s, 1.0 GB/s
+```
+
+---
+
+# Créer un faux disque : Étape par étape (suite) 📝
+
+**Étape 2 : Associer le fichier à un loop device**
+
+```bash
+# -f : trouve automatiquement le prochain loop libre
+# -P : crée aussi les partitions (loop0p1, loop0p2...)
+sudo losetup -fP /tmp/fake_disk.img
+```
+
+---
+
+**Étape 3 : Vérifier le périphérique créé**
+
+```bash
+# Voir tous les loop devices actifs
+losetup -l
+```
+
+```
+NAME       SIZELIMIT OFFSET AUTOCLEAR RO BACK-FILE
+/dev/loop0         0      0         0  0 /tmp/fake_disk.img
+```
+
+```bash
+# Ou plus simplement
+losetup -a
+```
+
+```
+/dev/loop0: []: (/tmp/fake_disk.img)
+```
+
+---
+
+# Utiliser le faux disque comme un vrai ! 🎯
+
+**Maintenant `/dev/loop0` se comporte exactement comme `/dev/sdb` !**
+
+```bash
+# Partitionner (GPT)
+sudo fdisk /dev/loop0
+# g → n → Entrée → Entrée → Entrée → w
+
+# Vérifier la partition
+lsblk /dev/loop0
+```
+
+```
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop0       7:0    0  500M  0 loop
+└─loop0p1   7:1    0  499M  0 part
+```
+
+---
+
+# Utiliser le faux disque : Formater et monter 🎯
+
+```bash
+# Formater en ext4
+sudo mkfs.ext4 /dev/loop0p1
+```
+
+```bash
+# Créer un point de montage
+sudo mkdir -p /mnt/test
+```
+
+```bash
+# Monter
+sudo mount /dev/loop0p1 /mnt/test
+```
+
+```bash
+# Tester !
+echo "Ça marche !" | sudo tee /mnt/test/test.txt
+cat /mnt/test/test.txt
+df -h /mnt/test
+```
+
+---
+
+# Nettoyer le faux disque 🧹
+
+**Quand vous avez fini vos tests :**
+
+```bash
+# 1. Démonter la partition
+sudo umount /mnt/test
+
+# 2. Détacher le loop device
+sudo losetup -d /dev/loop0
+
+# 3. Vérifier qu'il est bien détaché
+losetup -l
+# (devrait être vide ou sans loop0)
+
+# 4. Supprimer le fichier image (optionnel)
+rm /tmp/fake_disk.img
+```
+
+💡 **Astuce :** Vous pouvez créer plusieurs faux disques simultanément !
+
+---
+
+# Récapitulatif : Commandes loop device 📋
+
+<div class="text-sm">
+
+| Action | Commande |
+|--------|----------|
+| **Créer fichier image** | `dd if=/dev/zero of=/tmp/disk.img bs=1M count=500` |
+| **Attacher au loop** | `sudo losetup -fP /tmp/disk.img` |
+| **Lister les loops** | `losetup -l` ou `losetup -a` |
+| **Détacher** | `sudo losetup -d /dev/loop0` |
+| **Détacher tous** | `sudo losetup -D` |
+
+**Pourquoi utiliser les loop devices ?**
+- ✅ Aucun risque pour vos vrais disques
+- ✅ Pas besoin d'éteindre la VM
+- ✅ Créez autant de "disques" que vous voulez
+- ✅ Parfait pour apprendre `fdisk`, `mkfs`, `mount`, LVM...
+
+</div>
 
 ---
 
