@@ -2562,6 +2562,64 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 
 ---
 
+# DHCP : Explication des paramètres globaux 📖
+
+<div class="text-sm">
+
+| Paramètre | Valeur | Signification |
+|-----------|--------|---------------|
+| `default-lease-time` | `600` | Durée par défaut du "bail" : **10 minutes** (600 secondes) |
+| `max-lease-time` | `7200` | Durée maximale si le client demande plus : **2 heures** |
+| `authoritative` | - | Ce serveur est **le seul DHCP** légitime sur ce réseau |
+
+**C'est quoi un "bail" (lease) ?** 🤔
+
+Le serveur DHCP **prête** une IP au client pour une durée limitée :
+
+```
+Client : "Je veux une IP !"
+Serveur : "Tiens, voici 192.168.1.105, mais c'est un PRÊT de 10 min"
+Client : (après 5 min) "Je suis toujours là, je peux garder ?"
+Serveur : "OK, prolongé de 10 min"
+Client : (déconnecté) ...
+Serveur : (après expiration) "Il est parti, je récupère l'IP"
+```
+
+**Pourquoi `authoritative` ?** → Évite les conflits si un autre serveur DHCP "pirate" apparaît
+
+</div>
+
+---
+
+# DHCP : Explication du bloc subnet 📖
+
+<div class="text-xs">
+
+```
+subnet 192.168.1.0 netmask 255.255.255.0 {
+    range 192.168.1.100 192.168.1.200;
+    option routers 192.168.1.1;
+    option subnet-mask 255.255.255.0;
+    option domain-name-servers 8.8.8.8, 1.1.1.1;
+    option domain-name "example.local";
+}
+```
+
+| Ligne | Signification |
+|-------|---------------|
+| `subnet ... netmask ...` | Définit le réseau géré (192.168.1.0/24) |
+| `range 192.168.1.100 192.168.1.200` | Plage d'IP à distribuer (101 adresses disponibles) |
+| `option routers` | Passerelle par défaut (gateway) envoyée aux clients |
+| `option subnet-mask` | Masque de sous-réseau envoyé aux clients |
+| `option domain-name-servers` | Serveurs DNS envoyés aux clients |
+| `option domain-name` | Nom de domaine local (pour la recherche DNS) |
+
+**Analogie 🏨 :** Le serveur DHCP est comme un hôtel qui attribue des chambres (IP) aux clients, avec les infos utiles (WiFi, restaurant = DNS, passerelle)
+
+</div>
+
+---
+
 # Configuration DHCP : réservations 📌
 
 **Réserver une IP pour une machine spécifique (par MAC address) :**

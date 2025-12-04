@@ -506,7 +506,41 @@ Command (m for help): w      # <-- Écrire
 ```bash
 # Crée un fichier rempli de zéros de 500 Mo
 dd if=/dev/zero of=/tmp/fake_disk.img bs=1M count=500
+# if = Input File (source) → /dev/zero = source infinie de zéros
+# of = Output File (destination) → le fichier image à créer
+# bs = Block Size → taille des blocs (1M = 1 Mo)
+# count = nombre de blocs à copier → 500 × 1M = 500 Mo
 ```
+
+---
+
+# ⚠️ Attention : Loop devices déjà utilisés !
+
+<div class="text-sm">
+
+**Sur Ubuntu**, les loop devices (`loop0`, `loop1`...) sont souvent **déjà utilisés par Snap** !
+
+```bash
+# Voir les loop devices existants
+losetup -l
+```
+
+```
+NAME       SIZELIMIT  BACK-FILE
+/dev/loop0         0  /var/lib/snapd/snaps/core22_1564.snap
+/dev/loop1         0  /var/lib/snapd/snaps/firefox_4848.snap
+/dev/loop2         0  /var/lib/snapd/snaps/gnome-42_178.snap
+```
+
+**Si vous essayez `fdisk /dev/loop0` → ERREUR !**
+```
+This disk is currently in use...
+fdisk: failed to write disklabel: Operation not permitted
+```
+
+**Solution :** Utilisez `losetup -f` qui trouve automatiquement un loop **libre** !
+
+</div>
 
 ```
 500+0 records in
