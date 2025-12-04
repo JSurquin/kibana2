@@ -542,12 +542,6 @@ fdisk: failed to write disklabel: Operation not permitted
 
 </div>
 
-```
-500+0 records in
-500+0 records out
-524288000 bytes (524 MB, 500 MiB) copied, 0.5 s, 1.0 GB/s
-```
-
 ---
 
 # Créer un faux disque : Étape par étape (suite) 📝
@@ -556,61 +550,69 @@ fdisk: failed to write disklabel: Operation not permitted
 
 ```bash
 # -f : trouve automatiquement le prochain loop libre
-# -P : crée aussi les partitions (loop0p1, loop0p2...)
+# -P : crée aussi les partitions (loopXp1, loopXp2...)
 sudo losetup -fP /tmp/fake_disk.img
 ```
 
 ---
 
-**Étape 3 : Vérifier le périphérique créé**
+**Étape 3 : Trouver QUEL loop device a été attribué** ⚠️
 
 ```bash
-# Voir tous les loop devices actifs
-losetup -l
+# Filtrer pour trouver VOTRE fichier
+losetup -l | grep fake_disk
 ```
 
 ```
-NAME       SIZELIMIT OFFSET AUTOCLEAR RO BACK-FILE
-/dev/loop0         0      0         0  0 /tmp/fake_disk.img
+NAME        SIZELIMIT OFFSET AUTOCLEAR RO BACK-FILE
+/dev/loop12         0      0         0  0 /tmp/fake_disk.img
 ```
+
+**→ C'est `/dev/loop12` ! (le numéro varie selon votre système)**
 
 ```bash
-# Ou plus simplement
-losetup -a
+# Alternative : voir tous les loops
+losetup -a | grep fake_disk
 ```
 
 ```
-/dev/loop0: []: (/tmp/fake_disk.img)
+/dev/loop12: []: (/tmp/fake_disk.img)
 ```
+
+💡 **Notez bien le numéro (ex: loop12) pour les commandes suivantes !**
 
 ---
 
 # Utiliser le faux disque comme un vrai ! 🎯
 
-**Maintenant `/dev/loop0` se comporte exactement comme `/dev/sdb` !**
+<div class="text-sm">
+
+**Remplacez `loopX` par votre numéro (ex: `loop12`) !**
 
 ```bash
 # Partitionner (GPT)
-sudo fdisk /dev/loop0
+sudo fdisk /dev/loopX      # Ex: sudo fdisk /dev/loop12
 # g → n → Entrée → Entrée → Entrée → w
 
 # Vérifier la partition
-lsblk /dev/loop0
+lsblk /dev/loopX
 ```
 
 ```
-NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-loop0       7:0    0  500M  0 loop
-└─loop0p1   7:1    0  499M  0 part
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+loop12        7:12   0  500M  0 loop
+└─loop12p1    7:13   0  499M  0 part
 ```
+
+</div>
 
 ---
 
 # Utiliser le faux disque : Formater et monter 🎯
 
 ```bash
-# Formater en ext4
-sudo mkfs.ext4 /dev/loop0p1
+# Formater en ext4 (remplacez loopX par votre numéro !)
+sudo mkfs.ext4 /dev/loopXp1     # Ex: /dev/loop12p1
 ```
 
 ```bash
@@ -620,7 +622,7 @@ sudo mkdir -p /mnt/test
 
 ```bash
 # Monter
-sudo mount /dev/loop0p1 /mnt/test
+sudo mount /dev/loopXp1 /mnt/test
 ```
 
 ```bash
@@ -640,12 +642,12 @@ df -h /mnt/test
 # 1. Démonter la partition
 sudo umount /mnt/test
 
-# 2. Détacher le loop device
-sudo losetup -d /dev/loop0
+# 2. Détacher le loop device (remplacez loopX !)
+sudo losetup -d /dev/loopX     # Ex: /dev/loop12
 
 # 3. Vérifier qu'il est bien détaché
-losetup -l
-# (devrait être vide ou sans loop0)
+losetup -l | grep fake_disk
+# (ne devrait plus rien afficher)
 
 # 4. Supprimer le fichier image (optionnel)
 rm /tmp/fake_disk.img
@@ -663,9 +665,14 @@ rm /tmp/fake_disk.img
 |--------|----------|
 | **Créer fichier image** | `dd if=/dev/zero of=/tmp/disk.img bs=1M count=500` |
 | **Attacher au loop** | `sudo losetup -fP /tmp/disk.img` |
-| **Lister les loops** | `losetup -l` ou `losetup -a` |
-| **Détacher** | `sudo losetup -d /dev/loop0` |
+| **Trouver le numéro attribué** | `losetup -l \| grep disk.img` |
+| **Lister tous les loops** | `losetup -l` ou `losetup -a` |
+| **Détacher un loop** | `sudo losetup -d /dev/loopX` |
 | **Détacher tous** | `sudo losetup -D` |
+
+</div>
+
+---
 
 **Pourquoi utiliser les loop devices ?**
 - ✅ Aucun risque pour vos vrais disques
@@ -673,7 +680,7 @@ rm /tmp/fake_disk.img
 - ✅ Créez autant de "disques" que vous voulez
 - ✅ Parfait pour apprendre `fdisk`, `mkfs`, `mount`, LVM...
 
-</div>
+⚠️ **Sur Ubuntu** : Les `loop0`, `loop1`... sont souvent pris par Snap → utilisez `losetup -f` !
 
 ---
 
@@ -1382,9 +1389,7 @@ sudo lvremove /dev/mon_vg/snapshot_data
 
 #### RAID : Redundant Array of Independent Disks 💾💾
 
-<div class="text-xs">
-
-**RAID** : combiner plusieurs disques
+<div class="text-[9px]">
 
 **RAID 0** : performance (striping)
 - Données réparties sur tous les disques

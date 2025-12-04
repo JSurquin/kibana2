@@ -16,21 +16,44 @@ routeAlias: 'processus-services'
 
 **Un processus** = un programme en cours d'exécution
 
-**Analogie : les tâches dans une entreprise** 🏢
+**Différence programme vs processus :**
 
-- **Programme** = manuel de procédure (sur l'étagère)
-- **Processus** = employé qui suit le manuel (en action)
-- **PID** = badge de l'employé (numéro unique)
-- **Mémoire** = bureau de l'employé
-- **CPU** = temps de parole en réunion
+| Programme | Processus |
+|-----------|-----------|
+| Fichier sur le disque | Instance en mémoire |
+| Statique (ne bouge pas) | Dynamique (s'exécute) |
+| Un seul exemplaire | Plusieurs copies possibles |
+| `/usr/bin/firefox` | Firefox qui tourne sur votre écran |
 
-Un même programme peut avoir plusieurs processus (plusieurs employés suivent le même manuel)
+---
+
+# Analogie : Le restaurant 🍽️
+
+<div class="text-sm">
+
+**Imaginez un restaurant :**
+
+| Concept Linux | Analogie Restaurant |
+|---------------|---------------------|
+| **Programme** | La recette de cuisine (dans un livre) |
+| **Processus** | Le cuisinier qui prépare le plat |
+| **PID** | Le numéro de commande (ticket) |
+| **CPU** | Le fourneau (un seul à la fois peut l'utiliser) |
+| **Mémoire** | Le plan de travail du cuisinier |
+| **Fichiers ouverts** | Les ingrédients sortis du frigo |
+
+</div>
+
+---
+
+**Un même programme peut créer plusieurs processus :**
+- La même recette (Firefox) peut être préparée par 3 cuisiniers (3 onglets = 3 processus)
 
 ---
 
 # Le PID : Process ID 🆔
 
-**PID** : identifiant unique d'un processus
+**PID** : identifiant unique d'un processus (comme un numéro de ticket)
 
 ```bash
 # Voir les processus en cours
@@ -39,37 +62,63 @@ ps
 # Afficher avec les PID
 ps aux
 
-# PID 1 : le processus init (systemd)
+# PID 1 : le processus init (systemd) - LE CHEF !
 ps -p 1
 ```
 
 **Caractéristiques :**
 - Numéro unique attribué à la création
-- Commence à 1 (init/systemd)
+- **PID 1 = systemd** (le "patron" qui démarre tous les autres)
 - Réutilisé après la terminaison du processus
-- Maximum : 32768 par défaut (configurable)
+- Maximum : 32768 par défaut
+
+💡 **Astuce :** `$$` donne le PID du shell actuel : `echo $$`
 
 ---
 
 # PPID : Parent Process ID 👨‍👦
 
-**Chaque processus a un parent**
+**Chaque processus a un parent** (comme un arbre généalogique)
 
 ```bash
 # Voir PID et PPID
 ps -ef
 
-# Arbre des processus
+# Arbre des processus (très visuel !)
 pstree
 
 # Détails d'un processus
 ps -fp 1234
 ```
 
-**Hiérarchie :**
-- Tous les processus descendent de PID 1 (systemd/init)
-- Si un parent meurt, les enfants sont adoptés par init
-- Les processus zombies : enfants non récupérés par le parent
+---
+
+# L'arbre généalogique des processus 🌳
+
+<div class="text-sm">
+
+```
+systemd (PID 1) ← L'ancêtre de TOUS les processus
+├── sshd (PID 500) ← Service SSH
+│   └── sshd (PID 1200) ← Votre session SSH
+│       └── bash (PID 1201) ← Votre shell
+│           └── vim (PID 1500) ← L'éditeur que vous avez lancé
+├── nginx (PID 600)
+└── cron (PID 700)
+```
+
+**Règles de la famille :**
+- **Tout le monde descend de PID 1** (systemd est l'ancêtre commun)
+- **Si un parent meurt** → les enfants sont "adoptés" par PID 1
+- **Processus zombie** → enfant mort mais parent n'a pas encore lu l'acte de décès
+
+```bash
+# Voir l'arbre complet
+pstree -p    # Avec les PIDs
+pstree -u    # Avec les utilisateurs
+```
+
+</div>
 
 ---
 
@@ -101,7 +150,7 @@ graph LR
     Running --> Zombie[💀 TERMINÉ<br/>Zombie]
     Blocked --> Zombie
     Zombie --> End([Fin])
-    
+
     style Start fill:#e8f5e9,stroke:#4caf50,stroke-width:2px
     style Created fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
     style Ready fill:#e3f2fd,stroke:#2196f3,stroke-width:2px
@@ -113,19 +162,41 @@ graph LR
 
 ---
 
-# Les états en détail 📊
+# Les états : Analogie de la salle d'attente 🏥
+
+<div class="text-sm">
+
+**Imaginez une salle d'attente chez le médecin (le CPU) :**
+
+| État | Lettre | Analogie | Exemple concret |
+|------|--------|----------|-----------------|
+| **Running** | `R` | Vous êtes avec le médecin ! | `firefox` affiche une page |
+| **Sleeping** | `S` | Vous attendez qu'on vous appelle | `bash` attend votre commande |
+| **Disk Sleep** | `D` | Vous attendez vos résultats d'analyse | Lecture d'un gros fichier |
+| **Stopped** | `T` | Vous êtes sorti fumer (pause) | Processus après Ctrl+Z |
+| **Zombie** | `Z` | Consultation terminée, mais pas encore parti | Processus fini, parent pas informé |
+
+</div>
+
+---
+
+#### Les états en détail 📊
 
 **Running (R)** : en cours d'exécution sur un CPU
+- 💡 Le processus travaille activement
 
-**Sleeping :**
-- **Interruptible (S)** : en attente, peut être réveillé par un signal
-- **Uninterruptible (D)** : en attente d'I/O, ne peut pas être interrompu
+**Sleeping (S)** : en attente, peut être réveillé
+- 💡 Attend une entrée utilisateur, un timer, etc.
 
-**Stopped (T)** : arrêté temporairement (Ctrl+Z)
+**Disk Sleep (D)** : en attente d'I/O disque
+- ⚠️ **Ne peut PAS être interrompu** (même pas par kill -9 !)
+- 💡 Si bloqué longtemps → problème matériel probable
 
-**Zombie (Z)** : terminé, mais le parent n'a pas récupéré le code de sortie
+**Stopped (T)** : mis en pause (Ctrl+Z)
+- 💡 Peut être repris avec `fg` ou `bg`
 
-**Idle (I)** : inactif (threads kernel)
+**Zombie (Z)** : mort mais pas enterré
+- 💡 Le parent doit "récupérer" le code de sortie
 
 ---
 
@@ -163,13 +234,50 @@ alice     1234   0.5  2.3 423680 94532 ?     Sl   10:15   1:23 firefox
 bob       5678   0.0  0.1  12456  4532 pts/0 R+   14:23   0:00 ps aux
 ```
 
-**Colonnes importantes :**
-- `USER` : utilisateur propriétaire
-- `PID` : Process ID
-- `%CPU` : utilisation CPU
-- `%MEM` : utilisation mémoire
-- `STAT` : état du processus
-- `COMMAND` : commande exécutée
+---
+
+#### Décryptage de ps aux colonne par colonne 🔍
+
+<div class="text-[10px]">
+
+| Colonne | Signification | Exemple | Explication |
+|---------|---------------|---------|-------------|
+| `USER` | Propriétaire | `alice` | Qui a lancé le processus |
+| `PID` | Process ID | `1234` | Numéro unique du processus |
+| `%CPU` | Utilisation CPU | `0.5` | 0.5% du CPU utilisé |
+| `%MEM` | Utilisation RAM | `2.3` | 2.3% de la RAM utilisée |
+| `VSZ` | Mémoire virtuelle | `423680` | En Ko (demandée, pas forcément utilisée) |
+| `RSS` | Mémoire réelle | `94532` | En Ko (réellement en RAM) |
+| `TTY` | Terminal | `pts/0` ou `?` | `?` = pas de terminal (daemon) |
+| `STAT` | État | `Sl` | S=sleeping, l=multi-thread |
+| `START` | Heure de début | `10:15` | Quand le processus a démarré |
+| `TIME` | Temps CPU | `1:23` | 1 min 23 sec de CPU utilisé |
+
+</div>
+
+---
+
+# Astuce : VSZ vs RSS - Quelle différence ? 🤔
+
+<div class="text-sm">
+
+**VSZ (Virtual Size)** = Ce que le processus a **demandé**
+
+**RSS (Resident Set Size)** = Ce qu'il **utilise vraiment** en RAM
+
+**Analogie du restaurant 🍽️ :**
+- **VSZ** = Vous réservez une table de 10 personnes (au cas où)
+- **RSS** = Seulement 4 personnes sont venues (vraiment occupé)
+
+**En pratique :**
+```
+firefox : VSZ=423680 RSS=94532
+          (413 Mo demandés, 92 Mo vraiment utilisés)
+```
+
+💡 **Pour surveiller la mémoire, regardez RSS, pas VSZ !**
+
+</div>
 
 ---
 
@@ -254,13 +362,18 @@ pgrep -o firefox
 
 # Signaux Unix : communiquer avec les processus 📡
 
-**Un signal** = message envoyé à un processus
+**Un signal** = un message/ordre envoyé à un processus
 
-**Analogie :** comme donner des ordres à un employé
-- "Fais une pause" (SIGSTOP)
-- "Reprends le travail" (SIGCONT)
-- "Quitte proprement" (SIGTERM)
-- "Quitte immédiatement !" (SIGKILL)
+**Analogie : Le bureau et le téléphone 📞**
+
+Imaginez que chaque processus est un employé dans un bureau. Les signaux sont des appels téléphoniques :
+
+| Signal | Analogie téléphone | Ce que fait le processus |
+|--------|-------------------|--------------------------|
+| **SIGTERM** | "Merci de ranger et partir" | Sauvegarde et quitte proprement |
+| **SIGKILL** | Agent de sécurité qui vous sort | Arrêt immédiat, pas de sauvegarde ! |
+| **SIGSTOP** | "Pause café !" | Se fige, attend SIGCONT |
+| **SIGHUP** | "Relis tes instructions" | Recharge sa configuration |
 
 ```bash
 # Envoyer un signal
@@ -269,18 +382,66 @@ kill -SIGNAL PID
 
 ---
 
-#### Signaux courants 🚦
+# SIGTERM vs SIGKILL : La différence cruciale ⚠️
+
+<div class="text-sm">
+
+**SIGTERM (15)** = "S'il te plaît, arrête-toi"
+```bash
+kill 1234        # Envoie SIGTERM par défaut
+kill -15 1234    # Même chose, explicite
+kill -TERM 1234  # Même chose, avec le nom
+```
 
 <div class="text-xs">
+
+- ✅ Le processus **peut** l'ignorer ou le gérer
+
+- ✅ Il a le temps de **sauvegarder** ses données
+
+- ✅ Il **ferme proprement** les fichiers et connexions
+
+</div>
+
+**SIGKILL (9)** = "STOP ! Tu n'as pas le choix !"
+```bash
+kill -9 1234
+kill -KILL 1234
+```
+
+<div class="text-xs">
+
+- ❌ Le processus **ne peut PAS** l'ignorer
+
+- ❌ **Aucune sauvegarde** possible
+
+- ❌ Fichiers temporaires non nettoyés
+
+<div class="ml-8">
+
+ ⚠️ **À utiliser en DERNIER recours !**
+
+</div>
+
+</div>
+
+</div>
+
+---
+
+#### Signaux courants 🚦
+
+<div class="text-[9px]">
 
 **SIGTERM (15)** : terminaison propre (par défaut)
 - Le processus peut nettoyer avant de quitter
 - Enregistrer des données, fermer des fichiers
+- **Toujours essayer en premier !**
 
 **SIGKILL (9)** : terminaison immédiate
 - Le processus est tué de force
 - Pas de nettoyage possible
-- Utilisez en dernier recours !
+- **Utilisez en dernier recours !**
 
 **SIGHUP (1)** : rechargement de configuration
 - "Hang up" - historiquement : déconnexion du terminal
@@ -530,34 +691,101 @@ tmux attach
 
 # Qu'est-ce qu'un service ? 🎪
 
-**Service (ou daemon)** : programme qui tourne en arrière-plan
+**Service (ou daemon)** : programme qui tourne **en permanence** en arrière-plan
 
-**Analogie : le personnel invisible d'un hôtel** 🏨
-- **Service web (nginx)** : réceptionniste (accueille les visiteurs)
-- **Service SSH** : portier (gère l'accès sécurisé)
-- **Service cron** : femme de ménage (tâches planifiées)
-- **Service de log** : comptable (note tout ce qui se passe)
+**Différence processus vs service :**
 
-**Caractéristiques :**
-- Démarrent au boot
-- Pas d'interface utilisateur directe
-- Fournissent des fonctionnalités système
+| Processus normal | Service (daemon) |
+|-----------------|------------------|
+| Vous le lancez manuellement | Démarre automatiquement au boot |
+| Se termine quand vous fermez | Tourne 24h/24 |
+| Interactif (vous tapez dedans) | Pas d'interface directe |
+| Ex: `vim`, `firefox` | Ex: `nginx`, `sshd`, `mysql` |
 
 ---
 
-# systemd : le gestionnaire de services moderne 🎛️
+# Analogie : Le personnel invisible d'un hôtel 🏨
 
-**systemd** : système d'init et gestionnaire de services (depuis ~2010)
+<div class="text-sm">
 
-**Responsabilités :**
-1. **Premier processus** (PID 1)
-2. Démarrer les services au boot
-3. Gérer les dépendances entre services
-4. Superviser les services (redémarrage automatique)
-5. Gérer les logs (journald)
-6. Gérer les timers (remplace cron)
+**Les services sont comme le staff d'un hôtel qui travaille 24h/24 :**
 
-**Remplace** : SysVinit, Upstart
+| Service Linux | Rôle dans l'hôtel | Ce qu'il fait |
+|---------------|-------------------|---------------|
+| **nginx/apache** | Réceptionniste | Accueille les visiteurs web |
+| **sshd** | Portier sécurité | Vérifie les badges et ouvre les portes |
+| **cron** | Femme de ménage | Fait le ménage à heures fixes |
+| **rsyslog** | Comptable | Note tout ce qui se passe |
+| **NetworkManager** | Standardiste | Gère les communications |
+| **cups** | Service courrier | Gère les impressions |
+
+</div>
+
+---
+
+**Caractéristiques communes :**
+- 🌙 Travaillent même quand vous dormez
+- 👻 Invisibles (pas de fenêtre)
+- 🔄 Redémarrent automatiquement si crash
+
+---
+
+#### systemd : C'est quoi exactement ? 🎛️
+
+<div class="text-xs">
+
+**systemd** = le "chef d'orchestre" de votre système Linux
+
+**Analogie : Le directeur d'hôtel 🏨**
+
+Quand l'hôtel ouvre le matin (= quand Linux démarre) :
+1. Le directeur (systemd) arrive en premier (PID 1)
+2. Il réveille le personnel dans le bon ordre :
+   - D'abord l'électricien (réseau)
+   - Puis le réceptionniste (services web)
+   - Enfin les femmes de chambre (tâches planifiées)
+3. Si un employé tombe malade → le directeur le remplace automatiquement
+
+**Ce que systemd gère :**
+- 🚀 Démarrage des services (dans le bon ordre)
+- 👀 Surveillance (redémarre si crash)
+- 📝 Logs (journald)
+- ⏰ Tâches planifiées (timers)
+
+</div>
+
+---
+
+#### Pourquoi systemd a remplacé les anciens systèmes ?
+
+<div class="text-xs">
+
+**Avant (SysVinit) :**
+```bash
+# Scripts shell dans /etc/init.d/
+/etc/init.d/nginx start
+/etc/init.d/nginx stop
+```
+- ❌ Lent (scripts lancés un par un)
+
+- ❌ Pas de gestion des dépendances
+
+- ❌ Pas de redémarrage automatique
+
+**Maintenant (systemd) :**
+```bash
+sudo systemctl start nginx
+sudo systemctl stop nginx
+```
+- ✅ Rapide (services lancés en parallèle)
+
+- ✅ Gère les dépendances automatiquement
+
+- ✅ Redémarrage automatique si crash
+
+- ✅ Logs centralisés (journalctl)
+
+</div>
 
 ---
 
@@ -628,22 +856,83 @@ Nov 06 10:00:00 hostname systemd[1]: Started A high performance web server.
 
 ---
 
+# Décryptage de systemctl status 🔍
+
+<div class="text-xs">
+
+| Ligne | Signification |
+|-------|---------------|
+| `● nginx.service` | **●** = en cours (🟢 vert = OK, 🔴 rouge = erreur) |
+| `Loaded: loaded (...; enabled)` | Fichier trouvé + **activé au boot** |
+| `Active: active (running)` | Service **en cours d'exécution** |
+| `since Mon 2025-11-06 10:00:00` | Démarré depuis cette date |
+| `Main PID: 1234` | PID du processus principal |
+| `Tasks: 5` | Nombre de tâches/threads |
+| `Memory: 12.5M` | RAM utilisée |
+| `CGroup: ...` | Arbre des processus du service |
+
+</div>
+
+---
+
+**États possibles de `Active:` :**
+- 🟢 `active (running)` → Tout va bien !
+- 🟡 `inactive (dead)` → Arrêté normalement
+- 🔴 `failed` → Erreur ! Regardez les logs avec `journalctl -u nginx`
+- 🔵 `activating` → En cours de démarrage
+
+---
+
+# start vs enable : La différence ! ⚠️
+
+<div class="text-sm">
+
+**Confusion très courante chez les débutants !**
+
+| Commande | Ce que ça fait | Analogie |
+|----------|----------------|----------|
+| `systemctl start nginx` | Démarre **maintenant** | "Réveille-toi !" |
+| `systemctl enable nginx` | Démarre **au prochain boot** | "Programme ton réveil pour demain" |
+
+**Exemple concret :**
+
+```bash
+# Vous installez nginx
+sudo apt install nginx
+
+# Vous le démarrez MAINTENANT
+sudo systemctl start nginx    # ✅ nginx tourne
+
+# MAIS... au prochain reboot, nginx ne redémarrera pas !
+# Il faut aussi l'activer au boot :
+sudo systemctl enable nginx   # ✅ démarre automatiquement au boot
+```
+
+💡 **Astuce :** Faites les deux en une commande !
+```bash
+sudo systemctl enable --now nginx   # Active ET démarre
+```
+
+</div>
+
+---
+
 # Activer/désactiver au démarrage 🔌
 
 ```bash
-# Activer un service au démarrage
+# Activer un service au démarrage (ne le démarre pas !)
 sudo systemctl enable nginx
 
-# Désactiver
+# Désactiver (ne sera plus lancé au boot)
 sudo systemctl disable nginx
 
-# Activer et démarrer en une commande
+# Activer ET démarrer en une commande
 sudo systemctl enable --now nginx
 
-# Désactiver et arrêter
+# Désactiver ET arrêter
 sudo systemctl disable --now nginx
 
-# Masquer un service (empêcher tout démarrage)
+# Masquer un service (empêcher TOUT démarrage, même manuel)
 sudo systemctl mask nginx
 
 # Démasquer
@@ -693,6 +982,8 @@ systemctl list-units --all
 # Créer un service systemd custom 🛠️
 
 **Fichier : `/etc/systemd/system/mon-service.service`**
+
+**PS : nous prenons le cas d'une app python qui tourne en tant que service systemd.**
 
 ```ini
 [Unit]
@@ -820,12 +1111,12 @@ graph LR
     C["Kernel<br/>Noyau Linux"]
     D["systemd<br/>PID 1"]
     E["Services"]
-    
+
     A --> B
     B --> C
     C --> D
     D --> E
-    
+
     style A fill:#ff6b6b
     style B fill:#4ecdc4
     style C fill:#95e1d3
@@ -855,24 +1146,41 @@ systemd-analyze plot > boot.svg
 
 # Logs système : journald 📜
 
-**journalctl** : voir les logs systemd
+**journalctl** : voir les logs systemd (le "journal de bord" du système)
+
+**Analogie : La boîte noire d'un avion ✈️**
+
+Tout ce qui se passe sur votre système est enregistré :
+- Services qui démarrent/s'arrêtent
+- Erreurs et avertissements
+- Connexions utilisateurs
+- Problèmes matériels
+
+---
+
+# journalctl : Les commandes essentielles 📋
 
 ```bash
-# Tous les logs
+# Tous les logs (attention, BEAUCOUP de données !)
 journalctl
 
-# Logs depuis le dernier boot
+# Logs depuis le dernier boot (plus utile)
 journalctl -b
 
-# Logs d'un service
+# Logs d'UN service spécifique
 journalctl -u nginx
 
-# Suivre en temps réel
+# Suivre en temps réel (comme tail -f)
 journalctl -f
 
-# Suivre un service
+# Suivre un service en temps réel
 journalctl -u nginx -f
+
+# Les 50 dernières lignes
+journalctl -n 50
 ```
+
+💡 **Astuce :** Quand un service ne marche pas → `journalctl -u le-service`
 
 ---
 
@@ -1268,4 +1576,3 @@ layout: default
 N'hésitez pas à poser vos questions maintenant !
 
 Le prochain module explorera la gestion du stockage et des systèmes de fichiers.
-
