@@ -1108,6 +1108,33 @@ ls -li
 # 12346 sym.txt → original.txt
 ```
 
+#### Qu'est ce qu'un inode ?
+
+> Un inode = index node est une structure interne utilisée par les systèmes de fichiers pour stocker toutes les informations d’un fichier, sauf son nom et son contenu.
+
+---
+
+### Un inode stocke par exemple :
+
+- 📏 La taille du fichier
+- 👤 Le propriétaire (UID) et le groupe (GID)
+- 🔐 Les permissions (rwx)
+- 🕒 Les dates (création, modification, dernier accès)
+- 📍 L’emplacement des données sur le disque
+- 🔗 Le nombre de liens vers ce fichier
+
+❗ Le nom du fichier n’est PAS dans l’inode
+Le nom est stocké dans le dossier (qui fonctionne comme une table de correspondance : nom → inode).
+
+pour afficher l'inode d'un fichier ou dossier :
+
+```bash
+#fichier
+ls -i fichier.txt
+#dossier
+ls -di dossier/
+```
+
 ---
 
 # Permissions étendues : ACL 🔐
@@ -1644,25 +1671,16 @@ UUID=xxx  /home  ext4  defaults,relatime  0  2
 
 **Ce que vous avez appris :**
 
-✅ Nomenclature des disques et partitions
-
-✅ Partitionnement (fdisk, gdisk, parted)
-
-✅ Systèmes de fichiers (ext4, xfs, btrfs, NFS)
-
-✅ Montage et /etc/fstab
-
-✅ Swap et swappiness
-
-✅ Liens symboliques et durs
-
-✅ ACL (permissions étendues)
-
-✅ LVM pour la gestion flexible
-
-✅ RAID pour la redondance
-
-✅ Gestion de l'espace disque (df, du, ncdu)
+- ✅ Nomenclature des disques et partitions
+- ✅ Partitionnement (fdisk, gdisk, parted)
+- ✅ Systèmes de fichiers (ext4, xfs, btrfs, NFS)
+- ✅ Montage et /etc/fstab
+- ✅ Swap et swappiness
+- ✅ Liens symboliques et durs
+- ✅ ACL (permissions étendues)
+- ✅ LVM pour la gestion flexible
+- ✅ RAID pour la redondance
+- ✅ Gestion de l'espace disque (df, du, ncdu)
 
 ---
 
