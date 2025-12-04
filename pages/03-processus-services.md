@@ -1398,21 +1398,67 @@ alice    hard    nproc    150
 
 ---
 
-# cgroups : contrôle des ressources 🎛️
+# cgroups : C'est quoi ? 🎛️
 
-**cgroups** (control groups) : limiter et isoler les ressources
+**cgroups** (control groups) = système pour **limiter et isoler** les ressources des processus
 
-**Utilisés par :**
-- systemd
-- Docker
-- LXC
-- Kubernetes
+**Analogie : Le budget familial 💰**
 
-**Ressources contrôlées :**
-- CPU
-- Mémoire
-- I/O disque
-- Réseau
+<div class="text-sm">
+
+Imaginez une famille avec un budget limité :
+
+| Ressource système | Analogie budget | Exemple |
+|-------------------|-----------------|---------|
+| **CPU** | Temps de travail | "Tu n'as droit qu'à 2h de TV par jour" |
+| **Mémoire (RAM)** | Argent de poche | "Tu as 50€ max par mois" |
+| **I/O disque** | Vitesse de dépense | "Pas plus de 10€ par jour" |
+| **Réseau** | Forfait téléphone | "2 Go de data max" |
+
+**Sans cgroups :** Un processus gourmand peut tout prendre (comme un enfant qui mange tout le gâteau 🍰)
+
+**Avec cgroups :** Chaque processus a sa "part" définie (équité garantie)
+
+</div>
+
+---
+
+# cgroups : Pourquoi c'est important ? 🤔
+
+<div class="text-sm">
+
+**Problème sans cgroups :**
+
+```
+Serveur avec 8 Go de RAM
+├── nginx (serveur web) : utilise 500 Mo ✅
+├── mysql (base de données) : utilise 2 Go ✅
+└── script_bugué.py : FUITE MÉMOIRE → utilise 10 Go ! 💥
+    → Tout le serveur plante !
+```
+
+</div>
+
+---
+
+<div class="text-sm">
+
+**Solution avec cgroups :**
+
+```
+Serveur avec 8 Go de RAM
+├── nginx : limite 1 Go (utilise 500 Mo) ✅
+├── mysql : limite 4 Go (utilise 2 Go) ✅
+└── script_bugué.py : limite 1 Go → TUÉ quand il dépasse ! ✅
+    → Le serveur continue de fonctionner !
+```
+
+**Qui utilise les cgroups ?**
+- 🐳 **Docker** : isole chaque conteneur
+- ⚙️ **systemd** : limite les services
+- ☸️ **Kubernetes** : gère les ressources des pods
+
+</div>
 
 ---
 
@@ -1422,20 +1468,50 @@ alice    hard    nproc    150
 
 ```ini
 [Service]
-# Limite CPU (50%)
+# Limite CPU (50% max)
 CPUQuota=50%
 
-# Limite mémoire (500 Mo)
-MemoryLimit=500M
+# Limite mémoire (500 Mo max, tué si dépassé)
 MemoryMax=500M
 
-# Limite I/O
+# Limite I/O disque
 IOReadBandwidthMax=/dev/sda 10M
 IOWriteBandwidthMax=/dev/sda 5M
 
-# Limite tâches (processus/threads)
+# Limite nombre de processus/threads
 TasksMax=100
 ```
+
+---
+
+# Exemple concret : Protéger votre serveur 🛡️
+
+<div class="text-sm">
+
+**Scénario :** Vous avez un script Python qui parfois consomme trop de RAM
+
+```bash
+# Créer un service avec limites
+sudo nano /etc/systemd/system/mon-script.service
+```
+
+```ini
+[Unit]
+Description=Mon script Python limité
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/script.py
+MemoryMax=256M      # Max 256 Mo de RAM
+CPUQuota=25%        # Max 25% du CPU
+Restart=on-failure  # Redémarre si tué pour dépassement
+
+[Install]
+WantedBy=multi-user.target
+```
+
+**Résultat :** Si le script dépasse 256 Mo → il est tué automatiquement et redémarré proprement !
+
+</div>
 
 ---
 
