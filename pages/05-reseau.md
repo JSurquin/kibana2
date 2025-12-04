@@ -466,11 +466,13 @@ Quartier : 192.168.1.x  (le "x" = numéro de maison)
 🏠 Maison 255  → Réservée (haut-parleur pour parler à tout le quartier)
 ```
 
+</div>
+
+---
+
 **Plus le `/XX` est petit, plus le "quartier" est grand !**
 - `/24` = petit quartier où tout le monde se connaît
 - `/8` = immense ville où il faut des "routeurs" pour trouver son chemin
-
-</div>
 
 ---
 
@@ -505,7 +507,7 @@ graph LR
 
 ### Comprendre la Passerelle (Gateway) 🚪
 
-<div class="text-xs">
+<div class="text-[9px]">
 
 **C'est quoi une Gateway ?**
 
@@ -1236,14 +1238,16 @@ graph LR
     style C fill:#95e1d3
 ```
 
+</div>
+
+---
+
 **En résumé :**
 
 | Fichier | Rôle | Priorité | Cas d'usage |
 |---------|------|----------|-------------|
 | **`/etc/hosts`** | Association directe nom → IP | ✅ **1er** (prioritaire) | Résolution locale rapide, alias, tests |
 | **`/etc/resolv.conf`** | Liste des serveurs DNS à interroger | 2ème (si hosts ne trouve pas) | Résolution des noms Internet |
-
-</div>
 
 ---
 
