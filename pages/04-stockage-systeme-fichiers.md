@@ -1437,54 +1437,245 @@ sudo resize2fs /dev/sdb1 50G
 
 # LVM : Logical Volume Manager 🎛️
 
-**LVM** : couche d'abstraction pour la gestion flexible du stockage
+**LVM** = **L**ogical **V**olume **M**anager
+
+**C'est quoi ?** Une couche intelligente entre vos disques et votre système.
+
+**Le problème des partitions classiques :**
 
 ```
-Disques physiques (PV)
-    ↓
-Volume Group (VG)
-    ↓
-Logical Volumes (LV)
-    ↓
-Systèmes de fichiers
+Disque 500 Go
+├── /boot   (500 Mo)   ← Taille FIXE !
+├── /       (50 Go)    ← Plein ? Tant pis ! 😤
+└── /home   (449 Go)   ← Vide mais impossible de donner l'espace à /
 ```
 
-**Avantages :**
-- Redimensionnement facile
-- Snapshots
-- Migration de données
-- Agrégation de disques
+**Avec LVM, tout devient flexible !** 🎉
 
 ---
 
-# Créer un LVM 🛠️
+# LVM vs Partitions classiques 🆚
 
+<div class="text-sm">
+
+| Aspect | Partition classique | LVM |
+|--------|--------------------|----|
+| **Taille** | Fixe à la création | Dynamique (agrandir/réduire) |
+| **Modifier** | Difficile, risqué | Simple, à chaud |
+| **Snapshots** | ❌ Impossible | ✅ Oui ! |
+| **Fusionner disques** | ❌ Impossible | ✅ Plusieurs disques = 1 volume |
+| **Complexité** | Simple | Un peu plus complexe |
+
+**Cas d'usage idéaux pour LVM :**
+- 🖥️ Serveurs (espace qui évolue)
+- 💾 Bases de données (snapshots avant mise à jour)
+- 🏢 Entreprises (ajout de disques sans downtime)
+
+</div>
+
+---
+
+# Analogie : La piscine modulable 🏊
+
+<div class="text-sm">
+
+**Partitions classiques = Piscines en béton**
+- Taille fixée à la construction
+- Pour agrandir → tout casser et reconstruire
+
+**LVM = Piscine avec parois mobiles**
+- Ajoutez de l'espace quand vous voulez
+- Réduisez si besoin
+- Connectez plusieurs bassins ensemble
+
+```
+🏊 Bassin 1 (500 Go) ─┐
+                      ├── 🌊 Grande piscine unifiée (1,5 To)
+🏊 Bassin 2 (1 To)   ─┘
+```
+
+</div>
+
+---
+
+# Les 3 niveaux de LVM 🧱
+
+<div class="text-sm">
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  NIVEAU 3 : LV (Logical Volume)                         │
+│  → Ce que vous utilisez : /, /home, /var                │
+│  → C'est votre "faux disque" flexible                   │
+├─────────────────────────────────────────────────────────┤
+│  NIVEAU 2 : VG (Volume Group)                           │
+│  → Le "réservoir" qui regroupe les disques              │
+│  → Exemple : vg_data                                    │
+├─────────────────────────────────────────────────────────┤
+│  NIVEAU 1 : PV (Physical Volume)                        │
+│  → Vos vrais disques/partitions                         │
+│  → /dev/sda, /dev/sdb, /dev/nvme0n1                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+---
+
+**Analogie cuisine 🍳 :**
+- **PV** = Les ingrédients (farine, œufs, lait)
+- **VG** = Le saladier où vous mélangez tout
+- **LV** = Les parts de gâteau que vous servez
+
+---
+
+# Schéma LVM complet 📊
+
+```
+┌─────────┐   ┌─────────┐   ┌─────────┐
+│ /dev/sda│   │ /dev/sdb│   │ /dev/sdc│  ← Disques physiques
+│  500 Go │   │  1 To   │   │  500 Go │
+└────┬────┘   └────┬────┘   └────┬────┘
+     │             │             │
+     ▼             ▼             ▼
+┌────────────────────────────────────────┐
+│        PV (Physical Volumes)           │  ← Niveau 1
+│   pvcreate /dev/sda /dev/sdb /dev/sdc  │
+└────────────────┬───────────────────────┘
+                 │
+                 ▼
+┌────────────────────────────────────────┐
+│        VG : vg_storage (2 To)          │  ← Niveau 2
+│   vgcreate vg_storage /dev/sd{a,b,c}   │
+└────────────────┬───────────────────────┘
+                 │
+        ┌────────┼────────┐
+        ▼        ▼        ▼
+   ┌────────┐ ┌────────┐ ┌────────┐
+   │LV: root│ │LV: home│ │LV: data│      ← Niveau 3
+   │  50 Go │ │ 500 Go │ │  1 To  │
+   └────────┘ └────────┘ └────────┘
+```
+
+---
+
+# Exemple concret : Agrandir sans rien casser 📈
+
+<div class="text-xs">
+
+**Situation initiale :**
+- 1 disque de 500 Go avec LVM
+- `/home` fait 200 Go et est **plein** !
+
+**Solution SANS LVM :** 😰
+1. Sauvegarder toutes les données
+2. Ajouter un disque
+3. Réinstaller ou tout reconfigurer
+4. Restaurer les données
+
+**Solution AVEC LVM :** 😎
 ```bash
-# 1. Créer Physical Volumes
-sudo pvcreate /dev/sdb1 /dev/sdc1
+# 1. Brancher le nouveau disque (1 To)
+# 2. L'ajouter au LVM
+sudo pvcreate /dev/sdb
+sudo vgextend vg_storage /dev/sdb
 
-# 2. Créer un Volume Group
-sudo vgcreate mon_vg /dev/sdb1 /dev/sdc1
+# 3. Agrandir /home de 500 Go
+sudo lvextend -L +500G /dev/vg_storage/home
+sudo resize2fs /dev/vg_storage/home
 
-# 3. Créer des Logical Volumes
+# FINI ! Pas de reboot, pas de perte de données ! 🎉
+```
+
+</div>
+
+---
+
+# Créer un LVM de A à Z 🛠️
+
+<div class="text-xs">
+
+**Étape 1 : Créer les Physical Volumes (PV)**
+```bash
+sudo pvcreate /dev/sdb /dev/sdc
+# pv = Physical Volume, create = créer
+# → Marque les disques comme utilisables par LVM
+```
+
+**Étape 2 : Créer le Volume Group (VG)**
+```bash
+sudo vgcreate mon_vg /dev/sdb /dev/sdc
+# vg = Volume Group, create = créer
+# → Fusionne les disques dans un "réservoir" nommé mon_vg
+```
+
+</div>
+
+---
+
+# Créer un LVM de A à Z (suite) 🛠️
+
+<div class="text-xs">
+
+**Étape 3 : Créer les Logical Volumes (LV)**
+```bash
 sudo lvcreate -L 50G -n vol_data mon_vg
-sudo lvcreate -L 20G -n vol_backup mon_vg
-
-# 4. Créer des systèmes de fichiers
-sudo mkfs.ext4 /dev/mon_vg/vol_data
-sudo mkfs.ext4 /dev/mon_vg/vol_backup
+# lv = Logical Volume, create = créer
+# -L 50G = taille de 50 Go
+# -n vol_data = nom du volume
+# mon_vg = depuis quel VG
 ```
+
+**Étape 4 : Formater et monter**
+```bash
+# Formater
+sudo mkfs.ext4 /dev/mon_vg/vol_data
+
+# Monter
+sudo mkdir /mnt/data
+sudo mount /dev/mon_vg/vol_data /mnt/data
+```
+
+**Le chemin du LV est toujours : `/dev/NOM_VG/NOM_LV`**
+
+</div>
 
 ---
 
-# Gérer LVM 🎮
+# Commandes LVM : Le mémo 📋
+
+<div class="text-xs">
+
+| Action | Commande | Exemple |
+|--------|----------|---------|
+| **Créer PV** | `pvcreate` | `pvcreate /dev/sdb` |
+| **Créer VG** | `vgcreate` | `vgcreate mon_vg /dev/sdb` |
+| **Créer LV** | `lvcreate` | `lvcreate -L 50G -n data mon_vg` |
+| **Voir PV** | `pvs` ou `pvdisplay` | `pvs` |
+| **Voir VG** | `vgs` ou `vgdisplay` | `vgs` |
+| **Voir LV** | `lvs` ou `lvdisplay` | `lvs` |
+| **Agrandir LV** | `lvextend` | `lvextend -L +10G /dev/vg/lv` |
+| **Réduire LV** | `lvreduce` | `lvreduce -L -5G /dev/vg/lv` |
+| **Ajouter disque au VG** | `vgextend` | `vgextend mon_vg /dev/sdc` |
+
+**Astuce mnémotechnique :**
+- `pv*` = Physical Volume (disque)
+- `vg*` = Volume Group (réservoir)
+- `lv*` = Logical Volume (partition virtuelle)
+
+</div>
+
+---
+
+# Voir l'état du LVM 🔍
 
 ```bash
-# Voir les PV
-sudo pvdisplay
-sudo pvs
+# Vue rapide (recommandé)
+sudo pvs    # Physical Volumes
+sudo vgs    # Volume Groups
+sudo lvs    # Logical Volumes
 
-# Voir les VG
+# Vue détaillée
 sudo vgdisplay
 sudo vgs
 
