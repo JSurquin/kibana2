@@ -1139,17 +1139,68 @@ ls -di dossier/
 
 # Permissions étendues : ACL 🔐
 
-**ACL** (Access Control Lists) : permissions plus fines que rwx
+**ACL** (Access Control Lists) : permissions plus fines que le système classique rwx
 
-**Pourquoi ?**
-- Permissions pour plusieurs utilisateurs spécifiques
-- Permissions par défaut pour les nouveaux fichiers
-- Plus flexible que owner/group/others
+**Le problème des permissions classiques :**
 
-```bash
-# Vérifier si le système de fichiers supporte ACL
-mount | grep acl
 ```
+-rw-r----- 1 alice devs 1024 rapport.txt
+              │      │
+              │      └── UN seul groupe (devs)
+              └── UN seul propriétaire (alice)
+```
+
+**Que faire si :**
+- Bob (pas dans devs) doit pouvoir lire ce fichier ?
+- Charlie (pas dans devs) doit pouvoir le modifier ?
+- ❌ Impossible avec les permissions classiques !
+
+---
+
+# ACL : La solution flexible 🎯
+
+**Analogie : Le badge d'accès 🏢**
+
+<div class="text-sm">
+
+| Système | Analogie | Limitation |
+|---------|----------|------------|
+| **Permissions classiques** | Clé du bâtiment | 1 clé = 1 porte = tout le monde pareil |
+| **ACL** | Badge électronique | Chaque personne a ses propres accès |
+
+**Avec les ACL, vous pouvez dire :**
+- "Alice peut lire ET écrire"
+- "Bob peut seulement lire"
+- "Charlie ne peut rien faire"
+- "Le groupe 'devs' peut tout faire"
+- **Le tout sur le MÊME fichier !**
+
+</div>
+
+---
+
+# Syntaxe ACL : Décryptage complet 📖
+
+<div class="text-sm">
+
+**Format : `TYPE:NOM:PERMISSIONS`**
+
+| Partie | Signification | Exemples |
+|--------|---------------|----------|
+| **TYPE** | `u` = utilisateur, `g` = groupe, `o` = autres | `u`, `g`, `o` |
+| **NOM** | Nom de l'utilisateur ou du groupe | `alice`, `bob`, `devs` |
+| **PERMISSIONS** | Combinaison de r, w, x | `r`, `rw`, `rwx`, `rx` |
+
+**Exemples concrets :**
+
+| Commande | Signification |
+|----------|---------------|
+| `u:alice:r` | **U**tilisateur alice → lecture seule |
+| `u:bob:rw` | **U**tilisateur bob → lecture + écriture |
+| `g:devs:rwx` | **G**roupe devs → lecture + écriture + exécution |
+| `o::r` | **O**thers (autres) → lecture seule |
+
+</div>
 
 ---
 
@@ -1160,18 +1211,58 @@ mount | grep acl
 sudo apt install acl          # Debian/Ubuntu
 sudo dnf install acl          # RHEL/Fedora
 
-# Voir les ACL
-getfacl fichier.txt
-
-# Donner accès en lecture à alice
-setfacl -m u:alice:r fichier.txt
-
-# Donner accès en écriture à bob
-setfacl -m u:bob:rw fichier.txt
-
-# Donner accès au groupe devs
-setfacl -m g:devs:rwx dossier/
+# Vérifier si le système de fichiers supporte ACL
+mount | grep acl
 ```
+
+---
+
+# Commandes ACL essentielles 📋
+
+**`getfacl`** = **GET** File ACL (voir les ACL)
+
+```bash
+getfacl fichier.txt
+```
+
+**`setfacl`** = **SET** File ACL (modifier les ACL)
+
+```bash
+# -m = modify (ajouter/modifier une ACL)
+setfacl -m u:alice:r fichier.txt      # alice peut lire
+setfacl -m u:bob:rw fichier.txt       # bob peut lire+écrire
+setfacl -m g:devs:rwx dossier/        # groupe devs a tous les droits
+```
+
+---
+
+# Exemple concret : Projet partagé 📁
+
+<div class="text-xs">
+
+**Scénario :** Vous avez un dossier `/projet` et voulez :
+- Alice (chef de projet) : tous les droits
+- Bob (développeur) : lecture + écriture
+- Charlie (stagiaire) : lecture seule
+- Groupe "clients" : lecture seule
+
+```bash
+# Créer le dossier
+sudo mkdir /projet
+
+# Donner les accès personnalisés
+sudo setfacl -m u:alice:rwx /projet   # Chef → tout
+sudo setfacl -m u:bob:rw /projet      # Dev → lire+écrire
+sudo setfacl -m u:charlie:r /projet   # Stagiaire → lire
+sudo setfacl -m g:clients:r /projet   # Clients → lire
+
+# Vérifier
+getfacl /projet
+```
+
+**Résultat :** 4 niveaux d'accès différents sur le MÊME dossier ! 🎉
+
+</div>
 
 ---
 
@@ -1232,13 +1323,36 @@ group::r-x
 group:devs:rwx
 mask::rwx
 other::r-x
-default:user::rwx
-default:user:alice:rwx
-default:group::r-x
-default:group:devs:rw-
-default:mask::rwx
-default:other::r-x
 ```
+
+---
+
+# Décryptage de getfacl ligne par ligne 🔍
+
+<div class="text-xs">
+
+| Ligne | Signification |
+|-------|---------------|
+| `# file: /shared` | Chemin du fichier/dossier |
+| `# owner: root` | Propriétaire du fichier |
+| `# group: root` | Groupe propriétaire |
+| `user::rwx` | Permissions du **propriétaire** (root) → rwx |
+| `user:alice:rwx` | **ACL** : alice a rwx |
+| `user:bob:r-x` | **ACL** : bob a r-x (lecture + exécution, pas écriture) |
+| `group::r-x` | Permissions du **groupe propriétaire** (root) |
+| `group:devs:rwx` | **ACL** : groupe devs a rwx |
+| `mask::rwx` | Permissions **maximales** pour les ACL |
+| `other::r-x` | Permissions pour **tous les autres** |
+
+**Le `+` dans ls -l indique des ACL :**
+```bash
+ls -l /shared
+drwxrwxr-x+ 2 root root 4096 ... /shared
+          │
+          └── Le "+" = ce fichier a des ACL !
+```
+
+</div>
 
 ---
 
