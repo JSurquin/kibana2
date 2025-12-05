@@ -1121,6 +1121,136 @@ network:
 
 ---
 
+# Netplan vs NetworkManager : Lequel choisir ? 🤔
+
+**Deux systèmes de configuration réseau coexistent sur Linux moderne**
+
+```mermaid
+graph TD
+    A[Configuration Réseau Linux] --> B[Netplan]
+    A --> C[NetworkManager]
+    
+    B --> B1["📄 Fichiers YAML statiques"]
+    B --> B2["🖥️ Serveurs Ubuntu"]
+    B --> B3["systemd-networkd"]
+    
+    C --> C1["🖱️ GUI + CLI dynamique"]
+    C --> C2["💻 Desktops / Laptops"]
+    C --> C3["WiFi, VPN, 4G facile"]
+    
+    style B fill:#4ecdc4
+    style C fill:#ffe66d
+```
+
+---
+
+# Netplan vs NetworkManager : Comparaison détaillée 📊
+
+<div class="text-xs">
+
+| Critère | **Netplan** | **NetworkManager** |
+|---------|-------------|-------------------|
+| **Type** | Fichiers de config YAML | Daemon + GUI/CLI |
+| **Idéal pour** | Serveurs, config fixe | Desktop, laptops, mobilité |
+| **WiFi** | ⚠️ Possible mais complexe | ✅ Très facile |
+| **VPN** | ⚠️ Manuel | ✅ Intégré |
+| **Changement à chaud** | ❌ Nécessite `netplan apply` | ✅ Instantané |
+| **Interface graphique** | ❌ Non | ✅ Oui (nm-applet) |
+| **Présent sur** | Ubuntu Server par défaut | Ubuntu Desktop, Fedora, RHEL |
+| **Fichiers** | `/etc/netplan/*.yaml` | `/etc/NetworkManager/` |
+
+</div>
+
+---
+
+# Quand utiliser quoi ? 🎯
+
+<div class="text-sm">
+
+**Utilisez Netplan quand :**
+
+- 🖥️ Vous gérez un **serveur** avec une config réseau **fixe**
+- 📝 Vous voulez une config **reproductible** (Infrastructure as Code)
+- 🔄 Vous utilisez **Ansible/Puppet** pour déployer
+- 🚫 Pas besoin de WiFi ou VPN dynamique
+
+**Utilisez NetworkManager quand :**
+
+- 💻 Vous êtes sur un **desktop/laptop**
+- 📶 Vous changez souvent de **WiFi**
+- 🔒 Vous utilisez des **VPN** (OpenVPN, WireGuard)
+- 🔌 Vous branchez/débranchez des câbles Ethernet
+- 📱 Vous utilisez des **connexions mobiles** (4G/5G)
+
+</div>
+
+---
+
+# En pratique : Qui utilise quoi ? 🏢
+
+<div class="text-sm">
+
+**Ubuntu Server** (par défaut)
+
+```
+Netplan → systemd-networkd (backend)
+         Config dans /etc/netplan/
+```
+
+**Ubuntu Desktop** (par défaut)
+
+```
+Netplan → NetworkManager (backend)
+         Config via GUI ou nmcli
+```
+
+**Fedora / RHEL / AlmaLinux**
+
+```
+NetworkManager directement
+Config dans /etc/NetworkManager/ ou via nmcli
+```
+
+**Debian** (selon installation)
+
+```
+/etc/network/interfaces (traditionnel)
+ou NetworkManager (si installé)
+```
+
+**💡 Astuce :** Sur Ubuntu, Netplan peut utiliser NetworkManager comme "renderer" !
+
+</div>
+
+---
+
+# Vérifier quel système est actif 🔍
+
+```bash
+# Voir si NetworkManager est actif
+systemctl status NetworkManager
+
+# Voir si systemd-networkd est actif
+systemctl status systemd-networkd
+```
+
+---
+
+# Vérifier quel système est actif (suite) 🔍
+
+```bash
+# Voir la config Netplan et son renderer
+cat /etc/netplan/*.yaml | grep renderer
+# renderer: networkd  → systemd-networkd
+# renderer: NetworkManager  → NetworkManager
+
+# Voir quelle interface est gérée par qui
+nmcli device status  # Si NetworkManager
+networkctl list      # Si systemd-networkd
+```
+
+---
+
 # NetworkManager : gestion graphique et CLI 🎛️
 
 **nmcli** : outil en ligne de commande pour NetworkManager
@@ -1484,7 +1614,183 @@ sudo nano /etc/hosts
 
 ---
 
-# Table de routage 🛣️
+# La table de routage : C'est quoi ? 🛣️
+
+**Problème :** Quand votre machine veut envoyer un paquet, comment sait-elle par où l'envoyer ?
+
+**Réponse :** Elle consulte sa **table de routage** !
+
+**Analogie : Le GPS de votre machine 🚗**
+
+```
+Vous voulez aller à Lyon depuis Paris :
+
+1. GPS vérifie : "Lyon est-il dans Paris ?" → Non
+2. GPS dit : "Prends l'autoroute A6 vers le Sud"
+3. Vous suivez le chemin indiqué
+
+Votre machine fait pareil :
+1. "Est-ce que 8.8.8.8 est dans mon réseau local ?" → Non
+2. "Table de routage dit : Envoie à la gateway 192.168.1.1"
+3. Le paquet part vers la gateway
+```
+
+---
+
+# Pourquoi manipuler la table de routage ? 🤔
+
+**Cas d'usage concrets où vous devrez ajouter des routes :**
+
+<div class="text-sm">
+
+**1. VPN d'entreprise 🏢**
+
+```
+Problème : Accéder au réseau interne 10.20.0.0/16 via le VPN
+Solution : ip route add 10.20.0.0/16 via 192.168.1.50 (IP du VPN)
+```
+
+**2. Plusieurs passerelles 🚪**
+
+```
+Problème : Réseau de dev sur 172.16.0.0/16 accessible via un autre routeur
+Solution : ip route add 172.16.0.0/16 via 192.168.1.254
+```
+
+</div>
+
+---
+
+# Pourquoi manipuler la table de routage ? (suite) 🤔
+
+<div class="text-sm">
+
+**3. Load balancing / Failover ⚖️**
+
+```
+Problème : Deux connexions Internet, router certains flux
+Solution : Routes spécifiques vers chaque gateway
+```
+
+**4. Conteneurs / VMs 🐳**
+
+```
+Problème : Les conteneurs Docker utilisent le réseau 172.17.0.0/16
+Solution : Docker ajoute automatiquement une route !
+```
+
+</div>
+
+---
+
+# Comment fonctionne le routage ? 🧠
+
+**La machine consulte la table de routage dans cet ORDRE :**
+
+```mermaid
+graph TD
+    A["Paquet à envoyer vers 8.8.8.8"] --> B{"Route spécifique<br/>pour 8.8.8.8 ?"}
+    B -->|Non| C{"Route pour le<br/>réseau de 8.8.8.8 ?"}
+    C -->|Non| D{"Route par défaut<br/>(default) ?"}
+    D -->|Oui| E["Envoie via la Gateway"]
+    D -->|Non| F["❌ Erreur : Network unreachable"]
+    B -->|Oui| G["Utilise cette route"]
+    C -->|Oui| H["Utilise cette route"]
+    
+    style E fill:#4ecdc4
+    style F fill:#ff6b6b
+```
+
+**Règle : La route la plus SPÉCIFIQUE gagne !**
+
+- `/32` (une seule IP) > `/24` (256 IPs) > `/16` > `/8` > `default`
+
+---
+
+# Anatomie d'une entrée de routage 🔬
+
+```bash
+ip route
+```
+
+```
+default via 192.168.1.1 dev enp0s3 proto dhcp metric 100
+192.168.1.0/24 dev enp0s3 proto kernel scope link src 192.168.1.100 metric 100
+169.254.0.0/16 dev enp0s3 scope link metric 1000
+```
+
+---
+
+# Anatomie d'une entrée de routage (suite) 🔬
+
+<div class="text-xs">
+
+| Élément | Signification |
+|---------|---------------|
+| `default` | Route par défaut (0.0.0.0/0) - "si rien d'autre ne matche" |
+| `via 192.168.1.1` | Envoyer les paquets à cette adresse (gateway) |
+| `dev enp0s3` | Utiliser cette interface réseau |
+| `proto dhcp` | Route apprise par DHCP (pas configurée manuellement) |
+| `proto kernel` | Route créée automatiquement par le noyau |
+| `scope link` | Destination directement joignable (même réseau) |
+| `src 192.168.1.100` | Adresse source à utiliser pour les paquets |
+| `metric 100` | Priorité (plus bas = préféré si plusieurs routes) |
+
+</div>
+
+---
+
+# Exemple concret : Multi-réseau en entreprise 🏢
+
+<div class="text-sm">
+
+**Scénario :** Votre machine doit accéder à :
+- Internet → via la box (192.168.1.1)
+- Réseau de prod (10.10.0.0/16) → via routeur spécifique (192.168.1.254)
+- Réseau de dev (172.16.0.0/16) → via VPN (192.168.1.50)
+
+**Configuration :**
+
+```bash
+# Table de routage résultante
+ip route
+
+default via 192.168.1.1 dev eth0           # Internet
+10.10.0.0/16 via 192.168.1.254 dev eth0    # Prod
+172.16.0.0/16 via 192.168.1.50 dev eth0    # Dev via VPN
+192.168.1.0/24 dev eth0 scope link         # Réseau local
+```
+
+</div>
+
+---
+
+# Exemple concret : Multi-réseau (suite) 🏢
+
+<div class="text-sm">
+
+**Test : où va chaque paquet ?**
+
+- `ping 8.8.8.8` → Gateway 192.168.1.1 (route default)
+- `ping 10.10.5.20` → Gateway 192.168.1.254 (route spécifique)
+- `ping 172.16.100.5` → Gateway 192.168.1.50 (route VPN)
+- `ping 192.168.1.50` → Directement (même réseau, scope link)
+
+**Vérifier quelle route sera utilisée :**
+
+```bash
+ip route get 8.8.8.8
+# 8.8.8.8 via 192.168.1.1 dev eth0 src 192.168.1.100
+
+ip route get 10.10.5.20
+# 10.10.5.20 via 192.168.1.254 dev eth0 src 192.168.1.100
+```
+
+</div>
+
+---
+
+# Commandes de routage 🛣️
 
 ```bash
 # Voir la table de routage

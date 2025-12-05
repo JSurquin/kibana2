@@ -282,6 +282,198 @@ sudo tail -f /var/log/nginx/access.log
 
 ---
 
+# Exercice 6 : Configuration IP statique avec Netplan 🔧
+
+**Objectif :** Configurer une adresse IP fixe sur votre VM Ubuntu
+
+**Consignes :**
+
+1. Identifiez le nom de votre interface réseau
+2. Sauvegardez la configuration Netplan actuelle
+3. Notez votre configuration réseau actuelle (IP, gateway, DNS)
+4. Créez une configuration IP statique
+5. Testez avec `netplan try` (rollback automatique si problème)
+6. Vérifiez que tout fonctionne
+
+---
+
+# Solution Exercice 6 (1/3) 💡
+
+```bash
+# 1. Identifier l'interface réseau
+ip -br link
+# Résultat typique en VM :
+# lo        UNKNOWN   00:00:00:00:00:00
+# enp0s3    UP        08:00:27:xx:xx:xx   ← VirtualBox
+# ens33     UP        00:0c:29:xx:xx:xx   ← VMware
+
+# Noter le nom : enp0s3, ens33, ou autre
+
+# 2. Sauvegarder la config actuelle
+sudo cp /etc/netplan/*.yaml ~/netplan-backup.yaml
+cat ~/netplan-backup.yaml
+```
+
+---
+
+# Solution Exercice 6 (2/3) 💡
+
+```bash
+# 3. Noter la configuration actuelle
+ip addr show          # Votre IP actuelle
+ip route show default # Votre gateway
+cat /etc/resolv.conf  # Vos DNS
+
+# 4. Créer la nouvelle configuration
+sudo nano /etc/netplan/01-static.yaml
+```
+
+```yaml
+# Contenu du fichier
+# IMPORTANT : Remplacer "enp0s3" par le nom de VOTRE interface !
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses:
+        - 192.168.1.150/24
+      routes:
+        - to: default
+          via: 192.168.1.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 1.1.1.1
+```
+
+---
+
+# Solution Exercice 6 (3/3) 💡
+
+```bash
+# 5. Tester AVANT d'appliquer définitivement
+sudo netplan try
+# Vous avez 120 secondes pour tester
+# Si ça marche : appuyez sur Entrée
+# Si ça ne marche pas : attendez, ça revient automatiquement !
+
+# 6. Vérifier
+ip addr show enp0s3      # Nouvelle IP ?
+ip route show default    # Bonne gateway ?
+ping -c 2 8.8.8.8        # Internet OK ?
+ping -c 2 google.com     # DNS OK ?
+
+# Si tout est OK, appliquer définitivement
+sudo netplan apply
+
+# Pour revenir en DHCP :
+# Modifier dhcp4: true et supprimer addresses/routes/nameservers
+```
+
+---
+
+# Exercice 7 : Configuration DNS locale 🌐
+
+**Objectif :** Maîtriser la résolution de noms avec `/etc/hosts`
+
+**Consignes :**
+
+1. Affichez vos serveurs DNS actuels
+2. Créez un alias "mavm" pour votre propre IP (127.0.0.1)
+3. Créez un alias "gateway" pour votre passerelle
+4. Testez ces alias avec `ping`
+5. Bloquez un site (redirection vers localhost)
+6. Comparez le comportement de `ping` vs `dig`
+7. Nettoyez vos modifications
+
+---
+
+# Solution Exercice 7 (1/3) 💡
+
+```bash
+# 1. Voir les DNS actuels
+cat /etc/resolv.conf
+# ou avec systemd-resolved (Ubuntu moderne)
+resolvectl status
+
+# 2. Créer un alias pour localhost
+echo "127.0.0.1    mavm mavm.local" | sudo tee -a /etc/hosts
+
+# Tester
+ping -c 2 mavm
+# PING mavm (127.0.0.1) → ça marche !
+
+# 3. Créer un alias pour la gateway
+# D'abord, trouver l'IP de la gateway
+ip route show default
+# default via 192.168.1.1 dev enp0s3
+
+echo "192.168.1.1    gateway router box" | sudo tee -a /etc/hosts
+
+# Tester
+ping -c 2 gateway
+ping -c 2 router
+```
+
+---
+
+# Solution Exercice 7 (2/3) 💡
+
+```bash
+# 5. Bloquer un site (exemple : twitter.com)
+echo "127.0.0.1    twitter.com www.twitter.com" | sudo tee -a /etc/hosts
+
+# Tester
+ping -c 2 twitter.com
+# PING twitter.com (127.0.0.1) → Redirigé vers localhost !
+
+# Dans un navigateur, twitter.com ne fonctionnera plus !
+
+# 6. Comparer ping vs dig
+ping -c 1 twitter.com
+# → Utilise /etc/hosts → 127.0.0.1
+
+dig twitter.com +short
+# → Utilise UNIQUEMENT le DNS → vraie IP de Twitter !
+
+# C'est la différence fondamentale :
+# - ping, curl, navigateur → consultent /etc/hosts d'abord
+# - dig, nslookup → interrogent directement le DNS
+```
+
+---
+
+# Solution Exercice 7 (3/3) 💡
+
+```bash
+# 7. Nettoyer les modifications
+# Voir ce qu'on a ajouté
+tail -5 /etc/hosts
+
+# Supprimer les lignes ajoutées
+sudo sed -i '/mavm/d' /etc/hosts
+sudo sed -i '/gateway/d' /etc/hosts
+sudo sed -i '/twitter/d' /etc/hosts
+
+# Vérifier
+cat /etc/hosts
+
+# Twitter fonctionne à nouveau !
+ping -c 1 twitter.com
+# → Vraie IP maintenant
+```
+
+**💡 Cas d'usage réels de /etc/hosts :**
+
+- 🧪 Tester un site en dev avant de changer le DNS
+- 🚫 Bloquer des publicités ou sites indésirables
+- 🏠 Donner des noms sympas à vos machines locales
+- 🔧 Contourner temporairement un problème DNS
+
+---
+
 # Exercice bonus : Script de monitoring réseau 📊
 
 **Objectif :** Surveiller la connectivité
@@ -363,5 +555,29 @@ echo "============================" | tee -a $LOG_FILE
 - UFW pour simplicité
 - `allow`/`deny` pour les règles
 - Toujours autoriser SSH avant d'activer !
+
+</div>
+
+---
+
+### Points clés à retenir (suite) 📌
+
+<div class="text-xs">
+
+**Netplan (Ubuntu) :**
+- Fichiers YAML dans `/etc/netplan/`
+- `netplan try` = tester avec rollback automatique
+- `netplan apply` = appliquer définitivement
+- Attention à l'indentation YAML !
+
+**DNS local :**
+- `/etc/hosts` = résolution AVANT le DNS
+- `/etc/resolv.conf` = serveurs DNS à interroger
+- `dig` interroge le DNS, `ping` utilise `/etc/hosts`
+
+**CIDR (calcul de sous-réseaux) :**
+- Formule : 2^(32-masque) - 2 = hôtes utilisables
+- /24 = 254 hôtes, /30 = 2 hôtes
+- `ipcalc` pour vérifier vos calculs
 
 </div>

@@ -1462,6 +1462,223 @@ Serveur avec 8 Go de RAM
 
 ---
 
+# cgroups v1 vs v2 : Quelle version ai-je ? 🔍
+
+**Deux versions coexistent, mais v2 est le standard depuis 2020+**
+
+```bash
+# Vérifier quelle version est utilisée
+mount | grep cgroup
+
+# Si vous voyez "cgroup2" → vous êtes en v2 (bien !)
+# cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime)
+
+# Si vous voyez plusieurs montages cgroup → vous êtes en v1 (ancien)
+# cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)
+# cgroup on /sys/fs/cgroup/cpu type cgroup (rw,nosuid,nodev,noexec,relatime,cpu)
+```
+
+---
+
+# cgroups v1 vs v2 : Différences clés 📊
+
+<div class="text-sm">
+
+| Aspect | **cgroups v1** (ancien) | **cgroups v2** (moderne) |
+|--------|------------------------|-------------------------|
+| **Structure** | Plusieurs hiérarchies séparées | Une seule hiérarchie unifiée |
+| **Chemin** | `/sys/fs/cgroup/memory/`, `/sys/fs/cgroup/cpu/` | `/sys/fs/cgroup/` (tout au même endroit) |
+| **Fichiers** | `memory.limit_in_bytes` | `memory.max` |
+| **Pression** | ❌ Non | ✅ `memory.pressure`, `cpu.pressure` |
+| **Distributions** | RHEL 7, Ubuntu 16.04 | Ubuntu 22.04+, Fedora 31+, RHEL 8+ |
+
+**En 2025 : Utilisez cgroups v2 !** (c'est le défaut sur les distributions modernes)
+
+</div>
+
+---
+
+# Voir les cgroups existants 👀
+
+```bash
+# Lister tous les cgroups (arborescence)
+systemd-cgls
+
+# Résultat :
+# Control group /:
+# -.slice
+# ├─user.slice
+# │ └─user-1000.slice
+# │   └─session-1.scope
+# │     ├─1234 bash
+# │     └─5678 vim
+# └─system.slice
+#   ├─nginx.service
+#   └─ssh.service
+```
+
+---
+
+# Voir les cgroups existants (suite) 👀
+
+```bash
+# Top des cgroups (comme htop mais par cgroup)
+systemd-cgtop
+
+# Résultat en temps réel :
+# Control Group                Tasks   %CPU   Memory
+# /                               45   12.3   1.2G
+# /system.slice/nginx.service      5    2.1   120M
+# /system.slice/mysql.service      8    5.2   800M
+# /user.slice/user-1000.slice     12    4.5   300M
+
+# Voir les limites d'un service
+systemctl show nginx.service | grep -E "(Memory|CPU|Tasks)"
+```
+
+---
+
+# 🎯 Exemple concret : Limiter nginx avec cgroups
+
+**Scénario réel :** Vous avez un serveur web nginx et vous voulez éviter qu'il consomme toute la RAM en cas de pic de trafic.
+
+**Étape 1 : Voir la situation actuelle**
+
+```bash
+# Vérifier que nginx tourne
+sudo systemctl status nginx
+
+# Voir combien nginx consomme actuellement
+systemctl status nginx | grep Memory
+# → Memory: 45.2M
+
+# Voir s'il a des limites (probablement non par défaut)
+systemctl show nginx.service --property=MemoryMax,CPUQuota
+# → MemoryMax=infinity (pas de limite !)
+# → CPUQuota= (pas de limite !)
+```
+
+---
+
+# 🎯 Exemple nginx : Appliquer des limites
+
+**Étape 2 : Limiter nginx à 512 Mo de RAM et 50% CPU**
+
+```bash
+# Appliquer les limites (persistant)
+sudo systemctl set-property nginx.service MemoryMax=512M
+sudo systemctl set-property nginx.service CPUQuota=50%
+
+# Vérifier que c'est appliqué
+systemctl show nginx.service --property=MemoryMax,CPUQuota
+# → MemoryMax=536870912 (512M en bytes)
+# → CPUQuota=50%
+
+# Voir où c'est stocké (config persistante)
+ls /etc/systemd/system.control/nginx.service.d/
+cat /etc/systemd/system.control/nginx.service.d/50-MemoryMax.conf
+```
+
+---
+
+# 🎯 Exemple nginx : Vérifier dans les fichiers cgroup
+
+**Étape 3 : Voir les vrais fichiers cgroup**
+
+```bash
+# Trouver le cgroup de nginx
+systemd-cgls | grep -A5 nginx
+
+# Lire les limites directement
+cat /sys/fs/cgroup/system.slice/nginx.service/memory.max
+# → 536870912 (512M)
+
+cat /sys/fs/cgroup/system.slice/nginx.service/memory.current
+# → 47185920 (45M actuellement utilisés)
+
+# Voir le ratio CPU autorisé
+cat /sys/fs/cgroup/system.slice/nginx.service/cpu.max
+# → 50000 100000 (50% = 50000µs sur 100000µs)
+```
+
+---
+
+# 🎯 Exemple nginx : Tester que ça marche !
+
+**Étape 4 : Simuler une charge et voir le comportement**
+
+```bash
+# Dans un terminal : surveiller nginx
+watch -n1 'systemctl status nginx | grep Memory'
+
+# Dans un autre terminal : générer du trafic
+# (installer ab : sudo apt install apache2-utils)
+ab -n 10000 -c 100 http://localhost/
+
+# Observer : la mémoire monte mais ne dépasse pas 512M !
+```
+
+**Que se passe-t-il si nginx dépasse 512M ?**
+
+```bash
+# Voir les événements OOM (Out Of Memory)
+journalctl -u nginx --since "5 min ago" | grep -i oom
+# → Si nginx dépasse → il est tué par le kernel !
+# → Puis redémarré automatiquement (si Restart=on-failure)
+```
+
+---
+
+# 🎯 Exemple nginx : Config permanente dans le fichier
+
+**Alternative : Mettre les limites directement dans le fichier service**
+
+```bash
+# Créer un override (ne modifie pas le fichier original)
+sudo systemctl edit nginx.service
+```
+
+```ini
+# Contenu à ajouter :
+[Service]
+MemoryMax=512M
+CPUQuota=50%
+TasksMax=100
+```
+
+```bash
+# Recharger et redémarrer
+sudo systemctl daemon-reload
+sudo systemctl restart nginx
+
+# Vérifier
+systemctl show nginx --property=MemoryMax,CPUQuota,TasksMax
+```
+
+---
+
+# 🎯 Monitoring en temps réel avec systemd-cgtop
+
+**Voir la consommation de TOUS les services en temps réel :**
+
+```bash
+sudo systemd-cgtop
+```
+
+```
+Control Group                          Tasks   %CPU   Memory
+/                                        142   15.3    2.1G
+/system.slice                             45    8.2    1.2G
+/system.slice/nginx.service                5    2.1   98.5M  ← nginx limité
+/system.slice/mysql.service               12    4.5  456.2M
+/system.slice/docker.service               8    1.2  234.1M
+/user.slice/user-1000.slice               32    3.5  512.4M
+```
+
+**💡 C'est comme `htop` mais organisé par service/cgroup !**
+
+---
+
 # Limiter les ressources d'un service 🔒
 
 **Dans un fichier service systemd :**

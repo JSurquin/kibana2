@@ -385,36 +385,54 @@ gdb -p PID                   # Débogueur GNU
 layout: default
 ---
 
-# Gestion des cgroups 📦
+# Gestion des cgroups v2 📦
 
-### Contrôle des groupes de processus
+### Contrôle des groupes de processus (version moderne)
 
-**cgroups v2 :**
+**Créer un cgroup manuellement (cgroups v2) :**
+
 ```bash
 # Créer un cgroup
-sudo mkdir /sys/fs/cgroup/memory/mon_groupe
-echo 100M > /sys/fs/cgroup/memory/mon_groupe/memory.limit_in_bytes
+sudo mkdir /sys/fs/cgroup/mon_groupe
 
-# Ajouter un processus
-echo PID > /sys/fs/cgroup/memory/mon_groupe/cgroup.procs
+# Définir limite mémoire (500 Mo)
+echo "500M" | sudo tee /sys/fs/cgroup/mon_groupe/memory.max
+
+# Définir limite CPU (50% = 50000/100000 µs)
+echo "50000 100000" | sudo tee /sys/fs/cgroup/mon_groupe/cpu.max
+
+# Ajouter un processus (remplacer PID par le vrai PID)
+echo PID | sudo tee /sys/fs/cgroup/mon_groupe/cgroup.procs
 ```
 
-**systemd et cgroups :**
+---
+
+# Gestion des cgroups avec systemd 🔧
+
+**Méthode recommandée : systemctl set-property**
+
 ```bash
-# Limiter la mémoire d'un service
-systemctl set-property service MemoryLimit=100M
+# Limiter la mémoire d'un service (syntaxe moderne)
+sudo systemctl set-property nginx.service MemoryMax=512M
 
 # Limiter le CPU
-systemctl set-property service CPUQuota=50%
+sudo systemctl set-property nginx.service CPUQuota=50%
 
-# Voir les limites
-systemctl show service | grep Limit
+# Voir les limites actuelles
+systemctl show nginx.service --property=MemoryMax,CPUQuota,TasksMax
 ```
 
-**Outils de gestion :**
+**Lancer une commande avec limites (test rapide) :**
+
 ```bash
-systemd-cgtop                # Top des cgroups
-systemd-cgls                 # Lister les cgroups
+systemd-run --scope -p MemoryMax=256M -p CPUQuota=25% ./script.sh
+```
+
+**Outils de monitoring :**
+
+```bash
+systemd-cgtop                # Top des cgroups (temps réel)
+systemd-cgls                 # Arborescence des cgroups
 ```
 
 ---
