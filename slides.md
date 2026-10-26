@@ -25,7 +25,7 @@ themeConfig:
 
 # Unix/Linux - Initiation 2025
 
-🐧 Une formation présentée par Ascent et Andromed.
+🐧 Une formation présentée par Andromed.
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-3 rounded cursor-pointer hover:bg-white hover:bg-opacity-10 neon-border">
